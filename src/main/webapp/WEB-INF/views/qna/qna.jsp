@@ -21,7 +21,7 @@
 	<body>
 		<h1>상품 문의 페이지</h1> 
 	    <form method="post" action="#">
-	        <label for="title">제목:</label>
+	        <label for="title">제목:</label> 
 	        <input type="text" id="title" name="title" required>
 	
 	        <label for="content">내용:</label>
