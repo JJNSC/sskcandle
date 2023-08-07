@@ -23,7 +23,7 @@
 	</head>
 	<%@ include file="../header/navHeader.jsp" %>
 	<body>
-	<div style="max-width:1320px; margin:0 auto;  display:inline-block;">
+	<div style="max-width:1320px; margin:0 7%;  display:inline-block;">
 		<div class="wrap" >
 			<!-- body left part -->
 			<div id ="nav-left">
