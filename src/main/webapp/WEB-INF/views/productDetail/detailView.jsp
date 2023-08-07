@@ -77,7 +77,7 @@
                   	</div>
                   	<div class="reward-cash-summary_info">
                   		<span>|</span>
-                  		<span>최대 <strong>345</strong>원 적립</span>
+                  		<span>최대 <strong>345</strong>원 적립ㅇ</span>
                   	</div>
             	</div>
                   		
