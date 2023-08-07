@@ -2,7 +2,7 @@
 
 		<footer>       	
             <a href="https://github.com/JJNSC/sskcandle" target='_blank'>
-            	<i class="fa-brands fa-github"></i>
+            	<i class="fa-brands fa-github"></i> 
            	</a>
             <a href=""><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
