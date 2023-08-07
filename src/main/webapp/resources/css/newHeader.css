@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+#search_btn {
+	width: 40px;
+	height: 40px;
+	background: #88c8bc;
+    border-radius: 30px;
+    border: 1px solid #88c8bc;
+    position: relative;
+    left: -40px;
+}
+
+#main_logo img {
+	max-width: 200px;
+	max-height: 100px;
+}
+
+#search_btn i {
+	color: #fff;
+}
+
+#search_input input {
+	text-indent: 10px;
+	border-radius: 30px;
+	height: 40px;
+}

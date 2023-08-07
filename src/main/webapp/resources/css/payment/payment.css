@@ -1,0 +1,375 @@
+@charset "UTF-8";
+
+ <style type="text/css">
+         *{
+             clear: both;
+             font-size: 16px;
+             z-index: 20;
+             font-family: "apple sd gothic neo", "맑은 고딕", "malgun gothic", 나눔고딕,
+    		  nanumgothic, 돋움, dotum, sans-serif;
+         }
+         .maincontainer{
+         	width:900px;
+         }
+         
+         .border-h {
+            
+		    font-family: "돋움",Dotum,sans-serif;
+		    padding: 0;
+		    position: relative;
+		    height: 85px;
+		    margin: 0 auto;
+			border-bottom: solid 1px white;
+		    
+
+         }
+         .head {
+         	position: absolute;
+         	width: 800px;
+         	padding-top: 30px;
+         }
+         
+         #logo {
+			    cursor: pointer;
+         }
+         
+         
+         form > div {
+            margin: 20px 0;
+         }
+         
+
+         
+         h3 {
+           		font-family: "돋움",Dotum,sans-serif;
+			    margin: 0;
+			    padding: 0;
+			    float: left;
+			    margin-top: 5px;
+			    padding-left: 0;
+			    line-height: 70px;
+			    font-size: 30px;
+			    color: #111;
+			    font-weight: bold;
+			    
+         }
+         
+         h2 {
+         	    font-family: "돋움",Dotum,sans-serif;
+			    margin: 0;
+			    padding: 0;
+			    padding-left: 2px;
+			    margin-bottom: 8px;
+			    font-size: 20px;
+			    font-weight: 700;
+			    color: #333;
+         }
+         
+         
+         
+         table {
+            width: 100%;
+			border: 1px solid #e4e4e4;
+         }
+         
+         .consumerInfo{
+         	border-top: 2px solid #cecece;
+         }
+         
+        .receiverInfo {
+         	border-top: 2px solid #cecece;
+         }
+         
+         .nofn {
+        	border-top: 2px solid #cecece;
+         }
+         
+         .payInfomation{
+         	border-top: 2px solid #cecece;
+         }
+         
+         
+         
+         tr > th {
+            background-color: #F4F4F4;
+            width: 160px;
+            padding: 7px 10px 7px 15px;
+            text-align: right;
+            border: 1px solid #e4e4e4;
+         }
+         
+         tr > td{
+            padding: 10px 16px;
+            border: 1px solid #e4e4e4;
+            
+         }
+         
+         #border1 {
+                border-collapse: collapse;
+			    border-spacing: 0;
+			    margin: 0;
+			    display: inline-block;
+			    height: 17px;
+			    margin-left: 2px;
+			    padding: 2px 2px 0;
+			    font-size: 11px;
+			    font-family: dotum,sans-serif;
+			    line-height: 12px;
+			    vertical-align: middle;
+			    border: 1px solid #00891a;
+			    border-radius: 8px;
+			    color: #555;
+   				 border-color: #555;
+         }
+         #border2 {
+                border-collapse: collapse;
+			    border-spacing: 0;
+			    margin: 0;
+			    display: inline-block;
+			    height: 17px;
+			    margin-left: 2px;
+			    padding: 2px 2px 0;
+			    font-size: 11px;
+			    font-family: dotum,sans-serif;
+			    line-height: 12px;
+			    vertical-align: middle;
+			    border: 1px solid #00891a;
+			    border-radius: 8px;
+			    color: #00891a;
+			   
+         }
+         #border3 {
+                border-collapse: collapse;
+			    border-spacing: 0;
+			    margin: 0;
+			    display: inline-block;
+			    height: 17px;
+			    margin-left: 2px;
+			    padding: 2px 2px 0;
+			    font-size: 11px;
+			    font-family: dotum,sans-serif;
+			    line-height: 12px;
+			    vertical-align: middle;
+			    border: 1px solid #00891a;
+			    border-radius: 8px;
+			    color: #487fda;
+   				border-color: #487fda;
+			   
+         }
+         
+         button {
+            background-color: white;
+            border-collapse: collapse;
+            padding: 4px 8px;
+            border: 1px solid #999;
+            color: #333;
+            border-radius: 2px;
+            box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
+            font-size: 11px;
+            
+         	
+         }
+         
+         #transAddress {
+     	    background-color: white;
+            border-collapse: collapse;
+            height: 24px;
+            border: 1px solid #999;
+            color: #333;
+            border-radius: 2px;
+            box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
+            font-size: 11px;
+         }
+         
+         #payInfo th {
+	         width: 180px;
+	         text-align: right;
+	         vertical-align: top;
+	         padding-top: 14px;
+	         padding-right: 15px;
+         
+         }
+         
+         .payMethod {
+         	display: flex;
+         	justify-content: space-between;
+         	cursor: pointer;
+         	
+         }
+         
+         .payMethod label{
+         	cursor: pointer;
+         }
+         
+         
+         .payMethod-arrow {
+         	background-image: url(//img1a.coupangcdn.com/image/www/newBuy/cardPaySelector_arrowUp.gif);
+		    background-repeat: no-repeat;
+		    background-position: 50% bottom;
+  		    margin : 0px;
+		    padding-bottom: 10px;
+		    
+         }
+         
+         .pay_select {
+         	 color: #333;
+			 font-family: "돋움",Dotum,sans-serif;
+			 margin: -2px 0px 0px;
+			 padding: 10px;
+			 
+         }
+         
+         .pay_select > div {
+         	height: 35px;
+         	padding: 5px 5px 5px;
+         	text-align: 
+         	font-size: 1rem;
+         }
+         
+         .pay_select label {
+         	cursor: pointer;
+         	font-weight: 700;
+         	
+         
+         }
+         
+         .choice-error {
+            padding-left: 20px;
+		    line-height: 21px;
+		    background-image: url(//img1a.coupangcdn.com/image/www/order2015/icon-alert.png);
+		    background-repeat: no-repeat;
+		    background-position: 0 8px;
+		    padding-top: 3px;
+		    padding-bottom: 0px;
+         }
+
+         #account-transfer-option, #coupay-money-option, #credit-card-option, 
+         #corporation-card-option, #phone-option, #deposit-without-bankbook-option{
+            border-collapse: collapse;
+		    border-spacing: 0;
+		    font-size: 16px;
+		    color: #333;
+		    font-family: "돋움",Dotum,sans-serif;
+		    margin: 0;
+		    margin-top: -2px;
+		    padding: 10px;
+		    border: 2px solid #c5c7cd;
+		    background-color: #f4f6fa;
+         }
+         
+         
+         
+         #deposit-without-bankbook-option-caution span {
+            border-collapse: collapse;
+		    border-spacing: 0;
+		    font-size: 12px;
+		    color: #333;
+		    font-family: "돋움",Dotum,sans-serif;
+		    padding: 0;
+		    list-style: none;
+		    font-weight: 700;
+		    margin: 5px 0 10px;
+         }
+         
+     
+         #deposit-without-bankbook-option-caution ul {
+         	line-height: 1.8;
+         	padding-left: 20px;
+         	 font-size: 12px;
+		    font-family: "돋움",Dotum,sans-serif;
+		    color: #888;
+         
+         }
+         
+         #basicPay {
+         	color: #333;
+		    font-family: "돋움",Dotum,sans-serif;
+		    font-size: 12px;
+         }
+         
+         #selectPay {
+         	color: #333;
+		    font-family: "돋움",Dotum,sans-serif;
+		    font-size: 12px;
+         }
+         
+         .text-center {
+         	position: relative;
+         }	
+         
+         #cash-border {
+         	margin: 0;
+		    border: 1px solid #ddd;
+		    padding: 22px 30px;
+         	
+         }
+         	
+         	
+         
+         #agreeMessage {
+         	font-size: 12px;
+		    color: #333;
+		    font-family: "돋움",Dotum,sans-serif;
+         }
+         
+         #payButton {
+         	margin-top: 30px;
+         	margin-bottom: 60px;
+         }
+         #maxCash {
+            cursor: pointer;
+		    font-family: sans-serif;
+		    color: #333;
+		    font-size: 11px;
+		    width: 96px;
+		    aspect-ratio: auto 96 / 36;
+		    height: 36px;
+		    margin: 0;
+		    border: 0;
+		    padding: 0;
+		    vertical-align: top;
+		    top: -25px;
+		    left: 35%;
+		    position: absolute;
+         	
+         }
+         
+         .redLine {
+         	border: 2px solid red;
+         }
+         
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
+         
+         @media(min-width: 1250px){
+         	.maincontainer{
+         	margin:auto;
+         	width:1250px;
+         	}
+         }
+         
+         @media(max-width: 768px){
+         	.maincontainer{
+         	width:700px;
+         	}
+         	body{
+         	font-size:15px;
+         	}
+         	#account-transfer-option{
+         	font-size: 16px;
+         	}
+         	.payMethod{
+         	font-size:12px;
+         	}
+         	.container{
+         	margin-left:5px;
+         	}
+         }
+         
+         
+
+
+      </style>
