@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,14 +22,18 @@
 		<script src="${pageContext.request.contextPath}/resources/js/qna/qna.js"></script>
 	</head>
 	<body>
-		<h1>상품 문의 페이지</h1> 
+		<div>
+			<a href="getBoardList" class="btn btn-info btn-sm">리스트 확인</a>
+		</div>
+	
+		<h1>상품 문의 페이지</h1>   
 	    <form method="post" action="#">
 	        <label for="title">제목:</label>
-	        <input type="text" id="title" name="title" required>
+	        <input type="text" id="title" name="title" required> 
 	
 	        <label for="content">내용:</label>
 	        <textarea id="content" name="content" rows="5" placeholder="내용을 입력하세요." required></textarea>
 	
-	        <input type="submit" value="문의하기">
+	        <input type="submit" value="문의하기"> 
 	    </form>
 </html>
