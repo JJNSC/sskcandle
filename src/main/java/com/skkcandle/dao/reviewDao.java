@@ -9,7 +9,9 @@ import com.skkcandle.dto.Review;
 @Mapper
 public interface reviewDao {
 	public List<Review> selectReview(int productId);
+	public List<Review> selectReviewByUserId(int userId);
 	public int count(int productId);
+
 }
 
 

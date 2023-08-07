@@ -12,6 +12,12 @@
 		where productId = #{productId}
 	</select>
 	
+	<select id="selectReviewByUserId" parameterType="int" resultType="Review">
+		select reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+		from review
+		where userId = #{userId}
+	</select>
+	
 	<select id="count" resultType="int">
 		select count(*) from review
 		where productId = #{productId}	

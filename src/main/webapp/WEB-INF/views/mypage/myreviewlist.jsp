@@ -33,14 +33,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:if test="">
+					<c:forEach var="review" items="${myreview }">
 					<tr>
-						<td>상품 이미지</td>
-						<td>상품 명</td>
-						<td>상품 가격</td>
-						<td>상품 갯수</td>
+						<td>0</td>
+						<td>${review.productId }</td>
+						<td>${review.reviewTitle }</td>
+						<td><fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+						<td>${review.ratingScore }</td>
 					</tr>
-					</c:if>
+					</c:forEach>
 				</tbody>
 			
 			</table>

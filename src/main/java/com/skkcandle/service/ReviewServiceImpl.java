@@ -25,8 +25,14 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	public List<Review> selectReview(int productId) {
-	List<Review> productReview = reviewDao.selectReview(productId);			
+		List<Review> productReview = reviewDao.selectReview(productId);			
 		return productReview;
+	}
+
+	@Override
+	public List<Review> selectReviewByUserId(int userId) {
+		List<Review> myProductReview = reviewDao.selectReviewByUserId(userId);		
+		return myProductReview;
 	}
 
 	@Override
@@ -34,4 +40,5 @@ public class ReviewServiceImpl implements ReviewService{
 	   int totalReviewNum = reviewDao.count(productId);
 	   return totalReviewNum;
 	}
+
 }
