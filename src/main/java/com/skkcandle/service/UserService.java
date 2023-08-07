@@ -15,6 +15,7 @@ public interface UserService {
 	}
 	
 	public User getUserInfo(String userEmail);
+	public User getUserInfoById(int userId);
 	public JoinResult join(User user);
 	public LoginResult login(User user);
 }

@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
 		User userinfo = userDao.select(userEmail);
 		return userinfo;
 	}
+	@Override
+	public User getUserInfoById(int userId) {
+		User userinfo = userDao.selectById(userId);
+		return userinfo;
+	}
 
 	@Override
 	public JoinResult join(User user) {
@@ -53,5 +58,6 @@ public class UserServiceImpl implements UserService {
 			return LoginResult.FAIL_PASSWORD_WRONG;
 		}
 	}
+
 
 }

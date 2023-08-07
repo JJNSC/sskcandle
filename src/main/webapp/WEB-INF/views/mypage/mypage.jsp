@@ -45,10 +45,10 @@
 							<a href="mypage?subpage=myinfo" class="myMenuTitle">내 정보 확인/수정</a>
 						</div>
 						<div>
-							<div class="myMenuTitle">내 구매 목록</div>
+							<a href="mypage?subpage=myshoppinglist"  class="myMenuTitle">내 구매 리스트</a>
 						</div>
 						<div style="border-bottom: 0px solid rgb(225, 228, 230);">
-							<div class="myMenuTitle">MY 정보</div>
+							<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a>
 						</div>
 					</nav>
 				</div>
@@ -56,15 +56,17 @@
 			</div>
 			<!-- body right part -->
 			<div id="body-right">
-				<%-- <c:if test=""> --%>
+				<c:if test="${subpage.equals('myinfo') }">
 					<%@ include file="myinfo.jsp" %>
-				<%-- </c:if> --%>
+				</c:if>
+				<c:if test="${subpage.equals('myshoppinglist') }">
+					<%@ include file="myshoppinglist.jsp" %>
+				</c:if>
+				<c:if test="${subpage.equals('myreviewlist') }">
+					<%@ include file="myreviewlist.jsp" %>
+				</c:if>
 			</div>
 		
 		</div>
-	</div>.
-	</body>
-	<div>
-		<%-- <%@ include file="../footer/footer.jsp" %> --%> 
 	</div>
-</html>
+		<%@ include file="/WEB-INF/views/footer/footer.jsp" %> 

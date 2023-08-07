@@ -6,6 +6,11 @@
 		select *from userinfo where userEmail = #{userEmail}
 	</select>
 	
+	<!-- userId로 유저 정보 가져오기 -->
+	<select id="selectById" parameterType="int" resultType="User">
+		select *from userinfo where userId = #{userId}
+	</select>
+	
 	<!-- 회원가입하기 -->
 	<insert id="insert"  parameterType="User">
 		<selectKey keyProperty="userId" resultType="int" order="BEFORE">
