@@ -22,10 +22,15 @@
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 정보 확인/수정</h3>
 			<br>
-			<form class="form-group ">
+			<form id="" method="post" action="imageTest" enctype="multipart/form-data">
+				<input name="userId" placeholder="${userinfo.userId }" value="${userinfo.userId }"></input>
+				<input id="battach" type="file" name="battach" >
+				<button>수정</button>
+			</form>
+			<form id="updateMyInfoForm" class="form-group" action="updateMyInfo" enctype="multipart/form-data">
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<span>
-						프로필 사진 수정 하는곳
+						<input id="battach" type="file" name="battach" >프로필 사진 수정 하는곳
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
@@ -49,7 +54,9 @@
 					<input type="text" placeholder="${userinfo.userAddress }"> 
 				</div>
 			</form>
-			<button onclick="checkUserInfo()"> 수정하기 </button>
+			<button onclick="checkUserInfo()" form="updateMyInfoForm"> 수정하기 </button>
+			<!-- 수정하기 버튼누르면 창이 열리면서 이메일,비밀번호 확인 창이뜸. 일치하면 수정 -->
+			<script></script>
 		</div>
 	</body>
 </html>

@@ -9,4 +9,5 @@ public interface userDao {
 	public User select(String userEmail);
 	public User selectById(int userId);
 	public void insert(User user);
+	public void updateImage(User user);
 }

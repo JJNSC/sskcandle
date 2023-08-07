@@ -18,4 +18,5 @@ public interface UserService {
 	public User getUserInfoById(int userId);
 	public JoinResult join(User user);
 	public LoginResult login(User user);
+	public void updateUserImage(User user);
 }
