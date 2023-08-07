@@ -3,8 +3,14 @@
 <mapper namespace="com.skkcandle.dao.productImagesDao">		
 
 	<select id="selectDetailPicture" parameterType="int" resultType="Picture">
-		  select productImageId, productId, productImage, pAttach, productMaker, productImage
-	      from productImages
-	      where productId = #{productId} and usage = detail
+		  select productImageId, productId, productImage, pattachtype, pattachoname, usage
+	      from ProductImages
+	      where productId = #{productId} and usage = 'detail'
+	</select>
+	
+	<select id="selectThumbnail" parameterType="int" resultType="Picture">
+		  select productImageId, productId, productImage, pattachtype, pattachoname, usage
+		  from ProductImages
+      	  where productId = #{productId} and usage = 'thumbnail'
 	</select>
 </mapper>

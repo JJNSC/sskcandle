@@ -1,5 +1,6 @@
 package com.skkcandle.controller;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,11 @@ public class productController {
 		
 		ProductImages productDetail = ProductImagesService.detailImage(productId);
 		model.addAttribute("productDetailPicture", productDetail);
-		
+
+		if(productDetail.getProductImage() !=null) {
+			String base64Img = Base64.getEncoder().encodeToString(productDetail.getProductImage());
+			model.addAttribute("base64Img", base64Img);
+		}
 		return "/productDetail/detailView";
 		
 	}

@@ -17,5 +17,4 @@ public class ProductServiceImpl implements ProductService {
 		Product detailProduct = productDao.selectDetailProduct(productId);
 		return detailProduct;
 	}
-
 }
