@@ -311,13 +311,11 @@
         
         /*상품의 이미지*/
         
-        .prod_image{
-        	position: relative;
+        .prod_image img{
         	float: left;
-        	width : 490px;
+        	width : 600px;
         	text-align: center;
         	display: inline-block;
-        	
         }
         
         /*상품 소개 div */

@@ -31,8 +31,9 @@
 	  <div class="product">
 	    
 	    <div class="prod_image">
-			<div class="prod-image_detail">
-		    </div>
+			<c:if test="${productThumbnailPicture.productImage != null }"> 
+		       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Thb}" width="400"/>
+			</c:if>
 		</div>   
 		 
 		 <!-- 상품 기본정보 등록란 -->
@@ -123,7 +124,7 @@
         
         <div class="subType_image">
         	<c:if test="${productDetailPicture.productImage != null }"> 
-		       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Img}" width="800"/>
+		       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Img}" width="900"/>
 			</c:if>
         </div>
   
@@ -171,7 +172,9 @@
 					 			<c:if test="${review.ratingScore==5}"><span style="width: 100%"></span></c:if>
 			 			</div>
 	                </div>
-	                <div class="sdp-review__article__list__info__product-info__reg-date">${review.reviewDate}</div>
+	                <div class="sdp-review__article__list__info__product-info__reg-date">
+	                	<fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate>
+	                </div>
 	            </div>        
 	                <div class="sdp-review__article__list__info__product-info__seller_name">
 	                    	제조사: ${detailproduct.productMaker}

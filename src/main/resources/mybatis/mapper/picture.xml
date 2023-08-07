@@ -8,7 +8,7 @@
 	      where productId = #{productId} and usage = 'detail'
 	</select>
 	
-	<select id="selectThumbnail" parameterType="int" resultType="Picture">
+	<select id="selectThumbnailPicture" parameterType="int" resultType="Picture">
 		  select productImageId, productId, productImage, pattachtype, pattachoname, usage
 		  from ProductImages
       	  where productId = #{productId} and usage = 'thumbnail'

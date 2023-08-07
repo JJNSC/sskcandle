@@ -49,6 +49,14 @@ public class productController {
 			String base64Img = Base64.getEncoder().encodeToString(productDetail.getProductImage());
 			model.addAttribute("base64Img", base64Img);
 		}
+		
+		ProductImages productThumbnail = ProductImagesService.thumbnailImage(productId);
+		model.addAttribute("productThumbnailPicture", productThumbnail);
+
+		if(productThumbnail.getProductImage() !=null) {
+			String base64Img = Base64.getEncoder().encodeToString(productThumbnail.getProductImage());
+			model.addAttribute("base64Thb", base64Img);
+		}
 		return "/productDetail/detailView";
 		
 	}
