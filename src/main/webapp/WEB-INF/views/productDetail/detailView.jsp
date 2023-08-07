@@ -138,7 +138,7 @@
 		  	<div class="sdp-review_caution">동일한 상품에 대해 작성된 상품으로 판매자는 다를 수 있습니다.</div>
 			    <div class="sdp-review_rating">
 			     	<div class="sdp-review_count"><h3>총 ${totalReviewNum} 개의 리뷰가 있습니다.</h3></div>	    	
-			    	<div class="sdp-review_info-detail">자세히 보기 ></div>
+			    	<div class="sdp-review_info-detail">자세히 보기 </div>
 			    </div>
 			    
 	   	</div>
