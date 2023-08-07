@@ -29,11 +29,11 @@
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="text" placeholder="기존의 이름"> 
+					<input type="text" placeholder="${userinfo.userName }"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<span>
-						메일 : 기존 이메일
+						메일 : ${userinfo.userEmail }
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
@@ -43,12 +43,13 @@
 					<input type="password" placeholder="수정할 비밀번호 재입력"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="number" placeholder="기존의 전화번호"> 
+					<input type="number" placeholder="${userinfo.userPhone }"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="text" placeholder="기존의  주소"> 
+					<input type="text" placeholder="${userinfo.userAddress }"> 
 				</div>
 			</form>
+			<button onclick="checkUserInfo()"> 수정하기 </button>
 		</div>
 	</body>
 </html>

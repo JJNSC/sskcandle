@@ -42,7 +42,7 @@
 		<nav class="navbar2">
 			<!-- <div class="col-3"></div> -->
 			<ul class="navbar_menu col-8">
-				<li><a href="#">메뉴1</a></li>
+				<li><a href="mypage">마이페이지</a></li>
 				<li><a href="#">메뉴2</a></li>
 				<li><a href="#">메뉴3</a></li>
 				<li><a href="#">메뉴4</a></li>
@@ -53,7 +53,7 @@
 					<i class="bi bi-list"></i>
 				</button>
 				<div class="d-flex">
-					<a class="navbar_short_icon" href="#">
+					<a class="navbar_short_icon" href="loginForm">
 						<i class="bi bi-person"> Login</i>	
 					</a>
 					<a class="navbar_short_icon" href="#">
