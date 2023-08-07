@@ -10,6 +10,7 @@ import lombok.Data;
 public class Qna {
 	private int qnaId;
 	private int userId;
+	private String userName;
 	private String qnaTitle;
 	private String qnaContent;
 	private byte[] qnaImage;

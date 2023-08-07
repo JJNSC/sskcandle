@@ -25,7 +25,7 @@
 					<td>${board.qnaId}</td>
 					<!-- get방식으로 bno를 넘긴다 -->
 					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.qnaTitle}</a></td>
-					<td>${board.userId}</td>
+					<td>${board.userName}</td>
 					<td><fmt:formatDate value="${board.qnaDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>

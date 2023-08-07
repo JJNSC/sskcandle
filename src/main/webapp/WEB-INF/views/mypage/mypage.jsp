@@ -57,14 +57,11 @@
 			<!-- body right part -->
 			<div id="body-right">
 				<%-- <c:if test=""> --%>
-					<%@ include file="myinfo.jsp" %>
+					<%-- <%@ include file="myinfo.jsp" %> --%>
+					<%@ include file="myshoppinglist.jsp" %>
 				<%-- </c:if> --%>
 			</div>
 		
 		</div>
-	</div>.
-	</body>
-	<div>
-		<%-- <%@ include file="../footer/footer.jsp" %> --%> 
 	</div>
-</html>
+		<%@ include file="/WEB-INF/views/footer/footer.jsp" %> 
