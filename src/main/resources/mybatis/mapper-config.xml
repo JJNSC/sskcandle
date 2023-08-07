@@ -8,5 +8,6 @@
 		<typeAlias alias="User" type="com.skkcandle.dto.User"/>
 		<typeAlias alias="Cart" type="com.skkcandle.dto.Cart"/>
 		<typeAlias alias="Product" type="com.skkcandle.dto.Product"/>
+		<typeAlias alias="Picture" type="com.skkcandle.dto.ProductImages"/>
 	</typeAliases>
 </configuration>
