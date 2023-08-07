@@ -3,11 +3,14 @@ package com.skkcandle.controller;
 import java.util.Base64;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Product;
 import com.skkcandle.dto.ProductImages;
 import com.skkcandle.dto.Review;
@@ -30,7 +33,7 @@ public class productController {
     private ProductImagesService ProductImagesService;
 	   
 	@RequestMapping("/productDetail")
-	public String detailProduct(Model model) {
+	public String detailProduct(String pageNo, Model model, HttpSession session) {
 		int productId = 1;
 		log.info("제품번호" + productId);
 		Product product = ProductService.detailProduct(productId);
@@ -57,6 +60,7 @@ public class productController {
 			String base64Img = Base64.getEncoder().encodeToString(productThumbnail.getProductImage());
 			model.addAttribute("base64Thb", base64Img);
 		}
+	      
 		return "/productDetail/detailView";
 		
 	}
