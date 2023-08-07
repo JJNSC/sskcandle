@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skkcandle.dto.Product;
+import com.skkcandle.dto.ProductImages;
 import com.skkcandle.dto.Review;
+import com.skkcandle.service.ProductImagesService;
 import com.skkcandle.service.ProductService;
 import com.skkcandle.service.ReviewService;
 
@@ -23,6 +25,8 @@ public class productController {
     private ProductService ProductService;
     @Autowired
     private ReviewService ReviewService;
+    @Autowired
+    private ProductImagesService ProductImagesService;
 	   
 	@RequestMapping("/productDetail")
 	public String detailProduct(Model model) {
@@ -32,11 +36,14 @@ public class productController {
 		model.addAttribute("detailproduct", product);
 		
 		List<Review> review = ReviewService.selectReview(productId);
-		model.addAttribute("productviews", review);
+		model.addAttribute("productreviews", review);
 			
 		int reviewNum = ReviewService.getTotalReviewNum(productId);
 		model.addAttribute("totalReviewNum", reviewNum);
-
+		
+		ProductImages productDetail = ProductImagesService.detailImage(productId);
+		model.addAttribute("productDetailPicture", productDetail);
+		
 		return "/productDetail/detailView";
 		
 	}
