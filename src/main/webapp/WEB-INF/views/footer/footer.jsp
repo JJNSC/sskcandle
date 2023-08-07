@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-		<footer>
-		  <div class="footer-content">
-		    <p>123123123</p>
-		    <ul class="footer-links">
-		      <li><a href="/">대충</a></li>
-		      <li><a href="/about">작성</a></li>
-		      <li><a href="/services">하시면</a></li>
-		      <li><a href="/contact">됩니다</a></li>
-		    </ul>
-		  </div>
+		<footer>       	
+            <a href="https://github.com/JJNSC/sskcandle" target='_blank'>
+            	<i class="fa-brands fa-github"></i>
+           	</a>
+            <a href=""><i class="fas fa-home"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fas fa-phone"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
 		</footer>
 	</body>
 </html>
