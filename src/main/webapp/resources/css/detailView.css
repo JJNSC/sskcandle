@@ -660,9 +660,8 @@
 			
 			/*상품 소개 이미지*/
 			.subType_image {
-			display: flex;
+			text-align: center;
         	flex-direction: column;
-		/*    border:5px solid black;*/
 		    width: 1320px;
 			}
 			

@@ -3,7 +3,7 @@
 <mapper namespace="com.skkcandle.dao.productDao">		
 	
 	<select id="selectDetailProduct" parameterType="int" resultType="Product">  
-	  select productId, productName, productPrice, productStock, productMaker, productImage
+	  select productId, productName, productPrice, productStock, productMaker
 	      from product
 	      where productId = #{productId}
    </select>

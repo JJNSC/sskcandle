@@ -20,15 +20,16 @@
 	
 	</head>
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
-			<h3>내 구매 목록</h3>
+			<h3>내 리뷰 리스트</h3>
 			<br>
 			<table>
 				<thead>
 					<tr>
-						<td>상품 이미지</td>
+						<td>번호</td>
 						<td>상품 명</td>
-						<td>상품 가격</td>
-						<td>상품 갯수</td>
+						<td>제목</td>
+						<td>작성 날짜</td>
+						<td>별점</td>
 					</tr>
 				</thead>
 				<tbody>

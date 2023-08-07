@@ -18,4 +18,9 @@ public class ProductImagesServiceImpl implements ProductImagesService {
 		return detailImage;
 	}
 
+	@Override
+	public ProductImages thumbnailImage(int productId) {
+		ProductImages thumbnailImage = productImagesDao.selectThumbnailPicture(productId);
+		return thumbnailImage;
+	}
 }

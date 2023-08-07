@@ -8,5 +8,6 @@ import com.skkcandle.dto.ProductImages;
 public interface productImagesDao {
 
 	public ProductImages selectDetailPicture(int productId);
+	public ProductImages selectThumbnailPicture(int productId);
 	
 }
