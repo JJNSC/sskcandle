@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skkcandle.dao.reviewDao;
+import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Review;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,4 +42,9 @@ public class ReviewServiceImpl implements ReviewService{
 	   return totalReviewNum;
 	}
 
+	@Override
+	public List<Review> getList(Pager pager) {
+      List<Review> boardList = reviewDao.selectByPage(pager);
+      return boardList;
+	}
 }

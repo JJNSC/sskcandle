@@ -23,6 +23,23 @@
 		where productId = #{productId}	
 	</select>
 	
+	   <!-- reusltType 조회 결과 값을 저장하기 위한 데이터 타입, parameterType : 전달받은 파라미터 데이터 타입 지정 -->
+  <select id="selectByPage" parameterType="Pager" resultType="review"> <!--resultType =(무슨 타입으로 내보내고 싶다), select 된 값을 반환할 빈 그릇 -->
+	  <![CDATA[
+	  select rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+	      from (
+	         select rownum as rnum, reviewId, reviewTitle, userId, reviewDate, ratingScore, reviewContent
+	         from (
+	            select reviewId, reviewTitle, userId, reviewDate, ratingScore, reviewContent
+	            from review
+	            order by bno desc
+	         )
+	         where rownum <= #{endRowNo}
+	      )
+	      where rnum >= #{startRowNo}
+	      ]]>
+   </select>
+	
 </mapper> <!-- 리뷰 작업으로 인한 주석처리 -->
 
 

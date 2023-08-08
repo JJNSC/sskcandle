@@ -48,7 +48,7 @@
 	     	<div class="prod-buy-header_productview">
 		 		
 		 		<div class="review_count">
-		 			${detailproduct.productStock}개의 상품평
+		 			${totalReviewNum}개의 상품평
 		 		</div> 
 	     	</div>
 	     	
@@ -154,10 +154,10 @@
 	    			<input class="sdp-review_search" placeholder="상품평을 검색해 보세요." maxlength="30">
 	    		</div>
 	    	</section>
-	    <c:forEach var="review" items="${productreviews}">	
+	    <c:forEach var="review" items="${productreviews}">	<!-- 여기에 고객의 사진이 들어간다. -->
 	    <article class="sdp-review__article__list js_reviewArticleReviewList">
 	        <div class="sdp-review__article__list__info">          
-	                <div class="sdp-review__article__list__info__profile">     <!-- 여기에 고객의 사진이 들어간다. -->
+	                <div class="sdp-review__article__list__info__profile">     
 	                </div> 
 	            <div class="sdp-review__article__list__info__user">
 	                <span class="sdp-review__article__list__info__user__name js_reviewUserProfileImage" data-member-id="806840"><h2>${review.reviewId}</h2>&nbsp;</span> <!-- 고객의 이름 -->
@@ -196,8 +196,32 @@
 	                <button class="sdp-review__article__list__help__report-btn js_reviewArticleReviewReportBtn" data-review-id="487908706">신고하기</button>      
 	            <div class="sdp-review__clear"></div>  
 	        </div>
-    </article>	
+    </article>  
     </c:forEach>
+     <tr>
+            <td colspan="4" class="text-center">
+               <div>
+                  <a class="btn btn-outline-primary btn-sm" href="getReviewList?pageNo=1">처음</a>
+                  <c:if test="${pager.groupNo>1}">
+                     <a class="btn btn-outline-info btn-sm" href="getReviewList?pageNo=${pager.startPageNo-1}">이전</a>
+                  </c:if>
+                  
+                  <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+                     <c:if test="${pager.pageNo != i}">
+                        <a class="btn btn-outline-success btn-sm" href="getReviewList?pageNo=${i}">${i}</a>
+                     </c:if>
+                     <c:if test="${pager.pageNo == i}">
+                        <a class="btn btn-danger btn-sm" href="getReviewList?pageNo=${i}">${i}</a>
+                     </c:if>
+                  </c:forEach>
+                  
+                  <c:if test="${pager.groupNo<pager.totalGroupNo}">
+                     <a class="btn btn-outline-info btn-sm" href="getReviewList?pageNo=${pager.endPageNo+1}">다음</a>
+                  </c:if>
+                  <a class="btn btn-outline-primary btn-sm" href="getReviewList?pageNo=${pager.totalPageNo}">맨끝</a>
+               </div>
+            </td>
+         </tr>
 	 	</div>	   	
 	    	
 	    	<!-- 후기 및 판매자 정보 -->
@@ -389,31 +413,7 @@
             </div>
             
         <!-- 고르고 골랐어요 -->
-        
-        <div class="bottom-banner">
-           <div class="sdp-bottom-banner-header">
-           <br><br><br>
-           	<h4 class="banner-title">고르고 골랐어요</h4>
-            <br>
-           	</div>
-            	<a class="banner-link" href="https://www.coupang.com/vp/products/6555208159?itemId=14649998015&vendorItemId=81891505305&sourceType=SDP_BOTTOM_BANNER&clickEventId=c71f8574-ac8d-4c00-b678-257a3242d777&isAddedCart=">
-                 <div class="sdp-bottom-banner-content">
-	             	<div class="sdp-bottom-banner-info">
-	                	<div class="sdp-bottom-banner-thumb">
-	                    	<img src="https://thumbnail7.coupangcdn.com/thumbnails/remote/292x292ex/image/vendor_inventory/0603/a677eabca00d335ad77331b2b7813f32a82a2810424a8e339e2c70f79990.jpg">
-	                     </div>
-		               <div class ="item-rating">
-		                     <span class="rating-stars"></span>
-		                </div>
-		                <br>
-		                <div class="item-link-button">
-		                     <button type="button" class ="button"><img src="https://static.coupangcdn.com/image/cmg/common/cta/circle-56.png"></button>
-	                    </div>
-                  	</div>
-                  </div>	
-                </a>   
-           </div>      
 		</div>    
+			<%@ include file="/WEB-INF/views/footer/footer.jsp" %> 
 	</body>
-	<%@ include file="/WEB-INF/views/footer/footer.jsp" %> 
 </html>

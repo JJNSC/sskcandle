@@ -55,14 +55,13 @@
 					<i class="bi bi-list"></i>
 				</button>
 				<div class="d-flex">
-					<a class="navbar_short_icon" href="loginForm">
-						<i class="bi bi-person"> Login</i>	
-					</a>
 					<a class="navbar_short_icon" href="#">
 						<i class="bi bi-cart"> Cart</i>	
 					</a>
+					<a class="navbar_short_icon" href="loginForm">
+						<i class="bi bi-person"> Login</i>	
+					</a>
 				</div>
-				
 			</div>
 		</nav>
 		<div class="navbar_search row">
