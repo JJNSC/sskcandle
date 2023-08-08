@@ -14,12 +14,11 @@ public class Qna {
 	private String userName;
 	private String qnaTitle;
 	private String qnaContent;
-	private byte[] qnaImage;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date qnaDate;
 	private String qnaAnswer;
 	
 	private MultipartFile attach;
-	private String qnaAttachoname;
 	private String qnaAttachType;
+	private byte[] qnaImage;
 }

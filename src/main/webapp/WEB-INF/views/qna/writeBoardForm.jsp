@@ -10,12 +10,12 @@
 		<form id="writeBoardForm" method="post" action="writeBoard" enctype="multipart/form-data">
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">title</span></div>
-				<input id="title" type="text" name="title" class="form-control">
+				<input id="title" type="text" name="qnaTitle" class="form-control">
 			</div>
 			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">content</span></div>
-				<textarea id="content" name="content" class="form-control"></textarea>
+				<textarea id="content" name="qnaContent" class="form-control"></textarea>
 			</div>
 			
 			<div class="input-group">
