@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 		log.info(user.getUserEmail());
 		User dbUser = userDao.select(user.getUserEmail());
 		log.info("dbUser: " +dbUser);
-		//db에 해당 이메일을 가진 유저가 있는지 검색
+		//db에 해당 이메일을 가진 유저가 있는지 검색nb
 		//해당 이메일이 이미 있을경우
 		if(dbUser != null) {
 			return JoinResult.FAIL_DUPLICATED_Email;
@@ -61,6 +61,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUserImage(User user) {
 		userDao.updateImage(user);
+	}
+	@Override
+	public void updateUserInfo(User user) {
+		userDao.updateUserInfo(user);
+		
+	}
+	@Override
+	public void updateUserInfoNoPW(User user) {
+		userDao.updateUserInfoNoPW(user);
 	}
 
 

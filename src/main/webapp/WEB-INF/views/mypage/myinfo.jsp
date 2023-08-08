@@ -27,7 +27,8 @@
 				<input id="battach" type="file" name="battach" >
 				<button>수정</button>
 			</form> --%>
-			<form id="updateMyInfoForm" class="form-group" action="updateMyInfo" enctype="multipart/form-data">
+			<form id="updateMyInfoForm" class="form-group" method="post" action="updateMyInfo" enctype="multipart/form-data">
+				<input type="hidden" name="userId" value="${userinfo.userId }">
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<span>
 						<img src="data:${userinfo.userAttachType};base64, ${base64Img}" width="120"/>
@@ -35,7 +36,7 @@
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="text" placeholder="${userinfo.userName }"> 
+					<input type="text" name="userName" value="${userinfo.userName }" placeholder="${userinfo.userName }"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<span>
@@ -43,19 +44,19 @@
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="password" name="userPassword" placeholder="수정할 비밀번호 입력"> 
+					<input type="password" name="userPassword" value="" placeholder="수정할 비밀번호 입력"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<input type="password" placeholder="수정할 비밀번호 재입력"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="number" name="userPhone" placeholder="${userinfo.userPhone }"> 
+					<input type="number" name="userPhone" value="${userinfo.userPhone }" placeholder="${userinfo.userPhone }"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="text" name="userAddress" placeholder="${userinfo.userAddress }"> 
+					<input type="text" name="userAddress" value="${userinfo.userAddress }" placeholder="${userinfo.userAddress }"> 
 				</div>
 			</form>
-			<button onclick="checkUserInfo()" form="updateMyInfoForm"> 수정하기 </button>
+			<button form="updateMyInfoForm"> 수정하기 </button>
 			<!-- 수정하기 버튼누르면 창이 열리면서 이메일,비밀번호 확인 창이뜸. 일치하면 수정 -->
 			<script></script>
 		</div>

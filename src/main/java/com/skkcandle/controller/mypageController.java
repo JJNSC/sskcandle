@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +22,7 @@ import com.skkcandle.dto.Review;
 import com.skkcandle.dto.User;
 import com.skkcandle.service.ReviewService;
 import com.skkcandle.service.UserService;
+import com.skkcandle.service.UserService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,17 +67,49 @@ public class mypageController {
 	}
 	
 	//이미지 업로드 테스트 -> 회원 정보수정
-	@PostMapping("/imageTest")
+	@PostMapping("/updateMyInfo")
 	public String imageTest(User user, HttpSession session) throws IOException {
+		//이미지 저장
 		log.info("battach : "+ user.getBattach() );
 		MultipartFile mf = user.getBattach(); 
-		User me = (User) session.getAttribute("login");
+		log.info("길이 : "+mf.getBytes().length);
 		
-		me.setUserAttachType(mf.getContentType());
-		me.setUserImageData(mf.getBytes());
+		//새로운 이미지가 있으면 업데이트
+		if(mf.getBytes().length != 0 ) {
+			user.setUserAttachType(mf.getContentType());
+			user.setUserImageData(mf.getBytes());
+			userService.updateUserImage(user);
+		}
+		log.info("내가 입력한 비밀번호 : "+user.getUserPassword());
+		//비밀번호 수정 O
+		if(!user.getUserPassword().equals("")) {
+			PasswordEncoder pwEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			user.setUserPassword(pwEncoder.encode(user.getUserPassword()));
+			userService.updateUserInfo(user);
+		// 비밀번호 수정 X
+		}else if(user.getUserPassword().equals("")) {
+			userService.updateUserInfoNoPW(user);
+		}
 		
-		userService.updateUserImage(me);
+		//db정보 받아오기
+		User dbUser = userService.getUserInfoById(user.getUserId());
+		session.setAttribute("login", dbUser);
+		
 		
 		return "redirect:/mypage";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

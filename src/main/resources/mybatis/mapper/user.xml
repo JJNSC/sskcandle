@@ -20,11 +20,26 @@
 		values (#{userId}, #{userName}, #{userPassword}, #{userEmail}, #{userPhone}, #{userAddress}, sysdate, sysdate, '평민' ,0) 
 	</insert>
 	
-	<!-- 회원 이미지 업로드 하기 (연습용) -->
+	<!-- 회원 이미지 업로드 하기  -->
 	<update id="updateImage" parameterType="User">
 		update userinfo set
 	 		userAttachType = #{userAttachType, jdbcType=VARCHAR},
 		 	userImageData = #{userImageData, jdbcType=BLOB}
 			where userId=#{userId}
 	</update>
+	<!-- 회원 정보 업로드 하기  -->
+	<update id="updateUserInfo" parameterType="User">
+		update userinfo set
+	 		userName = #{userName},	userPassword = #{userPassword},
+	 		userPhone=#{userPhone}, userAddress=#{userAddress}
+			where userId=#{userId}
+	</update>
+	<!-- 비밀번호 제외 회원정보 업로드 -->
+	<update id="updateUserInfoNoPW" parameterType="User">
+		update userinfo set
+	 		userName = #{userName},
+	 		userPhone=#{userPhone}, userAddress=#{userAddress}
+			where userId=#{userId}
+	</update>
+	
 </mapper>

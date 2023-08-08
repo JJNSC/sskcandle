@@ -19,4 +19,6 @@ public interface UserService {
 	public JoinResult join(User user);
 	public LoginResult login(User user);
 	public void updateUserImage(User user);
+	public void updateUserInfo(User user);
+	public void updateUserInfoNoPW(User user);
 }

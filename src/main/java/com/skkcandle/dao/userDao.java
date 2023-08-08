@@ -10,4 +10,6 @@ public interface userDao {
 	public User selectById(int userId);
 	public void insert(User user);
 	public void updateImage(User user);
+	public void updateUserInfo(User user);
+	public void updateUserInfoNoPW(User user);
 }
