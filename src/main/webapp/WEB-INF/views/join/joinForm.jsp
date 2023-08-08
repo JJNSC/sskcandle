@@ -19,7 +19,9 @@
 	<body>
 		<div class="wrapper">
 			<header class="join_header">
-				<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"/>
+				<a href="/skkcandle">
+					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"/>			
+				</a>
 			</header>
 
 			<section id="join_section">

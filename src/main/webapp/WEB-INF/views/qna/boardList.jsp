@@ -16,14 +16,10 @@
 				<th style="width:70px">글쓴이</th>
 				<th style="width:70px">날짜</th>
 			</tr>
-			<!-- 
-				boards를 가져와서 list를 가져온다 
-				board에 담아서 컬럼에 값을 넣어준다.
-			-->
+
 			<c:forEach var="board" items="${boards}">
 				<tr>
 					<td>${board.qnaId}</td>
-					<!-- get방식으로 bno를 넘긴다 -->
 					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.qnaTitle}</a></td>
 					<td>${board.userName}</td>
 					<td><fmt:formatDate value="${board.qnaDate}" pattern="yyyy-MM-dd"/></td>
@@ -37,10 +33,6 @@
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm" href="getBoardList?pageNo=${pager.startPageNo-1}">이전</a>
 						</c:if>
-						<!-- 
-							begin : 포함
-							end : 포함 
-						-->
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<c:if test="${pager.pageNo != i}">
 								<a class="btn btn-outline-success btn-sm" href="getBoardList?pageNo=${i}">${i}</a>
@@ -49,7 +41,6 @@
 								<a class="btn btn-danger btn-sm" href="getBoardList?pageNo=${i}">${i}</a>
 							</c:if>
 						</c:forEach>
-						
 						<c:if test="${pager.groupNo<pager.totalGroupNo}">
 							<a class="btn btn-outline-info btn-sm" href="getBoardList?pageNo=${pager.endPageNo+1}">다음</a>
 						</c:if>

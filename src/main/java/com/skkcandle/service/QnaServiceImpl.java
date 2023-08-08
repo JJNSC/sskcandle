@@ -28,4 +28,9 @@ public class QnaServiceImpl implements QnaService {
 		int totalBoardNum = qnaDao.count();
 		return totalBoardNum;
 	}
+	
+	@Override
+	public void write(Qna qna) {
+		qnaDao.insert(qna);
+	}
 }

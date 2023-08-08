@@ -11,4 +11,5 @@ import com.skkcandle.dto.Qna;
 public interface qnaDao {
 	public int count();
 	public List<Qna> selectByPage(Pager pager);
+	public int insert(Qna qna);
 }

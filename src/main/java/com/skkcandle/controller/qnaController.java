@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Qna;
@@ -51,6 +53,32 @@ public class qnaController {
 		model.addAttribute("boards", list);
 		
 		return "qna/boardList";
+	}
+	
+	@GetMapping("/writeBoard")
+	public String writeBoardForm() { 
+		return "qna/writeBoardForm";
+	}
+	
+	@PostMapping("/writeBoard")
+	public String writeBoard(Qna qna, HttpSession session) throws Exception {
+		
+		MultipartFile mf = qna.getAttach();
+		if(!mf.isEmpty()) {
+			// 브라우저에서 선택한 파일 이름
+			qna.setQnaAttachoname(mf.getOriginalFilename());
+			// 파일의 형식 (MIME 타입) 을 설정(image/jpeg, image/png) 등록
+			qna.setQnaAttachType(mf.getContentType());
+			// 방법2 (첨부 파일을 DB에 직접 저장)
+			qna.setQnaImageData(mf.getBytes());
+			
+		} 
+		
+		qnaService.write(qna);
+		
+		// 실제로 저장된bno
+		log.info("저장된 qnaId: " + qna.getQnaId());
+		return "redirect:/qna/getBoardList";
 	}
 }
 
