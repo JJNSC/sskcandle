@@ -98,6 +98,12 @@ public class mypageController {
 		
 		return "redirect:/mypage";
 	}
+	
+	@RequestMapping("/userInfoCheck")
+	public String userInfoCheck() {
+		
+		return "userInfoCheck";
+	}
 }
 
 
