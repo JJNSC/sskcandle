@@ -23,21 +23,16 @@
         ]]>
 	</select>
 	
-	<insert id="write" parameterType="Qna">
+	<insert id="insert" parameterType="Qna">
 		<selectKey keyProperty="qnaId" resultType="int" order="BEFORE"> 
-			select seq_qna.nextval from dual
+			select qna_seq.nextval from dual
 		</selectKey>
-		 
-		
-		insert into board (
-				bno, btitle, bcontent, mid, bdate, bhitcount, 
-				battachoname, battachtype, battachsname, battachdata
+		insert into qna (
+				qnaid, userid, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType
 		) values(
-				#{bno}, #{btitle}, #{bcontent}, #{mid}, sysdate, 0, 
-				#{battachoname, jdbcType=VARCHAR},
-				#{battachtype, jdbcType=VARCHAR},
-				#{battachsname, jdbcType=VARCHAR},
-				#{battachdata, jdbcType=BLOB}
+				#{qnaId}, #{userId}, #{qnaTitle}, #{qnaContent}, sysdate,
+				#{qnaImage, jdbcType=BLOB},
+				#{qnaAttachType, jdbcType=VARCHAR}
 		)
 	</insert>
 	
