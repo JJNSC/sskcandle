@@ -157,21 +157,20 @@
 	    <c:forEach var="review" items="${reviews}">	<!-- 여기에 고객의 사진이 들어간다. -->
 	    <article class="sdp-review__article__list js_reviewArticleReviewList">
 	        <div class="sdp-review__article__list__info">          
-	                <div class="sdp-review__article__list__info__profile">     
-	                </div> 
+	            <div class="sdp-review__article__list__info__profile">     
+	            	<img class="js_reviewArticleCrop js_reviewUserProfileImage" src="//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png" data-member-id="3644655" style="width: 100%; height: auto; margin-top: 0px; opacity: 1;">
+	            </div> 
 	            <div class="sdp-review__article__list__info__user">
-	                <span class="sdp-review__article__list__info__user__name js_reviewUserProfileImage" data-member-id="806840"><h2>${review.reviewId}</h2>&nbsp;</span> <!-- 고객의 이름 -->
+	                <span class="sdp-review__article__list__info__user__name js_reviewUserProfileImage"><h2>${review.reviewId}</h2>&nbsp;</span> <!-- 고객의 이름 -->
 	            </div>            
 	            <div class="sdp-review__article__list__info__product-info">
-	                <div class="sdp-review__article__list__info__product-info__star-gray">
 	                    <div class="rate">
 			                    <c:if test="${review.ratingScore==1}"><span style="width: 20%"></span></c:if> 
 					 			<c:if test="${review.ratingScore==2}"><span style="width: 40%"></span></c:if> 
 					 			<c:if test="${review.ratingScore==3}"><span style="width: 60%"></span></c:if> 
 					 			<c:if test="${review.ratingScore==4}"><span style="width: 80%"></span></c:if> 
 					 			<c:if test="${review.ratingScore==5}"><span style="width: 100%"></span></c:if>
-			 			</div>
-	                </div>
+	                	</div>
 	                <div class="sdp-review__article__list__info__product-info__reg-date">
 	                	<fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate>
 	                </div>
@@ -222,21 +221,8 @@
                </div>
             </td>
          </tr>
-	 	</div>	   	
-	    	
-	    	<!-- 후기 및 판매자 정보 -->
-	    	
-	    	<article class="sdp-review_article-list">
-		    	<div class="sdp-review_article_list_info">
-		    	<br>
-		    	<div class="sdp-review_article_list_info_profile"><img src="https://img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png"></div>  	
-		    	<div class="sdp-review_article_list_info_user">박*훈&nbsp;</div>
-		    	<div class="sdp-review_article_list_info_product-info">2023.05.12</div>
-		    	<div class="sdp-review_article_list_info_product-info_seller_name">판매자: 쿠팡(주)</div>
-	    		<div class="sdp-review_article_list_info_product-info_product-info_name">캔들백화점 스퀘어 크리스탈 루시드 캔들워머 로즈골드화이트+소이 캔들 280g세트</div>
-	    		</div>
-	    	</article>
-	    </section>	
+	 	</div>	   		    
+	  </section>	
 	    	<!-- 상품문의 주의란 -->
 	    	
 	    <div class="prod-inquiry-list">

@@ -1,11 +1,9 @@
 package com.skkcandle.service;
 
+import com.skkcandle.dto.Wish;
+
 public interface WishService {
-	
-	/*public 
-	
-	public insertWish
-	
-	public removeWish
-*/
+	public void remove(Wish wish);
+	public void add(Wish wish);
+	public Wish selectWish(Wish wish);
 }

@@ -11,5 +11,6 @@
 		<typeAlias alias="Picture" type="com.skkcandle.dto.ProductImages"/>
 		<typeAlias alias="Qna" type="com.skkcandle.dto.Qna"/>
 		<typeAlias alias="Pager" type="com.skkcandle.dto.Pager"/>
+		<typeAlias alias="Wish" type="com.skkcandle.dto.Wish"/>
 	</typeAliases>
 </configuration>
