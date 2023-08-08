@@ -35,6 +35,9 @@
 		       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Thb}" width="400"/>
 			</c:if>
 		</div>   
+		<div class="prod-favorite">
+            <a class="prod-favorite-btn" href="updateWish">찜하기</a>
+        </div>
 		 
 		 <!-- 상품 기본정보 등록란 -->
 		 
