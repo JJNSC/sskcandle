@@ -19,7 +19,7 @@
 	<body>
 		<div class="wrapper">
 			<header class="text-center pt-5">
-				<a href="http://www.coupang.com">
+				<a href="/skkcandle">
 					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
 						style="width: 250px; " />
 				</a>

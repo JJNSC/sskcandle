@@ -1,6 +1,7 @@
 package com.skkcandle.controller;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,11 @@ public class mypageController {
 		User user = (User) session.getAttribute("login");
 		model.addAttribute("userinfo", user);
 		
+		if(user.getUserImageData()!=null) {
+			String base64Img = Base64.getEncoder().encodeToString(user.getUserImageData());
+			model.addAttribute("base64Img", base64Img);
+		}
+		
 		//내정보 확인/수정 페이지
 		if(subpage.equals("myinfo")) {
 			
@@ -57,7 +63,7 @@ public class mypageController {
 		return "mypage/mypage";
 	}
 	
-	//이미지 업로드 테스트 
+	//이미지 업로드 테스트 -> 회원 정보수정
 	@PostMapping("/imageTest")
 	public String imageTest(User user, HttpSession session) throws IOException {
 		log.info("battach : "+ user.getBattach() );

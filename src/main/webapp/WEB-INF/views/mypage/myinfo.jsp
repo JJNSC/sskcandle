@@ -22,15 +22,16 @@
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 정보 확인/수정</h3>
 			<br>
-			<form id="" method="post" action="imageTest" enctype="multipart/form-data">
+			<%-- <form id="" method="post" action="imageTest" enctype="multipart/form-data">
 				<input name="userId" placeholder="${userinfo.userId }" value="${userinfo.userId }"></input>
 				<input id="battach" type="file" name="battach" >
 				<button>수정</button>
-			</form>
+			</form> --%>
 			<form id="updateMyInfoForm" class="form-group" action="updateMyInfo" enctype="multipart/form-data">
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<span>
-						<input id="battach" type="file" name="battach" >프로필 사진 수정 하는곳
+						<img src="data:${userinfo.userAttachType};base64, ${base64Img}" width="120"/>
+						<input id="battach" type="file" name="battach" >
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
@@ -42,16 +43,16 @@
 					</span>
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="password" placeholder="수정할 비밀번호 입력"> 
+					<input type="password" name="userPassword" placeholder="수정할 비밀번호 입력"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<input type="password" placeholder="수정할 비밀번호 재입력"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="number" placeholder="${userinfo.userPhone }"> 
+					<input type="number" name="userPhone" placeholder="${userinfo.userPhone }"> 
 				</div>
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
-					<input type="text" placeholder="${userinfo.userAddress }"> 
+					<input type="text" name="userAddress" placeholder="${userinfo.userAddress }"> 
 				</div>
 			</form>
 			<button onclick="checkUserInfo()" form="updateMyInfoForm"> 수정하기 </button>

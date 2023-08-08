@@ -30,7 +30,7 @@
 				<div id = "myMenu" style="border-top: 1px solid rgb(225, 228, 230);">
 					<nav>
 						<div >
-							<div class="myMenuTitle">프로필 사진들어오는곳 </div>
+							<div class="myMenuTitle"><img src="data:${userinfo.userAttachType};base64, ${base64Img}" width="120"/> </div>
 							<div>
 								<ul>
 									<li>이름 : ${userinfo.userName}</li>
