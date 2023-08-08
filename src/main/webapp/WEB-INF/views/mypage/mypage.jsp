@@ -48,7 +48,7 @@
 							<a href="mypage?subpage=myshoppinglist"  class="myMenuTitle">내 구매 리스트</a>
 						</div>
 						<div style="border-bottom: 0px solid rgb(225, 228, 230);">
-							<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a>
+							<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a> 
 						</div>
 					</nav>
 				</div>
