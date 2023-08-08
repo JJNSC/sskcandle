@@ -37,7 +37,8 @@ public class mypageController {
 	private UserService userService;
 
 	@RequestMapping("/mypage")
-	public String mypage(@RequestParam(name="subpage", defaultValue="myinfo") String subpage, Model model , HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String mypage(@RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
+						HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		log.info("subpage : " + subpage);
 		model.addAttribute("subpage", subpage);
 		
@@ -52,15 +53,23 @@ public class mypageController {
 		//내정보 확인/수정 페이지
 		if(subpage.equals("myinfo")) {
 			
-			
+		//내 구매 리스트 페이지	
 		}else if(subpage.equals("myshoppinglist")) {
 			
-			
+		//내 리뷰 리스트	
 		}else if(subpage.equals("myreviewlist")) {
 			user = (User) session.getAttribute("login");
 			int userID = user.getUserId();
 			List<Review> reviewList = reviewService.selectReviewByUserId(userID);
 			model.addAttribute("myreview", reviewList);
+		
+		//내 찜 목록
+		}else if(subpage.equals("mywishlist")) {
+		
+		//회원 탈퇴 
+		}else if(subpage.equals("withdraw")) {
+			log.info(errMsg);
+			model.addAttribute("errMsg", errMsg);
 		}
 		
 		return "mypage/mypage";

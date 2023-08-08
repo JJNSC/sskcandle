@@ -60,7 +60,7 @@
 						<i class="bi bi-cart"> Cart</i>	
 					</a>
 					<c:if test="${login != null}">
-						<a class="navbar_short_icon" href="">
+						<a class="navbar_short_icon" href="logout">
 							<i class="bi bi-box-arrow-right"> Logout</i>
 						</a>
 						<a class="navbar_short_icon" href="mypage">

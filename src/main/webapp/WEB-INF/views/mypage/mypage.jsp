@@ -42,13 +42,19 @@
 							</div>
 						</div>
 						<div>
-							<a href="mypage?subpage=myinfo" class="myMenuTitle">내 정보 확인/수정</a>
-						</div>
-						<div>
 							<a href="mypage?subpage=myshoppinglist"  class="myMenuTitle">내 구매 리스트</a>
 						</div>
-						<div style="border-bottom: 0px solid rgb(225, 228, 230);">
+						<div>
+							<a href="mypage?subpage=mywishlist"  class="myMenuTitle">내 찜 리스트</a>
+						</div>
+						<div >
 							<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a> 
+						</div>
+						<div>
+							<a href="mypage?subpage=myinfo" class="myMenuTitle">내 정보 확인/수정</a>
+						</div>
+						<div style="border-bottom: 0px solid rgb(225, 228, 230);">
+							<a href="mypage?subpage=withdraw" class="myMenuTitle">회원 탈퇴</a>
 						</div>
 					</nav>
 				</div>
@@ -64,6 +70,12 @@
 				</c:if>
 				<c:if test="${subpage.equals('myinfo') }">
 					<%@ include file="myinfo.jsp" %>
+				</c:if>
+				<c:if test="${subpage.equals('mywishlist') }">
+					<%@ include file="mywishlist.jsp" %>
+				</c:if>
+				<c:if test="${subpage.equals('withdraw') }">
+					<%@ include file="withdraw.jsp" %>
 				</c:if>
 			</div>
 		

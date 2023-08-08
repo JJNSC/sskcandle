@@ -59,6 +59,19 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	@Override
+	public WithdrawResult withdraw(User sessionUser, User inputUser) {
+		if(!sessionUser.getUserEmail().equals(inputUser.getUserEmail())) {
+			return WithdrawResult.FAIL_EMAIL_WRONG;
+		}
+		PasswordEncoder pwEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		if(!pwEncoder.matches(inputUser.getUserPassword(), sessionUser.getUserPassword())){
+			return WithdrawResult.FAIL_PASSWORD_WRONG;
+		}else {
+			return WithdrawResult.SUCCESS;
+		}
+	}
+	
+	@Override
 	public void updateUserImage(User user) {
 		userDao.updateImage(user);
 	}
@@ -70,6 +83,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUserInfoNoPW(User user) {
 		userDao.updateUserInfoNoPW(user);
+	}
+	@Override
+	public void withdrawUser(int userId) {
+		userDao.delete(userId);
 	}
 
 

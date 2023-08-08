@@ -47,7 +47,10 @@ public class loginController {
 		
 		model.addAttribute("loginErrMsg", errorMsg);
 		return "redirect:/loginForm";
-		
-		
+	}
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("login");
+		return "redirect:/";
 	}
 }

@@ -12,4 +12,5 @@ public interface userDao {
 	public void updateImage(User user);
 	public void updateUserInfo(User user);
 	public void updateUserInfoNoPW(User user);
+	public void delete(int userId);
 }
