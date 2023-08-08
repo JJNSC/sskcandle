@@ -33,11 +33,11 @@
 							<div class="myMenuTitle">프로필 사진들어오는곳 </div>
 							<div>
 								<ul>
-									<li>이름 : </li>
-									<li>메일주소 : </li>
-									<li>등급 : </li>
-									<li>가입날짜 : </li>
-									<li>포인트 : </li>
+									<li>이름 : ${userinfo.userName}</li>
+									<li>메일주소 :<br> ${userinfo.userEmail}</li>
+									<li>등급 : ${userinfo.userGrade}</li>
+									<li>가입날짜 : <br><fmt:formatDate value="${userinfo.userJoinDate}" pattern="yyyy-MM-dd"></fmt:formatDate></li>
+									<li>포인트 : ${userinfo.userPoint}</li>
 								</ul>
 							</div>
 						</div>

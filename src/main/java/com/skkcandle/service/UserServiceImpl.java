@@ -58,6 +58,10 @@ public class UserServiceImpl implements UserService {
 			return LoginResult.FAIL_PASSWORD_WRONG;
 		}
 	}
+	@Override
+	public void updateUserImage(User user) {
+		userDao.updateImage(user);
+	}
 
 
 }
