@@ -25,11 +25,10 @@
 	
 	<insert id="insert" parameterType="Qna">
 		<selectKey keyProperty="qnaId" resultType="int" order="BEFORE"> 
-			select seq_qna.nextval from dual
+			select qna_seq.nextval from dual
 		</selectKey>
 		insert into qna (
-				qnaid, username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer 
-				attach, qnaAttachoname, qnaAttachType
+				qnaid, userid, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType
 		) values(
 				#{qnaId}, #{userName}, #{qnaTitle}, #{qnaContent},
 				#{qnaimage, jdbcType=BLOB},

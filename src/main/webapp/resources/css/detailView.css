@@ -672,7 +672,15 @@
 		}	
 		
 		/*상품평*/
-		
+		.sdp-review__article__list__info__profile {
+		    float: left;
+		    width: 40px;
+		    height: 40px;
+		    margin-right: 6px;
+		    border-radius: 50%;
+		    overflow: hidden;
+		    cursor: pointer;
+		}
 		.sdp-review{
 			display: flex;
         	flex-direction: column;
@@ -694,6 +702,19 @@
 			    margin:0px;
 			    padding:0px;
 			}
+			
+		.sdp-review__article__list__help__report-btn {
+		    position: absolute;
+		    top: 5px;
+		    right: 0;
+		    padding: 0;
+		    margin: 0;
+		    border: 0;
+		    background-color: #fff;
+		    color: #346aff;
+		    outline: 0;
+		}
+		
 		.sdp-review_prd-name{
 			float : left;
 		}	
