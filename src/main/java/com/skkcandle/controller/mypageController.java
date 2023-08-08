@@ -102,7 +102,7 @@ public class mypageController {
 	@RequestMapping("/userInfoCheck")
 	public String userInfoCheck() {
 		
-		return "userInfoCheck";
+		return "mypage/userInfoCheck";
 	}
 }
 

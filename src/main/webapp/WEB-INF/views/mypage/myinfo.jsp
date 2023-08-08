@@ -61,23 +61,14 @@
 			<script>
 			
 			function checkUserInfo(){
-				var w = window.open("/popup.html","PopupWin ","width=500,height=600");
+				/* var w = window.open("/popup.html","PopupWin ","width=500,height=600");
 				
 				//여기서 팝업된 창의 주소를 변경하자.
-				w.location.href = "userInfoCheck";
+				w.location.href = "userInfoCheck"; */
 				
-				/* $.ajax({
-					url:"",
-					method:"post",
-					success: eventSuccess,
-					error: function(xhr, status, error) {alert(error);}
-				});
-				
-				function eventSuccess()
-				{
-					//여기서 팝업된 창의 주소를 변경하자.
-					w.location.href = "userInfoCheck";
-				} */
+				var child;
+				var url = "userInfoCheck";
+				child = window.open(url, 'popup_child', 'menubar=no', 'scrollbars=yes', 'status=yes', 'resizable=auto', 'titlebar=no', 'hotkey=0','width=500', 'height=600', 'left=0', 'top=0');
 			}
 				 
 			

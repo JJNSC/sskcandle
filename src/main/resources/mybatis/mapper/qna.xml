@@ -31,7 +31,7 @@
 				qnaid, username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer 
 				attach, qnaAttachoname, qnaAttachType
 		) values(
-				#{qnaid}, #{username}, #{qnatitle}, #{qnacontent},
+				#{qnaId}, #{userName}, #{qnaTitle}, #{qnaContent},
 				#{qnaimage, jdbcType=BLOB},
 				#{qnadate, jdbcType=VARCHAR},
 				#{qnaanswer, jdbcType=VARCHAR}

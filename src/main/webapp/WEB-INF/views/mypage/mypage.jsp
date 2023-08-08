@@ -56,14 +56,14 @@
 			</div>
 			<!-- body right part -->
 			<div id="body-right">
-				<c:if test="${subpage.equals('myinfo') }">
-					<%@ include file="myinfo.jsp" %>
-				</c:if>
 				<c:if test="${subpage.equals('myshoppinglist') }">
 					<%@ include file="myshoppinglist.jsp" %>
 				</c:if>
 				<c:if test="${subpage.equals('myreviewlist') }">
 					<%@ include file="myreviewlist.jsp" %>
+				</c:if>
+				<c:if test="${subpage.equals('myinfo') }">
+					<%@ include file="myinfo.jsp" %>
 				</c:if>
 			</div>
 		
