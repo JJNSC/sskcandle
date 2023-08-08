@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
 		<nav class="navbar row">
 			<!-- <div class="col-5"></div> -->
 			<div class="navbar_logo_box col-auto">
-				<a class="navbar_logo" href="#">
+				<a class="navbar_logo" href="/skkcandle">
 					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png" alt="이미지를 로드할 수 없습니다">
 				</a>				
 			</div>
@@ -58,9 +59,22 @@
 					<a class="navbar_short_icon" href="#">
 						<i class="bi bi-cart"> Cart</i>	
 					</a>
-					<a class="navbar_short_icon" href="loginForm">
+					<c:if test="${login != null}">
+						<a class="navbar_short_icon" href="">
+							<i class="bi bi-box-arrow-right"> Logout</i>
+						</a>
+						<a class="navbar_short_icon" href="mypage">
+							<i class="bi bi-person"> myPage</i>	
+						</a>
+					</c:if>
+					<c:if test="${login == null}">
+						<a class="navbar_short_icon" href="loginForm">
+							<i class="bi bi-person"> Login</i>	
+						</a>
+					</c:if>
+					<!-- <a class="navbar_short_icon" href="loginForm">
 						<i class="bi bi-person"> Login</i>	
-					</a>
+					</a> -->
 				</div>
 			</div>
 		</nav>
