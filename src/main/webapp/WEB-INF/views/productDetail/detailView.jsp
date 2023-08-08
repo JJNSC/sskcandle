@@ -154,7 +154,7 @@
 	    			<input class="sdp-review_search" placeholder="상품평을 검색해 보세요." maxlength="30">
 	    		</div>
 	    	</section>
-	    <c:forEach var="review" items="${productreviews}">	<!-- 여기에 고객의 사진이 들어간다. -->
+	    <c:forEach var="review" items="${reviews}">	<!-- 여기에 고객의 사진이 들어간다. -->
 	    <article class="sdp-review__article__list js_reviewArticleReviewList">
 	        <div class="sdp-review__article__list__info">          
 	                <div class="sdp-review__article__list__info__profile">     
@@ -201,24 +201,24 @@
      <tr>
             <td colspan="4" class="text-center">
                <div>
-                  <a class="btn btn-outline-primary btn-sm" href="getReviewList?pageNo=1">처음</a>
+                  <a class="btn btn-outline-primary btn-sm" href="productDetail?pageNo=1">처음</a>
                   <c:if test="${pager.groupNo>1}">
-                     <a class="btn btn-outline-info btn-sm" href="getReviewList?pageNo=${pager.startPageNo-1}">이전</a>
+                     <a class="btn btn-outline-info btn-sm" href="productDetail?pageNo=${pager.startPageNo-1}">이전</a>
                   </c:if>
                   
                   <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
                      <c:if test="${pager.pageNo != i}">
-                        <a class="btn btn-outline-success btn-sm" href="getReviewList?pageNo=${i}">${i}</a>
+                        <a class="btn btn-outline-success btn-sm" href="productDetail?pageNo=${i}">${i}</a>
                      </c:if>
                      <c:if test="${pager.pageNo == i}">
-                        <a class="btn btn-danger btn-sm" href="getReviewList?pageNo=${i}">${i}</a>
+                        <a class="btn btn-danger btn-sm" href="productDetail?pageNo=${i}">${i}</a>
                      </c:if>
                   </c:forEach>
                   
                   <c:if test="${pager.groupNo<pager.totalGroupNo}">
-                     <a class="btn btn-outline-info btn-sm" href="getReviewList?pageNo=${pager.endPageNo+1}">다음</a>
+                     <a class="btn btn-outline-info btn-sm" href="productDetail?pageNo=${pager.endPageNo+1}">다음</a>
                   </c:if>
-                  <a class="btn btn-outline-primary btn-sm" href="getReviewList?pageNo=${pager.totalPageNo}">맨끝</a>
+                  <a class="btn btn-outline-primary btn-sm" href="productDetail?pageNo=${pager.totalPageNo}">맨끝</a>
                </div>
             </td>
          </tr>

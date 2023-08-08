@@ -47,4 +47,10 @@ public class ReviewServiceImpl implements ReviewService{
       List<Review> boardList = reviewDao.selectByPage(pager);
       return boardList;
 	}
+
+	@Override
+	public int getReviewNum(int productId) {
+		int ReviewNum = reviewDao.countReview(productId);
+		return ReviewNum;
+	}
 }

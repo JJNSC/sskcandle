@@ -13,6 +13,7 @@ public interface reviewDao {
 	public List<Review> selectReviewByUserId(int userId);
 	public int count(int productId);
 	public List<Review> selectByPage(Pager pager);
+	public int countReview(int productId);
 }
 
 

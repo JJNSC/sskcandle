@@ -11,5 +11,6 @@ public interface ReviewService {
  	public List<Review> selectReviewByUserId(int userId);
  	public int getTotalReviewNum(int productId);
 	public List<Review> getList(Pager pager);
+	public int getReviewNum(int productId);
 	
 }

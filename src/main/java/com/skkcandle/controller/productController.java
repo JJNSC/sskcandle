@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skkcandle.dto.Pager;
@@ -33,7 +34,7 @@ public class productController {
     private ProductImagesService ProductImagesService;
 	   
 	@RequestMapping("/productDetail")
-	public String detailProduct(String pageNo, Model model, HttpSession session) {
+	public String detailProduct(String pageNo, HttpSession session, Model model) {
 		int productId = 1;
 		log.info("제품번호" + productId);
 		Product product = ProductService.detailProduct(productId);
@@ -42,7 +43,7 @@ public class productController {
 		List<Review> review = ReviewService.selectReview(productId);
 		model.addAttribute("productreviews", review);
 			
-		int reviewNum = ReviewService.getTotalReviewNum(productId);
+		int reviewNum = ReviewService.getReviewNum(productId);
 		model.addAttribute("totalReviewNum", reviewNum);
 		
 		ProductImages productDetail = ProductImagesService.detailImage(productId);
@@ -59,11 +60,64 @@ public class productController {
 		if(productThumbnail.getProductImage() !=null) {
 			String base64Img = Base64.getEncoder().encodeToString(productThumbnail.getProductImage());
 			model.addAttribute("base64Thb", base64Img);
-		}
+		}  
+		
+		//브라우저에서 pageNo가 넘어오지않은 경우 
+	      if(pageNo == null) {
+	         //세선에 저장되어있는지 확인
+	         pageNo = (String) session.getAttribute("pageNo");
+	         if(pageNo == null) {
+	            //저장되어 있지않다면 "1" 로 초기화
+	            pageNo = "1";
+	         }
+	      }
+	      //문자열을 정수로 변환
+	      int intPageNo = Integer.parseInt(pageNo);
+	      //세션에 pageNo를 저장
+	      session.setAttribute("pageNo", String.valueOf(pageNo));
+	      
+	      //int totalRows = boardDao.count();//전체 게시물 수
+	      int totalReviewNum = ReviewService.getReviewNum(productId);
+	      Pager pager = new Pager(5,5,totalReviewNum,intPageNo);
+	       
+	      List<Review> list = ReviewService.getList(pager); 
+	      
+	      model.addAttribute("pager", pager);
+	      model.addAttribute("reviews", list);
 	      
 		return "/productDetail/detailView";
-		
 	}
+	
+/*	@GetMapping("/getReviewList")
+	public String getReviewList(String pageNo, HttpSession session, Model model) {
+		int productId = 1;
+
+	//브라우저에서 pageNo가 넘어오지않은 경우 
+      if(pageNo == null) {
+         //세선에 저장되어있는지 확인
+         pageNo = (String) session.getAttribute("pageNo");
+         if(pageNo == null) {
+            //저장되어 있지않다면 "1" 로 초기화
+            pageNo = "1";
+         }
+      }
+      //문자열을 정수로 변환
+      int intPageNo = Integer.parseInt(pageNo);
+      //세션에 pageNo를 저장
+      session.setAttribute("pageNo", String.valueOf(pageNo));
+      
+      //int totalRows = boardDao.count();//전체 게시물 수
+      int totalReviewNum = ReviewService.getReviewNum(productId);
+      Pager pager = new Pager(5,5,totalReviewNum,intPageNo);
+       
+      List<Review> list = ReviewService.getList(pager); 
+      
+      model.addAttribute("pager", pager);
+      model.addAttribute("reviews", list);
+      	      
+	return "/productDetail/detailView";
+	
+}*/
 	
 /*	@RequestMapping("/productDetail")
 	public String prodcutReview(Model model) {

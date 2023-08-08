@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/mybatis/mapper/cart.xml</config>
 		<config>src/main/resources/mybatis/mapper/product.xml</config>
+		<config>src/main/resources/mybatis/mapper/wish.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/spring/dispatcher/interceptor.xml</config>
