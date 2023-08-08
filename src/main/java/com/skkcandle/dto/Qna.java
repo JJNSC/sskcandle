@@ -22,5 +22,4 @@ public class Qna {
 	private MultipartFile attach;
 	private String qnaAttachoname;
 	private String qnaAttachType;
-	private byte[] qnaImageData;
 }

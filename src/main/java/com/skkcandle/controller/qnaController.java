@@ -70,7 +70,7 @@ public class qnaController {
 			// 파일의 형식 (MIME 타입) 을 설정(image/jpeg, image/png) 등록
 			qna.setQnaAttachType(mf.getContentType());
 			// 방법2 (첨부 파일을 DB에 직접 저장)
-			qna.setQnaImageData(mf.getBytes());
+			qna.setQnaImage(mf.getBytes());
 			
 		} 
 		
