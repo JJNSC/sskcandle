@@ -14,4 +14,5 @@ public interface qnaDao {
 	public int count();
 	public List<Qna> selectByPage(Pager pager);
 	public void insert(Qna qna);
+	public Qna selectByQnaId(int qnaId);
 }
