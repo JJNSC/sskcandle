@@ -67,7 +67,7 @@
 				</button>
 				<div class="d-flex">
 					<a class="navbar_short_icon" href="#">
-						<i class="bi bi-cart"> Cart</i>	
+						<i class="bi bi-cart"> Cart</i>
 					</a>
 					<c:if test="${login != null}">
 						<a class="navbar_short_icon" href="logout">
