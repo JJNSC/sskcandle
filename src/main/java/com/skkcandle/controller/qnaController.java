@@ -109,29 +109,31 @@ public class qnaController {
 	public void filedownload(int qnaId, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Qna qna = qnaService.getQna(qnaId);
 
-		// 파일 내용과 MIME 타입 추출
 		byte[] fileData = qna.getQnaImage();
 		String mimeType = qna.getQnaAttachType();
-
-		// Content-Type 헤더 설정
+		String fileName = qna.getQnaAttachFileName();
+		
 		response.setContentType(mimeType);
 
-		// Content-Disposition 헤더 설정
-		String fileName = qna.getQnaAttachFileName(); // 여기에 원하는 파일 이름을 제공하세요
-		log.info("fileName: " + fileName);
 		String userAgent = request.getHeader("User-Agent");
 		if (userAgent.contains("Trident") || userAgent.contains("MSIE")) {
 			fileName = URLEncoder.encode(fileName, "UTF-8");
 		} else {
 			fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 		}
-		/*response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");*/
+		
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
 
-		// 파일 내용을 응답 출력 스트림에 작성
 		OutputStream os = response.getOutputStream();
 		os.write(fileData);
 		os.flush();
 		os.close();
+	}
+	
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(int qnaId) {
+		qnaService.remove(qnaId);
+		return "redirect:/getBoardList";
 	}
 
 }

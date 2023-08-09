@@ -39,4 +39,9 @@ public class QnaServiceImpl implements QnaService {
 		Qna qna = qnaDao.selectByQnaId(qnaId);
         return qna;
 	}
+	
+	@Override
+	public void remove(int qnaId) {
+		qnaDao.deleteByQnaId(qnaId);
+	}
 }

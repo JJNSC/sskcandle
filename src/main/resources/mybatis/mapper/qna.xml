@@ -43,6 +43,10 @@
 		where qnaid=#{qnaId} 
 	</select>
 	
+	<delete id="deleteByQnaId" parameterType="int">
+		delete from qna where qnaid=#{qnaId}
+	</delete>
+	
 </mapper>
 
 
