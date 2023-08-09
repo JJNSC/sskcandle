@@ -240,7 +240,8 @@ function emptyCart() {
 	      $(".today-porduct").removeClass("d-none");
 	      $(".cart-no-item").removeClass("d-none"); 
 	};
-
+	
+	
 //쿠페이 머니 계산
 	
 function couMoney() {
@@ -253,4 +254,7 @@ function couMoney() {
 	   
 	   //클릭이벤트 발생 지점부터 받은 값을 넣어줄 위치를 찾은 다음에 em태그를 find 메서드로 찾아 주었다.
 	   thisnum.parent().parent().next().children().find("em").html("최대" + Coumoney +"원 적립");
-}
+};
+
+
+
