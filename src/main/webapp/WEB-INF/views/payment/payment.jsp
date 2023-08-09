@@ -84,13 +84,20 @@
 						<table class="consumerInfo">
 							<c:forEach var="product" items="${orderlist}" >
 								<tr>
-									<th>${product.productId}</th>
-									<td>${product.quantity } 개</td>
+									<th>${product.productName}</th>
+									<td>${product.productPrice }원 / ${product.quantity } 개</td>
+									<td>합계 : <span class="pricesPerProduct">${product.productPrice*product.quantity}</span> 원</td>
 								</tr>
 							</c:forEach>
 						</table>
 						</div>
 					</div>
+					<script>
+						var totalPrice = $("#totalPrice").val();
+						
+						totalPrice 
+						
+					</script>
 	
 	
 					<!-- 결제 정보 -->
@@ -106,7 +113,7 @@
 								<td style="margin:0px; padding:0px;">
 									<div style=" padding-top:10px; padding-left:16px; padding-bottom:10px;">
 										<span style="display:inline-block; width:155px;"><span id ="balance"> 0 </span><span>원</span></span>
-										<span style="padding-top:20px;">보유 : <span id="cuBal">302</span>원</span>
+										<span style="padding-top:20px;">보유 : <span id="cuBal">${userinfo.userPoint }</span>원</span>
 										<button id="cuCashInput">적립금</button>
 									</div>
 								

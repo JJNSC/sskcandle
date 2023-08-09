@@ -1,14 +1,20 @@
 package com.skkcandle.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-
-import com.skkcandle.dto.OrderDetail;
-
+/**
+ * 
+ * @author 김종진
+ *
+ */
 @Mapper
 public interface OrderDao {
-	public List<OrderDetail> selectOrdersByUserId(int userId);
-	public int ordertest();
-	public List<OrderDetail> test();
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public List<Map<String, Object>> selectOrdersByUserId(int userId);
 }
