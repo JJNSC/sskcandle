@@ -33,7 +33,7 @@ public class QnaController {
 	
 	@RequestMapping("/qna")
 	public String qna() {
-		return "qna/qna";
+		return "qna/qna"; 
 	}
 
 	@GetMapping("/getBoardList")
