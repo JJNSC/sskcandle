@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,22 +16,21 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/joinForm.css">
-		<script src="${pageContext.request.contextPath}/resources/js/joinForm.js"></script>
+		<%-- <script src="${pageContext.request.contextPath}/resources/js/joinForm.js"></script> --%>
 		<title>회원 정보 인증</title>
 	</head>
 	<body>
-		<div class="wrapper">
-			<header class="join_header">
-				<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"/>
-			</header>
+		<div class="wrapper" >
+		<h3>회원 정보 확인/수정</h3>
 
 			<section id="join_section">
 				<div id="section_name">회원정보를 입력해주세요.</div>
+					<span style="color:red;">${errMsg}</span>
 				
 				<%-- 사용자 정보 입력 --%>
 				<div id="join_input">
 					<%-- 이메일(아이디) --%>
-					<form id="userInfoCheck_form" method="post" action="register">
+					<form id="myinfocheck_form" method="post" action="myInfoCheck">
 						<div class="join_input_userInfo">
 							<label for="userEmail">
 								<span class="join_input_icon_box">
@@ -56,17 +58,13 @@
 				</div>
 				<%-- 확인 버튼 --%>
 				<div class="join_submit_button">
-				    <button type="submit" class="button_style " form="userInfoCheck_form" id="join_success_button">
-				           회원정보 수정하기
+				    <button type="submit" class="button_style " form="myinfocheck_form" id="join_success_button">
+				           회원 정보 확인/수정하기
 				    </button>
 				</div>
 				
 			</section>
 			
-			<%-- 푸터영역 --%>
-			<footer id="join_footer">
-				<p>©SkksCandle Corp. All rights reserved.</p>
-			</footer>
 		</div>
 	</body>
 </html>

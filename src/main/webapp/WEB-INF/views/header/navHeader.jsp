@@ -45,8 +45,14 @@
 		<nav class="navbar2">
 			<!-- <div class="col-3"></div> -->
 			<ul class="navbar_menu col-8">
-				<li><a href="mypage">마이페이지</a></li>
-				<li><a href="#">메뉴2</a></li>
+				<c:if test="${login != null}">
+					<li><a href="mypage">마이페이지</a></li>
+					<li><a href="payment">결제페이지</a></li>
+				</c:if>
+				<c:if test="${login == null}">
+					<li><a href="loginForm">마이페이지</a></li>
+					<li><a href="loginForm">결제페이지</a></li>
+				</c:if>
 				<li><a href="#">메뉴3</a></li>
 				<li><a href="#">메뉴4</a></li>
 				<li><a href="#">메뉴5</a></li>

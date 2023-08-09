@@ -51,7 +51,7 @@
 							<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a> 
 						</div>
 						<div>
-							<a href="mypage?subpage=myinfo" class="myMenuTitle">내 정보 확인/수정</a>
+							<a href="mypage?subpage=myinfocheck" class="myMenuTitle">내 정보 확인/수정</a>
 						</div>
 						<div style="border-bottom: 0px solid rgb(225, 228, 230);">
 							<a href="mypage?subpage=withdraw" class="myMenuTitle">회원 탈퇴</a>
@@ -67,6 +67,9 @@
 				</c:if>
 				<c:if test="${subpage.equals('myreviewlist') }">
 					<%@ include file="myreviewlist.jsp" %>
+				</c:if>
+				<c:if test="${subpage.equals('myinfocheck') }">
+					<%@ include file="myinfocheck.jsp" %>
 				</c:if>
 				<c:if test="${subpage.equals('myinfo') }">
 					<%@ include file="myinfo.jsp" %>

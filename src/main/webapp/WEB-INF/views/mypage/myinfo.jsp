@@ -56,23 +56,9 @@
 					<input type="text" name="userAddress" value="${userinfo.userAddress }" placeholder="${userinfo.userAddress }"> 
 				</div>
 			</form>
-			<button onclick="checkUserInfo()" form="updateMyInfoForm"> 수정하기 </button>
+			<button  form="updateMyInfoForm"> 수정하기 </button>
 			<!-- 수정하기 버튼누르면 창이 열리면서 이메일,비밀번호 확인 창이뜸. 일치하면 수정 -->
-			<script>
 			
-			function checkUserInfo(){
-				/* var w = window.open("/popup.html","PopupWin ","width=500,height=600");
-				
-				//여기서 팝업된 창의 주소를 변경하자.
-				w.location.href = "userInfoCheck"; */
-				
-				var child;
-				var url = "userInfoCheck";
-				child = window.open(url, 'popup_child', 'menubar=no', 'scrollbars=yes', 'status=yes', 'resizable=auto', 'titlebar=no', 'hotkey=0','width=500', 'height=600', 'left=0', 'top=0');
-			}
-				 
-			
-			</script>
 		</div>
 	</body>
 </html>

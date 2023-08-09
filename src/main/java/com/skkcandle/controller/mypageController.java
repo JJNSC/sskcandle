@@ -23,6 +23,7 @@ import com.skkcandle.dto.User;
 import com.skkcandle.service.ReviewService;
 import com.skkcandle.service.UserService;
 import com.skkcandle.service.UserService.LoginResult;
+import com.skkcandle.service.UserService.WithdrawResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,8 +52,8 @@ public class mypageController {
 		}
 		
 		//내정보 확인/수정 페이지
-		if(subpage.equals("myinfo")) {
-			
+		if(subpage.equals("myinfocheck")) {
+			model.addAttribute("errMsg", errMsg);
 		//내 구매 리스트 페이지	
 		}else if(subpage.equals("myshoppinglist")) {
 			
@@ -108,10 +109,29 @@ public class mypageController {
 		return "redirect:/mypage";
 	}
 	
-	@RequestMapping("/userInfoCheck")
-	public String userInfoCheck() {
+	@PostMapping("/myInfoCheck")
+	public String myInfoCheck(User user, HttpSession session, Model model) {
 		
-		return "mypage/userInfoCheck";
+		User sessionUser = (User) session.getAttribute("login");
+		
+		String errMsg ="";
+		String subpage="";
+		WithdrawResult result = userService.withdraw(sessionUser, user);
+		log.info("결과 : " + result);
+		if(result == WithdrawResult.FAIL_EMAIL_WRONG) {
+			errMsg="이메일 주소를 잘못 입력하였습니다.";
+			subpage="myinfocheck";
+		}else if(result == WithdrawResult.FAIL_PASSWORD_WRONG) {
+			errMsg="비밀번호를 잘못 입력하였습니다.";
+			subpage="myinfocheck";
+		}else if(result == WithdrawResult.SUCCESS) {
+			subpage="myinfo";
+		}
+		
+		model.addAttribute("errMsg", errMsg);
+		model.addAttribute("subpage", subpage);
+		return "redirect:/mypage";
+		
 	}
 }
 
