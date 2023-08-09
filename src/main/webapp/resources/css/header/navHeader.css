@@ -90,6 +90,11 @@ ul {
 	font-size: 20px;
 }
 
+.navbar_menu a:hover {
+	text-decoration: none;
+	color: black;
+}
+
 .navbar_short_icon {
 	font-size: 20px;
 	color: black;
