@@ -19,7 +19,6 @@ public class WishController {
 	
 	@Autowired
 	private WishService wishService;
-	
 	@Autowired
 	private UserService userService;
 	
@@ -45,11 +44,6 @@ public class WishController {
 			    	wishService.remove(wish);
 			    }
 	   
-			 return "/productDetail/detailView";
+			 return "/cart/cart";
 	 }
 }
-
-	     
-
-	      
-	
