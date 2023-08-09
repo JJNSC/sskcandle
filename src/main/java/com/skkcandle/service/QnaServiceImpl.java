@@ -44,4 +44,9 @@ public class QnaServiceImpl implements QnaService {
 	public void remove(int qnaId) {
 		qnaDao.deleteByQnaId(qnaId);
 	}
+	
+	@Override
+	public void modify(Qna qna) {
+		qnaDao.updateByQnaId(qna);
+	}
 }

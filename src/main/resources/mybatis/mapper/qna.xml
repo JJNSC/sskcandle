@@ -47,6 +47,10 @@
 		delete from qna where qnaid=#{qnaId}
 	</delete>
 	
+	<update id="updateByQnaId" parameterType="Qna">
+		update qna set qnatitle=#{qnaTitle}, qnacontent=#{qnaContent}
+		where qnaid=#{qnaId}
+	</update>
 </mapper>
 
 

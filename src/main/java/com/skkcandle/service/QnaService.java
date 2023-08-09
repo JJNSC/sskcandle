@@ -11,4 +11,5 @@ public interface QnaService {
  	public void write(Qna qna);
  	public Qna getQna(int qnaId);
  	public void remove(int qnaId);
+ 	public void modify(Qna qna);
 }

@@ -135,5 +135,21 @@ public class qnaController {
 		qnaService.remove(qnaId);
 		return "redirect:/getBoardList";
 	}
+	
+	@GetMapping("/updateBoard")
+	public String updateBoardForm(int qnaId, Model model) {
+		// 기존 보드 내용 가져오기
+		Qna qna = qnaService.getQna(qnaId);
+		
+		model.addAttribute("qna", qna);
+		return "qna/updateBoardForm";
+	}
+	
+	@PostMapping("/updateBoard")
+	public String updateBoard(Qna qna, Model model) {
+		log.info("업데이트 실행");
+		qnaService.modify(qna);
+		return "redirect:/getBoardList";
+	}
 
 }
