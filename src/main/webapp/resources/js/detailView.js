@@ -1,4 +1,3 @@
-
 function count(type)  {
   // 결과를 표시할 element
   var resultElement = $('input[name=result]').val();

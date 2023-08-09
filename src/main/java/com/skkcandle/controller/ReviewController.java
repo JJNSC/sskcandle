@@ -12,7 +12,7 @@ import com.skkcandle.service.ProductService;
 import com.skkcandle.service.ReviewService;
 
 @Controller
-public class reviewController {
+public class ReviewController {
 	
 	//리뷰 컨트롤러 착각으로 잘 못 만듬 지워도 상관없음 (조성진)
 /*	  @Autowired  

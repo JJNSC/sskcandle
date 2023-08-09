@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private com.skkcandle.dao.userDao userDao;
+	private com.skkcandle.dao.UserDao userDao;
 
 	@Override
 	public User getUserInfo(String userEmail) {

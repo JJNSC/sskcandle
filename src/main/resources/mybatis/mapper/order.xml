@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skkcandle.dao.orderDao">
+<mapper namespace="com.skkcandle.dao.OrderDao">
 	<!-- orderdetail 테이블로부터 유저 id를 통해 orderlist 받아오기 -->
 	<select id="selectOrdersByUserId" parameterType="int" resultType="OrderDetail">
 		select * from ORDERDETAIL where userId = #{userId}

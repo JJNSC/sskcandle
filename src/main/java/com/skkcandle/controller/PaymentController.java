@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/payment")
-public class paymentController {
+public class PaymentController {
 	
 	Date today;
 	

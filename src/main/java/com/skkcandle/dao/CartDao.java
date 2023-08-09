@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.skkcandle.dto.Cart;
 
 @Mapper
-public interface cartDao {
+public interface CartDao {
     public List<Cart> cartMoney();
     public void insert(Cart cart); //장바구니 추가
     public List<Cart> listCart(String userid); //장바구니 목록

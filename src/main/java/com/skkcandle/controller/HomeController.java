@@ -3,14 +3,12 @@ package com.skkcandle.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.skkcandle.dto.Review;
 import com.skkcandle.service.ReviewService;
 
 @Controller
-public class homeController {
+public class HomeController {
 
 	@RequestMapping("/")
 	public String index() {

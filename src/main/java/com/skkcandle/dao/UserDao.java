@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.skkcandle.dto.User;
 
 @Mapper
-public interface userDao {
+public interface UserDao {
 	public User select(String userEmail);
 	public User selectById(int userId);
 	public void insert(User user);

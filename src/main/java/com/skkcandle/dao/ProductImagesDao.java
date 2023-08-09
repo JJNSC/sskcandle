@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.skkcandle.dto.ProductImages;
 
 @Mapper
-public interface productImagesDao {
+public interface ProductImagesDao {
 
 	public ProductImages selectDetailPicture(int productId);
 	public ProductImages selectThumbnailPicture(int productId);

@@ -26,14 +26,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-public class qnaController {
+public class QnaController {
 
 	@Resource
 	private QnaService qnaService;
 	
 	@RequestMapping("/qna")
 	public String qna() {
-		return "qna/qna";
+		return "qna/qna"; 
 	}
 
 	@GetMapping("/getBoardList")

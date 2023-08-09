@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skkcandle.dao.wishDao">		
+<mapper namespace="com.skkcandle.dao.WishDao">		
 	
 	<insert id="insert" parameterType="Wish"> <!-- 로그인 세션에 들어있는 useid 와 product id가 동시에 들어간다 -->
       insert into wishList(userId, productId)

@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class mypageController {
+public class MypageController {
 	
 	@Autowired
 	private ReviewService reviewService;
