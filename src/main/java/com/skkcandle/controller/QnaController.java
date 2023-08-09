@@ -24,18 +24,39 @@ import com.skkcandle.service.QnaService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * QnA 관련 기능 처리 컨트롤러
+ * 
+ * 문의글 목록 조회, 작성, 수정, 삭제, 상세 보기, 첨부파일 업/다운로드 기능 제공
+ * @author 김상규
+ */
 @Controller
 @Slf4j
 public class QnaController {
-
+	
+	/**
+	 * 의존성 주입
+	 */
 	@Resource
 	private QnaService qnaService;
 	
+	/**
+	 * '/qna' 경로로 들어오는 요청을 처리
+	 * @return qna/qna 페이지로 이동
+	 */
 	@RequestMapping("/qna")
 	public String qna() {
 		return "qna/qna"; 
 	}
-
+	
+	/**
+	 * 문의글 목록 조회 메소드
+	 * 
+	 * @param pageNo 페이지 번호
+	 * @param model 모델 객체
+	 * @param session 세션 객체
+	 * @return 페이징 처리된 문의글 목록으로 이동
+	 */
 	@GetMapping("/getBoardList")
 	public String getBoardList(String pageNo, Model model, HttpSession session) {
 		// 브라우저에서 pageNo가 넘어오지 않았을 경우
@@ -54,24 +75,32 @@ public class QnaController {
 
 		int totalBoardNum = qnaService.getTotalBoardNum();
 		Pager pager = new Pager(10, 5, totalBoardNum, intpageNo);
-		log.info("pager: " + pager);
-		log.info("totalBoardNum: " + totalBoardNum);
-		log.info("intpageNo: " + intpageNo);
 
 		List<Qna> list = qnaService.getList(pager);
-		/* log.info("list: " + list); */
 
 		model.addAttribute("pager", pager);
 		model.addAttribute("boards", list);
 
 		return "qna/boardList";
 	}
-
+	
+	/**
+	 * '/writeBoard' 경로로 들어오는 요청을 처리
+	 * @return writeBoardForm.jsp 로 이동
+	 */
 	@GetMapping("/writeBoard")
 	public String writeBoardForm() {
 		return "qna/writeBoardForm";
 	}
 
+	/**
+	 * 문의글 작성 메소드
+	 * 
+	 * @param qna 문의글 정보를 담은 객체
+	 * @param session 세션 객체
+	 * @return 문의글 저장 후 목록 페이지로 리다이렉트
+	 * @throws Exception IO, NULLPoint, NumberFormat 예외가 발생할 수 있다
+	 */
 	@PostMapping("/writeBoard")
 	public String writeBoard(Qna qna, HttpSession session) throws Exception {
 		User user = (User) session.getAttribute("login");
@@ -91,7 +120,14 @@ public class QnaController {
 
 		return "redirect:/getBoardList";
 	}
-
+	
+	/**
+	 * 선택 문의글 상세 정보 조회 메소드
+	 * 
+	 * @param qnaId 문의글 번호
+	 * @param model 모델 객체
+	 * @return detailBoard.jsp로 이동
+	 */
 	@GetMapping("/detailBoard")
 	public String detailBoard(int qnaId, Model model) {
 		Qna qna = qnaService.getQna(qnaId);
@@ -104,7 +140,15 @@ public class QnaController {
 		}
 		return "qna/detailBoard";
 	}
-
+	
+	/**
+	 * 첨부 파일 다운로드 메소드
+	 * 
+	 * @param qnaId 문의글 번호
+	 * @param request HTTP 요청 객체
+	 * @param response HTTP 응답 객체
+	 * @throws Exception IO, NULLPoint, UnsupportedEncoding 예외가 발생할 수 있다
+	 */
 	@GetMapping("/filedownload")
 	public void filedownload(int qnaId, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Qna qna = qnaService.getQna(qnaId);
@@ -130,24 +174,43 @@ public class QnaController {
 		os.close();
 	}
 	
+	/**
+	 * 문의글 삭제 기능 메소드
+	 * 
+	 * @param qnaId 문의글 번호
+	 * @return 문의글 목록으로 리다이렉트
+	 */
 	@GetMapping("/deleteBoard")
 	public String deleteBoard(int qnaId) {
 		qnaService.remove(qnaId);
 		return "redirect:/getBoardList";
 	}
 	
+	/**
+	 * 문의글 수정폼으로 이동하는 메소드
+	 * 
+	 * @param qnaId 문의글 번호
+	 * @param model 모델 객체
+	 * @return "qna"에 기존 내용을 가지고 updateBoardForm.jsp로 이동
+	 */
 	@GetMapping("/updateBoard")
 	public String updateBoardForm(int qnaId, Model model) {
-		// 기존 보드 내용 가져오기
+		// 기존 내용 가져오기
 		Qna qna = qnaService.getQna(qnaId);
 		
 		model.addAttribute("qna", qna);
 		return "qna/updateBoardForm";
 	}
 	
+	/**
+	 * 문의글 내용 수정 메소드
+	 * 
+	 * @param qna 문의글 정보를 담은 객체
+	 * @param model 모델 객체
+	 * @return 문의글 목록으로 리다이렉트
+	 */
 	@PostMapping("/updateBoard")
 	public String updateBoard(Qna qna, Model model) {
-		log.info("업데이트 실행");
 		qnaService.modify(qna);
 		return "redirect:/getBoardList";
 	}
