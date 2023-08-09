@@ -28,15 +28,29 @@
 			select qna_seq.nextval from dual
 		</selectKey>
 		insert into qna (
-				qnaid, userid, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType
+				qnaid, userid, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType, qnaAttachFileName
 		) values(
-				#{qnaId}, #{userName}, #{qnaTitle}, #{qnaContent},
-				#{qnaimage, jdbcType=BLOB},
-				#{qnadate, jdbcType=VARCHAR},
-				#{qnaanswer, jdbcType=VARCHAR}
+				#{qnaId}, #{userId}, #{qnaTitle}, #{qnaContent}, sysdate,
+				#{qnaImage, jdbcType=BLOB},
+				#{qnaAttachType, jdbcType=VARCHAR},
+				#{qnaAttachFileName, jdbcType=VARCHAR}
 		)
 	</insert>
 	
+	<select id="selectByQnaId" parameterType="int" resultType="Qna">
+		select qnaid, u.username, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType, qnaAttachFileName
+		from qna q inner join userinfo u on q.userid = u.userid
+		where qnaid=#{qnaId} 
+	</select>
+	
+	<delete id="deleteByQnaId" parameterType="int">
+		delete from qna where qnaid=#{qnaId}
+	</delete>
+	
+	<update id="updateByQnaId" parameterType="Qna">
+		update qna set qnatitle=#{qnaTitle}, qnacontent=#{qnaContent}
+		where qnaid=#{qnaId}
+	</update>
 </mapper>
 
 

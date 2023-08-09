@@ -33,4 +33,20 @@ public class QnaServiceImpl implements QnaService {
 	public void write(Qna qna) {
 		qnaDao.insert(qna);
 	}
+	
+	@Override
+	public Qna getQna(int qnaId) {
+		Qna qna = qnaDao.selectByQnaId(qnaId);
+        return qna;
+	}
+	
+	@Override
+	public void remove(int qnaId) {
+		qnaDao.deleteByQnaId(qnaId);
+	}
+	
+	@Override
+	public void modify(Qna qna) {
+		qnaDao.updateByQnaId(qna);
+	}
 }

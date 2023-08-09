@@ -310,6 +310,14 @@
         
         
         /*상품의 이미지*/
+        .prod-favorite .prod-favorite-btn {
+		    width: 40px;
+		    height: 40px;
+		    border: 0 none;
+		    cursor: pointer;
+		    outline: 0;
+		    background: url(//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png) no-repeat -218px -209px;
+		}
         
         .prod_image img{
         	float: left;

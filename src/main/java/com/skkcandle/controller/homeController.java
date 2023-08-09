@@ -30,8 +30,5 @@ public class homeController {
 		return "newHeader";
 	}
 	
-	@RequestMapping("/qna")
-	public String qna() {
-		return "qna/qna";
-	}
+	
 }

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skkcandle.dao.wishDao">		
 	
-	<insert id="insert" parameterType="Wish"> 이걸 실행할때 이 객체를 받겟다  <!-- 로그인 세션에 들어있는 useid 와 product id가 동시에 들어간다 -->
-      insert into wishLsit(wishId, userId, productId)
-      values(#{wishId}, #{userId}, #{productId})
+	<insert id="insert" parameterType="Wish"> <!-- 로그인 세션에 들어있는 useid 와 product id가 동시에 들어간다 -->
+      insert into wishList(userId, productId)
+      values(#{userId}, #{productId})
    </insert>
    
     <delete id="delete" parameterType="Wish"> <!-- 상품의 번호와 회원의 정보가 일치하는 상품을 지운다 -->
@@ -12,9 +12,9 @@
    		where userId = #{userId} and productId = #{productId}
     </delete>
     
-    <select id="selectWish" parameterType="Wish" resultType="Wish"> <!-- 해당 userId 에 해당하는 찜 상품들을 가져옴 -->
-		select wishId, userId, productId from wishList
-		 where userId = #{userId}
+    <select id="selectWish" parameterType="Wish" resultType="int"> <!-- 해당 userId 에 해당하는 찜 상품들을 가져옴 -->
+		select count(*) from wishList
+   		where userId = #{userId} and productId = #{productId}
     </select>
    
 </mapper>
