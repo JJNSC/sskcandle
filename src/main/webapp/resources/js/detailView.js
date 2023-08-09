@@ -28,13 +28,9 @@ function count(type)  {
 };
 
 function addCartBtn(){
-	
-	  
 	  //장바구니 alert 예 아니오 클릭시
 	  
 	  if (confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?")) { 
 			location.href = "${pageContext.request.contextPath}/cart"	
-		} else { // 취소 누르면
-			location.href = "productDetail"	
 		}
 	};
