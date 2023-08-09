@@ -20,7 +20,7 @@ import oracle.jdbc.proxy.annotation.Post;
 
 @Slf4j
 @Controller
-public class joinController {
+public class JoinController {
 	
 	@Autowired
 	private UserService userService;

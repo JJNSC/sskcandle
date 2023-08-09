@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 //@RequestMapping("/productDetail")
-public class productController {
+public class ProductController {
 	
     @Autowired
     private ProductService ProductService;

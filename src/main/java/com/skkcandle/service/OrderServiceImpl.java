@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skkcandle.dao.orderDao;
+import com.skkcandle.dao.OrderDao;
 import com.skkcandle.dto.OrderDetail;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderServiceImpl implements OrderService{ 
 
 	@Autowired
-	private orderDao orderDao;
+	private OrderDao orderDao;
 	
 	@Override
 	public List<OrderDetail> selectOrderDetail(int userId) {

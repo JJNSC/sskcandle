@@ -10,7 +10,7 @@ import com.skkcandle.dto.Qna;
 import com.skkcandle.dto.User;
 
 @Mapper
-public interface qnaDao {
+public interface QnaDao {
 	public int count();
 	public List<Qna> selectByPage(Pager pager);
 	public void insert(Qna qna);

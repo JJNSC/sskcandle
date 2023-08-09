@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skkcandle.dao.qnaDao;
+import com.skkcandle.dao.QnaDao;
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Qna;
 
@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class QnaServiceImpl implements QnaService {
 	@Autowired
-	private qnaDao qnaDao;
+	private QnaDao qnaDao;
 
 	@Override
 	public List<Qna> getList(Pager pager) {

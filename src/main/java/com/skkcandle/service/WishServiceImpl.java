@@ -3,7 +3,7 @@ package com.skkcandle.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skkcandle.dao.wishDao;
+import com.skkcandle.dao.WishDao;
 import com.skkcandle.dto.Wish;
 
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class WishServiceImpl implements WishService {
 	@Autowired
-	   private wishDao wishDao;
+	   private WishDao wishDao;
 		
 	@Override
 	public void remove(Wish wish) {

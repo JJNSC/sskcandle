@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.skkcandle.service.ReviewService;
 
 @Controller
-public class homeController {
+public class HomeController {
 
 	@RequestMapping("/")
 	public String index() {

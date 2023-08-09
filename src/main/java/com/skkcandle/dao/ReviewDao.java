@@ -8,7 +8,7 @@ import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Review;
 
 @Mapper
-public interface reviewDao {
+public interface ReviewDao {
 	public List<Review> selectReview(int productId);
 	public List<Review> selectReviewByUserId(int userId);
 	public int count(int productId);

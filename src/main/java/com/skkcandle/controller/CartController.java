@@ -9,7 +9,7 @@ import com.skkcandle.dto.Cart;
 
 @Controller
 @RequestMapping("/cart")
-public class cartController {
+public class CartController {
 	@RequestMapping("")
 	public String cart() {
 		return "/cart/cart";
