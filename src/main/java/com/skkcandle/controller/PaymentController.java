@@ -2,6 +2,7 @@ package com.skkcandle.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,11 @@ import com.skkcandle.dto.User;
 import com.skkcandle.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * @author 김종진
+ *
+ */
 @Slf4j
 @Controller
 @RequestMapping("/payment")
@@ -34,7 +39,7 @@ public class PaymentController {
 		log.info("세션 정보 받아오고 : " +sessionUser);
 		
 		//임시로 넣은 구매상품 데이터
-		List<OrderDetail> orderlist = orderService.selectOrderDetail(sessionUser.getUserId());
+		List<Map<String, Object>> orderlist = orderService.selectOrderDetail(sessionUser.getUserId());
 		log.info("임시로 넣은 구매상품 데이터 나와주고 : "+orderlist);
 
 		model.addAttribute("userinfo", sessionUser);

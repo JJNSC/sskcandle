@@ -19,7 +19,7 @@ public class User {
 	private Date userJoinDate;
 	private Date userBirthDay;
 	private String userGrade;
-	private String userPoint;
+	private int userPoint;
 	
 	private MultipartFile battach;
 	private String userAttachType;

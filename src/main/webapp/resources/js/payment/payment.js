@@ -1,12 +1,25 @@
 $(init)
 
+window.onload = eventInit;
+var totalPay
 //결제 페이지 실행시 불러들이는 값
 function init(){
-	order(); 
-	priceCalculate();
+	order();
+	$("#cuCashApply").click(totalCalculate);
 }
 
-//주문 json
+function eventInit(){
+	priceCalculate();
+	totalCalculate();
+}
+
+/*$(function(){
+	$("#cuCashApply").click(function() {
+		totalCalculate();
+	});
+});*/
+
+/*//주문 json
 function order() {
 	$.ajax({
 		url: "orderPay_content.jsp",
@@ -52,17 +65,39 @@ function order() {
 		}
 	
 	});
-} 
+} */
+
+//총액 계산
+function totalCalculate() {
+    var totalSum = 0;
+
+    $('.pricesPerProduct').each(function() {
+        var price = parseInt($(this).text());
+        totalSum += price;
+    });
+
+    $('#totalPrice').text(totalSum.toLocaleString("ko-KR"));
+    
+    var balance = parseInt($("#balance").text());
+    console.log("맞냐!!! : " + balance);
+    var totalPay = parseInt($("#price").text());
+    console.log("진짜냐!!!!! : " + totalPay);
+    totalPay = totalSum-balance;
+    console.log("ㄹㅇ이냐!!!!!! : " + totalPay);
+    
+    $('#price').text(totalPay.toLocaleString("ko-KR"));
+}
 
 //결제 금액 계산
 function priceCalculate() {
+	
 	var totalPrice = parseInt($('#totalPrice').text().replace(/,/gi, ""));
 	console.log("totalPrice : "+ totalPrice);
-	var discount =parseInt($('#discount').text().replace(/,/gi, ""));	
+/*	var discount =parseInt($('#discount').text().replace(/,/gi, ""));	
 	console.log("discount : "+ discount);
 	var delFee =parseInt($('#delFee').text().replace(/,/gi, ""));
-	console.log("delFee : "+ delFee);
-	var balance =parseInt($('#balance').text().replace(/,/gi, ""));
+	console.log("delFee : "+ delFee);*/
+	var balance = parseInt($('#balance').text().replace(/[^0-9]/g, ""));
 	console.log("balance : "+ balance);
 	if(isNaN(balance)){
 		balance =0;
@@ -71,12 +106,12 @@ function priceCalculate() {
 	var price = parseInt($('#price').text().replace(/,/gi, ""));
 	console.log("price : "+price);
 	
-	price = totalPrice - discount + delFee + balance
+	price = totalPrice - balance
 	
 
 	point = parseInt(price*0.01);
-	$('#price').text(price);
-	$('#point').text(point);
+	$('#price').text(price.toLocaleString("ko-KR"));
+	$('#point').text(point.toLocaleString("ko-KR"));
 	
 	
 }

@@ -1,6 +1,7 @@
 package com.skkcandle.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,11 @@ import com.skkcandle.dao.OrderDao;
 import com.skkcandle.dto.OrderDetail;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * @author 김종진
+ *
+ */
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService{ 
@@ -18,14 +23,8 @@ public class OrderServiceImpl implements OrderService{
 	private OrderDao orderDao;
 	
 	@Override
-	public List<OrderDetail> selectOrderDetail(int userId) {
-		List<OrderDetail> list =  orderDao.selectOrdersByUserId(userId);
-		int test1 =  orderDao.ordertest();
-		List<OrderDetail> test2 =  orderDao.test();
-		
-		log.info("서비스 임플? : "+ list );
-		log.info("서비스 임플2? : "+ test1 );
-		log.info("서비스 임플3? : "+ test2 );
+	public List<Map<String, Object>> selectOrderDetail(int userId) {
+		List<Map<String, Object>> list =  orderDao.selectOrdersByUserId(userId);
 		return list;
 	}
 

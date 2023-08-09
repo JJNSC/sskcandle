@@ -10,4 +10,5 @@ public class Product {
 	private int productStock;
 	private String productMaker;
 	private byte[] productImage;
+	
 }

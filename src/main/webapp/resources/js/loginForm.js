@@ -1,9 +1,7 @@
 $(init)
-
 function init() {
 	//login 오류 확인
 	checkLoginErr();
-	
 }
 
 function checkLoginErr(){

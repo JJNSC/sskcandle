@@ -1,14 +1,12 @@
 package com.skkcandle.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.skkcandle.dto.Cart;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
-import com.skkcandle.dto.Product;
-
-import lombok.RequiredArgsConstructor;
-
-
-
+/*
+ * insertCart
+ * deleteCart
+ * selectCart
+ */
+public interface CartService {
+	public void insertCart(Cart cart);
+}
