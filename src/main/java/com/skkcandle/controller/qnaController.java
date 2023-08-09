@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.Pager;
@@ -29,6 +30,11 @@ public class qnaController {
 
 	@Resource
 	private QnaService qnaService;
+	
+	@RequestMapping("/qna")
+	public String qna() {
+		return "qna/qna";
+	}
 
 	@GetMapping("/getBoardList")
 	public String getBoardList(String pageNo, Model model, HttpSession session) {
@@ -115,13 +121,11 @@ public class qnaController {
 		log.info("fileName: " + fileName);
 		String userAgent = request.getHeader("User-Agent");
 		if (userAgent.contains("Trident") || userAgent.contains("MSIE")) {
-			// IE
 			fileName = URLEncoder.encode(fileName, "UTF-8");
 		} else {
-			// Chrome, Edge, Firefox, Safari
 			fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 		}
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		/*response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");*/
 
 		// 파일 내용을 응답 출력 스트림에 작성
 		OutputStream os = response.getOutputStream();

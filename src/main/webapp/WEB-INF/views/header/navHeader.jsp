@@ -46,7 +46,7 @@
 			<!-- <div class="col-3"></div> -->
 			<ul class="navbar_menu col-8">
 				<li><a href="mypage">마이페이지</a></li>
-				<li><a href="#">메뉴2</a></li>
+				<li><a href="qna">Q&A</a></li>
 				<li><a href="#">메뉴3</a></li>
 				<li><a href="#">메뉴4</a></li>
 				<li><a href="#">메뉴5</a></li>
