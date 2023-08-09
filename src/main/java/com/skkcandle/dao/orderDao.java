@@ -9,4 +9,6 @@ import com.skkcandle.dto.OrderDetail;
 @Mapper
 public interface orderDao {
 	public List<OrderDetail> selectOrdersByUserId(int userId);
+	public int ordertest();
+	public List<OrderDetail> test();
 }

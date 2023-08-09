@@ -3,7 +3,13 @@
 <mapper namespace="com.skkcandle.dao.orderDao">
 	<!-- orderdetail 테이블로부터 유저 id를 통해 orderlist 받아오기 -->
 	<select id="selectOrdersByUserId" parameterType="int" resultType="OrderDetail">
-		select *from orderdetail where userId = ${userId}
+		select * from ORDERDETAIL where userId = #{userId}
+	</select>
+	<select id="test" resultType="OrderDetail">
+		select * from ORDERDETAIL
+	</select>
+	<select id="ordertest" resultType="int">
+		select 1 from dual
 	</select>
 	
 </mapper>
