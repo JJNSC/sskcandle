@@ -22,16 +22,13 @@
   </build>
   
   <dependencies>
-  	<!-- 서블릿 버전4 의존성 설정 -->
   	<dependency>
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>javax.servlet-api</artifactId>
 	    <version>4.0.1</version>
-	    <!-- provided : 최종산출물에는 포함되지 않도록 설정 -->
 	    <scope>provided</scope>
 	</dependency>
 	
-	<!-- JSP 2.3.3 의존성 설정 -->
 	<dependency>
 	    <groupId>javax.servlet.jsp</groupId>
 	    <artifactId>javax.servlet.jsp-api</artifactId>
@@ -39,29 +36,24 @@
 	    <scope>provided</scope>
 	</dependency>
 	
-	<!-- JSTL 1.2 의존성 설정 -->
 	<dependency>
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>jstl</artifactId>
 	    <version>1.2</version>
 	</dependency>
 	
-	<!-- logging log4j-slf4j2 의존성 설정 -->
-	<!-- src/main/java/log4j2.xml 파일 생성 -->
 	<dependency>
 	    <groupId>org.apache.logging.log4j</groupId>
 	    <artifactId>log4j-slf4j2-impl</artifactId>
 	    <version>2.20.0</version>
 	</dependency>
 	
-	<!-- lombok 의존성 설정 -->
 	<dependency>
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
 	    <version>1.18.28</version>
 	</dependency>
 	
-	<!-- Spring Framework 5.3.29 의존성 설정 -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring</artifactId>
@@ -69,7 +61,6 @@
 	    <type>pom</type>
 	</dependency>
 	
-	<!-- Spring Context 5.3.29 의존성 설정 -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
@@ -82,7 +73,6 @@
 	    <version>5.3.29</version>
 	</dependency>
 	
-	<!-- Spring Web MVC 5.3.29 의존성 설정 -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-webmvc</artifactId>
@@ -90,105 +80,65 @@
 	</dependency>
  
   
-  <!-- json 의존성 설정 -->
-	<!-- Ch02에서 자바코드를 JSON으로 변환 실습, JSON 파싱에서 이용할 떄 사용하는 라이브러리 -->
 	<dependency>
 	    <groupId>org.json</groupId>
 	    <artifactId>json</artifactId>
 	    <version>20230618</version>
 	</dependency>
 	
-	<!-- jackson-databind 의존성 설정 -->
-	<!-- Ch02에서 자바 객체를 JSON객체로 변환 실습, JSON을 자바 객체로 변환할 때 내부적으로 사용되는 라이브러리 -->
 	<dependency>
 	    <groupId>com.fasterxml.jackson.core</groupId>
 	    <artifactId>jackson-databind</artifactId>
 	    <version>2.15.2</version>
 	</dependency>
 	
-	<!-- 
-		Ch04
-		@Valid 어노테이션 사용하기 위해 의존 설정
-	 -->
 	<dependency>
 	    <groupId>javax.validation</groupId>
 	    <artifactId>validation-api</artifactId>
 	    <version>2.0.1.Final</version>
 	</dependency>
 	
-	<!-- 
-		Ch09
-		멀티파트를 해석하기 위해 필요(방법1)
-	 -->
 	<dependency>
 	    <groupId>commons-fileupload</groupId>
 	    <artifactId>commons-fileupload</artifactId>
 	    <version>1.5</version>
 	</dependency>
 	
-	<!-- 
-		Ch13
-		커넥션 풀을 사용하기 위해 필요
-	 -->
 	<dependency>
 	    <groupId>org.apache.commons</groupId>
 	    <artifactId>commons-dbcp2</artifactId>
 	    <version>2.9.0</version>
 	</dependency>
 	
-	<!-- 
-		Ch13
-		JDBC Driver
-	 -->
 	<dependency>
 	    <groupId>com.oracle.database.jdbc</groupId>
 	    <artifactId>ojdbc8</artifactId>
 	    <version>19.3.0.0</version>
 	</dependency>
 	
-	<!-- 
-		Ch13
-		JDBC로 실행하는 SQL문을 로그로 출력해주는 라이브러리
-	 -->
 	<dependency> 	
 	    <groupId>com.googlecode.log4jdbc</groupId>
 	    <artifactId>log4jdbc</artifactId>
 	    <version>1.2</version>
 	</dependency>
 	
-	<!--  
-	Ch13
-	스프링 프레임워크 MyBatis를 사용하기 위해 필요한 라이브러리
-	-->
-	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 	<dependency>
 	    <groupId>org.mybatis</groupId>
 	    <artifactId>mybatis</artifactId>
 	    <version>3.5.13</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 	<dependency>
 	    <groupId>org.mybatis</groupId>
 	    <artifactId>mybatis-spring</artifactId>
 	    <version>2.1.1</version>
 	</dependency>
 
-	<!-- 
-	Ch13
-	PasswordEncoder를 사용하기 위해 필요한 라이브러리
-	-->
-	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 	<dependency>
 	    <groupId>org.springframework.security</groupId>
 	    <artifactId>spring-security-core</artifactId>
 	    <version>5.5.8</version>
 	</dependency>
 	 
-	<!-- 
-	Ch14
-	AOP 사용을 위한 의존 라이브러리
-	 -->
-	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 	<dependency>
 	    <groupId>org.aspectj</groupId>
 	    <artifactId>aspectjweaver</artifactId>
