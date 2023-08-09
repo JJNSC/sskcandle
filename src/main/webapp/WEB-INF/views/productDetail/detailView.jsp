@@ -13,13 +13,15 @@
 		<title>Insert title here</title>
 	</head>
 	<title>제품 상세페이지</title>
+	<!-- External JS -->
+	<script src="resources/js/detailView.js"></script>
+	
 	</head>
 		<!-- External CSS -->
 		<link rel = "stylesheet" href ="resources/css/detailView.css"/>
 		<link rel = "stylesheet" href ="resources/css/header/navHeader.css"/>
 		<link rel = "stylesheet" href ="resources/css/footer/footer.css"/>
 		
-
 	<body>
 	
 	<div class="container">	
@@ -36,7 +38,15 @@
 			</c:if>
 		</div>   
 		<div class="prod-favorite">
-            <a class="prod-favorite-btn" href="updateWish">찜하기</a>
+			<a href="updateWish" class="btn">버튼</a>
+		  <c:choose>
+		  <c:when test="wishNo == 0">
+		  	<span><i class="fas fa-heart" > <a class="prod-favorite-btn" href="updateWish">찜하기</a></i> 찜 </span>
+		  </c:when>
+		  <c:otherwise>
+		    <span><i class="far fa-heart" > <a class="prod-favorite-btn" href="updateWish">찜하기</a></i> 찜 </span>
+		  </c:otherwise>
+		  </c:choose>		
         </div>
 		 
 		 <!-- 상품 기본정보 등록란 -->
@@ -95,7 +105,20 @@
 	        	<button class="product-cart-btn"> 장바구니 담기 </button>
 	            <button class="product-buy-btn"><span>바로구매 ></span></button>
 	        </div>
-        		
+	        <!-- 장바구니 수량 버튼 -->
+	        <div class="input-group mb-3" style="max-width: 120px;">
+		        <div class="input-group-prepend">
+					<input class="btn btn-outline-primary js-btn-minus" type="button"
+					       onclick='count("plus")'
+					       value='+'/>
+			 	</div> 
+			 		<input name="result" type="text" class="form-control tSext-center" value="1" min="0"/>
+				<div class="input-group-prepend">
+					<input class="btn btn-outline-primary js-btn-plus" type="button" 
+				       	onclick='count("minus")'
+				       	value='-'/>
+				</div>
+			</div>
        		<div class="product-description">
             	<ul>
                 	<li>색상계열: 화이트계열</li>
