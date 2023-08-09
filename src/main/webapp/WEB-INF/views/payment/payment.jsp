@@ -82,12 +82,12 @@
 						<h2>배송 상품</h2>
 						<div id="orderplus">
 						<table class="consumerInfo">
-							<%-- <c:forEach var="products" items=${buyProducts} > --%>
+							<c:forEach var="product" items="${orderlist}" >
 								<tr>
-									<th>${productinfo}</th>
-									<td>${productnum } 개</td>
+									<th>${product.productId}</th>
+									<td>${product.quantity } 개</td>
 								</tr>
-							<%-- </c:forEach> --%>
+							</c:forEach>
 						</table>
 						</div>
 					</div>
@@ -99,7 +99,7 @@
 						<table class="payInfomation">
 							<tr>
 								<th>총상품가격</th>
-								<td><span id="totalPrice">${productnum*productprice}</span>원</td>
+								<td><span id="totalPrice"></span>원</td>
 							</tr>
 							<tr>
 								<th>적립금</th>
@@ -126,7 +126,7 @@
 							
 							<tr>
 								<th>총결제금액</th>
-								<td><span id="price">${productnum*productprice}</span>원<span id="expectPoint" style="margin-left: 100px; display=none;">캐시적립 예정 : <span id="point">399</span>원</span></td>
+								<td><span id="price"></span>원<span id="expectPoint" style="margin-left: 100px; display=none;">캐시적립 예정 : <span id="point">399</span>원</span></td>
 							</tr>
 							<tr>
 								<th>결제 방법</th>

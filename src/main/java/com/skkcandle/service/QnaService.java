@@ -10,4 +10,6 @@ public interface QnaService {
  	public int getTotalBoardNum();
  	public void write(Qna qna);
  	public Qna getQna(int qnaId);
+ 	public void remove(int qnaId);
+ 	public void modify(Qna qna);
 }

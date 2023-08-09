@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.Pager;
@@ -29,6 +30,11 @@ public class qnaController {
 
 	@Resource
 	private QnaService qnaService;
+	
+	@RequestMapping("/qna")
+	public String qna() {
+		return "qna/qna";
+	}
 
 	@GetMapping("/getBoardList")
 	public String getBoardList(String pageNo, Model model, HttpSession session) {
@@ -103,31 +109,47 @@ public class qnaController {
 	public void filedownload(int qnaId, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Qna qna = qnaService.getQna(qnaId);
 
-		// 파일 내용과 MIME 타입 추출
 		byte[] fileData = qna.getQnaImage();
 		String mimeType = qna.getQnaAttachType();
-
-		// Content-Type 헤더 설정
+		String fileName = qna.getQnaAttachFileName();
+		
 		response.setContentType(mimeType);
 
-		// Content-Disposition 헤더 설정
-		String fileName = qna.getQnaAttachFileName(); // 여기에 원하는 파일 이름을 제공하세요
-		log.info("fileName: " + fileName);
 		String userAgent = request.getHeader("User-Agent");
 		if (userAgent.contains("Trident") || userAgent.contains("MSIE")) {
-			// IE
 			fileName = URLEncoder.encode(fileName, "UTF-8");
 		} else {
-			// Chrome, Edge, Firefox, Safari
 			fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 		}
+		
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
 
-		// 파일 내용을 응답 출력 스트림에 작성
 		OutputStream os = response.getOutputStream();
 		os.write(fileData);
 		os.flush();
 		os.close();
+	}
+	
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(int qnaId) {
+		qnaService.remove(qnaId);
+		return "redirect:/getBoardList";
+	}
+	
+	@GetMapping("/updateBoard")
+	public String updateBoardForm(int qnaId, Model model) {
+		// 기존 보드 내용 가져오기
+		Qna qna = qnaService.getQna(qnaId);
+		
+		model.addAttribute("qna", qna);
+		return "qna/updateBoardForm";
+	}
+	
+	@PostMapping("/updateBoard")
+	public String updateBoard(Qna qna, Model model) {
+		log.info("업데이트 실행");
+		qnaService.modify(qna);
+		return "redirect:/getBoardList";
 	}
 
 }
