@@ -13,16 +13,15 @@ import com.skkcandle.service.CartService;
 import com.skkcandle.service.UserService;
 
 @Controller
-@RequestMapping("/cart")
 public class CartController {
 	
 	
-	@Autowired
+	/*@Autowired
 	private CartService cartService;
 	@Autowired
 	private UserService userService;
 	
-	 @PostMapping("/cartList") //post 방식의 writeBoard userWish 가 1이면 db에 값이 있음 없으면 o
+	 @PostMapping("/cartList") //
 	   public String addCart(Cart cart, HttpSession session) {
 		 
 		 User user = (User) session.getAttribute("login");
@@ -31,12 +30,13 @@ public class CartController {
  		 
 		 int userId = 1;
 		 int productId = 1;
+		 int count = 
 		 
 		 cart.setProductId(productId);
 		 cart.setUserId(userId);
 		 
 	   
 			 return "/productDetail/detailView";
-	 }
+	 }*/
 }
 

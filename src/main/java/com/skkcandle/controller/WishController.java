@@ -44,6 +44,6 @@ public class WishController {
 			    	wishService.remove(wish);
 			    }
 	   
-			 return "/cart/cart";
+			 return "/productDetail/detailView";
 	 }
 }

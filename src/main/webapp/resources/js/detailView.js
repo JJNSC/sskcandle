@@ -35,6 +35,6 @@ function addCartBtn(){
 	  if (confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?")) { 
 			location.href = "${pageContext.request.contextPath}/cart"	
 		} else { // 취소 누르면
-			location.href = "prodcutDetail"	
+			location.href = "productDetail"	
 		}
 	};
