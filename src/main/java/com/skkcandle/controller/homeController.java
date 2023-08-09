@@ -11,10 +11,7 @@ import com.skkcandle.service.ReviewService;
 
 @Controller
 public class homeController {
-	
-	@Resource
-	private ReviewService reviewService;
-	
+
 	@RequestMapping("/")
 	public String index() {
 		return "index";

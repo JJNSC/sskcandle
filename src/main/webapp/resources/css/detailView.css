@@ -475,6 +475,24 @@
 		    margin-bottom: 30px;
 		    margin-left: 13px;
 		}
+		/*장바구니 수량 버튼*/
+	.input-group  {
+	    position: relative;
+	    display: -webkit-box;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	    -webkit-box-align: stretch;
+	    -ms-flex-align: stretch;
+	    align-items: stretch;
+	    width: 100%;
+		}
+
+		
+	.mb-3, .my-3 {
+    	margin-bottom: 1rem!important;
+	}
         
         
         

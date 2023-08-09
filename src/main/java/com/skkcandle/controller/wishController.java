@@ -28,7 +28,10 @@ public class wishController {
 		 
 		 User user = (User) session.getAttribute("login");
 		 	    
-		 int userId = user.getUserId();
+/*		 int userId = user.getUserId();
+ * 
+*/		 
+		 int userId = 1;
 		 int productId = 1;
 		 
 		 wish.setProductId(productId);
