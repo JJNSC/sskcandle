@@ -20,9 +20,15 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public List<OrderDetail> selectOrderDetail(int userId) {
 		List<OrderDetail> list =  orderDao.selectOrdersByUserId(userId);
+		int test1 =  orderDao.ordertest();
+		List<OrderDetail> test2 =  orderDao.test();
+		
 		log.info("서비스 임플? : "+ list );
+		log.info("서비스 임플2? : "+ test1 );
+		log.info("서비스 임플3? : "+ test2 );
 		return list;
 	}
+
 	
 
 

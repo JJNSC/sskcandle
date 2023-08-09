@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.skkcandle.dto.OrderDetail;
 
 @Mapper
-public interface OrderDao {
+public interface orderDao {
 	public List<OrderDetail> selectOrdersByUserId(int userId);
+	public int ordertest();
+	public List<OrderDetail> test();
 }
