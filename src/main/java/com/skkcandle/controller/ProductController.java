@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Product;
@@ -34,8 +35,7 @@ public class ProductController {
     private ProductImagesService ProductImagesService;
 	   
 	@RequestMapping("/productDetail")
-	public String detailProduct(String pageNo, HttpSession session, Model model) {
-		int productId = 1;
+	public String detailProduct(String pageNo, HttpSession session, Model model,@RequestParam(name="productId", defaultValue= "1") int productId) {
 		log.info("제품번호" + productId);
 		Product product = ProductService.detailProduct(productId);
 		model.addAttribute("detailproduct", product);

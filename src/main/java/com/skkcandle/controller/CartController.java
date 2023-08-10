@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +28,12 @@ public class CartController {
 	private UserService userService;
 	
 	 @GetMapping("/cartList") 
-	   public String addCart(Cart cart, HttpSession session, HttpServletRequest request, int result) {
+	 public String addCart(Cart cart, HttpSession session, HttpServletRequest request, int result) {
 		 log.info("되냥!?");
 		 User user = (User) session.getAttribute("login");
 		 	    
 		 //int userId = user.getUserId(); :나중에 로그인시 userId 셋팅
- 		 
+		 
 		 int userId = 1;
 		 int productId = 1;
 		 
@@ -48,30 +49,33 @@ public class CartController {
 		 
 		 cartService.insertCart(cart);
 	   
-			 return "redirect:/productDetail";//나중에 장바구니 가는 컨트롤러 만들면 그 맵핑주소값을 적자 
+		 return "redirect:/productDetail";//나중에 장바구니 가는 컨트롤러 만들면 그 맵핑주소값을 적자 
 	 }
 	 
 	 @GetMapping("/reProduct") 
-	   public String reProduct(Cart cart, HttpSession session, HttpServletRequest request, int result) {
+	   public String reProduct(Cart cart, HttpSession session, HttpServletRequest request, int result, Model model) {
 		 log.info("되냥!?");
 		 User user = (User) session.getAttribute("login");
 		 	    
 		 //int userId = user.getUserId(); :나중에 로그인시 userId 셋팅
 		 
 		 int userId = 1;
-		 int productId = 1;
-		 String count = request.getParameter("result");
+		 int productId = 84;
 		 
-		 log.info("유저 번호" + userId);
-		 log.info("제품 번호" + productId);
-		 log.info("제품 수량값" + count);
-		 log.info("이것도 안되나 보자" + result);
+		 log.info("취소한 유저 번호" + userId);
+		 log.info("취소한 제품 번호" + productId);
+		 log.info("취소한 이것도 안되나 보자" + result);
 		 
+		 cart.setCount(result);
 		 cart.setProductId(productId);
 		 cart.setUserId(userId);
 		 
+		 log.info("취소한 cart 내용물" + cart);
+		 
+		 cartService.insertCart(cart);
+		 model.addAttribute("productId", productId);
 	   
-			 return "redirect:/productDetail";
+		 return "redirect:/productDetail";
 	 }
 }
 
