@@ -16,11 +16,15 @@
 		<%-- 부트스트랩 아이콘 --%>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/">
-		<script src="${pageContext.request.contextPath}/resources/js/"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productList/productList.css">
+		<script src="${pageContext.request.contextPath}/resources/js/productList/productList.js"></script>
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/header/navHeader.jsp" %>
+		
+		<div>
+			
+		</div>
 		
 		<%@ include file="/WEB-INF/views/footer/footer.jsp" %>
 	</body>

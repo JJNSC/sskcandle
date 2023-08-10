@@ -56,7 +56,7 @@
 					<li><a href="loginForm">마이페이지</a></li>
 					<li><a href="loginForm">결제페이지</a></li>
 					<li><a href="loginForm">Q&A</a></li>
-					<li><a href="loginForm">상품리스트</a></li>
+					<li><a href="productList">상품리스트</a></li>
 				</c:if>
 				<li><a href="#">메뉴4</a></li>
 				<li><a href="#">메뉴5</a></li>
