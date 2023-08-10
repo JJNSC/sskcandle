@@ -112,14 +112,14 @@
 								<th>적립금</th>
 								<td style="margin:0px; padding:0px;">
 									<div style=" padding-top:10px; padding-left:16px; padding-bottom:10px;">
-										<span style="display:inline-block; width:155px;"><span id ="balance"> 0 </span><span>원</span></span>
+										<span style="display:inline-block; width:155px;"><span id ="balance">0</span><span>원</span></span>
 										<span style="padding-top:20px;">보유 : <span id="cuBal">${userinfo.userPoint }</span>원</span>
 										<button id="cuCashInput">적립금</button>
 									</div>
 								
 									<div id="cuCashrow" style="background-color: #f8f8f8; padding-bottom:16px; padding-top:10px;">
 									 	
-										<input id="cuCash" type="number" value="0" placeholder="0" name="cuCash" style="margin-left: 170px;">원 | 
+										<input id="cuCash" type="number" value="" placeholder="0" name="cuCash" style="margin-left: 170px;">원 | 
 										<input id="allUse" type="checkbox" name="allUse"> 모두사용
 										<div><button id="cuCashApply" style="margin-left: 170px; margin-top:10px;">적립금</button></div>
 										
