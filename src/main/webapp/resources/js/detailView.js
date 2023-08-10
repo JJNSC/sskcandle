@@ -28,9 +28,13 @@ function count(type)  {
 };
 
 function addCartBtn(){
-	  //장바구니 alert 예 아니오 클릭시
-	  
-	  if (confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?")) { 
-			location.href = "${pageContext.request.contextPath}/cart"	
-		}
-	};
+	//장바구니 alert 예 아니오 클릭시
+	var productCount = $('input[id=productCount]').val();
+	  console.log(productCount);
+	 /* $('#cart').submit();*/
+	if (confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까?")) { 
+		location.href = "cartList?result="+productCount; //location 을 이렇게 주는 이유는 controller 에 productCount 를 넘겨주기 위함이다.
+	}else{	
+		/*location.href = "reProduct";*/
+	}
+};
