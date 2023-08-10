@@ -519,7 +519,8 @@ $(document).ready(function(){
 		//쿠팡캐시 적용 클릭 이벤트
 		$('#cuCashApply').click(function(){
 			$("#cashOver").css("display", "none"); 	
-			var balance = parseInt( $('#cuBal').text())
+			var balance = parseInt( $('#cuBal').text());
+			var totalprice = parseInt( $('#totalPrice').text())
 			 	
 			if(($("#cuCash").val())>balance){
 				console.log($("#cuCash").val());
@@ -527,6 +528,7 @@ $(document).ready(function(){
 				
 			} else if(($("#cuCash").val())<=balance) {
 				$("#balance").text('-' + $('#cuCash').val()); 
+				if(balance <= totalprice);
 				$('#cuCashrow').hide();
 				priceCalculate();
 				
