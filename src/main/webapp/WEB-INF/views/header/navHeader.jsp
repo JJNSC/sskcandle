@@ -50,13 +50,14 @@
 					<li><a href="mypage">마이페이지</a></li>
 					<li><a href="payment">결제페이지</a></li>
 					<li><a href="qna">Q&A</a></li>
+					<li><a href="productList">상품리스트</a></li>
 				</c:if>
 				<c:if test="${login == null}">
 					<li><a href="loginForm">마이페이지</a></li>
 					<li><a href="loginForm">결제페이지</a></li>
 					<li><a href="loginForm">Q&A</a></li>
+					<li><a href="loginForm">상품리스트</a></li>
 				</c:if>
-				<li><a href="#">메뉴3</a></li>
 				<li><a href="#">메뉴4</a></li>
 				<li><a href="#">메뉴5</a></li>
 			</ul>
@@ -66,7 +67,7 @@
 				</button>
 				<div class="d-flex">
 					<a class="navbar_short_icon" href="#">
-						<i class="bi bi-cart"> Cart</i>	
+						<i class="bi bi-cart"> Cart</i>
 					</a>
 					<c:if test="${login != null}">
 						<a class="navbar_short_icon" href="logout">
