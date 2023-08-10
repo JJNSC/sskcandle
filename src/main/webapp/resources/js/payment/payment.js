@@ -2,13 +2,17 @@ $(init)
 
 window.onload = eventInit;
 var totalPay
+var myBalance
 //결제 페이지 실행시 불러들이는 값
 function init(){
 	order();
+	//내 보유 포인트 (변하지않는다.)
+	
 	$("#cuCashApply").click(totalCalculate);
 }
 
 function eventInit(){
+	myBalance = parseInt($("#cuBal").text().replace(/,/gi, ""));
 	priceCalculate();
 	totalCalculate();
 }
@@ -70,22 +74,22 @@ function order() {
 //총액 계산
 function totalCalculate() {
     var totalSum = 0;
-
+    console.log("실행");
     $('.pricesPerProduct').each(function() {
         var price = parseInt($(this).text());
         totalSum += price;
     });
+    console.log("totalSum : "+ totalSum);
 
     $('#totalPrice').text(totalSum.toLocaleString("ko-KR"));
-    
     var balance = parseInt($("#balance").text());
-    console.log("맞냐!!! : " + balance);
     var totalPay = parseInt($("#price").text());
-    console.log("진짜냐!!!!! : " + totalPay);
+
     totalPay = totalSum-balance;
-    console.log("ㄹㅇ이냐!!!!!! : " + totalPay);
-    
     $('#price').text(totalPay.toLocaleString("ko-KR"));
+    
+   
+    
 }
 
 //결제 금액 계산
@@ -93,10 +97,6 @@ function priceCalculate() {
 	
 	var totalPrice = parseInt($('#totalPrice').text().replace(/,/gi, ""));
 	console.log("totalPrice : "+ totalPrice);
-/*	var discount =parseInt($('#discount').text().replace(/,/gi, ""));	
-	console.log("discount : "+ discount);
-	var delFee =parseInt($('#delFee').text().replace(/,/gi, ""));
-	console.log("delFee : "+ delFee);*/
 	var balance = parseInt($('#balance').text().replace(/[^0-9]/g, ""));
 	console.log("balance : "+ balance);
 	if(isNaN(balance)){
@@ -107,12 +107,20 @@ function priceCalculate() {
 	console.log("price : "+price);
 	
 	price = totalPrice - balance
+	if(price < 0 ){
+		$("#cashOver").css("display", "block");
+		price = totalPrice;
+		var changeBalance = myBalance;
+	}else{
+		var changeBalance = myBalance - balance;
+		$("#cashOver").css("display", "none");
+	}
 	
-
 	point = parseInt(price*0.01);
 	$('#price').text(price.toLocaleString("ko-KR"));
 	$('#point').text(point.toLocaleString("ko-KR"));
 	
+	$('#cuBal').text(changeBalance);
 	
 }
 

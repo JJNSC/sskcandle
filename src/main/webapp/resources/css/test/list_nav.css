@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+
+.nav{
+	/* border:1px solid purple; */
+	float:left;
+	width:200px;
+	height:5370px;
+	padding:0 10px;
+	box-sizing: border-box;
+}
+.nav > div{
+	border-bottom:1px solid rgb(223, 223, 223);
+	font-size: 12px;
+	font-family: "맑은 고딕";
+	padding:10px;
+}
+.nav > h4{
+	font-family: "맑은 고딕";
+}
+.nav a,input,h4{
+	display:inline-block;
+	margin-top:10px;
+}
+.nav a:hover{
+	color:#0073e9;
+}
+.nav label:hover{
+	color:#0073e9;
+}
+.service-filter-subscribable{
+    display: inline-block;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 63px;
+    height: 16px;
+    vertical-align: middle;
+    background-image: url("//img1a.coupangcdn.com/image/coupang/search/search_assets_170529@2x.png");
+    background-size: 234px 460px;
+    margin-top: -8px;
+    margin-left:4px;
+    background-position: 0 -178px;
+}
+.service-filter-top_brand{
+	height: 74px;
+    margin: 6px -20px;
+    padding: 13px 22px;
+    box-sizing: border-box;
+}
+.noneblack{
+	text-decoration: none;
+	color:black;
+}
+.more_look{
+	color: #0073e9;
+	text-decoration-line: none;
+}
+#coupang_ranking_icon{
+	background-image: url(//img1a.coupangcdn.com/image/coupang/search/search_assets_170529@2x.png);
+    background-size: 234px 460px;
+    float: left;
+    display: block;
+    width: 13px;
+    height: 10px;
+    margin-top: 7px;
+    margin-right: 3px;
+    background-position: -89px -91px;
+    border:0px;
+}
+#coupang_ranking_way{
+	color: #0073e9;
+    font-weight: bold;
+}
+.rating04{
+	 display: inline-block;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 69px;
+    height: 12px;
+    margin-right: 8px;
+    transition: opacity .5s;
+    background-image: url("//img1a.coupangcdn.com/image/coupang/search/search_assets_170529@2x.png");
+    background-size: 234px 460px;
+    background-position: 0 -51px;
+    opacity: 1;
+}
+.rating03{
+    display: inline-block;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 69px;
+    height: 12px;
+    margin-right: 8px;
+    transition: opacity .5s;
+    background-image: url("//img1a.coupangcdn.com/image/coupang/search/search_assets_170529@2x.png");
+    background-size: 234px 460px;
+    background-position: 0 -34px;
+    opacity: 1;
+}
+.rating02{
+    display: inline-block;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 69px;
+    height: 12px;
+    margin-right: 8px;
+    transition: opacity .5s;
+    background-image: url("//img1a.coupangcdn.com/image/coupang/search/search_assets_170529@2x.png");
+    background-size: 234px 460px;
+    background-position: 0 -17px;
+    opacity: 1;
+}
+.rating01{
+    display: inline-block;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 69px;
+    height: 12px;
+    margin-right: 8px;
+    transition: opacity .5s;
+    background-image: url("//img1a.coupangcdn.com/image/coupang/search/search_assets_170529@2x.png");
+    background-size: 234px 460px;
+    background-position: 0 0;
+    opacity: 1;
+}
+#navsearchbutton{
+	outline:none;
+	border:0px;
+	width: 36px;
+    height: 28px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 26px;
+    color: #fff;
+    background-color: #0073e9;
+    font-size: 12px;
+    font-family: apple sd gothic neo,"맑은 고딕",malgun gothic,"나눔고딕",nanumgothic,"돋움",dotum,sans-serif;
+}
