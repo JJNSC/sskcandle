@@ -13,5 +13,6 @@
 		<typeAlias alias="Pager" type="com.skkcandle.dto.Pager"/>
 		<typeAlias alias="Wish" type="com.skkcandle.dto.Wish"/>
 		<typeAlias alias="OrderDetail" type="com.skkcandle.dto.OrderDetail"/>
+		<typeAlias alias="Order" type="com.skkcandle.dto.Order"/>
 	</typeAliases>
 </configuration>

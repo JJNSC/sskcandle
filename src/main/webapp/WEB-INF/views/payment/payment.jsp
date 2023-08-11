@@ -67,7 +67,7 @@
 							</tr>
 							<tr>
 								<th>배송주소</th>
-								<td><input type="text" placeholder=" ${userinfo.userAddress } " size=50 style="outline:none;">   <span style="margin-left: 10px;">
+								<td><input type="text" id="payAddress" value="" placeholder="${userinfo.userAddress } " size=50 style="outline:none;">   <span style="margin-left: 10px;">
 								
 								<!-- <button id="transAddress" onclick="openAdress()"> 배송지변경</button> --></span></td>
 								
@@ -84,8 +84,10 @@
 						<table class="consumerInfo">
 							<c:forEach var="product" items="${orderlist}" >
 								<tr>
-									<th>${product.productName}</th>
-									<td>${product.productPrice }원 / ${product.quantity } 개</td>
+									<th><input type="hidden" class="productId" value="${product.productId }">${product.productName}</th>
+									<td>${product.productPrice }원 / 
+										<input type="hidden" class="productQuantity" value="${product.quantity }">${product.quantity } 개
+									</td>
 									<td>합계 : <span class="pricesPerProduct">${product.productPrice*product.quantity}</span> 원</td>
 								</tr>
 							</c:forEach>
@@ -113,7 +115,7 @@
 								<td style="margin:0px; padding:0px;">
 									<div style=" padding-top:10px; padding-left:16px; padding-bottom:10px;">
 										<span style="display:inline-block; width:155px;"><span id ="balance">0</span><span>원</span></span>
-										<span style="padding-top:20px;">보유 : <span id="cuBal">${userinfo.userPoint }</span>원</span>
+										<span style="padding-top:20px;">보유 : <span id="cuBal"><fmt:formatNumber value="${userinfo.userPoint }" type="number"></fmt:formatNumber></span>원</span>
 										<button id="cuCashInput">적립금</button>
 									</div>
 								
@@ -148,11 +150,6 @@
 											id="credit-card" class="no-cash payMethod" type="radio" name="pay-method"
 											value="신용/체크카드"> 신용/체크카드  </label></div>
 									
-									<div id="L_corporation-card">
-										<label><input
-											id="corporation-card" class="no-cash payMethod" type="radio"
-											name="pay-method" value="법인카드"> 법인카드  </label></div>
-									
 									<div id="L_phone">
 										<label><input
 											id="phone" type="radio" class="no-cash payMethod" name="pay-method"
@@ -168,7 +165,8 @@
 										<!-- 계좌이체 선택시 옵션 -->
 									<div id="account-transfer-option" class="pay_select">
 										<div>
-											<label><span style="padding-right:35px;">은행선택</span> <select id="account-transfer-choice-bank">
+											<label><span style="padding-right:35px;">은행선택</span> 
+											<select id="accountTransfer-choice">
 												<option value="none">선택</option>
 												<option value="카카오뱅크">카카오뱅크</option>
 												<option value="농협은행">농협은행</option>
@@ -180,15 +178,12 @@
 										<div id="account-transfer-no-choice" class="choice-error" style="color: red; padding-left: 17px;">은행을
 											선택해주세요</div>
 											
-									</div> <!--  쿠페이 머니 선택 시 옵션 -->
-									<div id="coupay-money-option" class="pay_select">
-										<div><label>잔액</label> <span style="padding-left:70px; font-weight:bold">0원</span></div>
-										<div style="border-top: 1px solid #e4e4e4; padding-top: 10px;">* 잔액이 부족할 경우, 결제 진행 시에 충전됩니다.</div>
-										
-									</div> <!-- 신용/체크카드 선택 시 옵션 -->
+									</div> 
+									 <!-- 신용/체크카드 선택 시 옵션 -->
 									<div id="credit-card-option" class="pay_select">
 										<div>
-											<label><span style="padding-right:35px;">카드선택</span>  <select>
+											<label><span style="padding-right:35px;">카드선택</span> 
+											<select id="creditCard-choice">
 													<option value="KB국민카드">KB국민카드</option>
 													<option value="롯데카드">롯데카드</option>
 													<option value="신한카드">신한카드</option>
@@ -199,7 +194,7 @@
 													checked="checked"> ${userinfo.userName }님 명의 카드</label>
 											
 										</div>
-										<div style="border-top: 1px solid #e4e4e4; padding-top: 10px;"><label>
+										<!-- <div style="border-top: 1px solid #e4e4e4; padding-top: 10px;"><label>
 											<span style="padding-right:35px;">할부기간 </span> <span style="padding-right:35px;"> <select id="installment-period">
 													<option value="pay-in-full">일시불</option>
 													<option>2개월(무이자)</option>
@@ -211,30 +206,13 @@
 											</span></label>
 											 <span id="pay-in-full-note"> *할부는 50,000원 이상만 가능합니다.</span>
 											 <span id="interest-free-note"> *무이자 할부 적용 제외 대상 : 법인, 개인사업자, 체크, 기프트, 선불,하이브리드 카드</span>
-										</div>
+										</div> -->
 										
-									</div> <!-- 법인카드 선택시 옵션-->
-									<div id="corporation-card-option" class="pay_select">
-										<div><label>
-											 <span style="padding-right:35px;">카드선택 </span> <span> <select id = "coporation-card-choice">
-											 		<option value="none">선택</option>
-													<option>KB국민카드</option>
-													<option>롯데카드</option>
-													<option>신한카드</option>
-											</select>
-											</span></label>
-										</div>
-										<div id="coporation-card-no-choice" class="choice-error" style="color: red; padding-left: 17px;">카드종류를
-											선택해주세요</div>
-										<div style="border-top: 1px solid #e4e4e4; padding-top: 10px;"><label>
-											 <span style="padding-right:35px;">할부기간  </span> <span> <select disabled="disabled">
-													<option>일시불</option>
-											</select>
-											</span></label> <span>법인카드는 일시불 결제만 가능합니다.</span>
-										</div>
-									</div> <!-- 휴대폰 결제 선택 시 옵션 -->
+									</div>
+									<!-- 휴대폰 결제 선택 시 옵션 -->
 									<div id="phone-option" class="pay_select">
-										<div><label> <span style="padding-right:35px;">통신사 종류 </span> <select id="mobile-corp">
+										<div><label> <span style="padding-right:35px;">통신사 종류 </span> 
+										<select id="phone-choice">
 												<option value="none">선택</option>
 												<option value="SKT">SKT</option>
 												<option value="KT">KT</option>
@@ -250,7 +228,8 @@
 									<div id="deposit-without-bankbook-option" class="pay_select">
 										
 											<div>
-												<label> <span style="padding-right:35px;">입금은행</span> <select id="bank-choice">
+												<label> <span style="padding-right:35px;">입금은행</span> 
+												<select id="withoutBankbook-choice">
 														<option value="none">선택</option>
 														<option>농협은행</option>
 														<option>국민은행</option>
@@ -265,8 +244,8 @@
 													<span style="padding-right:35px;">입금기한</span><span>2023년 07월 12일 10시 00분까지</span>
 											</div>
 												
-											<div>* 현금으로 결제한 모든 금액은 우리은행과 채무지급보증계약을 체결하여 고객님의 안전거래를
-													보장하고 있습니다.</div>
+											<!-- <div>* 현금으로 결제한 모든 금액은 우리은행과 채무지급보증계약을 체결하여 고객님의 안전거래를
+													보장하고 있습니다.</div> -->
 											
 									</div>
 									
@@ -280,9 +259,9 @@
 										</div>
 										
 										
-									<div id="discount-info">
+									<!-- <div id="discount-info">
 											카드할인 및 무이자 할부 안내
-									</div>
+									</div> -->
 									<div id="selectPay" style="margin-top:10px;">
 										<label style="cursor: pointer;"><input type="checkbox" checked="checked"> 선택한
 											결제수단 및 휴대폰번호로 향후 결제 이용에 동의합니다.(선택)</label>
@@ -348,7 +327,7 @@
 					<div class="text-center" id="agreeMessage">위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및
 						제공(해외직구의 경우 국외제공) 및 결제에 동의합니다.</div>
 					<div class="text-center" id="payButton">
-						<button class="payb" style=" border: none; box-shadow: 0 0 0">
+						<button class="payb" id="finalPayButton" style=" border: none; box-shadow: 0 0 0">
 							<img src="//image7.coupangcdn.com/image/rocketpay-order-image/pc/btn_payment.gif"
 								width="260" height="60" alt="결제하기">
 						</button>

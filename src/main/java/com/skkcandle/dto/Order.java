@@ -10,6 +10,11 @@ public class Order {
 	private int userId;
 	private Date orderDate;
 	private String orderStatus;
-	private String shippingAdress;
-	private int totalPrice;
+	private String shippingAddress;
+	private Date arriveDate;
+	private String accountTransfer;
+	private String creditCard;
+	private String phone;
+	private String withoutBankbook;
+	private String checked;
 }
