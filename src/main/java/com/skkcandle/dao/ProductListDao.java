@@ -1,10 +1,12 @@
 package com.skkcandle.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.skkcandle.dto.ProductList;
 
 @Mapper
 public interface ProductListDao {
-	public ProductList selectByProductId(int productId);
+	public List<ProductList> selectByProductId();
 }

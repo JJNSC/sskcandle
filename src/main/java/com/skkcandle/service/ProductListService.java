@@ -1,7 +1,9 @@
 package com.skkcandle.service;
 
+import java.util.List;
+
 import com.skkcandle.dto.ProductList;
 
 public interface ProductListService {
-	public ProductList getProductList(int productId);
+	public List<ProductList> getProductList();
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skkcandle.dao.ProductListDao">		
 	
-	<select id="selectByProductId" parameterType="int" resultType="ProductList">
-		SELECT p.productId, p.productName, p.productPrice, pi.productImage
+	<select id="selectByProductId" resultType="ProductList">
+		SELECT p.productid, p.productname, p.productstock, p.productmaker, p.productprice, pi.productimage
 		FROM product p INNER JOIN productImages pi
 		ON p.productId = pi.productId
-		WHERE p.productId=#{productId}; 
+		WHERE pi.usage='thumbnail' 
 	</select>
 	
 </mapper>

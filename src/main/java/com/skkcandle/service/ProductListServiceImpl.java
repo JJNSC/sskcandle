@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skkcandle.dao.ProductListDao;
-import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.ProductList;
 
 @Service
@@ -16,8 +15,8 @@ public class ProductListServiceImpl implements ProductListService {
     private ProductListDao productListDao;
 	
 	@Override
-	public ProductList getProductList(int productId) {
-		ProductList productList = productListDao.selectByProductId(productId);
+	public List<ProductList> getProductList() {
+		List<ProductList> productList = productListDao.selectByProductId();
 		return productList;
 	}
 	
