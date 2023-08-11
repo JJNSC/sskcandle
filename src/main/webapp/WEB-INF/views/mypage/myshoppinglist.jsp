@@ -32,14 +32,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:if test="">
+					<c:forEach var="" items="">
 					<tr>
 						<td>상품 이미지</td>
 						<td>상품 명</td>
 						<td>상품 가격</td>
 						<td>상품 갯수</td>
 					</tr>
-					</c:if>
+					</c:forEach>
 				</tbody>
 			
 			</table>

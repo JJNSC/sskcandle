@@ -26,7 +26,11 @@ import com.skkcandle.service.UserService.LoginResult;
 import com.skkcandle.service.UserService.WithdrawResult;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * @author 김종진
+ *
+ */
 @Slf4j
 @Controller
 public class MypageController {
@@ -56,6 +60,9 @@ public class MypageController {
 			model.addAttribute("errMsg", errMsg);
 		//내 구매 리스트 페이지	
 		}else if(subpage.equals("myshoppinglist")) {
+			
+			
+			
 			
 		//내 리뷰 리스트	
 		}else if(subpage.equals("myreviewlist")) {
