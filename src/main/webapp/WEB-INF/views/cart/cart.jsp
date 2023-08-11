@@ -128,7 +128,7 @@
 						<label>
 							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em>1</em> / 1 )</span>
 						</label>
-						<button class="selected-delete" onclick="delteItemList()">삭제</button>
+						<button class="selected-delete" onclick="deleteItemList()">삭제</button>
 						<a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a>
 					</span>
         </div>
