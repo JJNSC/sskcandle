@@ -31,10 +31,10 @@
     	where productId = #{productId} and userId = #{userId}
     </select>
     
-   <delete id="delete" parameterType="Cart">
+   <delete id="delete" parameterType="int">
 		delete 
 		from cart 
-		where userId=#{userId} and productId=#{productId} 
+		where userId = #{userId} and productId = #{productId} 
 	</delete>
     
 </mapper>

@@ -9,5 +9,5 @@ public interface CartService {
 	public List<Cart> getCartList(int userId);
 	public void updateCart(Cart cart);
 	public int countCart(Cart cart);
-	public void deleteCart(int userId, List<Integer> checkedProductId);
+	public void deleteCart(int userId, int productId);
 }

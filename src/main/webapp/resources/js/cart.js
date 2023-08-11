@@ -57,7 +57,7 @@ function checkAll() {
    });
 }
 
-//상품삭제
+/*//상품삭제
 function deleteItem(){
     if($("input:checkbox[name=cbox]:checked").length != 0){
           if (confirm("삭제 하시겠습니까?")) { 
@@ -77,14 +77,21 @@ function deleteItem(){
            emptyCart();
      }
  }﻿; 
- 
+ */
  //체크 된 상품들 삭제(8월 11일)
-function delteItemList(){ //만약 div 안의 값을 가져온다면 produtId는 따로 화면에 띄우질 않는데 어떻게 가져오는지 (체크된 값의 정보들)
+ function deleteItemList() {
+	    var checkedProductId = [];
+
+	    // 각 체크된 체크박스의 값을 checkedProductId 배열에 추가
+	    $("input:checkbox[name=cbox]:checked").each(function() {
+	        var productId = $(this).val();
+	        checkedProductId.push(productId);
+	    });
+	    
+	    console.log(checkedProductId);
 	
-	var checkedProductId = []
-	var checkedProductId = $("input:checkbox[name=cbox]:checked").val();
 	if(confirm("장바구니에서 해당 상품을 삭제하시겠습니까?")){
-		location.href="cartLsit?delteList"+checkedProductId;
+		location.href="deleteList?"+"deleteList="+encodeURIComponent(checkedProductId.join(','));
 	}
 } 
  

@@ -1,24 +1,21 @@
 package com.skkcandle.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skkcandle.dto.Cart;
 import com.skkcandle.dto.User;
 import com.skkcandle.service.CartService;
-import com.skkcandle.service.ProductService;
 import com.skkcandle.service.UserService;
-import com.skkcandle.service.UserService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,7 +30,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class CartController {
+/*@RequestMapping("/cartList")
+*/public class CartController {
 	
 	/**
 	 * 의존성 주입
@@ -138,22 +136,20 @@ public class CartController {
 		 return "/cart/cart";
 	 }
 	 
-	 @GetMapping("/delteList")
-	 public String deleteCheckedCart(HttpSession session, Model model, @RequestParam List<Integer> checkedProductId) {
+	 @GetMapping("/deleteList")
+	 public String deleteCheckedCart(HttpSession session, Model model, @RequestParam List<Integer> deleteList) {
 		 User user = (User) session.getAttribute("login");   
 		 int userId = user.getUserId();
-		 
+		 log.info("체크된 프로덕트 id" + deleteList);
 		 log.info("userId" + userId);
-		 log.info("지워질 productId들" + checkedProductId);
-		 
-		 int checkedProductCount = checkedProductId.size();
-		 
-		 
-		 for(int i=0; i<checkedProductCount; i++) {
-			 cartService.deleteCart(userId, checkedProductId);
-		 }
-		 
-		 return "/redirect:/getCartList";
+
+        for (int i = 0; i < deleteList.size(); i++) {
+        	int productId = deleteList.get(i);
+        	log.info("productId" + productId);
+            cartService.deleteCart(userId, productId);
+        }
+      
+		 return "redirect:/getCartList";
 	 }
 }
 
