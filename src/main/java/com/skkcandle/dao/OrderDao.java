@@ -24,4 +24,6 @@ public interface OrderDao {
 	public int getOrderId(int userId);
 	public void changeCheck(int orderId);
 	public void insertOrderDetail(OrderDetail orderDetail);
+	public List<Order> getOrderInfo(int userId);
+	public List<OrderDetail> getOrderDetailByOrderId(int orderId);
 }

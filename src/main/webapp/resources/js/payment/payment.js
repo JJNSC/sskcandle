@@ -654,10 +654,14 @@ $(document).ready(function(){
 				    + "&creditCard=" + encodeURIComponent(creditCard)
 				    + "&phone=" + encodeURIComponent(phone)
 				    + "&withoutBankbook=" + encodeURIComponent(withoutBankbook);
-				/*"payment/payComplete?payAddress="+payAddress+"&productList="+productList
-				+"&quantityList"+quantityList+"&paymethod="+paymethod+"&accountTransfer"+accountTransfer+"&creditCard"+creditCard
-				+"&phone"+phone+"&withoutBankbook"+withoutBankbook;*/
-			}
+				
+			}/*var productList = [];
+
+	        // 각 productId 값을 productList에 추가
+	        $(".productId").each(function() {
+	            var productId = $(this).val();
+	            productList.push(productId);
+	        });*/
 				
 		})
 		

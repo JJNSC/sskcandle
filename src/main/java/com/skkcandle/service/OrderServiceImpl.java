@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skkcandle.dao.OrderDao;
+import com.skkcandle.dao.ProductDao;
+import com.skkcandle.dao.ProductImagesDao;
+import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Order;
 import com.skkcandle.dto.OrderDetail;
+import com.skkcandle.dto.Product;
+import com.skkcandle.dto.ProductImages;
 
 import lombok.extern.slf4j.Slf4j;
 /**
@@ -22,6 +27,12 @@ public class OrderServiceImpl implements OrderService{
 
 	@Autowired
 	private OrderDao orderDao;
+	
+	@Autowired
+	private ProductDao productDao;
+	
+	@Autowired
+	private ProductImagesDao productImagesDao;
 	
 	@Override
 	public List<Map<String, Object>> selectOrderDetail(int userId) {
@@ -53,6 +64,38 @@ public class OrderServiceImpl implements OrderService{
 		orderDao.insertOrderDetail(orderDetail);
 	}
 
+	//BuyList : 한번의 오더에 담긴 정보들
+	@Override
+	public List<BuyList> getBuyList(int userId) {
+		BuyList oneOrder =null;
+		//모든 오더들의 정보
+		List<Order> orderinfo = orderDao.getOrderInfo(userId);
+		int orderId;
+		List<OrderDetail> orderDetail;
+		int productId;
+		List<Product> product = null;
+		List<ProductImages> productImage =null;
+		for(Order order : orderinfo) {
+			//각각의 Order 객체의 orderId를 받아온다.
+			orderId = order.getOrderId();
+			log.info("orderId : "+orderId);
+			//각각의 orderId를 통해서 orderDetail들의 정보를 가져온다.
+			orderDetail = orderDao.getOrderDetailByOrderId(orderId);
+			log.info("orderDetail : "+orderDetail);
+			//각 orderDetail로부터 productId를 받아서 이것으로 상품명,가격, 이미지파일을 가져온다.
+			for(OrderDetail oDetail : orderDetail) {
+				productId = oDetail.getProductId();
+				log.info("productId : "+productId);
+				product.add(productDao.selectDetailProduct(productId));
+				productImage.add(productImagesDao.selectThumbnailPicture(productId));
+			}
+			oneOrder.setOrder(order);
+		}
+		
+		return null;
+	}
+
+	
 	
 
 

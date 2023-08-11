@@ -41,5 +41,14 @@
 		values(#{userId},#{productId},#{orderId},#{quantity})
 	</insert>
 	
+	<!-- 결제리스트를 위해 모든 정보를 받아오자 -->
+	<select id="getOrderInfo" parameterType="int" resultType="Order">
+		select * from orderinfo where userId = #{userId}
+	</select>
+	<select id="getOrderDetailByOrderId" parameterType="int" resultType="OrderDetail">
+		select productId, quantity from orderDetail where orderId = #{orderId}
+	</select>
+	
+	
 	
 </mapper>
