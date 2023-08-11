@@ -6,17 +6,29 @@
 	  insert into cart(userId, productId, count)
 	  values(#{userId}, #{productId}, #{count})
 	</insert>
-
-	<select id="select">
-	
-	</select>
-
     
-     <!--  <select id="listCart" parameterType="int" resultType="cart">  
-	 select cartid, productid, userid, count
-	      from cart
-	      where cartid = #{cartid}
-	      
-   </select> -->
+	<select id="listCart" parameterType="int" resultType="Cart">  
+		select userId, productId, count
+		from cart
+		where userId = #{userId}     
+	</select>
+	
+	<select id="countCart" resultType="int"> <!-- 아이디 하고 메소드 이름하고 똑같아야 한다. -->
+    	select count(*) from cart
+		where productId = #{productId} and userId = #{userId}	
+    </select>
+    
+    <update id="updateCart" parameterType="Cart">
+    	update cart set
+    	count = #{count}
+		where productId = #{productId} and userId = #{userId}	
+    </update>
+    
+    <select id="selectCount" parameterType="Cart" resultType="int">
+    	select count
+    	from cart
+    	where productId = #{productId} and userId = #{userId}
+    </select>
+    
     
 </mapper>

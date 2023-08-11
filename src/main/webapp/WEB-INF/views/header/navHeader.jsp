@@ -66,10 +66,11 @@
 					<i class="bi bi-list"></i>
 				</button>
 				<div class="d-flex">
-					<a class="navbar_short_icon" href="#">
-						<i class="bi bi-cart"> Cart</i>
-					</a>
+					
 					<c:if test="${login != null}">
+						<a class="navbar_short_icon" href="getCartList">
+							<i class="bi bi-cart"> Cart</i>
+						</a>
 						<a class="navbar_short_icon" href="logout">
 							<i class="bi bi-box-arrow-right"> Logout</i>
 						</a>
@@ -78,6 +79,9 @@
 						</a>
 					</c:if>
 					<c:if test="${login == null}">
+						<a class="navbar_short_icon" href="loginForm">
+							<i class="bi bi-cart"> Cart</i>
+						</a>
 						<a class="navbar_short_icon" href="loginForm">
 							<i class="bi bi-person"> Login</i>	
 						</a>
