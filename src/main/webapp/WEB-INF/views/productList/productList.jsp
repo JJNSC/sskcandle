@@ -60,51 +60,24 @@
 			</div>
 			
 			<div class="productList">
-				<div class="item_list">
-					<div class="thumbnail">
-						<a href="#">
-							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
-						</a>
+				<c:forEach var="product" items="${product}">
+					<div class="item_list">
+						<div class="thumbnail">
+							<a href="#">
+								<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
+							</a>
+						</div>
+						<div class="product_info">
+							<ul>
+								<li class="product_name"><a href="#">${product.productName}</a></li>
+								<li class="product_tag"><a href="#">${product.productStock}</a></li>
+								<li class="product_tag"><a href="#">${product.productMaker}</a></li>
+								<li><span class="product_price">${product.productPrice}</span></li>
+							</ul>
+						</div>
 					</div>
-					<div class="product_info">
-						<ul>
-							<li class="product_name"><a href="#">제목</a></li>
-							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
-							<li><span class="price">가격</span></li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="item_list">
-					<div class="thumbnail">
-						<a href="#">
-							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
-						</a>
-					</div>
-					<div class="product_info">
-						<ul>
-							<li class="product_name"><a href="#">제목</a></li>
-							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
-							<li><span class="price">가격</span></li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="item_list">
-					<div class="thumbnail">
-						<a href="#">
-							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
-						</a>
-					</div>
-					<div class="product_info">
-						<ul>
-							<li class="product_name"><a href="#">제목</a></li>
-							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
-							<li><span class="price">가격</span></li>
-						</ul>
-					</div>
-				</div>
-				
+				</c:forEach>
+			
 				<div class="item_list">
 					<div class="thumbnail">
 						<a href="#">

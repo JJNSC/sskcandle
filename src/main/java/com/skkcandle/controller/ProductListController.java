@@ -14,8 +14,13 @@ public class ProductListController {
 	 */
 	@RequestMapping("/productList")
 	public String productListPage() {
+		
+		
+		
 		return "productList/productList";
 	}
+	
+	
 	
 	
 }

@@ -22,11 +22,20 @@ import com.skkcandle.service.ReviewService;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+ * 
+ * 제품 상세 페이지 기능
+ * 리뷰,이미지 등등 여러 요소들을 가져온다
+ *@author 조성진
+ */
 @Slf4j
 @Controller
-//@RequestMapping("/productDetail")
 public class ProductController {
 	
+	/**
+	 * 의존성 주입
+	 */
     @Autowired
     private ProductService ProductService;
     @Autowired
@@ -36,7 +45,7 @@ public class ProductController {
 	   
 	@RequestMapping("/productDetail")
 	public String detailProduct(String pageNo, HttpSession session, Model model,@RequestParam(name="productId", defaultValue= "1") int productId) {
-		log.info("제품번호" + productId);
+		/*log.info("제품번호" + productId);*/
 		Product product = ProductService.detailProduct(productId);
 		model.addAttribute("detailproduct", product);
 		
@@ -46,7 +55,7 @@ public class ProductController {
 		int reviewNum = ReviewService.getReviewNum(productId);
 		model.addAttribute("totalReviewNum", reviewNum);
 		
-		ProductImages productDetail = ProductImagesService.detailImage(productId);
+		ProductImages productDetail = ProductImagesService.detailImage(productId); //상품 대표이미지
 		model.addAttribute("productDetailPicture", productDetail);
 
 		if(productDetail.getProductImage() !=null) {
@@ -54,7 +63,7 @@ public class ProductController {
 			model.addAttribute("base64Img", base64Img);
 		}
 		
-		ProductImages productThumbnail = ProductImagesService.thumbnailImage(productId);
+		ProductImages productThumbnail = ProductImagesService.thumbnailImage(productId); //상품 상세이미지
 		model.addAttribute("productThumbnailPicture", productThumbnail);
 
 		if(productThumbnail.getProductImage() !=null) {
@@ -86,66 +95,6 @@ public class ProductController {
 	      model.addAttribute("reviews", list);
 	      
 		return "/productDetail/detailView";
-	}
-	
-/*	@GetMapping("/getReviewList")
-	public String getReviewList(String pageNo, HttpSession session, Model model) {
-		int productId = 1;
-
-	//브라우저에서 pageNo가 넘어오지않은 경우 
-      if(pageNo == null) {
-         //세선에 저장되어있는지 확인
-         pageNo = (String) session.getAttribute("pageNo");
-         if(pageNo == null) {
-            //저장되어 있지않다면 "1" 로 초기화
-            pageNo = "1";
-         }
-      }
-      //문자열을 정수로 변환
-      int intPageNo = Integer.parseInt(pageNo);
-      //세션에 pageNo를 저장
-      session.setAttribute("pageNo", String.valueOf(pageNo));
-      
-      //int totalRows = boardDao.count();//전체 게시물 수
-      int totalReviewNum = ReviewService.getReviewNum(productId);
-      Pager pager = new Pager(5,5,totalReviewNum,intPageNo);
-       
-      List<Review> list = ReviewService.getList(pager); 
-      
-      model.addAttribute("pager", pager);
-      model.addAttribute("reviews", list);
-      	      
-	return "/productDetail/detailView";
-	
-}*/
-	
-/*	@RequestMapping("/productDetail")
-	public String prodcutReview(Model model) {
-		int productId = 1;
-		List<Review> review = ReviewService.selectReview(productId);
-		model.addAttribute("productviews", review);
-		
-		return "/productDetail/detailView";
-	}*/
-
-	
-	/*
-	
-	   @GetMapping("/detailProduct")
-	   public String detailProduct(int bno, Model model) {
-	      Ch13Board board = boardService.getBoard(bno); //서비스를 거친후 리턴 값을 board에다 담아준다
-	      model.addAttribute("board", board); //jsp에 뿌려주기 위해서 model 객체에 담는다.
-	      
-	      if(board.getBattachdata() != null) { //보드에 모든 값들이 들어가 있다.
-	    	  //0과 1로 구성된 바이너리 데이터를 base64 문자열로 변환
-	    	  String base64Img = Base64.getEncoder().encodeToString(board.getBattachdata());
-	    	  model.addAttribute("base64Img", base64Img);
-	    	  
-	      }
-	      
-	      return "ch13/detailBoard";
-	   }*/
-
-	
+	}	
 }
 

@@ -38,14 +38,14 @@
 			</c:if>
 		</div>   
 		<div class="prod-favorite">
-			<a href="updateWish" class="btn">버튼</a>
+			
 		  <c:choose>
-		  <c:when test="wishNo == 0">
-		  	<span><i class="fas fa-heart" > <a class="prod-favorite-btn" href="updateWish">찜하기</a></i> 찜 </span>
-		  </c:when>
-		  <c:otherwise>
-		    <span><i class="far fa-heart" > <a class="prod-favorite-btn" href="updateWish">찜하기</a></i> 찜 </span>
-		  </c:otherwise>
+              <c:when test="${wishNo == 1}">
+			  	<span><i class="fas fa-heart" ><a href="updateWish?productId=${detailproduct.productId}">찜하기</a></i></span>
+			  </c:when>
+			  <c:otherwise>
+			  	<span><i class="far fa-heart" ><a href="updateWish?productId=${detailproduct.productId}">찜하기</a></i></span>
+			  </c:otherwise>
 		  </c:choose>		
         </div>
 		 
@@ -102,8 +102,8 @@
         	<!-- 장바구니 구매하기 -->
         	
         	<div class="product-buy-footer">
-	        	<form id="cart" method="get" action="cartList"> 
-	        		<input type="hidden" name="productId" value=1>
+	        	<form id="cart" method="get" action=""> 
+	        		<input type="hidden" name="productId" value="${detailproduct.productId}">
 		        	<button class="product-cart-btn" onclick="addCartBtn()" type="button"> 장바구니 담기 </button>
 		            <button class="product-buy-btn" type="button"><span> 바로구매 </span></button>
 		       
