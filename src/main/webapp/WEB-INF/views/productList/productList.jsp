@@ -22,10 +22,107 @@
 	<body>
 		<%@ include file="/WEB-INF/views/header/navHeader.jsp" %>
 		
-		<div>
+		<div class="container">
+			<div class="filter">
+				<div class="pageName">캔들</div>
+				<div class="filter_menu">
+					<ul>
+						<li><a href="#">필터1</a></li>
+						<li><a href="#">필터2</a></li>
+						<li><a href="#">필터3</a></li>
+						<li><a href="#">필터4</a></li>
+						<li><a href="#">필터5</a></li>
+					</ul>
+				</div>
+			</div>
 			
+			<div>
+				<ul class="sort_menu">
+					<li>
+						<a href="#">신상품</a>
+					</li>
+					<li>
+						<a href="#">상품명</a>
+					</li>
+					<li>
+						<a href="#">낮은가격</a>
+					</li>
+					<li>
+						<a href="#">높은가격</a>
+					</li>
+					<li>
+						<a href="#">제조사</a>
+					</li>
+					<li>
+						<a href="#">판매량</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="productList">
+				<div class="item_list">
+					<div class="thumbnail">
+						<a href="#">
+							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
+						</a>
+					</div>
+					<div class="product_info">
+						<ul>
+							<li class="product_name"><a href="#">제목</a></li>
+							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
+							<li><span class="price">가격</span></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="item_list">
+					<div class="thumbnail">
+						<a href="#">
+							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
+						</a>
+					</div>
+					<div class="product_info">
+						<ul>
+							<li class="product_name"><a href="#">제목</a></li>
+							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
+							<li><span class="price">가격</span></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="item_list">
+					<div class="thumbnail">
+						<a href="#">
+							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
+						</a>
+					</div>
+					<div class="product_info">
+						<ul>
+							<li class="product_name"><a href="#">제목</a></li>
+							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
+							<li><span class="price">가격</span></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="item_list">
+					<div class="thumbnail">
+						<a href="#">
+							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
+						</a>
+					</div>
+					<div class="product_info">
+						<ul>
+							<li class="product_name"><a href="#">제목</a></li>
+							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
+							<li><span class="price">가격</span></li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
 		</div>
-		
+
 		<%@ include file="/WEB-INF/views/footer/footer.jsp" %>
 	</body>
 </html>
