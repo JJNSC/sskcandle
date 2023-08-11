@@ -18,7 +18,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mypage.css">
-		<script src="${pageContext.request.contextPath }/resources/js/mypage.js"></script>
 	
 	</head>
 	<%@ include file="../header/navHeader.jsp" %>

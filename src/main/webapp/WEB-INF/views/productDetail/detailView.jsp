@@ -103,6 +103,7 @@
         	
         	<div class="product-buy-footer">
 	        	<form id="cart" method="get" action="cartList"> 
+	        		<input type="hidden" name="productId" value=1>
 		        	<button class="product-cart-btn" onclick="addCartBtn()" type="button"> 장바구니 담기 </button>
 		            <button class="product-buy-btn" type="button"><span> 바로구매 </span></button>
 		       

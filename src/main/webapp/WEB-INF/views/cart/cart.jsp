@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/WEB-INF/views/header/navHeader.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,11 +24,6 @@
 		
 	<body>
 		<div class="wrap">
-		<header>
-			<div class ="logo">
-				<a href="//www.coupang.com/"></a>
-			</div>	
-		</header>
 		<section class="contents-cart">
 			<section class="cart-title">
 				<h1 class="sr-only">장바구니</h1>
@@ -35,80 +33,21 @@
             <tbody id="cartTable-sku">
             	<tr>
             		<td colspan="5" class="cart-bundle-title">
-            			<span class="title rocket">로켓배송 상품 </span>
-            			<span class="rocket-delivery-info">
-               				<span class="rocket-free">무료배송</span>
-               				(19,800원 이상 구매가능)
-            			</span>
-						<div id="lateRocketWowOverNightMessage" class="late-dawn-delivery-message" style="display: none"></div>
         			</td>
             	</tr>
-            	<tr class="cart-deal-item">
-            	<td class="product-select-event">
-            		<input type="checkbox" class="dealSelectChk" name="cbox">
-            	</td>
-            	<td class="cart-deal-item_image">
-            		<a href="https://www.coupang.com/vp/products/7055315061?vendorItemId=73515634019&isAddedCart=">
-            			<img class="product-img" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/3548707957290031-f9be5661-7bfd-4654-9955-67f49c2e7831.jpg">
-            		</a>
-            	</td>
-            	<td class="product-box">
-            		<div class="product-name-part">
-            			<c:forEach var="cart" items="${carts}">
-            				<tr>
-            					<td>${cart.cartId}</td>
-            					<td>${cart.productId}</td>
-								<td>${cart.userId}</td>
-								<td>${cart.count}</td>            				
-            				</tr>
-            			</c:forEach>	
-            		</div>
-            		<div class="option-item-info">
-                    	<span class="arrive-date" style="display: inline-block;">
-	                    	<span class="arrive-date-txt">내일</span>
-	                    	<span class="arrive-date-day">(목) </span>
-	                    	<span class="arrive-date-date">7/6</span>
-	                    	<span class="arrive-date-time"></span>
-	                    	<span class="promise-txt"> 도착 보장 </span>
-                    	</span>
-                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
-                     </div>	
-				<div class="option-price-part">
-						<span class="unit-cost">
-						<span class="unit-price-area">
-							<span class="unit-price">
-								<span class="sr-only">구매가격</span>
-								19,600원
-								</span>
-						 </span>
-						<input type="number" class="edt-qty" value="0" min="0">
-					</span>	
-				</td>
-				
-					
-            	<td class="unit-total-price">
-            		<div class="union-total-sale-price"></div>
-            		<img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송">
-            	</td>
-            	<td class="delivery-fee">
-            		<span class="delivery-fee_free" rowspan="1">무료</span>
-            	</td>
-            	</tr>
+            	<c:forEach var="cartList" items="${cartList}">
+            	
             		<tr class="cart-deal-item">
             	<td class="product-select-event">
             		<input type="checkbox" class="dealSelectChk" name="cbox">
             	</td>
             	<td class="cart-deal-item_image">
-            		<a href="https://www.coupang.com/vp/products/7055315061?vendorItemId=73515634019&isAddedCart=">
             			<img class="product-img" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/3548707957290031-f9be5661-7bfd-4654-9955-67f49c2e7831.jpg">
-            		</a>
             	</td>
             	<td class="product-box">
             		<div class="product-name-part">
-            			<a href="//www.coupang.com/vp/products/7055315061?vendorItemId=73515634019" class="product-name moveProduct modify-color">
             			코코도르 아로마 필라 캔들 대 480g, 잉글리쉬페어프리, 3개
-            			</a>
-            		</div>
+	           		</div>
             		<div class="option-item-info">
                     	<span class="arrive-date" style="display: inline-block;">
 	                    	<span class="arrive-date-txt">내일</span>
@@ -127,61 +66,7 @@
 								19,600원
 								</span>
 						 </span>
-						<input type="number" class="edt-qty" value="0" min="0">
-					</span>	
-				</div> 		
-						<div class="badge-item option-benefit">
-		             		<span class="promo-cash-benefit">
-		                		<i class="promo-cash-benefit__icon"></i>
-		                		<em class="promo-cash-benefit__text">최대 661원 적립</em>
-	           		  		</span>
-	   					</div>	
-	   					
-				</td>
-				
-					
-            	<td class="unit-total-price">
-            		<div class="union-total-sale-price"></div>
-            		<img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송">
-            	</td>
-            	<td class="delivery-fee">
-            		<span class="delivery-fee_free" rowspan="4">무료</span>
-            	</td>
-            	</tr>
-            		<tr class="cart-deal-item">
-            	<td class="product-select-event">
-            		<input type="checkbox" class="dealSelectChk" name="cbox">
-            	</td>
-            	<td class="cart-deal-item_image">
-            		<a href="https://www.coupang.com/vp/products/7055315061?vendorItemId=73515634019&isAddedCart=">
-            			<img class="product-img" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/3548707957290031-f9be5661-7bfd-4654-9955-67f49c2e7831.jpg">
-            		</a>
-            	</td>
-            	<td class="product-box">
-            		<div class="product-name-part">
-            			<a href="//www.coupang.com/vp/products/7055315061?vendorItemId=73515634019" class="product-name moveProduct modify-color">
-            			코코도르 아로마 필라 캔들 대 480g, 잉글리쉬페어프리, 3개
-            			</a>
-            		</div>
-            		<div class="option-item-info">
-                    	<span class="arrive-date" style="display: inline-block;">
-	                    	<span class="arrive-date-txt">내일</span>
-	                    	<span class="arrive-date-day">(목) </span>
-	                    	<span class="arrive-date-date">7/6</span>
-	                    	<span class="arrive-date-time"></span>
-	                    	<span class="promise-txt"> 도착 보장 </span>
-                    	</span>
-                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
-                     </div>	
-				<div class="option-price-part">
-						<span class="unit-cost">
-						<span class="unit-price-area">
-							<span class="unit-price">
-								<span class="sr-only">구매가격</span>
-								19,600원
-								</span>
-						 </span>
-						<input type="number" class="edt-qty" value="0" min="0">
+						<input type="number" class="edt-qty" value="${cartList.count}" min="0">
 					</span>	
 				</div> 		
 						<div class="badge-item option-benefit">
@@ -189,9 +74,9 @@
 		                		<i class="promo-cash-benefit__icon"></i>
 		                		<em class="promo-cash-benefit__text">최대 661원 적립</em>
 	           		  		</span>
-	   					</div>	
-	   					
+	   					</div>
 				</td>
+				</c:forEach>
 				
 					
             	<td class="unit-total-price">
