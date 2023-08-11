@@ -86,10 +86,11 @@ public class OrderServiceImpl implements OrderService{
 			for(OrderDetail oDetail : orderDetail) {
 				productId = oDetail.getProductId();
 				log.info("productId : "+productId);
-				product.add(productDao.selectDetailProduct(productId));
+				/*product = productDao.selectDetailProduct(productId));*/
 				productImage.add(productImagesDao.selectThumbnailPicture(productId));
 			}
 			oneOrder.setOrder(order);
+			oneOrder.setOrderDetail(orderDetail);
 		}
 		
 		return null;
