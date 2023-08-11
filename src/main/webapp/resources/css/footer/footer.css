@@ -29,8 +29,25 @@ footer a {
 	height: 26.67px;
 }
 
+.spy:hover {
+	color: #0056B3;
+}
+
+.spy:focus {
+	color: #0056B3;
+}
+
 .spy img {
 	width: 20px;
 	height: 18.94px;
 	opacity: 0.6;
 }
+
+.spy > img:hover {
+	color: #0056B3;
+}
+
+.spy > img:focus {
+	color: #0056B3;
+}
+

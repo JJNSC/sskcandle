@@ -23,27 +23,17 @@
 	</head>
 	<body>
 		<nav class="navbar row">
-			<!-- <div class="col-5"></div> -->
+
 			<div class="navbar_logo_box col-auto">
 				<a class="navbar_logo" href="/skkcandle">
 					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png" alt="이미지를 로드할 수 없습니다">
 				</a>				
 			</div>
-			
-			<!-- <div class="navbar_search col-5">
-				<form method="get" action="#" class="navbar_search_form">
-					<div class="navbar_search_input">
-						<input type="search" class="form-control" placeholder="Search...">
-					</div>
-					<button class="navbar_search_button" type="submit" class="btn">
-						<i class="bi bi-search"></i>
-					</button>
-				</form>
-			</div> -->
+
 			<div class="col-5 navbar_white_space"></div>
 		</nav>
 		<nav class="navbar2">
-			<!-- <div class="col-3"></div> -->
+
 			<ul class="navbar_menu col-8">
 
 				<c:if test="${login != null}">
@@ -82,9 +72,7 @@
 							<i class="bi bi-person"> Login</i>	
 						</a>
 					</c:if>
-					<!-- <a class="navbar_short_icon" href="loginForm">
-						<i class="bi bi-person"> Login</i>	
-					</a> -->
+
 				</div>
 			</div>
 		</nav>
