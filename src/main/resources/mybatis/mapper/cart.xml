@@ -31,7 +31,7 @@
     	where productId = #{productId} and userId = #{userId}
     </select>
     
-   <delete id="delete" parameterType="int">
+   <delete id="delete" parameterType="Cart">
 		delete 
 		from cart 
 		where userId = #{userId} and productId = #{productId} 

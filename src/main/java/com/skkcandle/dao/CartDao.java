@@ -14,7 +14,7 @@ public interface CartDao {
     public List<Cart> cartMoney();
     public void insert(Cart cart); //장바구니 추가
     public List<Cart> listCart(int userId); //장바구니 목록
-    public void delete(int userId, int productId); //장바구니 개별 삭제
+    public void delete(Cart cart); //장바구니 개별 삭제
     public void deleteAll(String userId); //장바구니 비우기
   //  public void update(Cart cart); 
    // public int sumMoney(String userId); //장바구니 금액 합계

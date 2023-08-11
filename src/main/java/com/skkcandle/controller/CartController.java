@@ -145,8 +145,12 @@ import lombok.extern.slf4j.Slf4j;
 
         for (int i = 0; i < deleteList.size(); i++) {
         	int productId = deleteList.get(i);
+        	Cart cart = new Cart(); 
+        	cart.setUserId(userId);
+        	cart.setProductId(productId);
+        	
         	log.info("productId" + productId);
-            cartService.deleteCart(userId, productId);
+            cartService.deleteCart(cart);
         }
       
 		 return "redirect:/getCartList";
