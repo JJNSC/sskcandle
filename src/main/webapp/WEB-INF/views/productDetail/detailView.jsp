@@ -38,7 +38,7 @@
 			</c:if>
 		</div>   
 		<div class="prod-favorite">
-			
+			<%-- 
 		  <c:choose>
               <c:when test="${wishNo == 1}">
 			  	<span><i class="fas fa-heart" ><a href="updateWish?productId=${detailproduct.productId}">찜하기</a></i></span>
@@ -46,7 +46,7 @@
 			  <c:otherwise>
 			  	<span><i class="far fa-heart" ><a href="updateWish?productId=${detailproduct.productId}">찜하기</a></i></span>
 			  </c:otherwise>
-		  </c:choose>		
+		  </c:choose>		 --%>
         </div>
 		 
 		 <!-- 상품 기본정보 등록란 -->

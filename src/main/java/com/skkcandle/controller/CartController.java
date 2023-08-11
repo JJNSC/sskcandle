@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skkcandle.dto.Cart;
 import com.skkcandle.dto.User;
@@ -137,13 +138,22 @@ public class CartController {
 		 return "/cart/cart";
 	 }
 	 
-	 @GetMapping("/deleteCart")
-	 public String deleteCart(HttpSession session, Model model) {
+	 @GetMapping("/delteList")
+	 public String deleteCheckedCart(HttpSession session, Model model, @RequestParam List<Integer> checkedProductId) {
 		 User user = (User) session.getAttribute("login");   
-		 int userId = user.getUserId();	
+		 int userId = user.getUserId();
+		 
+		 log.info("userId" + userId);
+		 log.info("지워질 productId들" + checkedProductId);
+		 
+		 int checkedProductCount = checkedProductId.size();
 		 
 		 
-		 return "/cart/cart";
+		 for(int i=0; i<checkedProductCount; i++) {
+			 cartService.deleteCart(userId, checkedProductId);
+		 }
+		 
+		 return "/redirect:/getCartList";
 	 }
 }
 

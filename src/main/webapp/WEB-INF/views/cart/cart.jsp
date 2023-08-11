@@ -38,44 +38,45 @@
             	<c:forEach var="cartList" items="${cartList}">
             	
             		<tr class="cart-deal-item">
-            	<td class="product-select-event">
-            		<input type="checkbox" class="dealSelectChk" name="cbox">
-            	</td>
-            	<td class="cart-deal-item_image">
+	            	<td class="product-select-event">
+	            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${cartList.productId}">
+	            	</td>
+	            	<td class="cart-deal-item_image">
             			<img class="product-img" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/3548707957290031-f9be5661-7bfd-4654-9955-67f49c2e7831.jpg">
-            	</td>
-            	<td class="product-box">
-            		<div class="product-name-part">
-            			코코도르 아로마 필라 캔들 대 480g, 잉글리쉬페어프리, 3개
-	           		</div>
-            		<div class="option-item-info">
-                    	<span class="arrive-date" style="display: inline-block;">
-	                    	<span class="arrive-date-txt">내일</span>
-	                    	<span class="arrive-date-day">(목) </span>
-	                    	<span class="arrive-date-date">7/6</span>
-	                    	<span class="arrive-date-time"></span>
-	                    	<span class="promise-txt"> 도착 보장 </span>
-                    	</span>
-                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
-                     </div>	
-				<div class="option-price-part">
-						<span class="unit-cost">
-						<span class="unit-price-area">
-							<span class="unit-price">
-								<span class="sr-only">구매가격</span>
-								19,600원
-								</span>
-						 </span>
-						<input type="number" class="edt-qty" value="${cartList.count}" min="0">
-					</span>	
-				</div> 		
+	            	</td>
+	            	<td class="product-box">
+	            		<input name="productId" value="${cartList.productId}">
+	            		<div class="product-name-part">
+	            			코코도르 아로마 필라 캔들 대 480g, 잉글리쉬페어프리, 3개
+		           		</div>
+	            		<div class="option-item-info">
+	                    	<span class="arrive-date" style="display: inline-block;">
+		                    	<span class="arrive-date-txt">내일</span>
+		                    	<span class="arrive-date-day">(목) </span>
+		                    	<span class="arrive-date-date">7/6</span>
+		                    	<span class="arrive-date-time"></span>
+		                    	<span class="promise-txt"> 도착 보장 </span>
+	                    	</span>
+	                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
+						</div>	
+						<div class="option-price-part">
+							<span class="unit-cost">
+							<span class="unit-price-area">
+								<span class="unit-price">
+									<span class="sr-only">구매가격</span>
+									19,600원
+									</span>
+							</span>
+							<input type="number" class="edt-qty" value="${cartList.count}" min="0">
+						</span>	
+					</div> 		
 						<div class="badge-item option-benefit">
 		             		<span class="promo-cash-benefit ">
 		                		<i class="promo-cash-benefit__icon"></i>
 		                		<em class="promo-cash-benefit__text">최대 661원 적립</em>
 	           		  		</span>
 	   					</div>
-				</td>
+					</td>
 				</c:forEach>
 				
 					
@@ -127,7 +128,7 @@
 						<label>
 							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em>1</em> / 1 )</span>
 						</label>
-						<a href="javascript:void(0);" class="selected-delete" >삭제</a>
+						<button class="selected-delete" onclick="delteItemList()">삭제</button>
 						<a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a>
 					</span>
         </div>

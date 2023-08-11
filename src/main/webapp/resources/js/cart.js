@@ -77,6 +77,18 @@ function deleteItem(){
            emptyCart();
      }
  }﻿; 
+ 
+ //체크 된 상품들 삭제(8월 11일)
+function delteItemList(){ //만약 div 안의 값을 가져온다면 produtId는 따로 화면에 띄우질 않는데 어떻게 가져오는지 (체크된 값의 정보들)
+	
+	var checkedProductId = []
+	var checkedProductId = $("input:checkbox[name=cbox]:checked").val();
+	if(confirm("장바구니에서 해당 상품을 삭제하시겠습니까?")){
+		location.href="cartLsit?delteList"+checkedProductId;
+	}
+} 
+ 
+ 
 
 //주문하기
 function cartItem(){
