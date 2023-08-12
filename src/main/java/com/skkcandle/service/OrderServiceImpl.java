@@ -1,5 +1,7 @@
 package com.skkcandle.service;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -67,33 +69,43 @@ public class OrderServiceImpl implements OrderService{
 	//BuyList : 한번의 오더에 담긴 정보들
 	@Override
 	public List<BuyList> getBuyList(int userId) {
-		BuyList oneOrder =null;
+		List<BuyList> Orders =  new ArrayList<>();
 		//모든 오더들의 정보
 		List<Order> orderinfo = orderDao.getOrderInfo(userId);
-		int orderId;
-		List<OrderDetail> orderDetail;
-		int productId;
-		List<Product> product = null;
-		List<ProductImages> productImage =null;
+		
 		for(Order order : orderinfo) {
+			BuyList oneOrder = new BuyList();
 			//각각의 Order 객체의 orderId를 받아온다.
-			orderId = order.getOrderId();
+			int orderId = order.getOrderId();
 			log.info("orderId : "+orderId);
 			//각각의 orderId를 통해서 orderDetail들의 정보를 가져온다.
-			orderDetail = orderDao.getOrderDetailByOrderId(orderId);
+			List<ProductImages> ProductImages =  new ArrayList<>();
+			List<Product> products = new ArrayList<>();
+			List<OrderDetail> orderDetail = orderDao.getOrderDetailByOrderId(orderId);
 			log.info("orderDetail : "+orderDetail);
 			//각 orderDetail로부터 productId를 받아서 이것으로 상품명,가격, 이미지파일을 가져온다.
 			for(OrderDetail oDetail : orderDetail) {
-				productId = oDetail.getProductId();
+				int productId = oDetail.getProductId();
 				log.info("productId : "+productId);
-				/*product = productDao.selectDetailProduct(productId));*/
-				productImage.add(productImagesDao.selectThumbnailPicture(productId));
+				Product product = productDao.selectDetailProduct(productId);
+				log.info("product : "+product);
+				products.add(product);
+				
+				/*ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
+				if (productImage != null && productImage.getBattachdata() != null) {
+		            String base64Img = Base64.getEncoder().encodeToString(productImage.getBattachdata());
+		            productImage.setBase64Image(base64Img);
+		            ProductImages.add(productImage);
+		        }*/
 			}
 			oneOrder.setOrder(order);
 			oneOrder.setOrderDetail(orderDetail);
+			oneOrder.setProduct(products);
+			/*oneOrder.setProductImages(ProductImages);*/
+			Orders.add(oneOrder);
 		}
 		
-		return null;
+		return Orders;
 	}
 
 	

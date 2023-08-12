@@ -9,6 +9,5 @@ public class Product {
 	private int productPrice;
 	private int productStock;
 	private String productMaker;
-	private byte[] productImage;
 	
 }
