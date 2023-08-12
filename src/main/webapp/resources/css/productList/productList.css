@@ -5,6 +5,10 @@ ul {
 	list-style: none;
 }
 
+li {
+	margin: 0!important;
+}
+
 .filter {
 	margin: 0;
 }
@@ -29,7 +33,7 @@ ul {
     display: inline-block;
     width: auto;
     margin: 0 6px;
-    padding: 0;
+    padding: 0 5px;
 }
 
 .filter_menu > ul > li > a {
@@ -44,6 +48,11 @@ ul {
     border-radius: 22px;
     transition: all 0.3s;
     text-decoration: none;
+}
+
+.filter_menu ul > li > a.active {
+	color: #000;
+	font-weight: bold;
 }
 
 .sort_menu {
@@ -140,4 +149,9 @@ ul {
 .product_price {
 	display: flex;
 	justify-content: center;
+}
+
+.product_tag > a {
+	color: #808080 !important;
+	font-size: 12px;
 }

@@ -35,13 +35,13 @@
 				<tbody>
 					<c:forEach var="orderProduct" items="${BuyList.product }" varStatus="a">
 					    <c:forEach var="orderDetail" items="${BuyList.orderDetail }" varStatus="b">
-					        <c:if test="${a.index == b.index } ">
+					        <c:if test="${a.index == b.index}">
 					            <tr>
-					            	<td>${a.index } </td>
-					            	<td>${b.index } </td>
-					                <td>${orderProduct.productName }</td>
-					                <td>${orderProduct.productPrice }</td>
-					                <td>${orderDetail.quantity } 개</td>
+					                <td>${a.index}</td>
+					                <td>${b.index}</td>
+					                <td>${orderProduct.productName}</td>
+					                <td>${orderProduct.productPrice}</td>
+					                <td>${orderDetail.quantity} 개</td>
 					            </tr>
 					        </c:if>
 					    </c:forEach>

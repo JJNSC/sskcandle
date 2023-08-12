@@ -27,16 +27,17 @@
 				<div class="pageName">캔들</div>
 				<div class="filter_menu">
 					<ul>
-						<li><a href="#">필터1</a></li>
-						<li><a href="#">필터2</a></li>
-						<li><a href="#">필터3</a></li>
-						<li><a href="#">필터4</a></li>
-						<li><a href="#">필터5</a></li>
+						<li><a href="" class="active">추천순</a></li>
+						<li><a href="">최신순</a></li>
+						<li><a href="">낮은가격</a></li>
+						<li><a href="">높은가격</a></li>
+						<li><a href="">브랜드</a></li>
 					</ul>
 				</div>
 			</div>
 			
-			<div>
+			<%-- 다른 스타일 필터메뉴(보류) --%>
+			<%-- <div>
 				<ul class="sort_menu">
 					<li>
 						<a href="#">신상품</a>
@@ -57,7 +58,7 @@
 						<a href="#">판매량</a>
 					</li>
 				</ul>
-			</div>
+			</div> --%>
 			
 			<div class="productList">
 				<c:forEach var="product" items="${product}">
@@ -69,6 +70,7 @@
 						</div>
 						<div class="product_info">
 							<ul>
+								<li class="product_tag"><a href="#">${product.productMaker}</a></li>
 								<li class="product_name"><a href="productDetail?productId=${productId}">${product.productName}</a></li>
 								<%-- <li class="product_tag"><a href="#">Stock: ${product.productStock}</a></li>
 								<li class="product_tag"><a href="#">Maker: ${product.productMaker}</a></li> --%>
@@ -77,24 +79,6 @@
 						</div>
 					</div>
 				</c:forEach>
-				
-				
-			
-				<!-- <div class="item_list">
-					<div class="thumbnail">
-						<a href="#">
-							<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTdfNjQg/MDAxNTM5NzU3NDY3NTcz.muUzv_uWvcnE73aUXmauvR-eCUk2D8ve7UqTr2rqLpcg.h_-YxNV14CBhLvlDxksVBaeQKDrrqZfdsJetA0N8HfAg.JPEG.dangbi052/1539755554548.jpg?type=w800">
-						</a>
-					</div>
-					<div class="product_info">
-						<ul>
-							<li class="product_name"><a href="#">제목</a></li>
-							<li class="product_tag"><a href="#">태그 및 간단한 설명</a></li>
-							<li><span class="price">가격</span></li>
-						</ul>
-					</div>
-				</div> -->
-				
 			</div>
 		</div>
 
