@@ -321,9 +321,11 @@
         
         .prod_image img{
         	float: left;
-        	width : 600px;
-        	text-align: center;
+        	width : 400px;
+        	height: 480px;
+			align: center;
         	display: inline-block;
+        	margin-right: 10px;
         }
         
         /*상품 소개 div */
@@ -683,6 +685,7 @@
 			
 			/*상품 소개 이미지*/
 			.subType_image {
+			margin-top: 10px;
 			text-align: center;
         	flex-direction: column;
 		    width: 1320px;

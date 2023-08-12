@@ -109,7 +109,11 @@ import lombok.extern.slf4j.Slf4j;
 		 } else if(stockCart == 0) {
 			 cartService.insertCart(cart);	 
 		 }
-		 return "redirect:/productDetail";
+		 
+		 log.info("취소 버튼 잘 눌렸나 userId" + userId);
+		 log.info("취소 버튼 잘 눌렸나 productId" + productId);
+
+		 return "redirect:/productDetail?productId=" + productId;
 	 }
 	 
 	 /**

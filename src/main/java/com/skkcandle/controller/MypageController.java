@@ -67,7 +67,7 @@ public class MypageController {
 		}else if(subpage.equals("myshoppinglist")) {
 			int userId = user.getUserId();
 			List<BuyList> orderList = orderService.getBuyList(userId);
-			log.info("orderList : " +orderList);
+			
 			model.addAttribute("orderList", orderList);
 			
 		//내 리뷰 리스트	

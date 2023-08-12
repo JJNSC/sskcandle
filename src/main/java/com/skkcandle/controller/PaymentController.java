@@ -34,7 +34,7 @@ public class PaymentController {
 	private OrderService orderService;
 	
 	@RequestMapping("")
-	public String main(HttpSession session, Model model ) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
+	public String main(HttpSession session, Model model/*, @RequestParam List<Integer> buyCartList*/ ) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
 		log.info("일단 시작");
 		//로그인 한 사람의 정보 
 		User sessionUser = (User) session.getAttribute("login"); //추후에 login 이름으로 User 형식으로 세션에 setAttribute할거임(로그인할때)

@@ -42,8 +42,9 @@
 	            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${cartList.productId}">
 	            	</td>
 	            	<td class="cart-deal-item_image">
-            			<img class="product-img" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/3548707957290031-f9be5661-7bfd-4654-9955-67f49c2e7831.jpg">
-	            	</td>
+            			<c:if test="${productThumbnailPicture.productImage != null }"> 
+					       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Thb}"/>
+						</c:if>
 	            	<td class="product-box">
 	            		<input name="productId" value="${cartList.productId}">
 	            		<div class="product-name-part">
@@ -168,8 +169,8 @@
                 </div>
             </div>
             <div class="order-buttons">
-                <a id="continueShoopingBtn" class="goShopping logging" href="//www.coupang.com" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
-                <a href="javascript:void(0);" class="goPayment narrow" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=true">구매하기</a>
+                <a id="continueShoopingBtn" class="goShopping logging" href="productList">계속 쇼핑하기</a>
+                <button id="btnPay" class="goPayment narrow" onclick="buyCartList()">구매하기</button>
                 <div class="item-disabled" style="display: none;"></div>
             </div>
    		</div>

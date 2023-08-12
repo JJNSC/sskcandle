@@ -91,17 +91,17 @@ public class OrderServiceImpl implements OrderService{
 				log.info("product : "+product);
 				products.add(product);
 				
-				/*ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
-				if (productImage != null && productImage.getBattachdata() != null) {
-		            String base64Img = Base64.getEncoder().encodeToString(productImage.getBattachdata());
+				ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
+				if (productImage != null && productImage.getProductImage() != null) {
+		            String base64Img = Base64.getEncoder().encodeToString(productImage.getProductImage());
 		            productImage.setBase64Image(base64Img);
 		            ProductImages.add(productImage);
-		        }*/
+		        }
 			}
 			oneOrder.setOrder(order);
 			oneOrder.setOrderDetail(orderDetail);
 			oneOrder.setProduct(products);
-			/*oneOrder.setProductImages(ProductImages);*/
+			oneOrder.setProductImages(ProductImages);
 			Orders.add(oneOrder);
 		}
 		
