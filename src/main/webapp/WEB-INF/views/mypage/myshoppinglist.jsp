@@ -27,21 +27,37 @@
 				<thead>
 					<tr>
 						<td>${BuyList.order.orderId }</td>
+						<td>주소 : ${BuyList.order.shippingAddress }</td>
+						<td>주문 날짜 : <fmt:formatDate value="${BuyList.order.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
 						<td>${BuyList.order.orderStatus }</td>
-						<td><fmt:formatDate value="${BuyList.order.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
-						<td>${BuyList.order.shippingAddress }</td>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="orderProduct" items="${BuyList.product }" varStatus="a">
 					    <c:forEach var="orderDetail" items="${BuyList.orderDetail }" varStatus="b">
-					        <c:if test="${a.index == b.index } ">
+					    	<c:if test="${(a.index==b.index)}">
 					            <tr>
-					            	<td>${a.index } </td>
-					            	<td>${b.index } </td>
-					                <td>${orderProduct.productName }</td>
-					                <td>${orderProduct.productPrice }</td>
-					                <td>${orderDetail.quantity } 개</td>
+					            	<td>
+					                    <c:forEach var="productImage" items="${BuyList.productImages}" varStatus="c">
+					                        <c:if test="${c.index==a.index}">
+					                            <img src="data:${productImage.pattachtype};base64, ${productImage.base64Image}" width="120"/>
+					                        </c:if>
+					                    </c:forEach>
+					                </td>
+					                <td>
+					                	<br><br>
+					                	${orderProduct.productName}
+					                </td>
+					                <td>
+					                	<br>
+					                	${orderProduct.productPrice}원
+					                	<br><br>
+					                	${orderDetail.quantity} 개
+					                </td>
+					                <td>
+					                	<br><br>
+					                	${orderProduct.productPrice*orderDetail.quantity} 원
+					                </td>
 					            </tr>
 					        </c:if>
 					    </c:forEach>

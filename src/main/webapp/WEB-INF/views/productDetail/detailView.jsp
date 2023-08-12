@@ -223,7 +223,7 @@
 		        </div>
 	    </article>  
     </c:forEach>
-	  <tr>
+	<tr>
 	   <td colspan="4" class="text-center">
 		    <div>
 		        <a class="btn btn-outline-primary btn-sm" href="productDetail?productId=${review.productId}&pageNo=1">처음</a>
