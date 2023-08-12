@@ -22,65 +22,67 @@
 	</head>
 	<%@ include file="../header/navHeader.jsp" %>
 	<body>
-	<div style="max-width:1320px; margin:0 7%;  display:inline-block;">
-		<div class="wrap" >
-			<!-- body left part -->
-			<div id ="nav-left">
-				<div id = "myMenu" style="border-top: 1px solid rgb(225, 228, 230);">
-					<nav>
-						<div >
-							<div class="myMenuTitle"><img src="data:${userinfo.userAttachType};base64, ${base64Img}" width="120"/> </div>
-							<div>
-								<ul>
-									<li>이름 : ${userinfo.userName}</li>
-									<li>메일주소 :<br> ${userinfo.userEmail}</li>
-									<li>등급 : ${userinfo.userGrade}</li>
-									<li>가입날짜 : <br><fmt:formatDate value="${userinfo.userJoinDate}" pattern="yyyy-MM-dd"></fmt:formatDate></li>
-									<li>포인트 : ${userinfo.userPoint}</li>
-								</ul>
+	<div class="container"> 
+		<div style="max-width:1320px; margin:0 auto;  display:inline-block;">
+			<div class="wrap" >
+				<!-- body left part -->
+				<div id ="nav-left">
+					<div id = "myMenu" style="border-top: 1px solid rgb(225, 228, 230);">
+						<nav>
+							<div >
+								<div class="myMenuTitle"><img src="data:${userinfo.userAttachType};base64, ${base64Img}" width="120"/> </div>
+								<div>
+									<ul>
+										<li>이름 : ${userinfo.userName}</li>
+										<li>메일주소 :<br> ${userinfo.userEmail}</li>
+										<li>등급 : ${userinfo.userGrade}</li>
+										<li>가입날짜 : <br><fmt:formatDate value="${userinfo.userJoinDate}" pattern="yyyy-MM-dd"></fmt:formatDate></li>
+										<li>포인트 : ${userinfo.userPoint}</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div>
-							<a href="mypage?subpage=myshoppinglist"  class="myMenuTitle">내 구매 리스트</a>
-						</div>
-						<div>
-							<a href="mypage?subpage=mywishlist"  class="myMenuTitle">내 찜 리스트</a>
-						</div>
-						<div >
-							<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a> 
-						</div>
-						<div>
-							<a href="mypage?subpage=myinfocheck" class="myMenuTitle">내 정보 확인/수정</a>
-						</div>
-						<div style="border-bottom: 0px solid rgb(225, 228, 230);">
-							<a href="mypage?subpage=withdraw" class="myMenuTitle">회원 탈퇴</a>
-						</div>
-					</nav>
+							<div>
+								<a href="mypage?subpage=myshoppinglist"  class="myMenuTitle">내 구매 리스트</a>
+							</div>
+							<div>
+								<a href="mypage?subpage=mywishlist"  class="myMenuTitle">내 찜 리스트</a>
+							</div>
+							<div >
+								<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a> 
+							</div>
+							<div>
+								<a href="mypage?subpage=myinfocheck" class="myMenuTitle">내 정보 확인/수정</a>
+							</div>
+							<div style="border-bottom: 0px solid rgb(225, 228, 230);">
+								<a href="mypage?subpage=withdraw" class="myMenuTitle">회원 탈퇴</a>
+							</div>
+						</nav>
+					</div>
+					
 				</div>
-				
+				<!-- body right part -->
+				<div id="body-right">
+					<c:if test="${subpage.equals('myshoppinglist') }">
+						<%@ include file="myshoppinglist.jsp" %>
+					</c:if>
+					<c:if test="${subpage.equals('myreviewlist') }">
+						<%@ include file="myreviewlist.jsp" %>
+					</c:if>
+					<c:if test="${subpage.equals('myinfocheck') }">
+						<%@ include file="myinfocheck.jsp" %>
+					</c:if>
+					<c:if test="${subpage.equals('myinfo') }">
+						<%@ include file="myinfo.jsp" %>
+					</c:if>
+					<c:if test="${subpage.equals('mywishlist') }">
+						<%@ include file="mywishlist.jsp" %>
+					</c:if>
+					<c:if test="${subpage.equals('withdraw') }">
+						<%@ include file="withdraw.jsp" %>
+					</c:if>
+				</div>
+			
 			</div>
-			<!-- body right part -->
-			<div id="body-right">
-				<c:if test="${subpage.equals('myshoppinglist') }">
-					<%@ include file="myshoppinglist.jsp" %>
-				</c:if>
-				<c:if test="${subpage.equals('myreviewlist') }">
-					<%@ include file="myreviewlist.jsp" %>
-				</c:if>
-				<c:if test="${subpage.equals('myinfocheck') }">
-					<%@ include file="myinfocheck.jsp" %>
-				</c:if>
-				<c:if test="${subpage.equals('myinfo') }">
-					<%@ include file="myinfo.jsp" %>
-				</c:if>
-				<c:if test="${subpage.equals('mywishlist') }">
-					<%@ include file="mywishlist.jsp" %>
-				</c:if>
-				<c:if test="${subpage.equals('withdraw') }">
-					<%@ include file="withdraw.jsp" %>
-				</c:if>
-			</div>
-		
 		</div>
 	</div>
 		<%@ include file="/WEB-INF/views/footer/footer.jsp" %> 

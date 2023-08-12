@@ -4,8 +4,8 @@
 	
 	<select id="selectDetailProduct" parameterType="int" resultType="Product">  
 	  select productId, productName, productPrice, productStock, productMaker
-	      from product
-	      where productId = #{productId}
+	  from product
+      where productId = #{productId}
    </select>
    
 </mapper>

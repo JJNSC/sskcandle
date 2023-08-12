@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Review;
 import com.skkcandle.dto.User;
+import com.skkcandle.service.OrderService;
 import com.skkcandle.service.ReviewService;
 import com.skkcandle.service.UserService;
 import com.skkcandle.service.UserService.LoginResult;
@@ -40,6 +42,9 @@ public class MypageController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping("/mypage")
 	public String mypage(@RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
@@ -60,9 +65,10 @@ public class MypageController {
 			model.addAttribute("errMsg", errMsg);
 		//내 구매 리스트 페이지	
 		}else if(subpage.equals("myshoppinglist")) {
-			
-			
-			
+			int userId = user.getUserId();
+			List<BuyList> orderList = orderService.getBuyList(userId);
+			log.info("orderList : " +orderList);
+			model.addAttribute("orderList", orderList);
 			
 		//내 리뷰 리스트	
 		}else if(subpage.equals("myreviewlist")) {

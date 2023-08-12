@@ -20,4 +20,6 @@ public class ProductImages {
 	//byte[] <- MyBatis -> Blob  sql 에서는 blob 만 사용가능 한데 mybatis 를 거치면 blob은 byte로 byte는 blob 으로 타입 변환이 이루어 지므로  sql에 blob으로 넘기기 위한 장치 ->
 	private byte[] battachdata;
 	private String usage;
+	
+	private String base64Image;
 }
