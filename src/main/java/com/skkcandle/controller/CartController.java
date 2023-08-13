@@ -132,7 +132,6 @@ import lombok.extern.slf4j.Slf4j;
 		 User user = (User) session.getAttribute("login");   
 		 int userId = user.getUserId();	
 		 
-		 /*log.info("유저 번호" + userId);*/		 
 		 
 		 List<CartList> cartList = cartService.getCartList(userId);
 		 model.addAttribute("cartList", cartList);
