@@ -36,5 +36,10 @@
 		from cart 
 		where userId = #{userId} and productId = #{productId} 
 	</delete>
-    
+	
+	<select id="getListCart" parameterType="int" resultType="int">
+		select productId
+		from cart
+		where userId = #{userId}  
+	</select>
 </mapper>

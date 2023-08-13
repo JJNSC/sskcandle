@@ -125,6 +125,10 @@ header{
     vertical-align: top;
     z-index: 100;
 }
+
+.cart-deal-item_image > img{
+	width:150px;
+}
  
  .product-name-part {
  	border-bottom: 1px solid #e2e5e7;

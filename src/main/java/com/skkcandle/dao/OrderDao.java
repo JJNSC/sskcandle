@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.skkcandle.dto.Order;
 import com.skkcandle.dto.OrderDetail;
+import com.skkcandle.dto.Pager;
 /**
  * 
  * @author 김종진
@@ -24,6 +25,7 @@ public interface OrderDao {
 	public int getOrderId(int userId);
 	public void changeCheck(int orderId);
 	public void insertOrderDetail(OrderDetail orderDetail);
-	public List<Order> getOrderInfo(int userId);
+	public List<Order> getOrderInfo(Pager pager);
 	public List<OrderDetail> getOrderDetailByOrderId(int orderId);
+	public int getOrderCount(int userId);
 }

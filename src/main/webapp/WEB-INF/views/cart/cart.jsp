@@ -35,21 +35,28 @@
             		<td colspan="5" class="cart-bundle-title">
         			</td>
             	</tr>
-            	<c:forEach var="cartList" items="${cartList}">
             	
-            		<tr class="cart-deal-item">
+           	<c:forEach var="CartList" items="${cartList}" varStatus="d">
+	           	<c:forEach var="ProductList" items="${CartList.productInfo}" varStatus="a">
+	           		<c:if test="${a.index == d.index}">
+	           		<c:forEach var="ImageList" items="${CartList.productImages}" varStatus="b">
+	           			<c:if test="${a.index == b.index}">
+	           				<c:forEach var="QuantityList" items="${CartList.quantity}" varStatus="c"> 
+	           					<c:if test="${a.index == c.index}">
+           	
+           		<tr class="cart-deal-item">
+            	 			
 	            	<td class="product-select-event">
-	            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${cartList.productId}">
+	            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}">
 	            	</td>
 	            	<td class="cart-deal-item_image">
-            			<c:if test="${productThumbnailPicture.productImage != null }"> 
-					       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Thb}"/>
+            			<c:if test="${ImageList.productImage != null }"> 
+					       <img src="data:${ImageList.pattachtype};base64, ${ImageList.base64Image}"/>
 						</c:if>
 	            	<td class="product-box">
-	            		<input name="productId" value="${cartList.productId}">
 	            		<div class="product-name-part">
-	            			코코도르 아로마 필라 캔들 대 480g, 잉글리쉬페어프리, 3개
-		           		</div>
+							${ProductList.productName}		           		
+						</div>
 	            		<div class="option-item-info">
 	                    	<span class="arrive-date" style="display: inline-block;">
 		                    	<span class="arrive-date-txt">내일</span>
@@ -65,10 +72,10 @@
 							<span class="unit-price-area">
 								<span class="unit-price">
 									<span class="sr-only">구매가격</span>
-									19,600원
+									${ProductList.productPrice}원
 									</span>
 							</span>
-							<input type="number" class="edt-qty" value="${cartList.count}" min="0">
+							<input type="number" class="edt-qty" value="${QuantityList}" min="0">
 						</span>	
 					</div> 		
 						<div class="badge-item option-benefit">
@@ -78,6 +85,13 @@
 	           		  		</span>
 	   					</div>
 					</td>
+					</tr>	
+						</c:if>
+							</c:forEach>
+							</c:if>
+						</c:forEach>
+						</c:if>
+					</c:forEach>
 				</c:forEach>
 				
 					

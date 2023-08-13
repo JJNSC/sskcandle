@@ -42,11 +42,22 @@
 	</insert>
 	
 	<!-- 결제리스트를 위해 모든 정보를 받아오자 -->
-	<select id="getOrderInfo" parameterType="int" resultType="Order">
-		select * from orderinfo where userId = #{userId} order by orderId desc
+	<select id="getOrderInfo" parameterType="Pager" resultType="Order">
+		<![CDATA[
+			SELECT rnum, orderId, userId, orderDate, orderStatus, shippingAddress, arriveDate 
+			FROM ( SELECT rownum rnum, orderId, userId, orderDate, orderStatus, shippingAddress, arriveDate 
+			    FROM ( SELECT orderId, userId, orderDate, orderStatus, shippingAddress, arriveDate 
+			        FROM ORDERINFO WHERE USERID = #{userId} ORDER BY ORDERID DESC ) 
+			    WHERE ROWNUM <=#{endRowNo} ) 
+			WHERE rnum >=#{startRowNo} 
+		]]>
 	</select>
 	<select id="getOrderDetailByOrderId" parameterType="int" resultType="OrderDetail">
 		select productId, quantity from orderDetail where orderId = #{orderId} order by orderId desc
+	</select>
+	<!-- 결제리스트 페이징을 위해 총 결제 횟수 가져오기 -->
+	<select id="getOrderCount" parameterType="int" resultType="int">
+		select count(*) from orderinfo where userId = #{userId}
 	</select>
 	
 	
