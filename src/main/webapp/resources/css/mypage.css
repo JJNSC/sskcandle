@@ -8,6 +8,15 @@ a{
 	color:black;
 }
 
+hr{
+	margin-top:0;
+	margin-bottom:40px;
+}
+hr :last-child{
+	margin-top:0;
+	margin-bottom:20px;
+}
+
 #mainspace{
 	width:1320px;
 }

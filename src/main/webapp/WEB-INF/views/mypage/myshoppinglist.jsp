@@ -8,7 +8,7 @@
 	<head>
 	
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mypage.css">
-		<script src="${pageContext.request.contextPath }/resources/js/mypage.js"></script>
+		<script src="${pageContext.request.contextPath }/resources/js/mypage/myshoppinglist.js"></script>
 	<style>
 	.form-control {
 		height:auto;
@@ -20,7 +20,8 @@
 	
 	</head>
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
-			<h3>내 구매 목록</h3>
+			<h3>내 구매 목록</h3> 
+			<span style="float:right;">${pager.pageNo}/${pager.totalPageNo} </span>
 			<br>
 			<c:forEach var="BuyList" items="${orderList }" >
 			<table class="table table-sm" style="margin-bottom:0;">
@@ -71,8 +72,34 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<hr style="margin-top:0; margin-bottom:40px;">
+			<hr >
 			</c:forEach>
+			<div style="margin:auto; padding:0 auto; ">
+				<table style="margin-left:28%; ">
+					<tr>
+						<td colspan="4" class="text-center">
+							<div>
+								<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=1">처음</a>
+								<c:if test="${pager.groupNo>1}">
+									<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${pager.startPageNo-1}">이전</a>
+								</c:if>
+								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+									<c:if test="${pager.pageNo != i}">
+										<a class="btn  btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+									</c:if>
+									<c:if test="${pager.pageNo == i}">
+										<a class="btn btn-sm" style="color:#20c997;" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+									</c:if>
+								</c:forEach>
+								<c:if test="${pager.groupNo<pager.totalGroupNo}">
+									<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${pager.endPageNo+1}">다음</a>
+								</c:if>
+								<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${pager.totalPageNo}">맨끝</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>

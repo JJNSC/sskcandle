@@ -58,7 +58,6 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void deleteCart(Cart cart) {
-		
 		CartDao.delete(cart);		
 	}
 

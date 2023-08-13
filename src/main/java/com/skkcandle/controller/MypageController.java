@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.BuyList;
+import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Review;
 import com.skkcandle.dto.User;
 import com.skkcandle.service.OrderService;
@@ -47,8 +48,10 @@ public class MypageController {
 	private OrderService orderService;
 
 	@RequestMapping("/mypage")
-	public String mypage(@RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
+	public String mypage(String shoppingPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
 						HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		
 		log.info("subpage : " + subpage);
 		model.addAttribute("subpage", subpage);
 		
@@ -63,11 +66,36 @@ public class MypageController {
 		//내정보 확인/수정 페이지
 		if(subpage.equals("myinfocheck")) {
 			model.addAttribute("errMsg", errMsg);
+			
 		//내 구매 리스트 페이지	
 		}else if(subpage.equals("myshoppinglist")) {
-			int userId = user.getUserId();
-			List<BuyList> orderList = orderService.getBuyList(userId);
+			log.info("shoppingPageNo : "+shoppingPageNo );
+			// 브라우저에서 pageNo가 넘어오지 않았을 경우
+			if (shoppingPageNo == null) {
+				// 세션에 저장되어 있는지 확인
+				shoppingPageNo = (String) session.getAttribute("pageNo");
+				if (shoppingPageNo == null) {
+					// 저장되어 있지 않다면 1로 초기화
+					shoppingPageNo = "1";
+				}
+			}
+			// 문자열로 정수를 변환
+			int intpageNo = Integer.parseInt(shoppingPageNo);
+			// 세션에 pageNo를 저장
+			session.setAttribute("pageNo", String.valueOf(shoppingPageNo));
 			
+			int userId = user.getUserId();
+
+			//페이징
+			int totalBoardNum = orderService.getOrderCount(userId);
+			Pager pager = new Pager(3, 5, totalBoardNum, intpageNo);
+			
+			//구매 리스트 가져오기전에 pager에 userId 세팅하기 
+			pager.setUserId(userId);
+			
+			List<BuyList> orderList = orderService.getBuyList(pager);
+			
+			model.addAttribute("pager", pager);
 			model.addAttribute("orderList", orderList);
 			
 		//내 리뷰 리스트	
