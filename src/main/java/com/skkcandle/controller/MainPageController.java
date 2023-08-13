@@ -12,14 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.skkcandle.dto.ProductList;
 import com.skkcandle.service.ProductListService;
 
-@Controller
-public class HomeController {
-	
-	@Resource
-	private ProductListService productListService;
+import lombok.extern.slf4j.Slf4j;
 
-	@RequestMapping("/")
-	public String index(Model model) {
+@Controller
+@Slf4j
+public class MainPageController {
+	
+	/*@Resource
+	private ProductListService productListService;
+	
+	*//**
+	 * '/mainPage' 경로로 들어오는 요청을 처리
+	 * @return mainPage.jsp 페이지로 이동
+	 *//*
+	@RequestMapping("/mainPage")
+	public String productListPage(Model model) {
 		List<ProductList> productList = productListService.getProductList();
 		
 		for (ProductList product : productList) {
@@ -29,18 +36,10 @@ public class HomeController {
         }
 		
 		model.addAttribute("product", productList);
-		return "index";
-	}
+		return "mainPage/mainPage";
+	}*/
 	
-	@RequestMapping("/header")
-	public String header() {
-		return "header";
-	}
 	
-	@RequestMapping("/newHeader")
-	public String newHeader() {
-		return "newHeader";
-	}
 	
 	
 }

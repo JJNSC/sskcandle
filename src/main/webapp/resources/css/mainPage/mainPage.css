@@ -4,11 +4,15 @@ a {
 	text-decoration: none;
 }
 
-#page {
-    position: relative;
-    overflow-x: hidden;
-    width: 100%;
-    height: 100%;
+.swiper_img {
+	margin: 50px 0;
+	width: 100%;
+	height: 600px;
+}
+
+.swiper_img > img {
+	width: 100%;
+	height: 100%;
 }
 
 .product-entry {
@@ -36,4 +40,9 @@ a {
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
+}
+
+.prod-img > img {
+	width: 250px;
+	height: 250px;
 }

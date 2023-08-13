@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,18 @@
 		<script src="${pageContext.request.contextPath}/resources/js/mainPage/mainPage.js"></script>
 	</head>
 	<body>
+	
+		<div class="swiper_slide">
+			<div class="swiper_img">
+				<img src="${pageContext.request.contextPath}/resources/images/mainPage/wood_wick.png" />
+				<img src="${pageContext.request.contextPath}/resources/images/mainPage/yankee_candle.png" />
+				<img src="${pageContext.request.contextPath}/resources/images/mainPage/spaas_candle.jpg" />
+				<img src="${pageContext.request.contextPath}/resources/images/mainPage/light_up.jpg" />
+			</div>
+		</div>
+		
 		<div class="container">
+		
 			<div class="row">
 				<div class="col-sm-12 text-center mb-5 mt-5">
 					<h2>이런 캔들은 어떠세요?</h2>
@@ -27,100 +39,20 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
+				<c:forEach var="product" items="${product}">
+					<div class="col-lg-3 mb-4 text-center productList">	
+						<div class="border product-entry">
+							<a href="productDetail?productId=${product.productId}" class="prod-img">
+								<img src="data:image/jpeg;base64,${product.base64Image}" />
+							</a>
+							<div class="desc">
+								<a href="#">${product.productMaker}</a>
+								<h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
+								<span class="price">&#8361;${product.productPrice}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3 mb-4 text-center">	
-					<div class="border product-entry">
-						<a href="#" class="prod-img">
-							<img src="${pageContext.request.contextPath}/resources/images/mainPage/maybecandle.jpg" class="img-fluid" alt="식물성양초">
-						</a>
-						<div class="desc">
-							<h2><a href="#">침향밀대초 식물성양초(고급 1박스40개) 밀초 법당초 기도양초 해광양초 불교용품</a></h2>
-							<span class="price">100,000원</span>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</body>

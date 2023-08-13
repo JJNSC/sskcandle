@@ -1,3 +1,23 @@
+$(init);
+
+function init(sortType) {
+	const productList = $(".productList");
+    const items = productList.children(".product-entry");
+    
+    items.sort(function(a, b) {
+    	let valueA, valueB;
+    	
+    	valueA = Math.random();
+        valueB = Math.random();
+        
+        return valueA > valueB ? 1 : -1;
+    });
+    productList.empty().append(items);
+};
+
+
+
+
 // 2초마다 광고 이미지 변경
 $(function() {
 	// 이미지 인덱스, 타이머, hover상태 표시
