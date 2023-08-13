@@ -82,14 +82,18 @@
 						<h2>배송 상품</h2>
 						<div id="orderplus">
 						<table class="consumerInfo">
-							<c:forEach var="product" items="${orderlist}" >
-								<tr>
-									<th><input type="hidden" class="productId" value="${product.productId }">${product.productName}</th>
-									<td>${product.productPrice }원 / 
-										<input type="hidden" class="productQuantity" value="${product.quantity }">${product.quantity } 개
-									</td>
-									<td>합계 : <span class="pricesPerProduct">${product.productPrice*product.quantity}</span> 원</td>
-								</tr>
+							<c:forEach var="productinfo" items="${productinfo}" varStatus="a">
+								<c:forEach var="productQuantity" items="${productQuantity}" varStatus="b" >
+									<c:if test="${a.index==b.index}">
+									<tr>
+										<th><input type="hidden" class="productId" value="${productinfo.productId }">${productinfo.productName}</th>
+										<td>${productinfo.productPrice }원 / 
+											<input type="hidden" class="productQuantity" value="${productQuantity }">${productQuantity} 개
+										</td>
+										<td>합계 : <span class="pricesPerProduct">${productinfo.productPrice*productQuantity}</span> 원</td>
+									</tr>
+									</c:if>
+								</c:forEach>
 							</c:forEach>
 						</table>
 						</div>

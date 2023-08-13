@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
- * @author 조성진
+ * @author 조성진, 김종진
  * 
  *insertCart cart에 productId,userId,count를 insert
  *getCartList  cart담긴 데이터를 보여줌
@@ -60,6 +60,12 @@ public class CartServiceImpl implements CartService {
 	public void deleteCart(Cart cart) {
 		
 		CartDao.delete(cart);		
+	}
+
+	@Override
+	public int getQuantity(Cart cart) {
+		int quantity = CartDao.selectCount(cart);
+		return quantity;
 	}
 }
 	

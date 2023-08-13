@@ -28,7 +28,8 @@
 					<tr>
 						<td>${BuyList.order.orderId }</td>
 						<td>주소 : ${BuyList.order.shippingAddress }</td>
-						<td>주문 날짜 : <fmt:formatDate value="${BuyList.order.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+						<td>주문 날짜  </td>
+						<td><fmt:formatDate value="${BuyList.order.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
 						<td>${BuyList.order.orderStatus }</td>
 					</tr>
 				</thead>
@@ -37,21 +38,18 @@
 					    <c:forEach var="orderDetail" items="${BuyList.orderDetail }" varStatus="b">
 					        <c:if test="${a.index == b.index}">
 					            <tr>
-					                <td>${a.index}</td>
-					                <td>${b.index}</td>
-					                <td>${orderProduct.productName}</td>
-					                <td>${orderProduct.productPrice}</td>
-					                <td>${orderDetail.quantity} 개</td>
 					            	<td>
 					                    <c:forEach var="productImage" items="${BuyList.productImages}" varStatus="c">
 					                        <c:if test="${c.index==a.index}">
-					                            <img src="data:${productImage.pattachtype};base64, ${productImage.base64Image}" width="120"/>
+					                            <a href="productDetail?productId=${orderProduct.productId}">
+					                            	<img src="data:${productImage.pattachtype};base64, ${productImage.base64Image}" width="120"/>
+					                            </a>
 					                        </c:if>
 					                    </c:forEach>
 					                </td>
 					                <td>
 					                	<br><br>
-					                	${orderProduct.productName}
+					                	<a href="productDetail?productId=${orderProduct.productId}">${orderProduct.productName}</a>
 					                </td>
 					                <td>
 					                	<br>
@@ -62,6 +60,10 @@
 					                <td>
 					                	<br><br>
 					                	${orderProduct.productPrice*orderDetail.quantity} 원
+					                </td>
+					                <td>
+					                	<br><br>
+					                	<a type="button" style="border:none; background-color:#fff;">리뷰 작성하기</a>
 					                </td>
 					            </tr>
 					        </c:if>

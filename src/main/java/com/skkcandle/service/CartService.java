@@ -10,4 +10,5 @@ public interface CartService {
 	public void updateCart(Cart cart);
 	public int countCart(Cart cart);
 	public void deleteCart(Cart cart);
+	public int getQuantity(Cart cart);
 }

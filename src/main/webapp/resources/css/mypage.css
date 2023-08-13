@@ -3,6 +3,10 @@
 *{
 	padding:0;
 }
+a{
+	text-decoration: none;
+	color:black;
+}
 
 #mainspace{
 	width:1320px;

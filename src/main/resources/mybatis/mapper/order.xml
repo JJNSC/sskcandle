@@ -29,7 +29,7 @@
 	
 	<!-- orderDetail에 방금 주문한 내역들만 저장하기 위해 orderId를 받아오는 과정1 -->
 	<select id="getOrderId" parameterType="int" resultType="int">
-		select orderId from orderinfo where userId = #{userId} and checked ='no'
+		select orderId from orderinfo where userId = #{userId} and checked ='no' 
 	</select>
 	<!-- orderDetail에 방금 주문한 내역들만 저장하기 위해 orderId를 받아오는 과정2 -->
 	<update id="changeCheck" parameterType="int">
@@ -43,10 +43,10 @@
 	
 	<!-- 결제리스트를 위해 모든 정보를 받아오자 -->
 	<select id="getOrderInfo" parameterType="int" resultType="Order">
-		select * from orderinfo where userId = #{userId}
+		select * from orderinfo where userId = #{userId} order by orderId desc
 	</select>
 	<select id="getOrderDetailByOrderId" parameterType="int" resultType="OrderDetail">
-		select productId, quantity from orderDetail where orderId = #{orderId}
+		select productId, quantity from orderDetail where orderId = #{orderId} order by orderId desc
 	</select>
 	
 	

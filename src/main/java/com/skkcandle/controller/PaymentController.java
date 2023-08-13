@@ -1,8 +1,8 @@
 package com.skkcandle.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,10 +12,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.skkcandle.dto.Cart;
 import com.skkcandle.dto.Order;
 import com.skkcandle.dto.OrderDetail;
+import com.skkcandle.dto.Product;
+import com.skkcandle.dto.ProductImages;
 import com.skkcandle.dto.User;
+import com.skkcandle.service.CartService;
 import com.skkcandle.service.OrderService;
+import com.skkcandle.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 /**
@@ -33,22 +38,51 @@ public class PaymentController {
 	@Autowired
 	private OrderService orderService;
 	
+	@Autowired
+	private CartService cartService;
+	
+	@Autowired
+	private ProductService productService;
+	
 	@RequestMapping("")
-	public String main(HttpSession session, Model model/*, @RequestParam List<Integer> buyCartList*/ ) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
+	public String main(HttpSession session, Model model, @RequestParam List<Integer> buyCartList ) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
 		log.info("일단 시작");
 		//로그인 한 사람의 정보 
 		User sessionUser = (User) session.getAttribute("login"); //추후에 login 이름으로 User 형식으로 세션에 setAttribute할거임(로그인할때)
+		int userId = sessionUser.getUserId();
 		
+		log.info("buyCartList : " +buyCartList);
 		//임시로 넣은 구매상품 데이터
-		List<Map<String, Object>> orderlist = orderService.selectOrderDetail(sessionUser.getUserId());
+		/*List<Map<String, Object>> orderlist = orderService.selectOrderDetail(sessionUser.getUserId());*/
+		
+		ArrayList<Integer> quantityList = new ArrayList<>();
+		List<Product> productInfoList =  new ArrayList<>();
+		// session의 userId 와 buyCartList의 productId 를 통해 Cart에서는 상품개수 , Product에서는 상품이름, 가격을 가져온다.
+		for(Integer ProductID : buyCartList) {
+			Cart cart = new Cart();
+			cart.setUserId(userId);
+			//Cart 에서 상품 개수 가져와서 리스트로 만들자.
+			cart.setProductId(ProductID);
+			log.info("상품 id : "+ ProductID);
+			log.info("cart : "+ cart);
+			int quantity = cartService.getQuantity(cart);
+			quantityList.add(quantity);
+			
+			//Product에서는 상품이름,가격을 가져온다.
+			Product product = new Product();
+			product = productService.detailProduct(ProductID);
+			productInfoList.add(product);
+		}
 
 		model.addAttribute("userinfo", sessionUser);
 		//사용자의 구매리스트
-		model.addAttribute("orderlist", orderlist);
+		model.addAttribute("productinfo", productInfoList);
+		model.addAttribute("productQuantity", quantityList);
 		
 		return "/payment/payment";
 	}
-	
+	//TRANSACTION NEEDED
+	//여기 나중에  트랜젝션 해야한다. (주문이 성공해야 결재리스트에 올리고 , 장바구니에서 삭제가 되야함.)
 	@RequestMapping("/payComplete")
 	public String payComplete(HttpSession session, Model model, 
 			@RequestParam String payAddress,
@@ -101,6 +135,7 @@ public class PaymentController {
 		log.info("여기까진 괜춘0");
 		
 		//orderId, productId, quantity 를 orderDetail에 세팅해준다. 
+		//동시에 해당 userId와 productId를 이용해서 장바구니에서 해당 열을 삭제한다.
 		OrderDetail orderDetail = new OrderDetail();
 		orderDetail.setUserId(userId);
 		orderDetail.setOrderId(orderId);
@@ -113,6 +148,12 @@ public class PaymentController {
 
             orderService.insertOrderDetail(orderDetail);
             log.info("여기까진 괜춘2");
+            
+            //장바구니에서 해당 userId, productId 를 이용해서 삭제한다.
+            Cart deleteCart = new Cart();
+            deleteCart.setUserId(userId);
+            deleteCart.setProductId(productId);
+            cartService.deleteCart(deleteCart);
         }
 		
 		return "redirect:/";
