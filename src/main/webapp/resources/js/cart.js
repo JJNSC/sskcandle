@@ -89,7 +89,7 @@ function deleteItem(){
 	    });
 	    
 	    console.log(checkedProductId);
-	
+	   
 	if(confirm("장바구니에서 해당 상품을 삭제하시겠습니까?")){
 		location.href="deleteList?"+"deleteList="+encodeURIComponent(checkedProductId.join(','));
 	}

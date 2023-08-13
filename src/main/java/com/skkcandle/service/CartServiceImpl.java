@@ -1,12 +1,19 @@
 package com.skkcandle.service;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skkcandle.dao.CartDao;
+import com.skkcandle.dao.ProductDao;
+import com.skkcandle.dao.ProductImagesDao;
 import com.skkcandle.dto.Cart;
+import com.skkcandle.dto.CartList;
+import com.skkcandle.dto.Product;
+import com.skkcandle.dto.ProductImages;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,16 +33,61 @@ import lombok.extern.slf4j.Slf4j;
 public class CartServiceImpl implements CartService {
 	@Autowired
 	private CartDao CartDao;
-
+	@Autowired
+	private ProductDao ProductDao;
+	@Autowired
+	private ProductImagesDao productImagesDao; // 이것만 왜 경로를 다 적어주어야 하는지
+	
 	@Override
 	public void insertCart(Cart cart) {
 		CartDao.insert(cart);
 	}
 
 	@Override
-	public List<Cart> getCartList(int userId) {		
-		List<Cart> cartList = CartDao.listCart(userId);
-		return cartList;
+	public List<CartList> getCartList(int userId) { // userId로 누구의 카트인지 파악		
+		
+		List<CartList> cartList = new ArrayList<>(); //
+		CartList cartListItem = new CartList(); // 한번에 담길 제품의 정보들
+
+	
+		ArrayList<Integer> productIdList = new ArrayList<>();
+		productIdList = CartDao.getListCart(userId);
+		
+		List<ProductImages> ProductImages = new ArrayList<>(); //상품의 이미지
+		List<Product> ProductInfo = new ArrayList<>(); //상품의 정보들
+		ArrayList<Integer> Quantity = new ArrayList<>(); //상품의 수량
+		
+		for(Integer productId : productIdList) {
+						
+			Product product = ProductDao.selectDetailProduct(productId);
+			ProductInfo.add(product); //prodcutInfo 에 product 정보들이 들어간다
+			/*
+			ProductImages image = productImagesDao.selectThumbnailPicture(productId);
+			ProdcutImages.add(image); //productImages 에 image 가 들어간다
+*/			
+			Cart cart = new Cart();
+			cart.setProductId(productId);
+			cart.setUserId(userId); //cart 에 userId 와 productId 가 들어간다
+			
+			Integer quantity = CartDao.countCart(cart);
+			Quantity.add(quantity);		
+			
+			ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
+			if (productImage != null && productImage.getProductImage() != null) {
+	            String base64Img = Base64.getEncoder().encodeToString(productImage.getProductImage());
+	            productImage.setBase64Image(base64Img);
+	            ProductImages.add(productImage);
+	        }
+			
+			cartListItem.setCart(cart);
+			cartListItem.setProductImages(ProductImages);
+			cartListItem.setProductInfo(ProductInfo);
+			cartListItem.setQuantity(Quantity);
+	        
+			cartList.add(cartListItem);
+		}
+		
+	  return cartList;
 	}
 
 	@Override

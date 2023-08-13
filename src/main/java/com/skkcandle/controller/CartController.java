@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skkcandle.dto.Cart;
+import com.skkcandle.dto.CartList;
 import com.skkcandle.dto.User;
 import com.skkcandle.service.CartService;
 import com.skkcandle.service.UserService;
@@ -133,7 +134,7 @@ import lombok.extern.slf4j.Slf4j;
 		 
 		 /*log.info("유저 번호" + userId);*/		 
 		 
-		 List<Cart> cartList = cartService.getCartList(userId);
+		 List<CartList> cartList = cartService.getCartList(userId);
 		 model.addAttribute("cartList", cartList);
 		 
 		 /*log.info("user의 카트리스트" + cartList);*/		 
