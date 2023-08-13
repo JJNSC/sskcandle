@@ -69,7 +69,7 @@ public class CartServiceImpl implements CartService {
 			cart.setProductId(productId);
 			cart.setUserId(userId); //cart 에 userId 와 productId 가 들어간다
 			
-			Integer quantity = CartDao.countCart(cart);
+			Integer quantity = CartDao.selectCount(cart);
 			Quantity.add(quantity);		
 			
 			ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
