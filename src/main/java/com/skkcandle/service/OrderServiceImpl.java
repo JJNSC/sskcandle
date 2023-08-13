@@ -14,6 +14,7 @@ import com.skkcandle.dao.ProductImagesDao;
 import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Order;
 import com.skkcandle.dto.OrderDetail;
+import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Product;
 import com.skkcandle.dto.ProductImages;
 
@@ -68,10 +69,10 @@ public class OrderServiceImpl implements OrderService{
 
 	//BuyList : 한번의 오더에 담긴 정보들
 	@Override
-	public List<BuyList> getBuyList(int userId) {
+	public List<BuyList> getBuyList(Pager pager) {
 		List<BuyList> Orders =  new ArrayList<>();
 		//모든 오더들의 정보
-		List<Order> orderinfo = orderDao.getOrderInfo(userId);
+		List<Order> orderinfo = orderDao.getOrderInfo(pager);
 		
 		for(Order order : orderinfo) {
 			BuyList oneOrder = new BuyList();
@@ -106,6 +107,13 @@ public class OrderServiceImpl implements OrderService{
 		}
 		
 		return Orders;
+	}
+
+	//구매 내역 페이징을 위한 총 구매내역 수 가지고오기
+	@Override
+	public int getOrderCount(int userId) {
+		int count = orderDao.getOrderCount(userId);
+		return count;
 	}
 
 	

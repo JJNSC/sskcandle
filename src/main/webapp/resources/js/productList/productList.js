@@ -21,24 +21,44 @@ function sortProductList(sortType) {
     const items = productList.children(".item_list");
 
     items.sort(function(a, b) {
-        let priceA, priceB;
-
-        if (sortType === "신상품") {
-        	// new 클래스로 주면 될듯?
-        } else if (sortType === "낮은가격") {
-            // 가격을 기준으로 오름차순 정렬
-        	priceA = parseInt($(a).find(".product_price").text().replace(/[^\d]/g, ""));
-        	priceB = parseInt($(b).find(".product_price").text().replace(/[^\d]/g, ""));
-        } else if (sortType === "높은가격") {
+        let valueA, valueB;
+        
+        if(sortType === "추천순") {
+        	console.log("추천순 실행");
+        	// productId를 랜덤으로 정렬?
+        	valueA = Math.random();
+            valueB = Math.random();
+        } else if(sortType === "최신순") {
+        	console.log("최신순 실행");
+        	// productId 내림차순 정렬(최근 등록한 상품이 최상단)
+        	/*해결 이미지에는 productId가 나오는데 이름에는 나오지 않음
+        	$(b).find(".product_name a").attr("href")에서 이미 productDetail?productId= 만 나옴
+        	split하게되면 ["productDetail?productId=", ""] 가 나오게 된다
+        	결론 : 갓갓 DevTools 쓰세욤*/
+        	valueA = parseInt($(b).find(".product_name a").attr("href").split("=")[1]);
+            valueB = parseInt($(a).find(".product_name a").attr("href").split("=")[1]);
+        } else if(sortType === "낮은가격") {
+        	console.log("낮은가격 실행");
+        	// 가격을 기준으로 오름차순 정렬
+        	valueA = parseInt($(a).find(".product_price").text().replace(/[^\d]/g, ""));
+        	valueB = parseInt($(b).find(".product_price").text().replace(/[^\d]/g, ""));
+        } else if(sortType === "높은가격") {
+        	console.log("높은가격 실행");
             // 가격을 기준으로 내림차순 정렬
-        	priceA = parseInt($(b).find(".product_price").text().replace(/[^\d]/g, ""));
-            priceB = parseInt($(a).find(".product_price").text().replace(/[^\d]/g, ""));
+        	valueA = parseInt($(b).find(".product_price").text().replace(/[^\d]/g, ""));
+        	valueB = parseInt($(a).find(".product_price").text().replace(/[^\d]/g, ""));
+        } else if(sortType === "브랜드") {
+        	console.log("브랜드 실행");
+        	// productName 앞자리가 브랜드이름으로 되어있음
+        	// productMaker비교
+        	valueA = $(a).find(".product_name a").text().split(" ")[0];
+            valueB = $(b).find(".product_name a").text().split(" ")[0];
         }
 
         // 비교 결과에 따라 정렬 순서 반환
         return valueA > valueB ? 1 : -1;
     });
 
-    // 정렬된 상품 리스트를 다시 출력
+    // 리스트를 비우고 정렬된 상품 리스트를 다시 출력
     productList.empty().append(items);
 }

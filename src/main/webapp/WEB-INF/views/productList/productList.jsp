@@ -71,7 +71,7 @@
 						<div class="product_info">
 							<ul>
 								<li class="product_tag"><a href="#">${product.productMaker}</a></li>
-								<li class="product_name"><a href="productDetail?productId=${productId}">${product.productName}</a></li>
+								<li class="product_name"><a href="productDetail?productId=${product.productId}">${product.productName}</a></li>
 								<%-- <li class="product_tag"><a href="#">Stock: ${product.productStock}</a></li>
 								<li class="product_tag"><a href="#">Maker: ${product.productMaker}</a></li> --%>
 								<li><span class="product_price">&#8361;${product.productPrice}</span></li>

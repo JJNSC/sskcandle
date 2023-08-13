@@ -85,12 +85,6 @@
 					</form>
 				</div>
 				
-				<%-- tip 메세지 --%>
-				<!-- <div id="helpMessage">
-					<p>법인 고객이신가요?</p>
-					<p>사업자 회원으로 전용 특가 혜택을 누려보세요.</p>
-					<a href="joinForm.jsp" style="text-decoration: none; color: blue;">쿠팡비즈 간편가입 <strong>></strong></a>
-				</div> -->
 			</section>
 			
 			<footer id="footer">
