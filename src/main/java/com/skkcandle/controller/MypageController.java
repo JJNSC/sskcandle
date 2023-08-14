@@ -114,7 +114,7 @@ public class MypageController {
 			user = (User) session.getAttribute("login");
 			int userId = user.getUserId();
 			List<WishList> wishList = wishService.getWishList(userId);
-			model.addAttribute("wishList", wishList);
+			model.addAttribute("wishLists", wishList);
 		
 		//회원 탈퇴 
 		}else if(subpage.equals("withdraw")) {
