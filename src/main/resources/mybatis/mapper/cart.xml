@@ -42,4 +42,10 @@
 		from cart
 		where userId = #{userId}  
 	</select>
+	
+	<update id="updateCartCount" parameterType="Cart">
+		update cart set
+    	count = #{count}
+		where productId = #{productId} and userId = #{userId}	
+	</update>
 </mapper>

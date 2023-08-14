@@ -300,5 +300,48 @@ function couMoney() {
 };
 */
 
+//장바구니 페이지 수량 버튼 클릭시 값 변경
+$(document).ready(function() {
+    $(".edt-qty").on("change", function() {
+        const productId = $(this).data("productId");
+        const newQuantity = $(this).val();
+        
+        console.log(productId);
+        console.log(newQuantity);
+        
+        // Ajax 요청으로 서버에 데이터 전송
+        $.ajax({
+            type: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 선택
+            url: "updateQuantity", // 실제 요청을 처리할 URL
+            data: {
+                productId: productId,
+                newQuantity: newQuantity
+            },
+            success: function(response) {
+                console.log("Quantity updated successfully:", response);
+            },
+            error: function(error) {
+                console.error("Error updating quantity:", error);
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
+    $(".edt-qty").change(function() {
+        const row = $(this).closest("tr");
+        const productPrice = parseInt(row.find(".product-price").text()); // 제품 단가
+        const newQuantity = parseInt($(this).val()); // 새로운 수량
+        const total = productPrice * newQuantity; // 총 가격
+        
+        console.log(productPrice);
+        console.log(newQuantity);
+        console.log(total);
+
+
+        row.find(".unit-total-price").text(total); // 해당 행의 총 가격 업데이트
+    });
+});
+
 
 

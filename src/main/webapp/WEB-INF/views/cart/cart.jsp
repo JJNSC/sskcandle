@@ -72,10 +72,10 @@
 																	<span class="unit-price-area">
 																		<span class="unit-price">
 																			<span class="sr-only">구매가격</span>
-																			${ProductList.productPrice}원
+																			<span class="product-price">${ProductList.productPrice}</span>원
 																		</span>
 																	</span>
-																<input type="number" class="edt-qty" value="${QuantityList}" min="0">
+																<input type="number" class="edt-qty" value="${QuantityList}" min="0" data-product-id="${ProductList.productId}">
 																</span>	
 															</div> 		
 															<div class="badge-item option-benefit">

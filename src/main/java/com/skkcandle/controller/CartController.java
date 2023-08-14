@@ -2,6 +2,7 @@ package com.skkcandle.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skkcandle.dto.Cart;
 import com.skkcandle.dto.CartList;
@@ -180,7 +184,30 @@ import lombok.extern.slf4j.Slf4j;
 			 model.addAttribute("productId", productId);
 			 return "redirect:/payment";
 		 }
-		 
+	 }
+	 
+	 @PostMapping("/updateQuantity")
+	 public String updateQuantity(HttpSession session, int productId, int newQuantity) {
+	   /*  int productId = Integer.parseInt(requestData.get("productId").toString());
+	     int newQuantity = Integer.parseInt(requestData.get("newQuantity").toString());*/
+	     User user = (User) session.getAttribute("login");
+	     int userId = user.getUserId();  
+	     
+	     log.info("회원 번호" + userId);
+	     log.info("변경된 수량" + newQuantity);
+	     log.info("제품번호" + productId);
+	     
+	     Cart cart = new Cart();
+	     cart.setCount(newQuantity);
+	     cart.setProductId(productId);
+	     cart.setUserId(userId);
+	     
+	     cartService.updateCartCount(cart);;
+	     
+	     log.info("Cart에 담긴 내용" +cart);
+	     // 수량 업데이트 작업을 수행해야 함
+	     
+	     return "Quantity updated successfully";
 	 }
 }
 
