@@ -22,11 +22,12 @@ import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Review;
 import com.skkcandle.dto.User;
+import com.skkcandle.dto.WishList;
 import com.skkcandle.service.OrderService;
 import com.skkcandle.service.ReviewService;
 import com.skkcandle.service.UserService;
-import com.skkcandle.service.UserService.LoginResult;
 import com.skkcandle.service.UserService.WithdrawResult;
+import com.skkcandle.service.WishService;
 
 import lombok.extern.slf4j.Slf4j;
 /**
@@ -46,6 +47,9 @@ public class MypageController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private WishService wishService;
 
 	@RequestMapping("/mypage")
 	public String mypage(String shoppingPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
@@ -101,13 +105,16 @@ public class MypageController {
 		//내 리뷰 리스트	
 		}else if(subpage.equals("myreviewlist")) {
 			user = (User) session.getAttribute("login");
-			int userID = user.getUserId();
-			List<Review> reviewList = reviewService.selectReviewByUserId(userID);
+			int userId = user.getUserId();
+			List<Review> reviewList = reviewService.selectReviewByUserId(userId);
 			model.addAttribute("myreview", reviewList);
 		
 		//내 찜 목록
 		}else if(subpage.equals("mywishlist")) {
-			
+			user = (User) session.getAttribute("login");
+			int userId = user.getUserId();
+			List<WishList> wishList = wishService.getWishList(userId);
+			model.addAttribute("wishList", wishList);
 		
 		//회원 탈퇴 
 		}else if(subpage.equals("withdraw")) {

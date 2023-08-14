@@ -22,6 +22,7 @@
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 찜 목록</h3>
 			<br>
+			
 			<table>
 				<thead>
 					<tr>

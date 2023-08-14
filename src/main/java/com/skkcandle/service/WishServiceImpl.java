@@ -1,11 +1,14 @@
 package com.skkcandle.service;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skkcandle.dao.ProductDao;
+import com.skkcandle.dao.ProductImagesDao;
 import com.skkcandle.dao.WishDao;
 import com.skkcandle.dto.Product;
 import com.skkcandle.dto.ProductImages;
@@ -22,7 +25,13 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class WishServiceImpl implements WishService {
 	@Autowired
-	   private WishDao wishDao;
+	private WishDao wishDao;
+	
+	@Autowired
+	private ProductDao productDao;
+	
+	@Autowired
+	private ProductImagesDao productImagesDao;
 		
 	@Override
 	public void remove(Wish wish) {
@@ -44,14 +53,20 @@ public class WishServiceImpl implements WishService {
 	public List<WishList> getWishList(int userId) {
 		ArrayList<Integer> productNos = wishDao.getWishNo(userId);
 		
-		//찜목록의 상품정보들
-		List<Product> product =new ArrayList<>();
-		//찜목록의 상품들의 이미지들
-		List<ProductImages> productImg = new ArrayList<>();
+		//찜목록의 상품정보, 이미지들이 들어갈 공간
+		List<WishList> wishLists =new ArrayList<>();
 		for(Integer productId : productNos) {
+			WishList wishList = new WishList();
 			//상품 아이디로 여기서 이미지인코딩해서 넣고 , 상품정보들 넣자 
+			Product product = productDao.selectDetailProduct(productId);
+			wishList.setProduct(product);
+			ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
+			if (productImage != null && productImage.getProductImage() != null) {
+	            String base64Img = Base64.getEncoder().encodeToString(productImage.getProductImage());
+	            productImage.setBase64Image(base64Img);
+	            wishList.setProductImages(productImage);
+	        }
 		}
-		
-		return null;
+		return wishLists;
 	}	
 }
