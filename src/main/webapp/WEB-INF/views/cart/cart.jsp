@@ -24,116 +24,117 @@
 		
 	<body>
 		<div class="wrap">
-		<section class="contents-cart">
-			<section class="cart-title">
-				<h1 class="sr-only">장바구니</h1>
-			</section>
+			<section class="contents-cart">
+				<section class="cart-title">
+					<h1 class="sr-only">장바구니</h1>
+				</section>
 			<div class="cartContent">
-        <table class="cartTable">
-            <tbody id="cartTable-sku">
-            	<tr>
-            		<td colspan="5" class="cart-bundle-title">
-        			</td>
-            	</tr>
-            	
-           	<c:forEach var="CartList" items="${cartList}" varStatus="d">
-	           	<c:forEach var="ProductList" items="${CartList.productInfo}" varStatus="a">
-	           		<c:if test="${a.index == d.index}">
-	           		<c:forEach var="ImageList" items="${CartList.productImages}" varStatus="b">
-	           			<c:if test="${a.index == b.index}">
-	           				<c:forEach var="QuantityList" items="${CartList.quantity}" varStatus="c"> 
-	           					<c:if test="${a.index == c.index}">
-           	
-           		<tr class="cart-deal-item">
-            	 			
-	            	<td class="product-select-event">
-	            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}">
-	            	</td>
-	            	<td class="cart-deal-item_image">
-            			<c:if test="${ImageList.productImage != null }"> 
-					       <img src="data:${ImageList.pattachtype};base64, ${ImageList.base64Image}"/>
-						</c:if>
-	            	<td class="product-box">
-	            		<div class="product-name-part">
-							${ProductList.productName}		           		
-						</div>
-	            		<div class="option-item-info">
-	                    	<span class="arrive-date" style="display: inline-block;">
-		                    	<span class="arrive-date-txt">내일</span>
-		                    	<span class="arrive-date-day">(목) </span>
-		                    	<span class="arrive-date-date">7/6</span>
-		                    	<span class="arrive-date-time"></span>
-		                    	<span class="promise-txt"> 도착 보장 </span>
-	                    	</span>
-	                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
-						</div>	
-						<div class="option-price-part">
-							<span class="unit-cost">
-							<span class="unit-price-area">
-								<span class="unit-price">
-									<span class="sr-only">구매가격</span>
-									${ProductList.productPrice}원
-									</span>
-							</span>
-							<input type="number" class="edt-qty" value="${QuantityList}" min="0">
-						</span>	
-					</div> 		
-						<div class="badge-item option-benefit">
-		             		<span class="promo-cash-benefit ">
-		                		<i class="promo-cash-benefit__icon"></i>
-		                		<em class="promo-cash-benefit__text">최대 661원 적립</em>
-	           		  		</span>
-	   					</div>
-					</td>
-					</tr>	
-						</c:if>
+        		<table class="cartTable">
+            		<tbody id="cartTable-sku">
+		            	<tr>
+		            		<td colspan="5" class="cart-bundle-title"> <!-- 틀이 어그러지는 것을 방지 -->
+		        			</td>
+		            	</tr>
+		            	
+		            	<!-- 상품정보 -->
+			           	<c:forEach var="CartList" items="${cartList}" varStatus="d">
+				           	<c:forEach var="ProductList" items="${CartList.productInfo}" varStatus="a">
+			           			<c:if test="${a.index == d.index}">
+			           				<c:forEach var="ImageList" items="${CartList.productImages}" varStatus="b">
+		           						<c:if test="${a.index == b.index}">
+		           							<c:forEach var="QuantityList" items="${CartList.quantity}" varStatus="c"> 
+		           								<c:if test="${a.index == c.index}">	
+									           		<tr class="cart-deal-item">		
+										            	<td class="product-select-event">
+										            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}">
+										            	</td>
+										            	<td class="cart-deal-item_image">
+									            			<c:if test="${ImageList.productImage != null }"> 
+														       <img src="data:${ImageList.pattachtype};base64, ${ImageList.base64Image}"/>
+															</c:if>
+														</td>	
+										            	<td class="product-box">
+										            		<div class="product-name-part">
+																${ProductList.productName}		           		
+															</div>
+										            		<div class="option-item-info">
+										                    	<span class="arrive-date" style="display: inline-block;">
+											                    	<span class="arrive-date-txt">내일</span>
+											                    	<span class="arrive-date-day">(목) </span>
+											                    	<span class="arrive-date-date">7/6</span>
+											                    	<span class="arrive-date-time"></span>
+											                    	<span class="promise-txt"> 도착 보장 </span>
+										                    	</span>
+										                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
+															</div>	
+															<div class="option-price-part">
+																<span class="unit-cost">
+																	<span class="unit-price-area">
+																		<span class="unit-price">
+																			<span class="sr-only">구매가격</span>
+																			${ProductList.productPrice}원
+																		</span>
+																	</span>
+																<input type="number" class="edt-qty" value="${QuantityList}" min="0">
+																</span>	
+															</div> 		
+															<div class="badge-item option-benefit">
+											             		<span class="promo-cash-benefit ">
+											                		<i class="promo-cash-benefit__icon"></i>
+											                		<em class="promo-cash-benefit__text">최대 661원 적립</em>
+										           		  		</span>
+										   					</div>
+														</td>
+														<td class="unit-total-price">
+										            		<div class="union-total-sale-price">${ProductList.productPrice * QuantityList}</div>
+										            		<img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송">
+									            		</td>
+													</tr>	
+												</c:if>
+											</c:forEach>
+										</c:if>
+									</c:forEach>
+								</c:if>
 							</c:forEach>
-							</c:if>
 						</c:forEach>
-						</c:if>
-					</c:forEach>
-				</c:forEach>
 				
 					
-            	<td class="unit-total-price">
-            		<div class="union-total-sale-price"></div>
-            		<img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송">
-            	</td>
-            	<td class="delivery-fee">
+            	
+            	<!-- <td class="delivery-fee">
             		<span class="delivery-fee_free" rowspan="1">무료</span>
-            	</td>
+            	</td> -->
             	</tr>
             <tr class="bundle-price-total">
             	<td colspan="5">
-                	<div class="rocket-tooltip" id="rocket-tooltip" style="display: block; right: 443px;">
-                    	<div class="rocket-info" id="rocket-info">
-                    		다른
-                    	 <a class="link addRocketItem logging" href="//www.coupang.com/np/campaigns/82">
-                    	 	로켓배송 상품
-                    	 </a>
-                    	 	을 추가해도 함께 
-                    	 <em>무료배송</em> 
-                    	 	가능!
-                    	 </div>
-                	</div>
-                <span class="rocket-total-price-area">
-					상품가격 
-				<span class="total-product-price number">148,770</span>원 
-				<span class="coupon-area">
-	                	<span class="symbol-plus">
-	                		<span class="sr-only">더하기</span>
-	                	</span>
-						배송비 
-						<span id="rocket-delivery-charge" class="delivery-charge">
-							<strong>무료</strong>
-						</span>
-						<span class="symbol-equal">
-							<span class="sr-only">결과는</span>
-						</span>
-							주문금액
-	               		<span class="total-order-price number">148,770</span>원  
-				</span>
-            	</span>
+	                	<div class="rocket-tooltip" id="rocket-tooltip" style="display: block; right: 443px;">
+	                    	<div class="rocket-info" id="rocket-info">
+	                    		다른
+	                    	 <a class="link addRocketItem logging" href="//www.coupang.com/np/campaigns/82">
+	                    	 	로켓배송 상품
+	                    	 </a>
+	                    	 	을 추가해도 함께 
+	                    	 <em>무료배송</em> 
+	                    	 	가능!
+	                    	 </div>
+	                	</div>
+	                <span class="rocket-total-price-area">
+						상품가격 
+					<span class="total-product-price number">148,770</span>원 
+					<span class="coupon-area">
+		                	<span class="symbol-plus">
+		                		<span class="sr-only">더하기</span>
+		                	</span>
+							배송비 
+							<span id="rocket-delivery-charge" class="delivery-charge">
+								<strong>무료</strong>
+							</span>
+							<span class="symbol-equal">
+								<span class="sr-only">결과는</span>
+							</span>
+								주문금액
+		               		<span class="total-order-price number">148,770</span>원  
+					</span>
+	            	</span>
             	</td>
         	</tr>
             </tbody>
@@ -141,7 +142,7 @@
    		<div class="order-table-foot">
                     <span class="all-select-product">
 						<label>
-							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em>1</em> / 1 )</span>
+							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em>1/<em class="all-num"></em>)</span>
 						</label>
 						<button class="selected-delete" onclick="deleteItemList()">삭제</button>
 						<a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a>
@@ -186,6 +187,9 @@
                 <a id="continueShoopingBtn" class="goShopping logging" href="productList">계속 쇼핑하기</a>
                 <button id="btnPay" class="goPayment narrow" onclick="buyCartList()">구매하기</button>
                 <div class="item-disabled" style="display: none;"></div>
+            </div>
+            <div class="cart-no-item d-none">
+            	<p class="txt">장바구니에 담은 상품이 없습니다.</p>
             </div>
    		</div>
 		</section>			

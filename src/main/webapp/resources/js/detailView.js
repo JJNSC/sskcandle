@@ -40,3 +40,8 @@ function addCartBtn(){
 		location.href = "reProduct?result="+productCount+ "&productId="+productId;
 	}
 };
+
+
+function clickWishBtn() {
+    location.href = "updateWish?productId="+productId;
+}

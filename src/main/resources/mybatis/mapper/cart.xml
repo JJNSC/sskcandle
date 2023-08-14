@@ -37,7 +37,7 @@
 		where userId = #{userId} and productId = #{productId} 
 	</delete>
 	
-	<select id="getListCart" parameterType="int" resultType="int">
+	<select id="getListCart" parameterType="int" resultType="int"> <!-- cart.xml 결과가 여러개 나와도 parameterType 은 int 이다.(cart를 select 해오는데 필요한 xml) -->
 		select productId
 		from cart
 		where userId = #{userId}  

@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService {
 	@Autowired
 	private ProductDao ProductDao;
 	@Autowired
-	private ProductImagesDao productImagesDao; // 이것만 왜 경로를 다 적어주어야 하는지
+	private ProductImagesDao productImagesDao;
 	
 	@Override
 	public void insertCart(Cart cart) {

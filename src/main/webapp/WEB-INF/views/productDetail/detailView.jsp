@@ -37,18 +37,11 @@
 		       <img src="data:${productDetailPicture.pattachtype};base64, ${base64Thb}"/>
 			</c:if>
 		</div>   
-		<div class="prod-favorite">
-			<%-- 
-		  <c:choose>
-              <c:when test="${wishNo == 1}">
-			  	<span><i class="fas fa-heart" ><a href="updateWish?productId=${detailproduct.productId}">찜하기</a></i></span>
-			  </c:when>
-			  <c:otherwise>
-			  	<span><i class="far fa-heart" ><a href="updateWish?productId=${detailproduct.productId}">찜하기</a></i></span>
-			  </c:otherwise>
-		  </c:choose>		 --%>
+		
+		<!-- 찜한 상품 여부에 따라 하트 아이콘 표시 -->
+	    <div class="prod-favorite">
+            <a class="prod-favorite-btn" onclick="clickWishBtn()">찜하기</a>
         </div>
-		 
 		 <!-- 상품 기본정보 등록란 -->
 		 
 	    <div class="prod-buy">

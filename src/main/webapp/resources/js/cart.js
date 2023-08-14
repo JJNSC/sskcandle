@@ -78,6 +78,7 @@ function deleteItem(){
      }
  }﻿; 
  */
+
  //체크 된 상품들 삭제(8월 11일)
  function deleteItemList() {
 	    var checkedProductId = [];
@@ -116,7 +117,7 @@ function deleteItem(){
 
 
 //주문하기
-function cartItem(){
+/*function cartItem(){
    $.ajax({
       url: "itemdata.jsp",
       method:"get",
@@ -187,7 +188,7 @@ function cartItem(){
                $(".edt-qty").click(couMoney);
       		}
       });
-}
+}*/
 
 //총 상품 개수 가져오기
 function initItemCount() {
@@ -206,7 +207,7 @@ function initItemSelectCount() {
 }
 
 // 인풋 태그의 수량 뽑아내기
-function countQty(){
+/*function countQty(){
 	   var thisnum = $(event.target);
 	   var unitPrice = thisnum.prev().children().html();
 	   var Price = parseInt(unitPrice.replace(/[^0-9]/g, ""));
@@ -214,8 +215,7 @@ function countQty(){
 	   var finalPrice = 0;
 	   
 	    thisnum.parent().parent().parent().next().children().html(totalPrice.toLocaleString("ko-KR")+"원");
-
-}
+}*/
 
 //날짜 함수
 var now = new Date();
