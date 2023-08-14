@@ -42,9 +42,20 @@ public class LoginController {
 		}else {
 			User dbUser = userService.getUserInfo(user.getUserEmail());
 			session.setAttribute("login", dbUser);
+			//세션에 보고있던 상품이 있는지 확인
+			String pid = (String) session.getAttribute("productId");
+			//상세제품을 보고있을때 는 다시 해당 페이지로 돌려보내자
+			if(pid != null) {
+				int productId = Integer.parseInt(pid);
+				//세션에서 보고있는 상품을 삭제
+				session.removeAttribute(pid);
+				model.addAttribute("productId", productId);
+				return "redirect:/productDetail";
+			}
+			//성공시 페인페이지
 			return "redirect:/";
 		}
-		
+		//실패시 에러메세지와 함께 로그인 페이지
 		model.addAttribute("loginErrMsg", errorMsg);
 		return "redirect:/loginForm";
 	}

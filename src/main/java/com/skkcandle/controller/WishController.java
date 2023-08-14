@@ -52,6 +52,9 @@ public class WishController {
 		wish.setProductId(productId);
 		wish.setUserId(userId);
 					
+		log.info("productId" + productId);
+		log.info("userId" + userId);
+		
 		int wishNo =  wishService.selectWish(wish);
 			
 		if (wishNo == 0) { //카운팅한 wish테이블의 정보가 0 이라면 insert
@@ -59,7 +62,7 @@ public class WishController {
 		} else { //카운팅한 wish 테이블의 정보가 1이라면 delete
 			wishService.remove(wish);
 		}	   
-		return "redirect:/productDetail";
+		return "redirect:/productDetail?productId=" + productId;
 	}
 	
 }
