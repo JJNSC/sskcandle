@@ -15,7 +15,12 @@ $(function() {
     });
 });
 
-// 상품 리스트를 주제에 따라 정렬하는 함수
+/**
+ * 상품 리스트를 주제에 따라 정렬하는 함수
+ * 
+ * @param sortType 동작을 감지한 이벤트 핸들러
+ * @returns 리스트를 한번 비우고 정렬한 리스트로 다시 출력
+ */
 function sortProductList(sortType) {
     const productList = $(".productList");
     const items = productList.children(".item_list");
@@ -24,12 +29,10 @@ function sortProductList(sortType) {
         let valueA, valueB;
         
         if(sortType === "추천순") {
-        	console.log("추천순 실행");
         	// productId를 랜덤으로 정렬?
         	valueA = Math.random();
             valueB = Math.random();
         } else if(sortType === "최신순") {
-        	console.log("최신순 실행");
         	// productId 내림차순 정렬(최근 등록한 상품이 최상단)
         	/*해결 이미지에는 productId가 나오는데 이름에는 나오지 않음
         	$(b).find(".product_name a").attr("href")에서 이미 productDetail?productId= 만 나옴
@@ -38,17 +41,14 @@ function sortProductList(sortType) {
         	valueA = parseInt($(b).find(".product_name a").attr("href").split("=")[1]);
             valueB = parseInt($(a).find(".product_name a").attr("href").split("=")[1]);
         } else if(sortType === "낮은가격") {
-        	console.log("낮은가격 실행");
         	// 가격을 기준으로 오름차순 정렬
         	valueA = parseInt($(a).find(".product_price").text().replace(/[^\d]/g, ""));
         	valueB = parseInt($(b).find(".product_price").text().replace(/[^\d]/g, ""));
         } else if(sortType === "높은가격") {
-        	console.log("높은가격 실행");
             // 가격을 기준으로 내림차순 정렬
         	valueA = parseInt($(b).find(".product_price").text().replace(/[^\d]/g, ""));
         	valueB = parseInt($(a).find(".product_price").text().replace(/[^\d]/g, ""));
         } else if(sortType === "브랜드") {
-        	console.log("브랜드 실행");
         	// productName 앞자리가 브랜드이름으로 되어있음
         	// productMaker비교
         	valueA = $(a).find(".product_name a").text().split(" ")[0];
