@@ -149,9 +149,14 @@ li {
 .product_price {
 	display: flex;
 	justify-content: center;
+	font-size: 17px;
+	font-weight: bold;
+	color: #DB2B2B;
 }
 
 .product_tag > a {
 	color: #808080 !important;
 	font-size: 12px;
 }
+
+

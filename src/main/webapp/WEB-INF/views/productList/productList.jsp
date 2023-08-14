@@ -69,17 +69,18 @@
 							</a>
 						</div>
 						<div class="product_info">
-							<ul>
-								<li class="product_tag"><a href="#">${product.productMaker}</a></li>
-								<li class="product_name"><a href="productDetail?productId=${product.productId}">${product.productName}</a></li>
+							<ul class="d-flex flex-column">
+								<li class="product_tag col align-self-center"><a href="#">${product.productMaker}</a></li>
+								<li class="product_name col align-self-center" ><a href="productDetail?productId=${product.productId}" style="line-height: 1.2; height: 50px">${product.productName}</a></li>
 								<%-- <li class="product_tag"><a href="#">Stock: ${product.productStock}</a></li>
 								<li class="product_tag"><a href="#">Maker: ${product.productMaker}</a></li> --%>
-								<li><span class="product_price">&#8361;${product.productPrice}</span></li>
+								<li class="col align-self-center"><span class="product_price">&#8361;${product.productPrice}</span></li>
 							</ul>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
+			
 		</div>
 
 		<%@ include file="/WEB-INF/views/footer/footer.jsp" %>
