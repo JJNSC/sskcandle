@@ -103,96 +103,95 @@
             	<!-- <td class="delivery-fee">
             		<span class="delivery-fee_free" rowspan="1">무료</span>
             	</td> -->
-            	</tr>
-            <tr class="bundle-price-total">
-            	<td colspan="5">
-	                	<div class="rocket-tooltip" id="rocket-tooltip" style="display: block; right: 443px;">
-	                    	<div class="rocket-info" id="rocket-info">
-	                    		다른
-	                    	 <a class="link addRocketItem logging" href="//www.coupang.com/np/campaigns/82">
-	                    	 	로켓배송 상품
-	                    	 </a>
-	                    	 	을 추가해도 함께 
-	                    	 <em>무료배송</em> 
-	                    	 	가능!
-	                    	 </div>
-	                	</div>
-	                <span class="rocket-total-price-area">
-						상품가격 
-					<span class="total-product-price number">148,770</span>원 
-					<span class="coupon-area">
-		                	<span class="symbol-plus">
-		                		<span class="sr-only">더하기</span>
-		                	</span>
-							배송비 
-							<span id="rocket-delivery-charge" class="delivery-charge">
-								<strong>무료</strong>
-							</span>
-							<span class="symbol-equal">
-								<span class="sr-only">결과는</span>
-							</span>
-								주문금액
-		               		<span class="total-order-price number">148,770</span>원  
-					</span>
-	            	</span>
-            	</td>
-        	</tr>
+            		<tr class="bundle-price-total">
+            			<td colspan="5">
+		                	<div class="rocket-tooltip" id="rocket-tooltip" style="display: block; right: 443px;">
+		                    	<div class="rocket-info" id="rocket-info">
+		                    		다른
+		                    	 <a class="link addRocketItem logging" href="//www.coupang.com/np/campaigns/82">
+		                    	 	로켓배송 상품
+		                    	 </a>
+		                    	 	을 추가해도 함께 
+		                    	 <em>무료배송</em> 
+		                    	 	가능!
+		                    	 </div>
+		                	</div>
+			                <span class="rocket-total-price-area">
+								상품가격 
+								<span class="total-product-price number">148,770 원</span>
+								<span class="coupon-area">
+					                	<span class="symbol-plus">
+					                		<span class="sr-only">더하기</span>
+					                	</span>
+										배송비 
+										<span id="rocket-delivery-charge" class="delivery-charge">
+											<strong>무료</strong>
+										</span>
+										<span class="symbol-equal">
+											<span class="sr-only">결과는</span>
+										</span>
+											주문금액
+					               		<span class="total-order-price number">148,770</span>원  
+								</span>
+			            	</span>
+            			</td>
+        			</tr>
             </tbody>
    		</table>
    		<div class="order-table-foot">
                     <span class="all-select-product">
 						<label>
-							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em>1/<em class="all-num"></em>)</span>
+							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em class="selected-num"></em>/<em class="all-num"></em>)</span>
 						</label>
 						<button class="selected-delete" onclick="deleteItemList()">삭제</button>
-						<a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a>
+						<!-- <a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a> -->
 					</span>
         </div>
-            <div class="payment-reward-cash-area">
-                    <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
-                    <h3 class="payment-reward-cash-area__title">캐시적립 혜택</h3>
-                  
-                    <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 1% 적립</span> 
-            </div>
-            <div class="cart-total-price">
-                <div class="cart-total-price__inner">
-                    <div class="price-area">
-                        <h2 class="sr-only" id="cart-total-price">
-                           	 장바구니 총 주문금액 정보
-                        </h2>
-                        	총 상품가격
-                        <em class="final-product-price">148,770</em>
-                        	원
-                        <span class="symbol-plus1"><span class="sr-only">더하기</span></span>
-                        	총 배송비
-                        <em class="final-delivery-charge">0</em>원
-                        <span class="symbol-equal1"><span class="sr-only">결과는</span></span>
-                       		 총 주문금액
-                        <em class="final-order-price">
-                          148,770원
-                        </em>
-                    </div>
+        <div class="payment-reward-cash-area">
+                <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
+                <h3 class="payment-reward-cash-area__title">캐시적립 혜택</h3>
+              
+                <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 1% 적립</span> 
+        </div>
+        <div class="cart-total-price">
+            <div class="cart-total-price__inner">
+                <div class="price-area">
+                    <h2 class="sr-only" id="cart-total-price">
+                       	 장바구니 총 주문금액 정보
+                    </h2>
+                    	총 상품가격
+                    <em class="final-product-price">0</em>
+                    	원
+                    <span class="symbol-plus1"><span class="sr-only">더하기</span></span>
+                    	총 배송비
+                    <em class="final-delivery-charge">0</em>원
+                    <span class="symbol-equal1"><span class="sr-only">결과는</span></span>
+                   		 총 주문금액
+                    <em class="final-order-price">
+                      148,770원
+                    </em>
+                </div>
 
-                    <div id="ccidArea" class="ccid-area" style="display: none;">
-                        <span class="ccid-amount">
-                          	카드 즉시할인 예상금액 (<em id="ccidAmount">0</em>원 할인)
-                        </span>
-                        <span class="adjustment-price" id="adjustmentPrice">
-                          <em>0</em>원
-                        </span>
-                    </div>
+                <div id="ccidArea" class="ccid-area" style="display: none;">
+                    <span class="ccid-amount">
+                      	카드 즉시할인 예상금액 (<em id="ccidAmount">0</em>원 할인)
+                    </span>
+                    <span class="adjustment-price" id="adjustmentPrice">
+                      <em>0</em>원
+                    </span>
                 </div>
             </div>
-            <div class="order-buttons">
-                <a id="continueShoopingBtn" class="goShopping logging" href="productList">계속 쇼핑하기</a>
-                <button id="btnPay" class="goPayment narrow" onclick="buyCartList()">구매하기</button>
-                <div class="item-disabled" style="display: none;"></div>
-            </div>
-            <div class="cart-no-item d-none">
-            	<p class="txt">장바구니에 담은 상품이 없습니다.</p>
-            </div>
-   		</div>
-		</section>			
+        </div>
+		        <div class="order-buttons">
+		            <a id="continueShoopingBtn" class="goShopping logging" href="productList">계속 쇼핑하기</a>
+		            <button id="btnPay" class="goPayment narrow" onclick="buyCartList()">구매하기</button>
+		            <div class="item-disabled" style="display: none;"></div>
+		        </div>
+		        <div class="cart-no-item d-none">
+		     		<p class="txt">장바구니에 담은 상품이 없습니다.</p>
+		        </div>
+			</div>
+			</section>			
 		</div>
 	</body>
 </html>

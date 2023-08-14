@@ -49,8 +49,9 @@ function addCartBtn(){
 
 function clickWishBtn() {
 	var productId = $('input[name=productId]').val();
-	console.log("productId : "+ productId);
-    location.href = "updateWish?productId="+productId;
+	/*console.log("productId : "+ productId);*/    
+	location.href = "updateWish?productId="+productId;
+	alert("찜목록이 수정되었습니다.")
 }
 
 function addCartAndPay(){

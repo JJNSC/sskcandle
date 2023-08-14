@@ -44,8 +44,8 @@ public class ProductController {
     private ProductImagesService ProductImagesService;
 	   
 	@RequestMapping("/productDetail")
-	public String detailProduct(String pageNo, HttpSession session, Model model, @RequestParam(name = "productId") int productId) {
-		log.info("제품번호" + productId);
+	public String detailProduct(String pageNo, HttpSession session, Model model, int productId) {
+
 		Product product = ProductService.detailProduct(productId);
 		model.addAttribute("detailproduct", product);
 		
@@ -96,6 +96,5 @@ public class ProductController {
 	      
 		return "/productDetail/detailView";
 	}	
-	
 }
 

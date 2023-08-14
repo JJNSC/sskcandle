@@ -1,9 +1,15 @@
+/**
+ * author: 조성진
+ * 
+ * @returns
+ */
+
 $(init)
 window.onload = eventInit; //window.onload로 eventInit을 제일 나중에 실행해준다(index가 생성되고 갯수를 셀수있게)
 
 function init() {
    //테이블 초기화
-   cartItem();
+   //cartItem();
    
    //전체선택
    $(".cboxAll").click(checkAll);
@@ -57,8 +63,8 @@ function checkAll() {
    });
 }
 
-/*//상품삭제
-function deleteItem(){
+//상품삭제 (예전코드)
+/*function deleteItem(){
     if($("input:checkbox[name=cbox]:checked").length != 0){
           if (confirm("삭제 하시겠습니까?")) { 
              $("input:checkbox[name=cbox]:checked").each( function(index, item) {
@@ -76,8 +82,8 @@ function deleteItem(){
      if($(".cart-deal-item").length == 0){
            emptyCart();
      }
- }﻿; 
- */
+ }﻿; */
+ 
 
  //체크 된 상품들 삭제(8월 11일)
  function deleteItemList() {
@@ -116,7 +122,7 @@ function deleteItem(){
 	}
 
 
-//주문하기
+//주문하기 (예전코드)
 /*function cartItem(){
    $.ajax({
       url: "itemdata.jsp",
@@ -207,7 +213,7 @@ function initItemSelectCount() {
 }
 
 // 인풋 태그의 수량 뽑아내기
-/*function countQty(){
+function countQty(){
 	   var thisnum = $(event.target);
 	   var unitPrice = thisnum.prev().children().html();
 	   var Price = parseInt(unitPrice.replace(/[^0-9]/g, ""));
@@ -215,7 +221,7 @@ function initItemSelectCount() {
 	   var finalPrice = 0;
 	   
 	    thisnum.parent().parent().parent().next().children().html(totalPrice.toLocaleString("ko-KR")+"원");
-}*/
+}
 
 //날짜 함수
 var now = new Date();
@@ -262,8 +268,8 @@ function sum(){
 }
 
 
-//담긴 상품이 없을때의 페이지(삭제)
-
+//담긴 상품이 없을때의 페이지(삭제) 예전코드
+/*
 function emptyCart() {
 	
 		  $(".cartTable tbody").addClass("d-none");
@@ -276,11 +282,11 @@ function emptyCart() {
 	      $(".order-table-foot").addClass("d-none");
 	      $(".today-porduct").removeClass("d-none");
 	      $(".cart-no-item").removeClass("d-none"); 
-	};
+	};*/
 	
 	
-//쿠페이 머니 계산
-	
+//쿠페이 머니 계산 (예전코드)
+/*	
 function couMoney() {
 	
 	   var thisnum = $(event.target);
@@ -292,6 +298,7 @@ function couMoney() {
 	   //클릭이벤트 발생 지점부터 받은 값을 넣어줄 위치를 찾은 다음에 em태그를 find 메서드로 찾아 주었다.
 	   thisnum.parent().parent().next().children().find("em").html("최대" + Coumoney +"원 적립");
 };
+*/
 
 
 
