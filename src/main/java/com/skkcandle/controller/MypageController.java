@@ -224,6 +224,14 @@ public class MypageController {
 		wish.setUserId(userId);
 		wishService.remove(wish);
 	}
+	
+	//리뷰작성하기 버튼 클릭시 리뷰폼으로 보내기
+	@RequestMapping("/reviewForm")
+	public String reviewForm() {
+		
+		
+		return "reviewForm";
+	}
 }
 
 
