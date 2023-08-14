@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainPage/mainPage.css">
-		<script src="${pageContext.request.contextPath}/resources/js/mainPage/mainPage.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/mainPage.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -65,17 +65,17 @@
 
 			<div class="row">
 				<div class="col-sm-12 text-center mb-5 mt-5">
-					<h2>신상품</h2>
-					<!-- <span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff0000, 1px -1px 0px #ff0000, 0px -1px 0px #ff0000, -1px -1px 0px #ff0000, -1px 0px 0px #ff0000, -1px 1px 0px #ff0000, 0px 1px 0px #ff0000, 0px 0px 4px #ff0000; color:#C0C0C0; font-size: 30px;"> 파워레인저 매직포스</span>
+					<!-- <h2>신상품</h2> -->
+					<span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff0000, 1px -1px 0px #ff0000, 0px -1px 0px #ff0000, -1px -1px 0px #ff0000, -1px 0px 0px #ff0000, -1px 1px 0px #ff0000, 0px 1px 0px #ff0000, 0px 0px 4px #ff0000; color:#C0C0C0; font-size: 30px;"> 파워레인저 매직포스</span>
 					<div>
 						<img class="text-center" src="https://i.namu.wiki/i/tPOOe6LgiLSjw2MiRYIpC-HbdosIJm3gCmRXut0p-R1e3I7W6ko8Ii0VpVnE5zqdZiXHT99WsS2ERlY9-JGwpoftkmeW4M5rKssUkFflBtRiabKMQXsax6UnlZdTHFe0pp14m-qAvot3pxtWDJ-qwA.webp" width="300" height="300"/>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="row productList">
 				<c:forEach var="product" items="${product}">
-					<div class="col-lg-3 mb-4 text-center productList">	
+					<div class="col-lg-3 mb-4 text-center">	
 						<div class="border product-entry">
 							<a href="productDetail?productId=${product.productId}" class="prod-img">
 								<img src="data:image/jpeg;base64,${product.base64Image}" />
@@ -89,6 +89,27 @@
 					</div>
 				</c:forEach>
 			</div>
+			
+			<%-- <div class="productList">
+				<c:forEach var="product" items="${product}">
+					<div class="item_list col-3">
+						<div class="thumbnail">
+							<a href="productDetail?productId=${product.productId}">
+								<img src="data:image/jpeg;base64,${product.base64Image}">
+							</a>
+						</div>
+						<div class="product_info">
+							<ul>
+								<li class="product_tag"><a href="#">${product.productMaker}</a></li>
+								<li class="product_name"><a href="productDetail?productId=${product.productId}">${product.productName}</a></li>
+								<li class="product_tag"><a href="#">Stock: ${product.productStock}</a></li>
+								<li class="product_tag"><a href="#">Maker: ${product.productMaker}</a></li>
+								<li><span class="product_price">&#8361;${product.productPrice}</span></li>
+							</ul>
+						</div>
+					</div>
+				</c:forEach>
+			</div> --%>
 		</div>
 	</body>
 </html>

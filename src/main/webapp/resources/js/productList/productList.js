@@ -34,10 +34,6 @@ function sortProductList(sortType) {
             valueB = Math.random();
         } else if(sortType === "최신순") {
         	// productId 내림차순 정렬(최근 등록한 상품이 최상단)
-        	/*해결 이미지에는 productId가 나오는데 이름에는 나오지 않음
-        	$(b).find(".product_name a").attr("href")에서 이미 productDetail?productId= 만 나옴
-        	split하게되면 ["productDetail?productId=", ""] 가 나오게 된다
-        	결론 : 갓갓 DevTools 쓰세욤*/
         	valueA = parseInt($(b).find(".product_name a").attr("href").split("=")[1]);
             valueB = parseInt($(a).find(".product_name a").attr("href").split("=")[1]);
         } else if(sortType === "낮은가격") {
@@ -55,7 +51,7 @@ function sortProductList(sortType) {
             valueB = $(b).find(".product_name a").text().split(" ")[0];
         }
 
-        // 비교 결과에 따라 정렬 순서 반환
+        // 비교 결과에 따라 정렬 순서 반환(삼항 조건 연산자)
         return valueA > valueB ? 1 : -1;
     });
 
