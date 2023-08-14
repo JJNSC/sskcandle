@@ -1,3 +1,9 @@
+/**
+ * @author 조성진 김종진
+ * @param type
+ * @returns
+ */
+
 function count(type)  {
 	
   // 결과를 표시할 element
@@ -40,3 +46,29 @@ function addCartBtn(){
 		location.href = "reProduct?result="+productCount+ "&productId="+productId;
 	}
 };
+
+function addCartAndPay(){
+	console.log("실행되는가");
+	var productId = $('input[name=productId]').val();
+	console.log("productId : "+ productId);
+	var quantity = $('input[id=productCount]').val();
+	console.log("quantity : "+ quantity);
+	
+	if (confirm("구매하시겠습니까?")) { 
+		location.href = "oneProductCart?productId="+productId+"&quantity="+quantity;
+	}else{
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

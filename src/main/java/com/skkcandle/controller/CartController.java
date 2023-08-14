@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  * Cart 관련 기능 처리 컨트롤러
  * 
  * 제품 장바구니에 담기,삭제,수량 수정 기능 제공
- * @author 조성진
+ * @author 조성진 김종진
  */
 
 
@@ -159,5 +159,45 @@ import lombok.extern.slf4j.Slf4j;
       
 		 return "redirect:/getCartList";
 	 }
+	 
+	 @RequestMapping("oneProductCart")
+	 public String oneProductCart(int productId, int quantity, HttpSession session, Model model) {
+		 User user = (User) session.getAttribute("login");
+		 //로그인이 안되있으면 로그인을 해라
+		 if(user == null) {
+			 String pid = String.valueOf(productId);
+			 session.setAttribute("productId", pid);
+			 return "redirect:/loginForm";
+		 }
+		 //로그인이 되어있다면 장바구니에 해당 유저의 userId 와 productId와 quantity를 넣어주고, 결제창으로 가자
+		 else {
+			 int userId = user.getUserId();
+			 Cart cart = new Cart();
+			 cart.setCount(quantity);
+			 cart.setProductId(productId);
+			 cart.setUserId(userId);
+			 cartService.insertCart(cart);
+			 model.addAttribute("productId", productId);
+			 return "redirect:/payment";
+		 }
+		 
+	 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

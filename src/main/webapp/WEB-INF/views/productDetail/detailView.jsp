@@ -105,7 +105,7 @@
 	        	<form id="cart" method="get" action=""> 
 	        		<input type="hidden" name="productId" value="${detailproduct.productId}">
 		        	<button class="product-cart-btn" onclick="addCartBtn()" type="button"> 장바구니 담기 </button>
-		            <button class="product-buy-btn" type="button"><span> 바로구매 </span></button>
+		            <button class="product-buy-btn" onclick="addCartAndPay()" type="button"><span> 바로구매 </span></button>
 		       
 			        <!-- 장바구니 수량 버튼 -->
 					<div class="input-group mb-3" style="max-width: 120px;">

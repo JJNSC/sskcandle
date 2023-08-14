@@ -45,39 +45,60 @@ public class PaymentController {
 	private ProductService productService;
 	
 	@RequestMapping("")
-	public String main(HttpSession session, Model model, @RequestParam List<Integer> buyCartList ) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
+	public String main(HttpSession session, Model model, @RequestParam(name="buyCartList",defaultValue="") List<Integer> buyCartList,@RequestParam(name="productId",defaultValue="0" ) int productId) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
 		log.info("일단 시작");
 		//로그인 한 사람의 정보 
 		User sessionUser = (User) session.getAttribute("login"); //추후에 login 이름으로 User 형식으로 세션에 setAttribute할거임(로그인할때)
 		int userId = sessionUser.getUserId();
 		
-		log.info("buyCartList : " +buyCartList);
-		//임시로 넣은 구매상품 데이터
-		/*List<Map<String, Object>> orderlist = orderService.selectOrderDetail(sessionUser.getUserId());*/
-		
-		ArrayList<Integer> quantityList = new ArrayList<>();
-		List<Product> productInfoList =  new ArrayList<>();
-		// session의 userId 와 buyCartList의 productId 를 통해 Cart에서는 상품개수 , Product에서는 상품이름, 가격을 가져온다.
-		for(Integer ProductID : buyCartList) {
+		//만약 장바구니에서 왔을경우
+		if(buyCartList.size() != 0) {
+			log.info("buyCartList : " +buyCartList);
+			
+			ArrayList<Integer> quantityList = new ArrayList<>();
+			List<Product> productInfoList =  new ArrayList<>();
+			// session의 userId 와 buyCartList의 productId 를 통해 Cart에서는 상품개수 , Product에서는 상품이름, 가격을 가져온다.
+			for(Integer ProductID : buyCartList) {
+				Cart cart = new Cart();
+				cart.setUserId(userId);
+				//Cart 에서 상품 개수 가져와서 리스트로 만들자.
+				cart.setProductId(ProductID);
+				log.info("상품 id : "+ ProductID);
+				log.info("cart : "+ cart);
+				int quantity = cartService.getQuantity(cart);
+				quantityList.add(quantity);
+				
+				//Product에서는 상품이름,가격을 가져온다.
+				Product product = new Product();
+				product = productService.detailProduct(ProductID);
+				productInfoList.add(product);
+			}
+			//사용자의 구매리스트
+			model.addAttribute("productinfo", productInfoList);
+			model.addAttribute("productQuantity", quantityList);
+		}
+		//제품 상세에서 왔을경우
+		else {
+			ArrayList<Integer> quantityList = new ArrayList<>();
+			List<Product> productInfoList =  new ArrayList<>();
+			//상품 정보 받아오기
+			Product product = new Product();
+			product = productService.detailProduct(productId);
+			productInfoList.add(product);
+			//상품 개수 받아오기
 			Cart cart = new Cart();
 			cart.setUserId(userId);
-			//Cart 에서 상품 개수 가져와서 리스트로 만들자.
-			cart.setProductId(ProductID);
-			log.info("상품 id : "+ ProductID);
-			log.info("cart : "+ cart);
+			cart.setProductId(productId);
 			int quantity = cartService.getQuantity(cart);
 			quantityList.add(quantity);
 			
-			//Product에서는 상품이름,가격을 가져온다.
-			Product product = new Product();
-			product = productService.detailProduct(ProductID);
-			productInfoList.add(product);
+			//사용자의 구매리스트
+			model.addAttribute("productinfo", productInfoList);
+			model.addAttribute("productQuantity", quantityList);
 		}
+		
 
 		model.addAttribute("userinfo", sessionUser);
-		//사용자의 구매리스트
-		model.addAttribute("productinfo", productInfoList);
-		model.addAttribute("productQuantity", quantityList);
 		
 		return "/payment/payment";
 	}
