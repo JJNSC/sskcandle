@@ -29,8 +29,8 @@
 			<section class="d-flex-column mx-auto maincontainer" >
 				<header class="border-h">
 							<div class="head">
-								<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
-									width="200"  alt="쿠팡">
+								<a href="/skkcandle"><img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
+									width="200"  alt="쿠팡"></a>
 							</div>
 					</header>
 			</section>

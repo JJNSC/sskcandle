@@ -16,6 +16,11 @@
 		select count(*) from wishList
    		where userId = #{userId} and productId = #{productId}
     </select>
+    <!-- 해당 회원이 찜한 상품들의 productId를 가져오기 -->
+    <select id="getWishNo" parameterType="int" resultType="int">
+    	select productId from wishList 
+    	where userId = #{userId}
+    </select>
    
 </mapper>
 

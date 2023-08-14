@@ -107,6 +107,7 @@ public class MypageController {
 		
 		//내 찜 목록
 		}else if(subpage.equals("mywishlist")) {
+			
 		
 		//회원 탈퇴 
 		}else if(subpage.equals("withdraw")) {
