@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainPage/mainPage.css">
-		<script src="${pageContext.request.contextPath}/resources/js/mainPage/mainPage.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/mainPage.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -65,11 +65,11 @@
 
 			<div class="row">
 				<div class="col-sm-12 text-center mb-5 mt-5">
-					<h2>신상품</h2>
-					<!-- <span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff0000, 1px -1px 0px #ff0000, 0px -1px 0px #ff0000, -1px -1px 0px #ff0000, -1px 0px 0px #ff0000, -1px 1px 0px #ff0000, 0px 1px 0px #ff0000, 0px 0px 4px #ff0000; color:#C0C0C0; font-size: 30px;"> 파워레인저 매직포스</span>
+					<!-- <h2>신상품</h2> -->
+					<span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff0000, 1px -1px 0px #ff0000, 0px -1px 0px #ff0000, -1px -1px 0px #ff0000, -1px 0px 0px #ff0000, -1px 1px 0px #ff0000, 0px 1px 0px #ff0000, 0px 0px 4px #ff0000; color:#C0C0C0; font-size: 30px;"> 파워레인저 매직포스</span>
 					<div>
 						<img class="text-center" src="https://i.namu.wiki/i/tPOOe6LgiLSjw2MiRYIpC-HbdosIJm3gCmRXut0p-R1e3I7W6ko8Ii0VpVnE5zqdZiXHT99WsS2ERlY9-JGwpoftkmeW4M5rKssUkFflBtRiabKMQXsax6UnlZdTHFe0pp14m-qAvot3pxtWDJ-qwA.webp" width="300" height="300"/>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			

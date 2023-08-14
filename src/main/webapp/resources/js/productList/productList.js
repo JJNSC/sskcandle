@@ -55,7 +55,7 @@ function sortProductList(sortType) {
             valueB = $(b).find(".product_name a").text().split(" ")[0];
         }
 
-        // 비교 결과에 따라 정렬 순서 반환
+        // 비교 결과에 따라 정렬 순서 반환(삼항 조건 연산자)
         return valueA > valueB ? 1 : -1;
     });
 

@@ -15,7 +15,6 @@ function init(sortType) {
     productList.empty().append(items);
 };*/
 
-
 window.onload = function() {
 	const productList = $(".productList");
     const items = productList.children(".product-entry");
