@@ -16,34 +16,37 @@
 	input{
 		border:none;
 	}
+	
+	button {
+		border:none;
+		background-color: #fff;
+	}
 	</style>
 	
 	</head>
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 찜 목록</h3>
 			<br>
-			
-			<table>
-				<thead>
-					<tr>
-						<td>상품 이미지</td>
-						<td>상품 명</td>
-						<td>상품 가격</td>
-						<td>상품 갯수</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:if test="">
-					<tr>
-						<td>상품 이미지</td>
-						<td>상품 명</td>
-						<td>상품 가격</td>
-						<td>상품 갯수</td>
-					</tr>
-					</c:if>
-				</tbody>
-			
-			</table>
+			<c:forEach var="wish" items="${wishLists}" >
+			    <table class="table table-sm" style="margin-bottom:0;">
+			        <tbody>
+			            <tr>
+			                <td style="width:120px; height:120px;">
+			                    <a href="productDetail?productId=${wish.product.productId}">
+			                        <img src="data:${wish.productImages.pattachtype};base64, ${wish.productImages.base64Image}" width="120"/>
+			                    </a>
+			                </td>
+			                <td style="text-align: left; width:500px; line-height: 120px;">${wish.product.productName}</td>
+			                <td style="line-height: 120px; width:100px;">${wish.product.productPrice} 원</td>
+			                <td style="line-height: 60px;">
+			                	<div><button >장바구니에 담기</button></div>
+			                	<div><button >찜목록 제거하기 </button></div>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			    <hr style="margin-top: 0; margin-bottom: 0px;">
+			</c:forEach>
 		</div>
 	</body>
 </html>

@@ -52,10 +52,11 @@ public class WishServiceImpl implements WishService {
 	@Override
 	public List<WishList> getWishList(int userId) {
 		ArrayList<Integer> productNos = wishDao.getWishNo(userId);
-		
+		log.info("내가 찜한 상품아이디들 : "+productNos);
 		//찜목록의 상품정보, 이미지들이 들어갈 공간
 		List<WishList> wishLists =new ArrayList<>();
 		for(Integer productId : productNos) {
+			log.info("찜한 상품아이디 : "+productNos);
 			WishList wishList = new WishList();
 			//상품 아이디로 여기서 이미지인코딩해서 넣고 , 상품정보들 넣자 
 			Product product = productDao.selectDetailProduct(productId);
@@ -66,6 +67,7 @@ public class WishServiceImpl implements WishService {
 	            productImage.setBase64Image(base64Img);
 	            wishList.setProductImages(productImage);
 	        }
+			wishLists.add(wishList);
 		}
 		return wishLists;
 	}	
