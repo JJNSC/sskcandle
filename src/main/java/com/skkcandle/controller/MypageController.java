@@ -16,13 +16,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.BuyList;
+import com.skkcandle.dto.Cart;
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Review;
 import com.skkcandle.dto.User;
+import com.skkcandle.dto.Wish;
 import com.skkcandle.dto.WishList;
+import com.skkcandle.service.CartService;
 import com.skkcandle.service.OrderService;
 import com.skkcandle.service.ReviewService;
 import com.skkcandle.service.UserService;
@@ -50,6 +54,9 @@ public class MypageController {
 	
 	@Autowired
 	private WishService wishService;
+	
+	@Autowired
+	private CartService cartService;
 
 	@RequestMapping("/mypage")
 	public String mypage(String shoppingPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
@@ -181,6 +188,41 @@ public class MypageController {
 		model.addAttribute("subpage", subpage);
 		return "redirect:/mypage";
 		
+	}
+	
+	//찜리스트에서 장바구니 추가 버튼 누를시 작동
+	@PostMapping("/wishToCart")
+	@ResponseBody
+	public void wishToCart(@RequestParam("productId") int productId, HttpSession session) {
+		log.info("장바구니에 담길 상품 아이디 : "+ productId);
+		User user = (User) session.getAttribute("login");
+		int userId = user.getUserId();
+		Cart cart = new Cart();
+		cart.setProductId(productId);
+		cart.setUserId(userId);
+		cart.setCount(1);
+		//이미 담겨있는지 없는지 확인
+		int recognize = cartService.countCart(cart);
+		// 없으면 넣고 
+		if(recognize == 0 ) {
+			cartService.insertCart(cart);
+		// 있으면 업뎃
+		}else if(recognize ==1 ) {
+			cartService.updateCart(cart);
+		}
+	}
+	
+	//찜리스트에서 찜목록 삭제 버튼 누를시 작동
+	@PostMapping("/deleteWish")
+	@ResponseBody
+	public void deleteWish(@RequestParam("productId") int productId, HttpSession session) {
+		log.info("찜목록 제거될 상품 아이디 : "+ productId);
+		User user = (User) session.getAttribute("login");
+		int userId = user.getUserId();
+		Wish wish = new Wish();
+		wish.setProductId(productId);
+		wish.setUserId(userId);
+		wishService.remove(wish);
 	}
 }
 
