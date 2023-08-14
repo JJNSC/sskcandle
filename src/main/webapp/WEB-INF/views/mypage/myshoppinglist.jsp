@@ -6,16 +6,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mypage.css">
 		<script src="${pageContext.request.contextPath }/resources/js/mypage/myshoppinglist.js"></script>
 	<style>
-	.form-control {
-		height:auto;
-	}
-	input{
-		border:none;
-	}
+		.form-control {
+			height:auto;
+		}
+		input{
+			border:none;
+		}
 	</style>
 	
 	</head>
