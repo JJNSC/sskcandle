@@ -35,7 +35,7 @@ function checkAll() {
       $("input[name=cbox]").prop("checked", true); //true면 체크
       $(".cboxAll").prop("checked", true);
    } else {
-      $("input[name=cbox]").prop("checked", false); //false 면 체크 해제
+      $("input[name=cbox]").prop("checked", false); //false 면 체크 해제한다.
       $(".cboxAll").prop("checked", false);
    }
    
