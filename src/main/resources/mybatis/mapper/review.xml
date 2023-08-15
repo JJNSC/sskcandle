@@ -24,7 +24,7 @@
 	</select>
 	 -->
 	   <!-- reusltType 조회 결과 값을 저장하기 위한 데이터 타입, parameterType : 전달받은 파라미터 데이터 타입 지정 -->
-  <select id="selectByPage" parameterType="Pager" resultType="review"> <!--resultType =(무슨 타입으로 내보내고 싶다), select 된 값을 반환할 빈 그릇 -->
+  <select id="selectByPage" parameterType="Pager" resultType="Review"> <!--resultType =(무슨 타입으로 내보내고 싶다), select 된 값을 반환할 빈 그릇 -->
 	  <![CDATA[
 	  select rnum, reviewId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
 	      from (
@@ -44,6 +44,14 @@
     	select count(*) from review
 		where productId = #{productId}	
     </select>
+    
+    <insert id="insertReview" parameterType="Review">
+    	<selectKey keyProperty="reviewId" resultType="int" order="BEFORE"> 
+			select review_seq.nextval from dual
+		</selectKey>
+		insert into review (reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent)
+		values(#{reviewId},#{productId},#{userId},#{reviewTitle},sysdate,#{ratingScore},#{reviewContent})
+    </insert>
 	
 </mapper> <!-- 리뷰 작업으로 인한 주석처리 -->
 

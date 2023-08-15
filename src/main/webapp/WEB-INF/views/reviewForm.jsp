@@ -25,10 +25,13 @@
         height: 100vh;
         margin: 0;
     }
+   #reviewSubmit{
+    	color: #88c8bc;
+    }
     .review-form {
     	margin:auto;
     	margin-top:50px;
-        max-width: 600px;
+        max-width: 800px;
         width: 100%;
         padding: auto;
         background-color: #fff;
@@ -82,9 +85,9 @@
     }
     .form-group button {
         padding: 10px 20px;
-        background-color: #007bff;
+        background-color: #fff;
         color: #fff;
-        border: none;
+        border: 1px #88c8bc solid;
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
@@ -95,6 +98,8 @@
 	            $(".rating input[type='radio']").on("click", function() {
 	                var selectedRating = $(this).val();
 	                console.log("평점: " + selectedRating);
+	                let inputScore = $(".ratingScore");
+	                inputScore.attr("value",selectedRating);
 	            });
 	        });
 		
@@ -106,14 +111,18 @@
 	<%@ include file="./header/navHeader.jsp" %>
 	</div>
 		<div class="review-form">
-		<div style="float:left; display:inline-block;">
-		이미지가 들어갈곳
+		<div style="float:left; display:inline-block; margin-right:30px;">
+			<img src="data:${productImage.pattachtype};base64, ${productImage.base64Image}" width="200" height="250"/>
 		</div>
-		<div style="float:right; display:inline-block; width:400px;">
+		<div style="float:right; display:inline-block; width:500px;">
 		<form action="submitReview" method="post">
 		    <div class="form-group">
-		        <label for="product">상품명 : 아아아아</label>
-		        <input type="text" id="product" name="product" placeholder="제목" required>
+		    	<input type="hidden" name="productId" value="${product.productId }">
+		    	<input type="hidden" name="orderId" value="${orderId }">
+		    	<input type="hidden" name="userId" value="${login.userId }">
+		    	<input type="hidden" name="ratingScore" class="ratingScore" value="">
+		        <label for="product">상품명 : ${product.productName }</label> <span> 작성자 : ${login.userName }</span>
+		        <input type="text" id="reviewTitle" name="reviewTitle" placeholder="제목" required>
 		    </div>
 		    <div class="form-group">
 		        <label for="rating">평점</label>
@@ -135,10 +144,10 @@
 		    </div>
 		    <div class="form-group">
 		        <label for="comment">리뷰 내용</label>
-		        <textarea id="comment" name="comment" rows="4" required></textarea>
+		        <textarea id="reviewContent" name="reviewContent" rows="4" required></textarea>
 		    </div>
 		    <div class="form-group " style="display:flex; justify-content: right;">
-		        <button type="submit">리뷰 작성</button>
+		        <button id="reviewSubmit" type="submit">리뷰 작성</button>
 		    </div>
 		</form>
 		</div>

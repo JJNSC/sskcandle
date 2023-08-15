@@ -116,6 +116,12 @@ public class OrderServiceImpl implements OrderService{
 		return count;
 	}
 
+	@Override
+	public void reviewedOrder(OrderDetail orderDetail) {
+		orderDao.reviewedOrder(orderDetail);
+		
+	}
+
 	
 	
 

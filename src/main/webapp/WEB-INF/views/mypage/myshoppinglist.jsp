@@ -64,7 +64,7 @@
 					                <td>
 					                	<br><br>
 					                	<c:if test="${orderDetail.review==1}">
-					                		<a type="button" href="reviewForm?productId=${orderProduct.productId}" style="border:none; background-color:#fff;">리뷰 작성하기</a>
+					                		<a type="button" href="reviewForm?productId=${orderProduct.productId}&orderId=${orderDetail.orderId}" style="border:none; background-color:#fff;">리뷰 작성하기</a>
 					                	</c:if>
 					                	<c:if test="${orderDetail.review==2}">
 					                		<span >리뷰작성 완료</span>

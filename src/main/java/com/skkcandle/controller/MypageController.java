@@ -21,13 +21,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Cart;
+import com.skkcandle.dto.OrderDetail;
 import com.skkcandle.dto.Pager;
+import com.skkcandle.dto.Product;
+import com.skkcandle.dto.ProductImages;
 import com.skkcandle.dto.Review;
 import com.skkcandle.dto.User;
 import com.skkcandle.dto.Wish;
 import com.skkcandle.dto.WishList;
 import com.skkcandle.service.CartService;
 import com.skkcandle.service.OrderService;
+import com.skkcandle.service.ProductImagesService;
+import com.skkcandle.service.ProductService;
 import com.skkcandle.service.ReviewService;
 import com.skkcandle.service.UserService;
 import com.skkcandle.service.UserService.WithdrawResult;
@@ -57,6 +62,12 @@ public class MypageController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private ProductService productService;
+	
+	@Autowired
+	private ProductImagesService productImageService;
 
 	@RequestMapping("/mypage")
 	public String mypage(String shoppingPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
@@ -227,10 +238,49 @@ public class MypageController {
 	
 	//리뷰작성하기 버튼 클릭시 리뷰폼으로 보내기
 	@RequestMapping("/reviewForm")
-	public String reviewForm() {
-		
-		
+	public String reviewForm(int productId, int orderId , HttpSession session, Model model) {
+		model.addAttribute("orderId", orderId);
+		Product product = productService.detailProduct(productId);
+		model.addAttribute("product", product);
+		ProductImages productImage = productImageService.thumbnailImage(productId);
+		String base64Img = Base64.getEncoder().encodeToString(productImage.getProductImage());
+		productImage.setBase64Image(base64Img);
+		model.addAttribute("productImage", productImage);
 		return "reviewForm";
+	}
+	
+	//리뷰 작성버튼 클릭시 db에 저장하고 orderDetail의 해당 상품과 해당 유저의 열의 review를 2로 바꿔야한다.
+	//그리고 리뷰 리스트로 보내자
+	@PostMapping("submitReview")
+	public String submitReview(@RequestParam int productId, 
+					@RequestParam int orderId,	
+					@RequestParam int userId,
+					@RequestParam String reviewTitle,
+					@RequestParam(name="ratingScore", defaultValue="5") int ratingScore,
+					@RequestParam String reviewContent ) {
+		log.info("productId : "+ productId);
+		log.info("orderId : "+ orderId);
+		log.info("userId : "+ userId);
+		log.info("reviewTitle : "+ reviewTitle);
+		log.info("ratingScore : "+ ratingScore);
+		log.info("reviewContent : "+ reviewContent);
+		Review review= new Review();
+		review.setProductId(productId);
+		review.setRatingScore(ratingScore);
+		review.setReviewContent(reviewContent);
+		review.setReviewTitle(reviewTitle);
+		review.setUserId(userId);
+		reviewService.insertReview(review);
+		
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrderId(orderId);
+		orderDetail.setProductId(productId);
+		orderDetail.setUserId(userId);
+		
+		orderService.reviewedOrder(orderDetail);
+		
+		
+		return "redirect:/mypage?subpage=myreviewlist";
 	}
 }
 

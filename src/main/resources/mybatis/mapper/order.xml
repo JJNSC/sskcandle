@@ -37,8 +37,8 @@
 	</update>
 	
 	<insert id="insertOrderDetail" parameterType="OrderDetail">
-		insert into orderDetail (userId, productId, orderId, quantity)
-		values(#{userId},#{productId},#{orderId},#{quantity})
+		insert into orderDetail (userId, productId, orderId, quantity, review)
+		values(#{userId},#{productId},#{orderId},#{quantity},1)
 	</insert>
 	
 	<!-- 결제리스트를 위해 모든 정보를 받아오자 -->
@@ -53,12 +53,17 @@
 		]]>
 	</select>
 	<select id="getOrderDetailByOrderId" parameterType="int" resultType="OrderDetail">
-		select productId, quantity, review from orderDetail where orderId = #{orderId} order by orderId desc
+		select productId, quantity, review, orderId from orderDetail where orderId = #{orderId} order by orderId desc
 	</select>
 	<!-- 결제리스트 페이징을 위해 총 결제 횟수 가져오기 -->
 	<select id="getOrderCount" parameterType="int" resultType="int">
 		select count(*) from orderinfo where userId = #{userId}
 	</select>
+	
+	<!-- 리뷰작성하면 orderDetail의 review의 값이 1->2 로변환하는것 -->
+	<update id="reviewedOrder" parameterType="OrderDetail">
+		update orderDetail set review = 2 where userId=#{userId} and productId=#{productId} and orderId=#{orderId}
+	</update>
 	
 	
 	

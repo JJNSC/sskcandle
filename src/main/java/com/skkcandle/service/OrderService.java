@@ -18,4 +18,5 @@ public interface OrderService {
 	public void insertOrderDetail(OrderDetail orderDetail);
 	public List<BuyList> getBuyList(Pager pager);
 	public int getOrderCount(int userId);
+	public void reviewedOrder(OrderDetail orderDetail);
 }
