@@ -8,4 +8,5 @@ public class OrderDetail {
 	private int productId;
 	private int orderId;
 	private int quantity;
+	private int review;
 }

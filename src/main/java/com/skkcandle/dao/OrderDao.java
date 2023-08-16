@@ -28,4 +28,5 @@ public interface OrderDao {
 	public List<Order> getOrderInfo(Pager pager);
 	public List<OrderDetail> getOrderDetailByOrderId(int orderId);
 	public int getOrderCount(int userId);
+	public void reviewedOrder(OrderDetail orderDetail);
 }

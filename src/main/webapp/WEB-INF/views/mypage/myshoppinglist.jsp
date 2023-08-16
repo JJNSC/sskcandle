@@ -42,12 +42,12 @@
 					                    <c:forEach var="productImage" items="${BuyList.productImages}" varStatus="c">
 					                        <c:if test="${c.index==a.index}">
 					                            <a href="productDetail?productId=${orderProduct.productId}">
-					                            	<img src="data:${productImage.pattachtype};base64, ${productImage.base64Image}" width="120"/>
+					                            	<img src="data:${productImage.pattachtype};base64, ${productImage.base64Image}" width="120" height="120"/>
 					                            </a>
 					                        </c:if>
 					                    </c:forEach>
 					                </td>
-					                <td>
+					                <td style="width:440px;">
 					                	<br><br>
 					                	<a href="productDetail?productId=${orderProduct.productId}">${orderProduct.productName}</a>
 					                </td>
@@ -63,7 +63,12 @@
 					                </td>
 					                <td>
 					                	<br><br>
-					                	<a type="button" style="border:none; background-color:#fff;">리뷰 작성하기</a>
+					                	<c:if test="${orderDetail.review==1}">
+					                		<a type="button" href="reviewForm?productId=${orderProduct.productId}&orderId=${orderDetail.orderId}" style="border:none; background-color:#fff;">리뷰 작성하기</a>
+					                	</c:if>
+					                	<c:if test="${orderDetail.review==2}">
+					                		<span >리뷰작성 완료</span>
+					                	</c:if>
 					                </td>
 					            </tr>
 					        </c:if>

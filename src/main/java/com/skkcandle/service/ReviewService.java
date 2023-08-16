@@ -12,5 +12,5 @@ public interface ReviewService {
  	public int getTotalReviewNum(int productId);
 	public List<Review> getList(Pager pager);
 	public int getReviewNum(int productId);
-	
+	public void insertReview(Review review);
 }

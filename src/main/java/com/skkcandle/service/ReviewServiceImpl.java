@@ -53,4 +53,10 @@ public class ReviewServiceImpl implements ReviewService{
 		int ReviewNum = reviewDao.countReview(productId);
 		return ReviewNum;
 	}
+
+	@Override
+	public void insertReview(Review review) {
+		reviewDao.insertReview(review);
+		
+	}
 }
