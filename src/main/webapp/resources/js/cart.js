@@ -311,7 +311,7 @@ $(document).ready(function() {
         
         // Ajax 요청으로 서버에 데이터 전송
         $.ajax({
-            type: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 선택
+            method: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 선택
             url: "updateQuantity", // 실제 요청을 처리할 URL
             data: {
                 productId: productId,
