@@ -101,8 +101,10 @@ function checkValidation(){
 	}
 	
 	//주소 유효성 검사
-	var address = $("#userAddress").val();
-	if(address === ""){
+	var postcode = $("#sample4_postcode").val();
+	var roadAddress = $("#sample4_roadAddress").val();
+	var detailAddress = $("#sample4_detailAddress").val();
+	if(postcode === "" || roadAddress === "" || detailAddress === "" ){
 		isValidation = false;
 		var addressErr1 = $("#addressErr1");
 		addressErr1.removeClass("d-none");

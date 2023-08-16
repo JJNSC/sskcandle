@@ -56,7 +56,7 @@ function addCartBtn(){
 	}
 };
 
-function clickWishBtn() {
+function clickWishBtn() { 
     var userId = $('input[name=userId]').val();
     var productId = $('input[name=productId]').val();
     var contextPath = "${pageContext.request.contextPath}";
@@ -67,22 +67,46 @@ function clickWishBtn() {
         return;
     } else {
         $.ajax({
-            url: "updateWish",
-            method: "GET",
+            url: "changeWish",
+            method: "POST",
             data: {productId:productId},
             dataType: "", // JSON 형식으로 응답을 기대함
             success: function(result) {
                 console.log(result); // 콘솔에 isWished 값 출력
-                /*if (result === 1) {
-                    $("img[id='like']").prop('src', contextPath + '/resources/images/fullHeart.png').attr('alt', 'Full Heart');
+
+                if (result === "add success") {
+                    $("img[id='like']").attr({src:"/skkcandle/resources/images/fullHeart.png"}).attr('alt', 'Full Heart');
                 } else {
-                    $("img[id='unlike']").pㄴrop('src', contextPath + '/resources/images/emptyHeart.png').attr('alt', 'Empty Heart');
-                }*/
+                    $("img[id='like']").attr({src:"/skkcandle/resources/images/emptyHeart.png"}).attr('alt', 'Empty Heart');
+                }
             }
         });
     }    
 }
-
+/*
+function changeWish() {
+    var userId = $('input[name=userId]').val();
+    var productId = $('input[name=productId]').val();
+    console.log("userId : "+userId); 
+    console.log("productId : "+productId); 
+    
+    $.ajax({
+        url: "changeWish",
+        method: "POST",
+        data: {"productId":productId},
+        success: function(data) {
+            console.log(data);
+            success: function(result) {
+                console.log(result); // 콘솔에 isWished 값 출력
+                if (result === 1) {
+                    $("img[id='like']").prop('src', contextPath + '/resources/images/fullHeart.png').attr('alt', 'Full Heart');
+                } else {
+                    $("img[id='unlike']").prop('src', contextPath + '/resources/images/emptyHeart.png').attr('alt', 'Empty Heart');
+                }
+            }
+    });
+}
+*/
 function addCartAndPay(){
 	console.log("실행되는가");
 	var productId = $('input[name=productId]').val();

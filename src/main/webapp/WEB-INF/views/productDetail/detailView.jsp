@@ -54,7 +54,7 @@
 			                <img id="like" src="${pageContext.request.contextPath}/resources/images/fullHeart.png" alt="Full Heart">
 			            </c:when>
 			            <c:otherwise>
-			                <img id="unlike" src="${pageContext.request.contextPath}/resources/images/emptyHeart.png" alt="Empty Heart">
+			                <img id="like" src="${pageContext.request.contextPath}/resources/images/emptyHeart.png" alt="Empty Heart">
 			            </c:otherwise>
 			        </c:choose>
 			    </a>

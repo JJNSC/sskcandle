@@ -72,7 +72,7 @@ public class MypageController {
 	private ProductImagesService productImageService;
 
 	@RequestMapping("/mypage")
-	public String mypage(String shoppingPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
+	public String mypage(String shoppingPageNo, String reviewPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
 						HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		
@@ -97,7 +97,7 @@ public class MypageController {
 			// 브라우저에서 pageNo가 넘어오지 않았을 경우
 			if (shoppingPageNo == null) {
 				// 세션에 저장되어 있는지 확인
-				shoppingPageNo = (String) session.getAttribute("pageNo");
+				shoppingPageNo = (String) session.getAttribute("shoppingPageNo");
 				if (shoppingPageNo == null) {
 					// 저장되어 있지 않다면 1로 초기화
 					shoppingPageNo = "1";
@@ -106,7 +106,7 @@ public class MypageController {
 			// 문자열로 정수를 변환
 			int intpageNo = Integer.parseInt(shoppingPageNo);
 			// 세션에 pageNo를 저장
-			session.setAttribute("pageNo", String.valueOf(shoppingPageNo));
+			session.setAttribute("shoppingPageNo", String.valueOf(intpageNo));
 			
 			int userId = user.getUserId();
 
@@ -118,22 +118,51 @@ public class MypageController {
 			pager.setUserId(userId);
 			
 			List<BuyList> orderList = orderService.getBuyList(pager);
+			//만약 총 게시물이 한페이지안에서 해결가능한 갯수라면 페이징을 실행시키지 않는다.
+			if(totalBoardNum <= 5) {
+				model.addAttribute("noPaging", 1);
+			}
 			
-			model.addAttribute("pager", pager);
+			model.addAttribute("shoppingPager", pager);
 			model.addAttribute("orderList", orderList);
 			
 		//내 리뷰 리스트	
 		}else if(subpage.equals("myreviewlist")) {
-			user = (User) session.getAttribute("login");
+			// 브라우저에서 pageNo가 넘어오지 않았을 경우
+			if (reviewPageNo == null) {
+				// 세션에 저장되어 있는지 확인
+				reviewPageNo = (String) session.getAttribute("reviewPageNo");
+				if (reviewPageNo == null) {
+					// 저장되어 있지 않다면 1로 초기화
+					reviewPageNo = "1";
+				}
+			}
+			// 문자열로 정수를 변환
+			int intpageNo = Integer.parseInt(reviewPageNo);
+			// 세션에 pageNo를 저장
+			session.setAttribute("reviewPageNo", String.valueOf(intpageNo));
+			
 			int userId = user.getUserId();
-			List<Review> reviewList = reviewService.selectReviewByUserId(userId);
+			
+			//paging
+			int totalBoardNum = reviewService.reviewNum(userId);
+			Pager pager = new Pager(10, 5, totalBoardNum, intpageNo);
+			
+			pager.setUserId(userId);
+			
+			
+			List<Review> reviewList = reviewService.reviewPaging(pager);
 			List<Product> productList = new ArrayList<>();
 			for(Review review : reviewList) {
 				int productId = review.getProductId();
 				Product product = productService.detailProduct(productId);
 				productList.add(product);
 			}
+			if(totalBoardNum <= 10) {
+				model.addAttribute("noPaging", 1);
+			}
 			
+			model.addAttribute("reviewPager", pager);
 			model.addAttribute("myreview", reviewList);
 			model.addAttribute("productList", productList);
 		

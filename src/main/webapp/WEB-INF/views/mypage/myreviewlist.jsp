@@ -104,6 +104,34 @@
 	               </tbody>
 			</table>
 			<hr style="margin-top:0;">
+			<c:if test="${noPaging!=1}"> 
+				<div style="margin:auto; padding:0 auto; ">
+					<table style="margin-left:28%; ">
+						<tr>
+							<td colspan="4" class="text-center">
+								<div>
+									<a class="btn btn-sm" href="mypage?subpage=myreviewlist&reviewPageNo=1">처음</a>
+									<c:if test="${reviewPager.groupNo>1}">
+										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myreviewlist&reviewPageNo=${reviewPager.startPageNo-1}">이전</a>
+									</c:if>
+									<c:forEach var="i" begin="${reviewPager.startPageNo}" end="${reviewPager.endPageNo}">
+										<c:if test="${reviewPager.pageNo != i}">
+											<a class="btn  btn-sm" href="mypage?subpage=myreviewlist&reviewPageNo=${i}">${i}</a>
+										</c:if>
+										<c:if test="${reviewPager.pageNo == i}">
+											<a class="btn btn-sm" style="color:#20c997;" href="mypage?subpage=myreviewlist&reviewPageNo=${i}">${i}</a>
+										</c:if>
+									</c:forEach>
+									<c:if test="${reviewPager.groupNo<reviewPager.totalGroupNo}">
+										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myreviewlist&reviewPageNo=${reviewPager.endPageNo+1}">다음</a>
+									</c:if>
+									<a class="btn btn-sm" href="mypage?subpage=myreviewlist&reviewPageNo=${reviewPager.totalPageNo}">맨끝</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</c:if>
 		</div>
 	</body>
 </html>

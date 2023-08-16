@@ -20,14 +20,14 @@
 	</head>
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 구매 목록</h3> 
-			<span style="float:right;">${pager.pageNo}/${pager.totalPageNo} </span>
+			<span style="float:right;">${shoppingPager.pageNo}/${shoppingPager.totalPageNo} </span>
 			<br>
 			<c:forEach var="BuyList" items="${orderList }" >
 			<table class="table table-sm" style="margin-bottom:0;">
 				<thead>
 					<tr>
 						<td>${BuyList.order.orderId }</td>
-						<td>주소 : ${BuyList.order.shippingAddress }</td>
+						<td>주소 : ${BuyList.order.shippingRoadAddress } ${BuyList.order.shippingDetailAddress }</td>
 						<td>주문 날짜  </td>
 						<td><fmt:formatDate value="${BuyList.order.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
 						<td>${BuyList.order.orderStatus }</td>
@@ -78,32 +78,34 @@
 			</table>
 			<hr >
 			</c:forEach>
-			<div style="margin:auto; padding:0 auto; ">
-				<table style="margin-left:28%; ">
-					<tr>
-						<td colspan="4" class="text-center">
-							<div>
-								<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=1">처음</a>
-								<c:if test="${pager.groupNo>1}">
-									<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${pager.startPageNo-1}">이전</a>
-								</c:if>
-								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-									<c:if test="${pager.pageNo != i}">
-										<a class="btn  btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+			<c:if test="${noPaging!=1}"> 
+				<div style="margin:auto; padding:0 auto; ">
+					<table style="margin-left:28%; ">
+						<tr>
+							<td colspan="4" class="text-center">
+								<div>
+									<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=1">처음</a>
+									<c:if test="${shoppingPager.groupNo>1}">
+										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${shoppingPager.startPageNo-1}">이전</a>
 									</c:if>
-									<c:if test="${pager.pageNo == i}">
-										<a class="btn btn-sm" style="color:#20c997;" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+									<c:forEach var="i" begin="${shoppingPager.startPageNo}" end="${shoppingPager.endPageNo}">
+										<c:if test="${shoppingPager.pageNo != i}">
+											<a class="btn  btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+										</c:if>
+										<c:if test="${shoppingPager.pageNo == i}">
+											<a class="btn btn-sm" style="color:#20c997;" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+										</c:if>
+									</c:forEach>
+									<c:if test="${shoppingPager.groupNo<shoppingPager.totalGroupNo}">
+										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${shoppingPager.endPageNo+1}">다음</a>
 									</c:if>
-								</c:forEach>
-								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${pager.endPageNo+1}">다음</a>
-								</c:if>
-								<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${pager.totalPageNo}">맨끝</a>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
+									<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${shoppingPager.totalPageNo}">맨끝</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</c:if>
 		</div>
 	</body>
 </html>
