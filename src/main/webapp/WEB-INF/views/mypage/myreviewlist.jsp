@@ -8,16 +8,51 @@
 	<head>
 	
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mypage.css">
-		<script src="${pageContext.request.contextPath }/resources/js/mypage.js"></script>
 	<style>
-	.form-control {
-		height:auto;
-	}
-	input{
-		border:none;
-	}
+		.form-control {
+			height:auto;
+		}
+		input{
+			border:none;
+		}
 	</style>
-	
+	<script>
+		//리뷰 삭제하기 버튼 클릭시
+		function deleteReview(element, event) {
+		    if (confirm("해당 리뷰를 삭제하시겠습니까?")) {
+		        let deleteReviewId = $(element).data("delete");
+		        console.log("삭제할 리뷰 아이디 : " + deleteReviewId);
+		        //d-none 처리 
+		        $("#"+deleteReviewId+"top").attr("class","d-none");
+		        $("#"+deleteReviewId+"bottom").attr("class","d-none");
+		        //실제 db에서 삭제
+		        $.ajax({
+		        	url:"deleteReview",
+		        	method:"POST",
+		        	data:{reviewId:deleteReviewId},
+		        	success:function(){
+		        		
+		        	}
+		        })
+		        
+		    }
+		    // 이벤트의 기본 동작 중단
+		    event.preventDefault();
+		}
+		//리뷰 수정하기 버튼 클릭시
+		function updateReview(element, event) {
+		    if (confirm("해당 리뷰를 수정하시겠습니까?")) {
+		        let updateReviewId = $(element).data("delete");
+		        console.log("수정할 리뷰 아이디 : " + updateReviewId);
+		        
+		        location.href="reviewForm?reviewId="+updateReviewId;
+		        
+		    }
+		    // 이벤트의 기본 동작 중단
+		    event.preventDefault();
+		}
+		
+	</script>
 	</head>
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 리뷰 리스트</h3>
@@ -36,29 +71,30 @@
 						<c:forEach var="review" items="${myreview }" varStatus="a">
 							<c:forEach var="product" items="${productList }" varStatus="b">
 								<c:if test="${a.index==b.index}">
-									<tr>
+									<tr style="height:50px; line-height: 50px;" id="${review.reviewId }top">
 										<td>${review.reviewId }</td>
-										<td>${product.productName }</td>
+										<td style="width:20%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+										    ${product.productName }
+										</td>
 										<td>
-											<p>
-												<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
-												  ${review.reviewTitle }
-												</a>
-												<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample${review.reviewId }" aria-expanded="false" aria-controls="collapseExample">
-												  Button with data-target
-												</button>
-											</p>
+											<a class="reviewTitle" data-toggle="collapse" id="reviewTitle${review.reviewId }" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
+											  ${review.reviewTitle }
+											</a>
 										</td>
 										<td><fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
 										<td>${review.ratingScore }</td>
 									</tr>
 									<tr>
 									</tr>
-									<tr>
+									<tr id="${review.reviewId }bottom">
 										<td colspan="5">
 									    	<div class="collapse" id="collapseExample${review.reviewId }">
 												<div class="card card-body">
 													${review.reviewContent }
+												</div>
+												<div style="display:flex; flex-direction: row-reverse;">
+													<a type="button" onclick="deleteReview(this, event)" data-delete="${review.reviewId }" style="width:70px; text-align: right;">삭제</a>
+													<a type="button" onclick="updateReview(this, event)" data-delete="${review.reviewId }" style="width:70px;text-align: right;">수정</a>
 												</div>
 											</div>
 									    </td>

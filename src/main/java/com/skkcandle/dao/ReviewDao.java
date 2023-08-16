@@ -15,6 +15,9 @@ public interface ReviewDao {
 	public List<Review> selectByPage(Pager pager);
 	public int countReview(int productId);
 	public void insertReview(Review review);
+	public void deleteReview(int reviewId);
+	public Review getReviewInfo(int reviewId);
+	public void updateReview(Review review);
 }
 
 

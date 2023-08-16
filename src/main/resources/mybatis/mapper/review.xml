@@ -44,7 +44,7 @@
     	select count(*) from review
 		where productId = #{productId}	
     </select>
-    
+    <!-- 리뷰 작성하기  -->
     <insert id="insertReview" parameterType="Review">
     	<selectKey keyProperty="reviewId" resultType="int" order="BEFORE"> 
 			select review_seq.nextval from dual
@@ -52,6 +52,20 @@
 		insert into review (reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent)
 		values(#{reviewId},#{productId},#{userId},#{reviewTitle},sysdate,#{ratingScore},#{reviewContent})
     </insert>
+    <!-- 리뷰 삭제하기 -->
+    <delete id="deleteReview" parameterType="int">
+    	delete from review where reviewId = #{reviewId}
+    </delete>
+    <!-- 리뷰 수정하기위해 reviewId 로 정보 가져오기 -->
+    <select id="getReviewInfo" parameterType="int" resultType="Review">
+    	select * from review where reviewId = #{reviewId}
+    </select>
+    <!-- 리뷰 수정시 -->
+    <update id="updateReview" parameterType="Review">
+    	update review set 
+    	reviewTitle = #{reviewTitle}, reviewDate = sysdate, ratingScore =#{ratingScore}, reviewContent = #{reviewContent}
+    </update>
+    
 	
 </mapper> <!-- 리뷰 작업으로 인한 주석처리 -->
 

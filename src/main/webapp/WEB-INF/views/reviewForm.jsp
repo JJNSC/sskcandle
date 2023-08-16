@@ -117,12 +117,14 @@
 		<div style="float:right; display:inline-block; width:500px;">
 		<form action="submitReview" method="post">
 		    <div class="form-group">
+		    	<input type="hidden" name="reviewId" value="${reviewId }">
 		    	<input type="hidden" name="productId" value="${product.productId }">
 		    	<input type="hidden" name="orderId" value="${orderId }">
 		    	<input type="hidden" name="userId" value="${login.userId }">
 		    	<input type="hidden" name="ratingScore" class="ratingScore" value="">
-		        <label for="product">상품명 : ${product.productName }</label> <span> 작성자 : ${login.userName }</span>
-		        <input type="text" id="reviewTitle" name="reviewTitle" placeholder="제목" required>
+		        <label for="product">상품명 : ${product.productName }</label>
+		       	<span> 작성자 : ${login.userName }</span>
+        		<input type="text" id="reviewTitle" name="reviewTitle" placeholder="${review.reviewTitle }" alt="제목" required>
 		    </div>
 		    <div class="form-group">
 		        <label for="rating">평점</label>
@@ -144,10 +146,17 @@
 		    </div>
 		    <div class="form-group">
 		        <label for="comment">리뷰 내용</label>
-		        <textarea id="reviewContent" name="reviewContent" placeholder="200자  이내 작성" rows="4" maxlength="200" required></textarea>
+		        <textarea id="reviewContent" name="reviewContent" placeholder="${review.reviewContent }" rows="4" maxlength="200" alt="200자  이내 작성" required></textarea>
 		    </div>
 		    <div class="form-group " style="display:flex; justify-content: right;">
-		        <button id="reviewSubmit" type="submit">리뷰 작성</button>
+		        <button id="reviewSubmit" type="submit">
+		        	<c:if test="${reviewId==0}">
+		        		작성하기
+		        	</c:if>
+		        	<c:if test="${reviewId!=0}">
+		        		수정하기
+		        	</c:if>
+		        </button>
 		    </div>
 		</form>
 		</div>
