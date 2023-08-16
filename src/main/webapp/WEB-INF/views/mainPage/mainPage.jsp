@@ -65,15 +65,22 @@
 
 			<div class="row">
 				<div class="col-sm-12 text-center mb-5 mt-5">
-					<!-- <h2>신상품</h2> -->
+					<!-- 파워레인저
 					<span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff0000, 1px -1px 0px #ff0000, 0px -1px 0px #ff0000, -1px -1px 0px #ff0000, -1px 0px 0px #ff0000, -1px 1px 0px #ff0000, 0px 1px 0px #ff0000, 0px 0px 4px #ff0000; color:#C0C0C0; font-size: 30px;"> 파워레인저 매직포스</span>
 					<div>
 						<img class="text-center" src="https://i.namu.wiki/i/tPOOe6LgiLSjw2MiRYIpC-HbdosIJm3gCmRXut0p-R1e3I7W6ko8Ii0VpVnE5zqdZiXHT99WsS2ERlY9-JGwpoftkmeW4M5rKssUkFflBtRiabKMQXsax6UnlZdTHFe0pp14m-qAvot3pxtWDJ-qwA.webp" width="300" height="300"/>
+					</div> -->
+					<span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff5640, 1px -1px 0px #ff5640, 0px -1px 0px #ff5640, -1px -1px 0px #ff5640, -1px 0px 0px #ff5640, -1px 1px 0px #ff5640, 0px 1px 0px #ff5640, 0px 0px 4px #ff5640; color:#ffb852; font-size: 30px;"> 끼요오오오옷</span>
+					<div>
+						<img class="text-center" src="${pageContext.request.contextPath}/resources/images/2.gif" width="300" height="300" />
 					</div>
+					<div class="title_main">New arrivals</div>
+					<div class="title_split"></div>
+					<div class="title_content">SKKCANDLE 신규 상품을 만나보세요.</div>
 				</div>
 			</div>
 			
-			<div class="row productList">
+			<%-- <div class="row productList">
 				<c:forEach var="product" items="${product}">
 					<div class="col-lg-3 mb-4 text-center">	
 						<div class="border product-entry">
@@ -88,7 +95,28 @@
 						</div>
 					</div>
 				</c:forEach>
+			</div> --%>
+			
+			<%-- 3개만 출력 --%>
+			<div class="row productList">
+			    <c:forEach var="product" items="${product}" varStatus="loop">
+			        <c:if test="${loop.index < 3}">
+			            <div class="col-lg-3 mb-4 text-center">	
+			                <div class="border product-entry">
+			                    <a href="productDetail?productId=${product.productId}" class="prod-img">
+			                        <img src="data:image/jpeg;base64,${product.base64Image}" />
+			                    </a>
+			                    <div class="desc">
+			                        <a href="#">${product.productMaker}</a>
+			                        <h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
+			                        <span class="price">&#8361;${product.productPrice}</span>
+			                    </div>
+			                </div>
+			            </div>
+			        </c:if>
+			    </c:forEach>
 			</div>
+			
 			
 			<%-- <div class="productList">
 				<c:forEach var="product" items="${product}">

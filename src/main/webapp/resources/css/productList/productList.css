@@ -157,6 +157,7 @@ li {
 .product_tag > a {
 	color: #808080 !important;
 	font-size: 12px;
+	padding-bottom: 5px;
 }
 
 

@@ -24,7 +24,14 @@
   		<param-name>contextConfigLocation</param-name>
   		<param-value>classpath:spring/dispatcher/*.xml</param-value>
   	</init-param>
+  	<!-- 예외를 @ControllerAdvice에 처리하도록 설정 -->
+  	<init-param>
+  		<param-name>throwExceptionIfNoHandlerFound</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  	<!-- 웹앱 실행 시, 서블릿 객체 생성-->
   	<load-on-startup>1</load-on-startup>
+  	<!-- 멀티파트 파싱을 위한 설정 -->
   	<multipart-config>
       <location>C:/Temp</location>
       <max-file-size>20971520</max-file-size>
