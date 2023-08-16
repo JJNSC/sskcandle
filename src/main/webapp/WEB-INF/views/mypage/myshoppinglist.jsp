@@ -27,7 +27,7 @@
 				<thead>
 					<tr>
 						<td>${BuyList.order.orderId }</td>
-						<td>주소 : ${BuyList.order.shippingAddress }</td>
+						<td>주소 : ${BuyList.order.shippingRoadAddress } ${BuyList.order.shippingDetailAddress }</td>
 						<td>주문 날짜  </td>
 						<td><fmt:formatDate value="${BuyList.order.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
 						<td>${BuyList.order.orderStatus }</td>

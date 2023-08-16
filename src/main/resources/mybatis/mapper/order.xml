@@ -23,8 +23,8 @@
 		<selectKey keyProperty="orderId" resultType="int" order="BEFORE">
 			select order_seq.nextval from dual <!-- 시퀀스의 다음 번호를 가지고온다. 그리고 다음단계=>세팅하기 -->
 		</selectKey>
-		insert into orderinfo (orderId, userId, orderDate, orderStatus, shippingAddress, accountTransfer, creditCard, phone, withoutBankbook, checked )
-		values(#{orderId}, #{userId}, sysdate, '배송준비중', #{shippingAddress}, #{accountTransfer},#{creditCard},#{phone},#{withoutBankbook},'no')
+		insert into orderinfo (orderId, userId, orderDate, orderStatus, shippingPostcode,shippingRoadAddress,shippingDetailAddress, accountTransfer, creditCard, phone, withoutBankbook, checked )
+		values(#{orderId}, #{userId}, sysdate, '배송준비중', #{shippingPostcode},#{shippingRoadAddress},#{shippingDetailAddress}, #{accountTransfer},#{creditCard},#{phone},#{withoutBankbook},'no')
 	</insert>
 	
 	<!-- orderDetail에 방금 주문한 내역들만 저장하기 위해 orderId를 받아오는 과정1 -->
@@ -44,9 +44,9 @@
 	<!-- 결제리스트를 위해 모든 정보를 받아오자 -->
 	<select id="getOrderInfo" parameterType="Pager" resultType="Order">
 		<![CDATA[
-			SELECT rnum, orderId, userId, orderDate, orderStatus, shippingAddress, arriveDate 
-			FROM ( SELECT rownum rnum, orderId, userId, orderDate, orderStatus, shippingAddress, arriveDate 
-			    FROM ( SELECT orderId, userId, orderDate, orderStatus, shippingAddress, arriveDate 
+			SELECT rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
+			FROM ( SELECT rownum rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
+			    FROM ( SELECT orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
 			        FROM ORDERINFO WHERE USERID = #{userId} ORDER BY ORDERID DESC ) 
 			    WHERE ROWNUM <=#{endRowNo} ) 
 			WHERE rnum >=#{startRowNo} 
