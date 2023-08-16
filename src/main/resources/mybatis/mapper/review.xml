@@ -63,7 +63,8 @@
     <!-- 리뷰 수정시 -->
     <update id="updateReview" parameterType="Review">
     	update review set 
-    	reviewTitle = #{reviewTitle}, reviewDate = sysdate, ratingScore =#{ratingScore}, reviewContent = #{reviewContent}
+    	reviewTitle = #{reviewTitle}, reviewDate = sysdate, ratingScore =#{ratingScore}, reviewContent = #{reviewContent} 
+    	where reviewId=#{reviewId}
     </update>
     
 	

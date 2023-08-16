@@ -311,6 +311,7 @@ public class MypageController {
 		}
 		//리뷰를 수정할시 
 		else {
+			review.setReviewId(reviewId);
 			reviewService.updateReview(review);
 		}
 		
