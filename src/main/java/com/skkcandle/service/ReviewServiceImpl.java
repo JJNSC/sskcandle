@@ -76,4 +76,16 @@ public class ReviewServiceImpl implements ReviewService{
 	public void updateReview(Review review) {
 		reviewDao.updateReview(review);
 	}
+
+	@Override
+	public List<Review> reviewPaging(Pager pager) {
+		List<Review> reviewList =  reviewDao.reviewPaging(pager);
+		return reviewList;
+	}
+
+	@Override
+	public int reviewNum(int userId) {
+		int reviewNum = reviewDao.reviewNum(userId);
+		return reviewNum;
+	}
 }

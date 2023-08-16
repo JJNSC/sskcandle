@@ -18,6 +18,8 @@ public interface ReviewDao {
 	public void deleteReview(int reviewId);
 	public Review getReviewInfo(int reviewId);
 	public void updateReview(Review review);
+	public List<Review> reviewPaging(Pager pager);
+	public int reviewNum(int userId);
 }
 
 

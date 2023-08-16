@@ -48,8 +48,7 @@
 	     	
 	     	<!-- 찜한 상품 여부에 따라 하트 아이콘 표시 -->
 		   <div class="prod-favorite">
-			    <!-- <a class="prod-favorite-btn" onclick="clickWishBtn()"> -->
-			    <button onclick="changeWish()">
+			    <a class="prod-favorite-btn" onclick="clickWishBtn()">
 			        <c:choose>
 			            <c:when test="${isWished}">
 			                <img id="like" src="${pageContext.request.contextPath}/resources/images/fullHeart.png" alt="Full Heart">
@@ -58,8 +57,7 @@
 			                <img id="unlike" src="${pageContext.request.contextPath}/resources/images/emptyHeart.png" alt="Empty Heart">
 			            </c:otherwise>
 			        </c:choose>
-			    </button>
-			  <!--   </a> -->
+			    </a>
 			</div>
 			
 	     	<!-- 별점 -->
