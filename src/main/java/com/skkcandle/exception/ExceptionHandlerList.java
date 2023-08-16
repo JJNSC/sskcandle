@@ -23,7 +23,7 @@ public class ExceptionHandlerList {
        return "exception/502";
     }
 	
-	@ExceptionHandler(ServerErrorException.class)
+	@ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleServerErrorException() {
        return "exception/500";
