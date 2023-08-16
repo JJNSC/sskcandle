@@ -67,6 +67,23 @@
     	where reviewId=#{reviewId}
     </update>
     
+    <!-- 리뷰 페이징을 위해 총 리뷰수를 가져오자  -->
+    <select id="reviewNum" parameterType="int" resultType="int">
+    	select count(*) from review where userId=#{userId}
+    </select>
+    
+    <!-- 리뷰 페이징을 위해  정보를 받아오자 -->
+	<select id="reviewPaging" parameterType="Pager" resultType="Review">
+		<![CDATA[
+			SELECT rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent 
+			FROM ( SELECT rownum rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent 
+			    FROM ( SELECT reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent 
+			        FROM review WHERE USERID = #{userId} ORDER BY reviewId DESC ) 
+			    WHERE ROWNUM <=#{endRowNo} ) 
+			WHERE rnum >=#{startRowNo} 
+		]]>
+	</select>
+    
 	
 </mapper> <!-- 리뷰 작업으로 인한 주석처리 -->
 

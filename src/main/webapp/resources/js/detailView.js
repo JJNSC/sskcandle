@@ -84,22 +84,6 @@ function clickWishBtn() {
     }    
 }
 
-function changeWish() {
-    var userId = $('input[name=userId]').val();
-    var productId = $('input[name=productId]').val();
-    console.log("userId : "+userId); 
-    console.log("productId : "+productId); 
-
-    $.ajax({
-        url: "changeWish",
-        method: "GET",
-        data: {productId:productId},
-        success: function(data) {
-            console.log(data); 
-        }
-    });
-}
-
 function addCartAndPay(){
 	console.log("실행되는가");
 	var productId = $('input[name=productId]').val();
