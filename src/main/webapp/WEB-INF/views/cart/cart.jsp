@@ -46,7 +46,7 @@
 		           								<c:if test="${a.index == c.index}">	
 									           		<tr class="cart-deal-item">		
 										            	<td class="product-select-event">
-										            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}">
+										            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}" onclick="">
 										            	</td>
 										            	<td class="cart-deal-item_image">
 									            			<c:if test="${ImageList.productImage != null }"> 
@@ -139,13 +139,13 @@
             </tbody>
    		</table>
    		<div class="order-table-foot">
-                    <span class="all-select-product">
-						<label>
-							<input type="checkbox" class="cboxAll"> <span>전체선택</span><span class="cart-count-bottom">( <em class="selected-num"></em>/<em class="all-num"></em>)</span>
-						</label>
-						<button class="selected-delete" onclick="deleteItemList()">삭제</button>
-						<!-- <a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a> -->
-					</span>
+         	<span class="all-select-product">
+				<label>
+					<input type="checkbox" class="cboxAll" onclick="sum()"> <span>전체선택</span><span class="cart-count-bottom">( <em class="selected-num"></em>/<em class="all-num"></em>)</span>
+				</label>
+				<button class="selected-delete" onclick="deleteItemList()">삭제</button>
+			<!-- <a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a> -->
+			</span>
         </div>
         <div class="payment-reward-cash-area">
                 <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">

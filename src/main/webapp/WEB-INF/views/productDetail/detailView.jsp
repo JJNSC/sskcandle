@@ -96,8 +96,9 @@
         	
         	<div class="product-buy-footer">
 	        	<form id="cart" method="get" action=""> 
-	        		<input type="hidden" name="productId" value="${detailproduct.productId}">
-		        	<button class="product-cart-btn" onclick="addCartBtn()" type="button"> 장바구니 담기 </button>
+	        		<input type="hidden" name="productId" value="${detailproduct.productId}"> <!-- productId value을 알기위한 -->
+	        		<input type="hidden" name="userId" value="${login.userId}">	<!-- 로그인 처리시 자스가 먼저 실행되므로 userID 파악을 위한 -->
+		        	<button class="product-cart-btn" onclick="addCartBtn()" type="button"> 장바구니 담기 </button> 
 		            <button class="product-buy-btn" onclick="addCartAndPay()" type="button"><span> 바로구매 </span></button>
 		       
 			        <!-- 장바구니 수량 버튼 -->

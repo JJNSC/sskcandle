@@ -258,8 +258,8 @@ function sum(){
 	   
 	var total = 0;
 	
-	  $("input:checkbox[name=cbox]:checked").each( function(index, item) {		
-		  var checkeditem = parseInt($(item).parent().next().next().next().children().html().replace(/[^0-9]/g, ""));
+	  $("input:checkbox[name=cbox]:checked").each(function(index, item) {		
+		  var checkeditem = parseInt($(".unit-total-price").html().replace(/[^0-9]/g, ""));
   			total += checkeditem;
 	  });
 	  
@@ -339,7 +339,7 @@ $(document).ready(function() {
         console.log(total);
 
 
-        row.find(".unit-total-price").text(total); // 해당 행의 총 가격 업데이트
+        row.find(".unit-total-price").text(total.toLocaleString("ko-KR") + "원"); // 해당 행의 총 가격 업데이트
     });
 });
 

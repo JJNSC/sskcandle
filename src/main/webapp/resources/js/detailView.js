@@ -34,25 +34,41 @@ function count(type)  {
 };
 
 function addCartBtn(){
-	//장바구니 alert 예 아니오 클릭시
-	var productCount = $('input[id=productCount]').val();
-	var productId = $('input[name=productId]').val();
-	  console.log(productCount);
-	  console.log(productId);
-	 /* $('#cart').submit();*/
-	if (confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까??")) { 
-		location.href = "cartList?result="+productCount+ "&productId="+productId; //location 을 이렇게 주는 이유는 controller 에 productCount 를 넘겨주기 위함이다.
-	}else{	
-		location.href = "reProduct?result="+productCount+ "&productId="+productId;
+	
+	var userId = $('input[name=userId]').val();
+	
+	if(userId === ""){
+		  location.href="loginForm"
+	} else {
+	
+		var productCount = $('input[id=productCount]').val();
+		var productId = $('input[name=productId]').val();
+		  console.log(productCount);
+		  console.log(productId);
+		 /* $('#cart').submit();*/
+		
+		if (confirm("장바구니에 추가되었습니다!\n장바구니로 이동하시겠습니까??")) { 
+			location.href = "cartList?result="+productCount+ "&productId="+productId; //location 을 이렇게 주는 이유는 controller 에 productCount 를 넘겨주기 위함이다.
+		}else{	
+			location.href = "reProduct?result="+productCount+ "&productId="+productId;
+		}
 	}
 };
 
 function clickWishBtn() {
-	var productId = $('input[name=productId]').val();
-	/*console.log("productId : "+ productId);*/    
-	location.href = "updateWish?productId="+productId;
-	alert("찜목록이 수정되었습니다.")
-}
+	
+var userId = $('input[name=userId]').val();
+	
+	if(userId === ""){
+		  location.href="loginForm"
+	} else {
+	
+		var productId = $('input[name=productId]').val();
+		/*console.log("productId : "+ productId);*/    
+		location.href = "updateWish?productId="+productId;
+		alert("찜목록이 수정되었습니다.");
+	}
+};
 
 function addCartAndPay(){
 	console.log("실행되는가");

@@ -121,8 +121,6 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void updateCartCount(Cart cart) {
-		log.info("실행되나??");
-		log.info("cart의 내용" + cart);
 		CartDao.updateCartCount(cart);
 	}
 }
