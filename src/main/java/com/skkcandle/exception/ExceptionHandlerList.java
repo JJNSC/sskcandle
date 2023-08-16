@@ -23,10 +23,16 @@ public class ExceptionHandlerList {
         return "exception/502";
     }
 	
-    @ExceptionHandler(ServerErrorException.class)
+    /*@ExceptionHandler(ServerErrorException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleServerErrorException() {
         return "exception/500";
+    }*/
+    
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleOtherException(Exception e) {
+       return "exception/500";
     }
    
 	@ExceptionHandler(NoHandlerFoundException.class)
