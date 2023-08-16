@@ -37,11 +37,6 @@ public class HomeController {
 		throw new RuntimeException();
 	}
 	
-	/*@RequestMapping("/502")
-	public String exception502() {
-		throw new RuntimeException();
-	}*/
-	
 	@RequestMapping("/header")
 	public String header() {
 		return "header";

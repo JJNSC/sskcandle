@@ -18,7 +18,7 @@ public class ExceptionHandlerList {
     
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleOtherException(Exception e) {
+    public String handle500Exception(Exception e) {
        return "exception/500";
     }
    
