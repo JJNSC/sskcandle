@@ -80,24 +80,7 @@
 				</div>
 			</div>
 			
-			<%-- <div class="row productList">
-				<c:forEach var="product" items="${product}">
-					<div class="col-lg-3 mb-4 text-center">	
-						<div class="border product-entry">
-							<a href="productDetail?productId=${product.productId}" class="prod-img">
-								<img src="data:image/jpeg;base64,${product.base64Image}" />
-							</a>
-							<div class="desc">
-								<a href="#">${product.productMaker}</a>
-								<h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
-								<span class="price">&#8361;${product.productPrice}</span>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div> --%>
-			
-			<%-- 3개만 출력 --%>
+			<%-- 리스트 3개만 출력 --%>
 			<div class="row productList">
 			    <c:forEach var="product" items="${product}" varStatus="loop">
 			        <c:if test="${loop.index < 3}">
@@ -117,27 +100,6 @@
 			    </c:forEach>
 			</div>
 			
-			
-			<%-- <div class="productList">
-				<c:forEach var="product" items="${product}">
-					<div class="item_list col-3">
-						<div class="thumbnail">
-							<a href="productDetail?productId=${product.productId}">
-								<img src="data:image/jpeg;base64,${product.base64Image}">
-							</a>
-						</div>
-						<div class="product_info">
-							<ul>
-								<li class="product_tag"><a href="#">${product.productMaker}</a></li>
-								<li class="product_name"><a href="productDetail?productId=${product.productId}">${product.productName}</a></li>
-								<li class="product_tag"><a href="#">Stock: ${product.productStock}</a></li>
-								<li class="product_tag"><a href="#">Maker: ${product.productMaker}</a></li>
-								<li><span class="product_price">&#8361;${product.productPrice}</span></li>
-							</ul>
-						</div>
-					</div>
-				</c:forEach>
-			</div> --%>
 		</div>
 	</body>
 </html>
