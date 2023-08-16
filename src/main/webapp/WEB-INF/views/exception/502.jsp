@@ -79,10 +79,10 @@
 <div id="notfound">
 	<div class="notfound">
 		<div class="notfound-404">
-			<h3>Oops! Internal Server Error</h3>
-			<h1><span>5</span><span>0</span><span>0</span></h1>
+			<h3>Oops! Bad Gateway</h3>
+			<h1><span>5</span><span>0</span><span>2</span></h1>
 		</div>
-		<h2>내부 서버 오류</h2>
+		<h2>유효하지 않은 응답입니다.</h2>
 	</div>
 </div>
 

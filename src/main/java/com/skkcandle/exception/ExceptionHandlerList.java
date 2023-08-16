@@ -4,10 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpServerErrorException.BadGateway;
+import org.springframework.web.server.ServerErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,28 +17,15 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 @Slf4j
 public class ExceptionHandlerList {
-	@ExceptionHandler(NullPointerException.class)
-	public String handleNullPointerException() {
-		log.info("실행");
-		return "exception/500_null";
-	}
+	@ExceptionHandler(BadGateway.class)
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    public String handleBadGateWayException() {
+       return "exception/502";
+    }
 	
-	@ExceptionHandler(ClassCastException.class)
-	public String handleClassCastException() {
-		log.info("실행");
-		return "exception/500_cast";
-	}
-	
-	@ExceptionHandler(SoldOutException.class)
-	public String handleCh10SoldOutException(SoldOutException e, Model model) {
-		log.info("실행");
-		model.addAttribute("message", e.getMessage());
-		return "exception/500_soldout";
-	}
-	
-	@ExceptionHandler
+	@ExceptionHandler(ServerErrorException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleOtherException(Exception e) {
+    public String handleServerErrorException() {
        return "exception/500";
     }
    
@@ -50,6 +38,6 @@ public class ExceptionHandlerList {
 	@ExceptionHandler(NotFoundAccountException.class)
     public String handleNotFoundAccountException(NotFoundAccountException e, HttpSession session) {
     	session.setAttribute("transferError", e.getMessage());
-       return "redirect:/ch15/content";
+        return "redirect:/ch15/content";
     }
 }

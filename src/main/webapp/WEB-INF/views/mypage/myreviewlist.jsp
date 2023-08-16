@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mypage.css">
 		<script src="${pageContext.request.contextPath }/resources/js/mypage.js"></script>
 	<style>
@@ -41,7 +40,7 @@
 										<td>${product.productName }</td>
 										<td>
 											<p>
-												<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
+												<a class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample${review.reviewId }" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample${review.reviewId }">
 												  ${review.reviewTitle }
 												</a>
 												<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample${review.reviewId }" aria-expanded="false" aria-controls="collapseExample">
