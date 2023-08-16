@@ -20,13 +20,13 @@ public class ExceptionHandlerList {
 	@ExceptionHandler(BadGateway.class)
     @ResponseStatus(HttpStatus.BAD_GATEWAY)
     public String handleBadGateWayException() {
-       return "exception/502";
+        return "exception/502";
     }
 	
-	@ExceptionHandler(ServerErrorException.class)
+    @ExceptionHandler(ServerErrorException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleServerErrorException() {
-       return "exception/500";
+        return "exception/500";
     }
    
 	@ExceptionHandler(NoHandlerFoundException.class)
