@@ -71,8 +71,8 @@ function clickWishBtn() {
             method: "GET",
             data: {productId:productId},
             dataType: "", // JSON 형식으로 응답을 기대함
-            success: function(data) {
-                console.log(data); // 콘솔에 isWished 값 출력
+            success: function(result) {
+                console.log(result); // 콘솔에 isWished 값 출력
                 /*if (result === 1) {
                     $("img[id='like']").prop('src', contextPath + '/resources/images/fullHeart.png').attr('alt', 'Full Heart');
                 } else {
