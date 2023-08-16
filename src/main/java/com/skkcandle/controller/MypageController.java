@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.skkcandle.dao.ReviewDao;
 import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Cart;
 import com.skkcandle.dto.OrderDetail;
@@ -246,15 +247,31 @@ public class MypageController {
 	}
 	
 	//리뷰작성하기 버튼 클릭시 리뷰폼으로 보내기
+	//혹은 리뷰에서 수정하기 버튼 클릭시 리뷰폼으로 보내기
 	@RequestMapping("/reviewForm")
-	public String reviewForm(int productId, int orderId , HttpSession session, Model model) {
-		model.addAttribute("orderId", orderId);
-		Product product = productService.detailProduct(productId);
-		model.addAttribute("product", product);
+	public String reviewForm(@RequestParam(name="productId", defaultValue="0") int productId,
+							 @RequestParam(name="orderId", defaultValue="0")int orderId , 
+							 @RequestParam(name="reviewId", defaultValue="0")int reviewId, HttpSession session, Model model) {
+		Product product = new Product();
+		//리뷰 작성하기로 들어왔을경우
+		if(reviewId == 0) {
+			model.addAttribute("orderId", orderId);
+			product = productService.detailProduct(productId);
+		}
+		//리뷰 수정하기로 들어왔을 경우
+		else {
+			Review review = reviewService.getReviewInfo(reviewId);
+			productId = review.getProductId();
+			product = productService.detailProduct(productId);
+			model.addAttribute("review", review);
+		}
 		ProductImages productImage = productImageService.thumbnailImage(productId);
 		String base64Img = Base64.getEncoder().encodeToString(productImage.getProductImage());
 		productImage.setBase64Image(base64Img);
 		model.addAttribute("productImage", productImage);
+		model.addAttribute("product", product);
+		//리뷰아이디를 통해 만약 리뷰아이디가 0이면 작성하기 버튼, 0이 아니면 수정하기 버튼
+		model.addAttribute("reviewId", reviewId);
 		return "reviewForm";
 	}
 	
@@ -262,11 +279,12 @@ public class MypageController {
 	//그리고 리뷰 리스트로 보내자
 	@PostMapping("submitReview")
 	public String submitReview(@RequestParam int productId, 
-					@RequestParam int orderId,	
+					@RequestParam(name="orderId", defaultValue="0") int orderId,	
 					@RequestParam int userId,
 					@RequestParam String reviewTitle,
 					@RequestParam(name="ratingScore", defaultValue="5") int ratingScore,
-					@RequestParam String reviewContent ) {
+					@RequestParam String reviewContent, 
+					@RequestParam int reviewId) {
 		log.info("productId : "+ productId);
 		log.info("orderId : "+ orderId);
 		log.info("userId : "+ userId);
@@ -279,18 +297,34 @@ public class MypageController {
 		review.setReviewContent(reviewContent);
 		review.setReviewTitle(reviewTitle);
 		review.setUserId(userId);
-		reviewService.insertReview(review);
 		
-		OrderDetail orderDetail = new OrderDetail();
-		orderDetail.setOrderId(orderId);
-		orderDetail.setProductId(productId);
-		orderDetail.setUserId(userId);
 		
-		orderService.reviewedOrder(orderDetail);
-		
+		//리뷰를 처음으로 작성시
+		if(reviewId==0) {
+			OrderDetail orderDetail = new OrderDetail();
+			orderDetail.setOrderId(orderId);
+			orderDetail.setProductId(productId);
+			orderDetail.setUserId(userId);
+			
+			reviewService.insertReview(review);
+			orderService.reviewedOrder(orderDetail);
+		}
+		//리뷰를 수정할시 
+		else {
+			review.setReviewId(reviewId);
+			reviewService.updateReview(review);
+		}
 		
 		return "redirect:/mypage?subpage=myreviewlist";
 	}
+	
+	@PostMapping("/deleteReview")
+	@ResponseBody
+	public void deleteReview(@RequestParam int reviewId) {
+		log.info("productId : "+ reviewId);
+		reviewService.deleteReview(reviewId);
+	}
+	
 }
 
 
