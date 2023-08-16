@@ -39,7 +39,7 @@ public class HomeController {
 	
 	/*@RequestMapping("/502")
 	public String exception502() {
-		throw new BadGatewayException();
+		throw new RuntimeException();
 	}*/
 	
 	@RequestMapping("/header")
