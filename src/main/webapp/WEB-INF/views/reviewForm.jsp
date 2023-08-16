@@ -144,7 +144,7 @@
 		    </div>
 		    <div class="form-group">
 		        <label for="comment">리뷰 내용</label>
-		        <textarea id="reviewContent" name="reviewContent" rows="4" required></textarea>
+		        <textarea id="reviewContent" name="reviewContent" placeholder="200자  이내 작성" rows="4" maxlength="200" required></textarea>
 		    </div>
 		    <div class="form-group " style="display:flex; justify-content: right;">
 		        <button id="reviewSubmit" type="submit">리뷰 작성</button>

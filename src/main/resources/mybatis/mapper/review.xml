@@ -15,7 +15,7 @@
 	<select id="selectReviewByUserId" parameterType="int" resultType="Review">
 		select reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
 		from review
-		where userId = #{userId}
+		where userId = #{userId} order by reviewId desc
 	</select>
 	<!-- 
 	<select id="count" resultType="int">

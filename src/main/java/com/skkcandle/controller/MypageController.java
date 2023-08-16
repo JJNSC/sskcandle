@@ -1,6 +1,7 @@
 package com.skkcandle.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -125,7 +126,15 @@ public class MypageController {
 			user = (User) session.getAttribute("login");
 			int userId = user.getUserId();
 			List<Review> reviewList = reviewService.selectReviewByUserId(userId);
+			List<Product> productList = new ArrayList<>();
+			for(Review review : reviewList) {
+				int productId = review.getProductId();
+				Product product = productService.detailProduct(productId);
+				productList.add(product);
+			}
+			
 			model.addAttribute("myreview", reviewList);
+			model.addAttribute("productList", productList);
 		
 		//내 찜 목록
 		}else if(subpage.equals("mywishlist")) {
