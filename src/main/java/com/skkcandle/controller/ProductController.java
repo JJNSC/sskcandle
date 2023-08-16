@@ -11,14 +11,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Product;
 import com.skkcandle.dto.ProductImages;
 import com.skkcandle.dto.Review;
+import com.skkcandle.dto.User;
+import com.skkcandle.dto.Wish;
 import com.skkcandle.service.ProductImagesService;
 import com.skkcandle.service.ProductService;
 import com.skkcandle.service.ReviewService;
+import com.skkcandle.service.WishService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,6 +46,8 @@ public class ProductController {
     private ReviewService ReviewService;
     @Autowired
     private ProductImagesService ProductImagesService;
+    @Autowired
+    private WishService WishService;
 	   
 	@RequestMapping("/productDetail")
 	public String detailProduct(String pageNo, HttpSession session, Model model, int productId) {
@@ -57,7 +63,7 @@ public class ProductController {
 		
 		ProductImages productDetail = ProductImagesService.detailImage(productId); //상품 대표이미지
 		model.addAttribute("productDetailPicture", productDetail);
-
+	
 		if(productDetail.getProductImage() !=null) {
 			String base64Img = Base64.getEncoder().encodeToString(productDetail.getProductImage());
 			model.addAttribute("base64Img", base64Img);
@@ -94,7 +100,49 @@ public class ProductController {
 	      model.addAttribute("pager", pager);
 	      model.addAttribute("reviews", list);
 	      
+	      // 찜 상태 확인 및 넘겨주기
+	      User user = (User) session.getAttribute("login");
+	      int userId;
+	      if (user != null) {
+	          userId = user.getUserId();
+	      } else {
+	          userId = 0;
+	      }
+
+	      Wish wish = new Wish();
+	      wish.setProductId(productId);
+	      wish.setUserId(userId);
+
+	      int wishNo = WishService.selectWish(wish);
+	      boolean isWished = wishNo == 1;
+
+	      model.addAttribute("isWished", isWished);
+	      
 		return "/productDetail/detailView";
 	}	
+	
+	
+	
+	
+	/*
+	@GetMapping("/getWishStatus")
+	@ResponseBody
+	public boolean getWishStatus(HttpSession session, int productId) {
+	    User user = (User) session.getAttribute("login");
+	    if (user == null) {
+	        return false; // 로그인 안된 상태
+	    }
+
+	    int userId = user.getUserId();
+
+	    Wish wish = new Wish();
+	    wish.setProductId(productId);
+	    wish.setUserId(userId);
+
+	    int wishNo = WishService.selectWish(wish);
+	    
+	    return wishNo == 1;
+	}*/
+
 }
 

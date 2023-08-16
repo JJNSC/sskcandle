@@ -37,7 +37,8 @@ function addCartBtn(){
 	
 	var userId = $('input[name=userId]').val();
 	
-	if(userId === ""){
+	if(!userId) {
+		  alert("로그인이 필요한 서비스 입니다.")
 		  location.href="loginForm"
 	} else {
 	
@@ -56,19 +57,31 @@ function addCartBtn(){
 };
 
 function clickWishBtn() {
-	
-var userId = $('input[name=userId]').val();
-	
-	if(userId === ""){
-		  location.href="loginForm"
-	} else {
-	
-		var productId = $('input[name=productId]').val();
-		/*console.log("productId : "+ productId);*/    
-		location.href = "updateWish?productId="+productId;
-		alert("찜목록이 수정되었습니다.");
-	}
-};
+    var userId = $('input[name=userId]').val();
+    var productId = $('input[name=productId]').val();
+    var contextPath = "${pageContext.request.contextPath}";
+
+    if (!userId) {
+        alert("로그인이 필요한 서비스입니다.");
+        location.href = "loginForm";
+        return;
+    } else {
+        $.ajax({
+            url: "updateWish",
+            method: "GET",
+            data: {productId:productId},
+            dataType: "", // JSON 형식으로 응답을 기대함
+            success: function(data) {
+                console.log(data); // 콘솔에 isWished 값 출력
+                /*if (result === 1) {
+                    $("img[id='like']").prop('src', contextPath + '/resources/images/fullHeart.png').attr('alt', 'Full Heart');
+                } else {
+                    $("img[id='unlike']").prop('src', contextPath + '/resources/images/emptyHeart.png').attr('alt', 'Empty Heart');
+                }*/
+            }
+        });
+    }    
+}
 
 function addCartAndPay(){
 	console.log("실행되는가");
