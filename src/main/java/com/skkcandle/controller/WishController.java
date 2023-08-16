@@ -67,6 +67,33 @@ public class WishController {
 		log.info("result : "+ result);
 		return result;
 	}
+	@GetMapping("/changeWish")  
+	@ResponseBody
+	public int changeWish(HttpSession session, int productId) {	 
+		User user = (User) session.getAttribute("login");		 	    
+		int userId = user.getUserId();		 
+
+		log.info("userid" + userId);
+		log.info("productId" + productId);
+				 
+		Wish wish = new Wish();
+
+		wish.setProductId(productId);
+		wish.setUserId(userId);
+		
+		int wishNo =  wishService.selectWish(wish);
+			
+		int result ;
+		if (wishNo == 0) { //카운팅한 wish테이블의 정보가 0 이라면 insert
+			wishService.add(wish);
+			result = 1;
+		} else { //카운팅한 wish 테이블의 정보가 1이라면 delete
+			wishService.remove(wish);
+			result = 0;
+		}	   
+		log.info("result : "+ result);
+		return result;
+	}
 	/*
 	@GetMapping("/selectWish")
 	public String selectWish(HttpSession session, int productId, Model model) {

@@ -74,13 +74,30 @@ function clickWishBtn() {
             success: function(data) {
                 console.log(data); // 콘솔에 isWished 값 출력
                 /*if (result === 1) {
-                    $("img[id='like']").prop('src', contextPath + '/resources/images/fullHeart.png').attr('alt', 'Full Heart');
+                    $("
+                    img[id='like']").prop('src', contextPath + '/resources/images/fullHeart.png').attr('alt', 'Full Heart');
                 } else {
-                    $("img[id='unlike']").pㄴrop('src', contextPath + '/resources/images/emptyHeart.png').attr('alt', 'Empty Heart');
+                    $("img[id='unlike']").prop('src', contextPath + '/resources/images/emptyHeart.png').attr('alt', 'Empty Heart');
                 }*/
             }
         });
     }    
+}
+
+function changeWish() {
+    var userId = $('input[name=userId]').val();
+    var productId = $('input[name=productId]').val();
+    console.log("userId : "+userId); 
+    console.log("productId : "+productId); 
+
+    $.ajax({
+        url: "changeWish",
+        method: "GET",
+        data: {productId:productId},
+        success: function(data) {
+            console.log(data); 
+        }
+    });
 }
 
 function addCartAndPay(){
