@@ -32,6 +32,16 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("/500")
+	public String exception500() {
+		throw new RuntimeException();
+	}
+	
+	/*@RequestMapping("/502")
+	public String exception502() {
+		throw new RuntimeException();
+	}*/
+	
 	@RequestMapping("/header")
 	public String header() {
 		return "header";

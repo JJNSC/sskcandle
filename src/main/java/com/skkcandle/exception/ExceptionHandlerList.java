@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.client.HttpServerErrorException.BadGateway;
-import org.springframework.web.server.ServerErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,17 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 @Slf4j
 public class ExceptionHandlerList {
-	@ExceptionHandler(BadGateway.class)
-    @ResponseStatus(HttpStatus.BAD_GATEWAY)
-    public String handleBadGateWayException() {
-        return "exception/502";
-    }
-	
-    /*@ExceptionHandler(ServerErrorException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleServerErrorException() {
-        return "exception/500";
-    }*/
     
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
