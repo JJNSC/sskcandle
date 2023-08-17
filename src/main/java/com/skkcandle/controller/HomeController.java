@@ -1,5 +1,6 @@
 package com.skkcandle.controller;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -21,12 +22,18 @@ public class HomeController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<ProductList> productList = productListService.getProductList();
+		List<String> priceList = new ArrayList();
 		
 		for (ProductList product : productList) {
             byte[] imageBytes = product.getProductImage();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            int price = product.getProductPrice();
+
             product.setBase64Image(base64Image);
         }
+		
+		
+		
 		
 		model.addAttribute("product", productList);
 		return "index";

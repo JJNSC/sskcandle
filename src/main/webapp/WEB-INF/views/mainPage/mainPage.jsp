@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +65,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-sm-12 text-center mb-5 mt-5">
+				<div class="col-sm-12 text-center mb-4 mt-5">
 					<!-- 파워레인저
 					<span style="text-shadow:1px 1px 0px #ff0000, 1px 0px 0px #ff0000, 1px -1px 0px #ff0000, 0px -1px 0px #ff0000, -1px -1px 0px #ff0000, -1px 0px 0px #ff0000, -1px 1px 0px #ff0000, 0px 1px 0px #ff0000, 0px 0px 4px #ff0000; color:#C0C0C0; font-size: 30px;"> 파워레인저 매직포스</span>
 					<div>
@@ -79,11 +80,26 @@
 					<div class="title_content">SKKCANDLE 신규 상품을 만나보세요.</div>
 				</div>
 			</div>
-			
-			
-			
-			<%-- 리스트 3개만 출력 --%>
+
 			<div class="row productList">
+				<c:forEach var="product" items="${product}" varStatus="loop">
+					<c:if test="${loop.index < 3}">
+						<div class="col-lg-4 d-flex justify-content-center">
+							<div class="product-entry">
+								 <a href="productDetail?productId=${product.productId}" class="prod-img">
+			                        <img src="data:image/jpeg;base64,${product.base64Image}" />
+			                    </a>
+			                    <div class="product_info text-center">
+			                        <h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
+			                        <span class="price"><fmt:formatNumber value="${product.productPrice}" pattern="#,###원"/></span>
+			                    </div>
+							</div>
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+			
+			<%-- <div class="row productList">
 			    <c:forEach var="product" items="${product}" varStatus="loop">
 			        <c:if test="${loop.index < 3}">
 			            <div class="col-lg-3 mb-4 text-center">	
@@ -100,7 +116,27 @@
 			            </div>
 			        </c:if>
 			    </c:forEach>
-			</div>
+			</div> --%>
+			
+			<%-- 리스트 3개만 출력 --%>
+			<%-- <div class="row productList">
+			    <c:forEach var="product" items="${product}" varStatus="loop">
+			        <c:if test="${loop.index < 3}">
+			            <div class="col-lg-3 mb-4 text-center">	
+			                <div class="border product-entry">
+			                    <a href="productDetail?productId=${product.productId}" class="prod-img">
+			                        <img src="data:image/jpeg;base64,${product.base64Image}" />
+			                    </a>
+			                    <div class="desc">
+			                        <a href="#">${product.productMaker}</a>
+			                        <h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
+			                        <span class="price">&#8361;${product.productPrice}</span>
+			                    </div>
+			                </div>
+			            </div>
+			        </c:if>
+			    </c:forEach>
+			</div> --%>
 			
 		</div>
 	</body>
