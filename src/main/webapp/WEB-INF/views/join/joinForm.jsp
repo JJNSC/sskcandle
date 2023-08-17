@@ -11,6 +11,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		<%-- 부트스트랩 아이콘 --%>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/joinForm.css">
 		<script src="${pageContext.request.contextPath}/resources/js/joinForm.js"></script>
@@ -34,7 +37,8 @@
 						<div class="join_input_userInfo">
 							<label for="userEmail">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_email"></i>
+									<!-- <i class="join_input_icon icon_email"></i> -->
+									<i class="fa-solid fa-envelope" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="email" class="join_input_content" id="userEmail" name="userEmail" value=""
@@ -48,7 +52,8 @@
 						<div class="join_input_userInfo">
 							<label for="userPassword">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_password"></i>
+									<!-- <i class="join_input_icon icon_password"></i> -->
+									<i class="fa-solid fa-lock" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="password" class="join_input_content" id="userPassword" name="userPassword" value="${user.userPassword }"
@@ -62,7 +67,8 @@
 						<div class="join_input_userInfo">
 							<label for="userCheckPassword">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_checkPassword"></i>
+									<!-- <i class="join_input_icon icon_checkPassword"></i> -->
+									<i class="fa-solid fa-unlock" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="password" class="join_input_content" id="userCheckPassword" name="userCheckPassword" 
@@ -75,7 +81,8 @@
 						<div class="join_input_userInfo">
 							<label for="userName">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_name"></i>
+									<!-- <i class="join_input_icon icon_name"></i> -->
+									<i class="fa-solid fa-user" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="text" class="join_input_content" id="userName" name="userName" value="${user.userName }"
@@ -88,7 +95,8 @@
 						<div class="join_input_userInfo">
 							<label for="userTel">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_tel"></i>
+									<!-- <i class="join_input_icon icon_tel"></i> -->
+									<i class="fa-solid fa-phone-flip" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="text" class="join_input_content" id="userPhone" name="userPhone" value="${user.userPhone }"
@@ -99,19 +107,24 @@
 						<span id="phoneErr1" class="errorMsg text-danger d-none small">휴대폰 번호는 필수 입력 사항입니다.</span>
 			    		<span id="phoneErr2" class="errorMsg text-danger d-none small">휴대폰 번호 형식에 맞지않습니다.</span>
 						<%-- 주소 --%>
-						<div class="join_input_userInfo">
+						<div class="join_input_userInfo" style="height:150px;">
 							<label for="userAddress">
-								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_email"></i>
+								<span class="join_input_icon_box" style="height:148px; display:flex;  flex-direction: column ; align-items: center; justify-content: center; ">
+									<!-- <i class="join_input_icon icon_email"></i> -->
+									<i class="fa-solid fa-map-location-dot" style="color: #c3c6d1;"></i>
 								</span>
-								<span class="join_input_box">
-									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="mb-3" 
-										style="margin-right:100px; border:1px solid #88c8bc; color:#88c8bc; background-color: #fff;">
-									<input type="text" id="sample4_postcode" name="userPostcode" placeholder="우편번호"><br>
-									<input type="text" id="sample4_roadAddress" name="userRoadAddress" placeholder="도로명주소" class="mb-3" style="width:300px;">
-									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" style="width:300px;">
+								<span class="join_input_box" >
+									<span class="ml-2"></span>
+									<!-- <a type="button" onclick="sample4_execDaumPostcode()" ><i class="fa-solid fa-magnifying-glass"></i></a> -->
+									
+									
+									<input type="text" id="sample4_postcode" name="userPostcode" placeholder="우편번호" style="border:1px solid #ccc; width:100px;">
+									<input type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기" class="mb-3 mr-1 mt-3 ml-3" 
+										style=" border:1px solid gray; color:#fff; background-color: darkgray; box-shadow: 3px 3px lightgray; width:100px; font-size:16px;"><br>
+									<input type="text" id="sample4_roadAddress" name="userRoadAddress" placeholder="도로명주소" class="ml-2 mb-3" style="width:295px;border:1px solid #ccc;">
+									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" style="width:280px;">
 									<span id="guide" style="color:#999;display:none"></span><br>
-									<input type="text" id="sample4_detailAddress" name="userDetailAddress" placeholder="상세주소" style="width:500px;">
+									<input type="text" id="sample4_detailAddress" name="userDetailAddress" placeholder="상세주소" class="ml-2 mb-3" style="width:295px;border:1px solid #ccc;">
 									<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
 								</span>
 							</label>
@@ -231,7 +244,7 @@
    				 
 				<%-- 확인 버튼 --%>
 				<div class="join_submit_button">
-				    <button type="submit" class="button_style " form="join_input_form" id="join_success_button" disabled>
+				    <button type="submit" class="button_style " style="background-color:#88c8bc;" form="join_input_form" id="join_success_button" disabled>
 				           회원 가입
 				    </button>
 				</div>

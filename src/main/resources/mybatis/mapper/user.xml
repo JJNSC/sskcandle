@@ -49,4 +49,11 @@
 		delete from userinfo where userId=#{userId}
 	</delete>
 	
+	<!-- 회원 포인트 적립 혹은 사용 -->
+	<update id="changeUserPoint" parameterType="User">
+		update userinfo set
+			userPoint = #{userPoint}
+			where userId = #{userId}
+	</update>
+	
 </mapper>

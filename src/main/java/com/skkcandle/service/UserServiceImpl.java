@@ -88,6 +88,10 @@ public class UserServiceImpl implements UserService {
 	public void withdrawUser(int userId) {
 		userDao.delete(userId);
 	}
+	@Override
+	public void changeUserPoint(User user) {
+		userDao.changeUserPoint(user);
+	}
 
 
 }

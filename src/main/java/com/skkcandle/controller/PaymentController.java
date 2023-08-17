@@ -21,6 +21,7 @@ import com.skkcandle.dto.User;
 import com.skkcandle.service.CartService;
 import com.skkcandle.service.OrderService;
 import com.skkcandle.service.ProductService;
+import com.skkcandle.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 /**
@@ -43,6 +44,9 @@ public class PaymentController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("")
 	public String main(HttpSession session, Model model, @RequestParam(name="buyCartList",defaultValue="") List<Integer> buyCartList,@RequestParam(name="productId",defaultValue="0" ) int productId) { // 장바구니 or 상품상세페이지 끝나면 일로 상품정보+상품갯수 정보가 와야함
@@ -109,12 +113,14 @@ public class PaymentController {
 			@RequestParam int userPostcode,
 			@RequestParam String userRoadAddress,
 			@RequestParam String userDetailAddress,
+			@RequestParam int usedPoint,
             @RequestParam List<Integer> productList,
             @RequestParam List<Integer> quantityList,
             @RequestParam String accountTransfer,
             @RequestParam String creditCard,
             @RequestParam String phone,
             @RequestParam String withoutBankbook) {
+		
 		log.info("결제 실행");
 		log.info("productList : "+productList);
 		log.info("quantityList : "+quantityList);
@@ -126,6 +132,7 @@ public class PaymentController {
 		log.info("creditCard : " +creditCard);
 		log.info("phone : " +phone);
 		log.info("withoutBankbook : " +withoutBankbook);
+		log.info("usedPoint : " +usedPoint);
 		
 		if(accountTransfer.equals("undefined")) {
 			accountTransfer ="";
@@ -159,6 +166,9 @@ public class PaymentController {
 		int orderId = orderService.insertBuyList(order);
 		log.info("여기까진 괜춘0");
 		
+		//포인트를 위해 total 결제금액을 저장할 공간을 주자 
+		int totalPrice = 0;
+		
 		//orderId, productId, quantity 를 orderDetail에 세팅해준다. 
 		//동시에 해당 userId와 productId를 이용해서 장바구니에서 해당 열을 삭제한다.
 		OrderDetail orderDetail = new OrderDetail();
@@ -179,7 +189,42 @@ public class PaymentController {
             deleteCart.setUserId(userId);
             deleteCart.setProductId(productId);
             cartService.deleteCart(deleteCart);
+            
+            Product thisProduct = new Product();
+            thisProduct = productService.detailProduct(productId);
+            int thisPrice = thisProduct.getProductPrice();
+            totalPrice += thisPrice * quantity;
         }
+		log.info("totalPrice : " +totalPrice);
+
+		//받아온 사용한 적립금은 음수이므로 양수로 변환
+		usedPoint = usedPoint*(-1);
+
+		int addPoint =0;
+		String grade = sessionUser.getUserGrade();
+		log.info("grade : " +grade);
+		//회원의 등급에 따라서 포인트를 차등 지급을한다.
+		if(grade.equals("평민")) {
+			addPoint = ((totalPrice-usedPoint)/100);
+		}else if(grade.equals("귀족")) {
+			addPoint = ((totalPrice-usedPoint)/50);
+		}else if(grade.equals("왕족")) {
+			addPoint = ((totalPrice-usedPoint)/25);
+		}
+		
+		log.info("addPoint : " +addPoint);
+		
+		//사용한 만큼의 적립금을 차감 하고 동시에 적립금을 더해주자
+		int beforeUserPoint = sessionUser.getUserPoint();
+		int newUserPoint = beforeUserPoint-usedPoint+addPoint;
+		User user = new User();
+		user.setUserId(userId);
+		user.setUserPoint(newUserPoint);
+		userService.changeUserPoint(user);
+		
+		user = userService.getUserInfoById(userId);
+		session.removeAttribute("login");
+		session.setAttribute("login", user);
 		
 		return "redirect:/";
 	}

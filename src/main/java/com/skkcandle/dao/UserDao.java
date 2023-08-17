@@ -16,4 +16,5 @@ public interface UserDao {
 	public void updateUserInfo(User user);
 	public void updateUserInfoNoPW(User user);
 	public void delete(int userId);
+	public void changeUserPoint(User user);
 }

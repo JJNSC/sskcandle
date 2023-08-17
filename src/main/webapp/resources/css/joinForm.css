@@ -9,6 +9,8 @@ button, label {
 	cursor: pointer;
 }
 
+
+
 .wrapper {
     width: auto;
     margin: 0 auto;
@@ -49,13 +51,15 @@ button, label {
 }
 
 .join_input_icon_box {
-	position: relative;
-	float: left;
-    display: inline;
+    position: relative;
+    float: left;
+    display: flex;
     min-width: 44px;
     height: 48px;
     border-right: 1px solid #ccc;
     background-color: #fafafa;
+    justify-content: center;
+    align-items: center;
 }
 
 .join_input_icon {

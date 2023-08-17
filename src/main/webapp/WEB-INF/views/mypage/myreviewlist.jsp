@@ -23,6 +23,7 @@
 		        console.log("삭제할 리뷰 아이디 : " + deleteReviewId);
 		        //d-none 처리 
 		        $("#"+deleteReviewId+"top").attr("class","d-none");
+		        $("#"+deleteReviewId+"middle").attr("class","d-none");
 		        $("#"+deleteReviewId+"bottom").attr("class","d-none");
 		        //실제 db에서 삭제
 		        $.ajax({
@@ -62,46 +63,74 @@
 						<td style="width:5%;">번호</td>
 						<td style="width:20%;">상품 명</td>
 						<td style="width:30%;">제목</td>
-						<td style="width:10%;">작성 날짜</td>
+						<!-- <td style="width:10%;">작성 날짜</td> -->
 						<td style="width:5%;">별점</td>
 					</tr>
 				</thead>
-					<tbody>
-	                  <c:forEach var="review" items="${myreview }" varStatus="a">
-	                     <c:forEach var="product" items="${productList }" varStatus="b">
-	                        <c:if test="${a.index==b.index}">
-	                           <tr style="height:50px; line-height: 50px;" id="${review.reviewId }top">
-	                              <td>${review.reviewId }</td>
-	                              <td style="width:20%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-	                                  ${product.productName }
-	                              </td>
-	                              <td>
-	                                 <a class="reviewTitle" data-toggle="collapse" id="reviewTitle${review.reviewId }" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
-	                                   ${review.reviewTitle }
-	                                 </a>
-	                              </td>
-	                              <td><fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
-	                              <td>${review.ratingScore }</td>
-	                           </tr>
-	                           <tr>
-	                           </tr>
-	                           <tr id="${review.reviewId }bottom">
-	                              <td colspan="5">
-	                                  <div class="collapse" id="collapseExample${review.reviewId }">
-	                                    <div class="card card-body">
-	                                       ${review.reviewContent }
-	                                    </div>
-	                                    <div style="display:flex; flex-direction: row-reverse;">
-	                                       <a type="button" onclick="deleteReview(this, event)" data-delete="${review.reviewId }" style="width:70px; text-align: right;">삭제</a>
-	                                       <a type="button" onclick="updateReview(this, event)" data-delete="${review.reviewId }" style="width:70px;text-align: right;">수정</a>
-	                                    </div>
-	                                 </div>
-	                               </td>
-	                           </tr>
-	                        </c:if>
-	                     </c:forEach>
-	                  </c:forEach>
-	               </tbody>
+				<tbody>
+					<c:forEach var="review" items="${myreview }" varStatus="a">
+						<c:forEach var="product" items="${productList }" varStatus="b">
+							<c:if test="${a.index==b.index}">
+							
+								<tr id="${review.reviewId }top">
+									<td colspan="5">
+			                  			<div class="collapse" id="collapseExample${review.reviewId }">
+							        		<div style="display:flex; flex-direction: row-reverse;">
+									         		작성날짜 : 
+									         	<fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate>
+								         	</div>
+								      	</div>
+					 				</td>
+								</tr>
+								
+							   <tr style="height:50px; line-height: 50px;" id="${review.reviewId }middle">
+							      <td>${review.reviewId }</td>
+							      <td style="width:20%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+							          ${product.productName }
+							      </td>
+							      <td>
+							         <a class="reviewTitle" data-toggle="collapse" id="reviewTitle${review.reviewId }" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
+							           ${review.reviewTitle }
+							         </a>
+							      </td>
+							      <%-- <td><fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td> --%>
+							      <td>
+							     	 <c:if test="${review.ratingScore ==5}">
+							     	 	<span style="color:#88c8bc;">★★★★★</span>
+							     	 </c:if>
+							     	 <c:if test="${review.ratingScore ==4}">
+							     	 	<span style="color:#88c8bc;">★★★★☆</span>
+							     	 </c:if>
+							     	 <c:if test="${review.ratingScore ==3}">
+							     	 	<span style="color:#88c8bc;">★★★☆☆</span>
+							     	 </c:if>
+							     	 <c:if test="${review.ratingScore ==2}">
+							     	 	<span style="color:#88c8bc;">★★☆☆☆</span>
+							     	 </c:if>
+							     	 <c:if test="${review.ratingScore ==1}">
+							     	 	<span style="color:#88c8bc;">★☆☆☆☆</span>
+							     	 </c:if>
+							      </td>
+							    </tr>
+								<tr id="${review.reviewId }bottom">
+									<td colspan="5">
+				                      	<div class="collapse" id="collapseExample${review.reviewId }">
+								         	<div class="card card-body">
+								            	${review.reviewContent }
+								         	</div>
+							         		<div style="display:flex; flex-direction: row-reverse;">
+						            			<a type="button" onclick="deleteReview(this, event)" data-delete="${review.reviewId }" style="width:70px; text-align: right;">삭제</a>
+									            <a type="button" onclick="updateReview(this, event)" data-delete="${review.reviewId }" style="width:70px;text-align: right;">수정</a>
+									         	<%-- 작성날짜 : 
+									         	<fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate> --%>
+								         	</div>
+								      	</div>
+						   			</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</c:forEach>
+				</tbody>
 			</table>
 			<hr style="margin-top:0;">
 			<c:if test="${noPaging!=1}"> 

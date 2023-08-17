@@ -13,6 +13,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		<%-- 부트스트랩 아이콘 --%>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/loginForm.css">
 		<script src="${pageContext.request.contextPath}/resources/js/loginForm.js"></script>
 	</head>
@@ -30,10 +34,10 @@
 				<div id="join_input">
 					<%-- 이메일(아이디) --%>
 					<form id="join_input_form" method="post" action="login" novalidate>
-						<div class="join_input_userInfo_email">
+						<div class="join_input_userInfo_email" style="height:50px;">
 							<label for="userEmail">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_email"></i>
+									<i class="fa-solid fa-envelope" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="email" class="join_input_content" id="userEmail" name="userEmail" 
@@ -46,10 +50,10 @@
 						
 						
 						<%-- 비밀번호 --%>
-						<div class="join_input_userInfo_pwd">
+						<div class="join_input_userInfo_pwd" style="height:50px;">
 							<label for="userPassword" >
-								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_password"></i>
+								<span class="join_input_icon_box" >
+									<i class="fa-solid fa-lock" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="password" class="join_input_content" id="userPassword" name="userPassword" 
@@ -78,7 +82,7 @@
                             	style="text-decoration: none;">아이디∙비밀번호 찾기 <strong>></strong></a>
                         </div> -->
                         <div class="login__content login__content--trigger">
-                        	<button class="btn btn-primary btn-block font-weight-bold" onclick="checkValidation()" type="submit" style="padding: 10px 0;">로그인</button>
+                        	<button class="btn btn-primary btn-block font-weight-bold" onclick="checkValidation()" type="submit" style="border-color:#17a2b8 ;padding: 10px 0; background-color:#88c8bc;">로그인</button>
                             <hr class="login_separator">
                             <a href="join" class="btn btn-light btn-block font-weight-bold border border-gray" style="padding: 10px 0;">회원가입</a>
                     	</div>

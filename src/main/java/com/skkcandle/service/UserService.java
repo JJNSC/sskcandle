@@ -28,4 +28,5 @@ public interface UserService {
 	public void updateUserInfo(User user);
 	public void updateUserInfoNoPW(User user);
 	public void withdrawUser(int userId);
+	public void changeUserPoint(User user);
 }

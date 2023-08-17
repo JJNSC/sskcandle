@@ -34,7 +34,7 @@
 						<div class="join_input_userInfo">
 							<label for="userEmail">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_email"></i>
+									<i class="fa-solid fa-envelope" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="email" class="join_input_content" id="userEmail" name="userEmail" value="${login.userEmail }"
@@ -46,7 +46,7 @@
 						<div class="join_input_userInfo">
 							<label for="userPassword">
 								<span class="join_input_icon_box">
-									<i class="join_input_icon icon_password"></i>
+									<i class="fa-solid fa-lock" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
 									<input type="password" class="join_input_content" id="userPassword" name="userPassword" value="${user.userPassword }"
@@ -58,7 +58,7 @@
 				</div>
 				<%-- 확인 버튼 --%>
 				<div class="join_submit_button">
-				    <button type="submit" class="button_style " form="myinfocheck_form" id="join_success_button">
+				    <button type="submit" class="button_style " form="myinfocheck_form" id="join_success_button" style="border-color:#17a2b8 ;padding: 10px 0; background-color:#88c8bc;">
 				           회원 정보 확인/수정하기
 				    </button>
 				</div>

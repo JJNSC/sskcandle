@@ -393,6 +393,10 @@ $(document).ready(function(){
 		}
 		console.log("userDetailAddress : "+ userDetailAddress);
 		
+		//사용한 적립금 받아오기
+		let usedPoint = $("#balance").text();
+		console.log("usedPoint : "+ usedPoint);
+		
 		
 		//주문한 상품들의 productId 들 list로 저장
 		var productList = [];
@@ -436,6 +440,7 @@ $(document).ready(function(){
 				+ "userPostcode=" + encodeURIComponent(userPostcode)
 				+ "&userRoadAddress=" + encodeURIComponent(userRoadAddress)
 				+ "&userDetailAddress=" + encodeURIComponent(userDetailAddress)
+				+ "&usedPoint=" + encodeURIComponent(usedPoint)
 			    + "&productList=" + encodeURIComponent(productList.join(','))
 			    + "&quantityList=" + encodeURIComponent(quantityList.join(','))
 			    + "&accountTransfer=" + encodeURIComponent(accountTransfer)
