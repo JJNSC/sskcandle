@@ -106,7 +106,9 @@ public class PaymentController {
 	//여기 나중에  트랜젝션 해야한다. (주문이 성공해야 결재리스트에 올리고 , 장바구니에서 삭제가 되야함.)
 	@RequestMapping("/payComplete")
 	public String payComplete(HttpSession session, Model model, 
-			@RequestParam String payAddress,
+			@RequestParam int userPostcode,
+			@RequestParam String userRoadAddress,
+			@RequestParam String userDetailAddress,
             @RequestParam List<Integer> productList,
             @RequestParam List<Integer> quantityList,
             @RequestParam String accountTransfer,
@@ -147,7 +149,9 @@ public class PaymentController {
 		//insertBuyList 로 orderinfo에 정보를 넣고 orderId를 받아온다.
 		Order order = new Order();
 		order.setUserId(userId);
-		order.setShippingAddress(payAddress);
+		order.setShippingPostcode(userPostcode);
+		order.setShippingRoadAddress(userRoadAddress);
+		order.setShippingDetailAddress(userDetailAddress);
 		order.setAccountTransfer(accountTransfer);
 		order.setCreditCard(creditCard);
 		order.setPhone(phone);

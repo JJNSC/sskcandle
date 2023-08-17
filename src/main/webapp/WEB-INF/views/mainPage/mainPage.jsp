@@ -80,6 +80,8 @@
 				</div>
 			</div>
 			
+			
+			
 			<%-- 리스트 3개만 출력 --%>
 			<div class="row productList">
 			    <c:forEach var="product" items="${product}" varStatus="loop">

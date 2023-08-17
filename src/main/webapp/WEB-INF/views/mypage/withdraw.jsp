@@ -37,8 +37,8 @@
 									<i class="join_input_icon icon_email"></i>
 								</span>
 								<span class="join_input_box">
-									<input type="email" class="join_input_content" id="userEmail" name="userEmail" value=""
-										placeholder="이메일" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'"/>
+									<input type="email" class="join_input_content" id="userEmail" name="userEmail" value="${login.userEmail }"
+										placeholder="${login.userEmail }" autocomplete="off" readonly="readonly"/>
 								</span>
 							</label>
 						</div>

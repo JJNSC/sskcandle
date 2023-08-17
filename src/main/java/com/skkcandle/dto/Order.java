@@ -13,7 +13,9 @@ public class Order {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date orderDate;
 	private String orderStatus;
-	private String shippingAddress;
+	private int shippingPostcode;
+	private String shippingRoadAddress;
+	private String shippingDetailAddress;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date arriveDate;
 	private String accountTransfer;

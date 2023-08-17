@@ -18,7 +18,9 @@ public class User {
 	private String userPassword;
 	private String userEmail;
 	private String userPhone;
-	private String userAddress;
+	private int userPostcode;
+	private String userRoadAddress;
+	private String userDetailAddress;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date userJoinDate;
 	private Date userBirthDay;

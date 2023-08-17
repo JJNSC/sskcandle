@@ -73,6 +73,7 @@ function clickWishBtn() {
             dataType: "", // JSON 형식으로 응답을 기대함
             success: function(result) {
                 console.log(result); // 콘솔에 isWished 값 출력
+
                 if (result === "add success") {
                     $("img[id='like']").attr({src:"/skkcandle/resources/images/fullHeart.png"}).attr('alt', 'Full Heart');
                 } else {

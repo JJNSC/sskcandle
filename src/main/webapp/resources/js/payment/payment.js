@@ -13,8 +13,6 @@ var withoutBankbook
 
 //결제 페이지 실행시 불러들이는 값
 function init(){
-	order();
-	
 	$("#cuCashApply").click(totalCalculate);
 	
 	$("#finalPayButton").click(finalCheckAndPay);
@@ -50,13 +48,6 @@ function eventInit(){
 	
 	
 }
-
-//결제하기 버튼 클릭시
-function finalCheckAndPay(){
-	
-}
-
-
 
 //총액 계산
 function totalCalculate() {
@@ -109,13 +100,6 @@ function priceCalculate() {
 	
 	$('#cuBal').text(changeBalance);
 	
-}
-
-function openAdress() {
-   		window.open("addressSelect.jsp", "winLogin", "left=350, top=300, width=500, height=650");
-}
-function openRequest() {
-		window.open("addressRequest.jsp", "winLogin", "left=350, top=300, width=530, height=650");
 }
 
 
@@ -274,103 +258,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	
-	//현금 영수증 체크박스에 따라 아래 요소 숨기기
-	$('#cash-receipt-type').hide();
-	$('#cash-receipt-application').click(function(){
-		   
-		var checked = $('#cash-receipt-application').prop('checked');
-		if (checked) {
-			 $('#cash-receipt-type').show();
-			 
-	 	} else if (!checked) {
-			 
-			 $('#cash-receipt-type').hide();
- 	 	}
-	});
-	
-	//현금 영수증 라디오박스에 따라 요소 바꾸기
-	$('#proof-of-expenditure-option').hide();
-	
-	$("input[name='cash-receipt-type']").change(function(){
-		// 계좌이체 선택 시.
-		if($("input[name='cash-receipt-type']:checked").val() == 'income-deduction'){
-			$('#income-deduction-option').show();
-			$('#proof-of-expenditure-option').hide();
-			
-			var select = $("#income-deduction-option option:selected").val();
-			if(select === "pnum") {
-				$('#numErr1').show();
-				$('#numErr2').hide();
-				$('#numErr3').hide();
-			} else if(select === "cash-card"){
-				$('#numErr1').hide();
-				$('#numErr2').show();
-				$('#numErr3').hide();
-			}
-			
-		} else if($("input[name='cash-receipt-type']:checked").val() == 'proof-of-expenditure'){
-			$('#proof-of-expenditure-option').show();
-			$('#income-deduction-option').hide();
-			var select = $("#proof-of-expenditure-option option:selected").val();
-			
-			if(select === "cash-card") {
-				$('#numErr1').hide();
-				$('#numErr2').show();
-				$('#numErr3').hide();
-			} else if(select === "biznum"){
-				$('#numErr1').hide();
-				$('#numErr2').hide();
-				$('#numErr3').show();
-			}
-		}
-	});
-	
-	//현금 영수증 체크박스에 따라 인풋 넘버 바꾸기
-	$('#numErr1').show();
-	$('#numErr2').hide();
-	$('#numErr3').hide();
-	
-	$('#income-deduction-option').change(function(){
-		$('#numErr1').hide();
-		$('#numErr2').hide();
-		$('#numErr3').hide();
-		var select = $("#income-deduction-option option:selected").val();
-		if(select === "pnum") {
-			$('#numErr1').show();
-			$('#numErr2').hide();
-			$('#numErr3').hide();
-		} else if(select === "cash-card"){
-			$('#numErr1').hide();
-			$('#numErr2').show();
-			$('#numErr3').hide();
-		}
-		
-	});
 
-	$('#proof-of-expenditure-option').change(function(){
-		
-		$('#numErr1').hide();
-		$('#numErr2').show();
-		$('#numErr3').hide();
-		var select = $("#proof-of-expenditure-option option:selected").val();
-		if(select === "cash-card") {
-			$('#numErr1').hide();
-			$('#numErr2').show();
-			$('#numErr3').hide();
-		} else if(select === "biznum"){
-			$('#numErr1').hide();
-			$('#numErr2').hide();
-			$('#numErr3').show();
-		}
-		
-	});
-	
-	
-	
-		
-		
-		
 	//쿠팡캐시 입력 클릭 이벤트
 	$('#cuCashrow').hide();
 	$('#cuCashInput').click(function(){
@@ -416,11 +304,6 @@ $(document).ready(function(){
 			$("#balance").text($('#cuCash').val()); 
 		}
 	});
-		
-		
-		
-		
-	
 	//계좌이체 선택 유효성 검사
 	$('#account-transfer-no-choice').hide();
 	$('#account-transfer-choice-bank').change(function(){
@@ -437,22 +320,6 @@ $(document).ready(function(){
 		
 	});
 	
-	/*//할부기간 알림 메세지
-	$('#interest-free-note').hide();
-	$('#installment-period').change(function(){
-		
-		$('#interest-free-note').hide();
-		var select = $("#installment-period option:selected").val();
-		
-		if(select === "pay-in-full") {
-			$('#interest-free-note').hide();
-			$('#pay-in-full-note').show();
-		} else if(select !== "pay-in-full"){
-			$('#interest-free-note').show();
-			$('#pay-in-full-note').hide();
-		}
-	});*/
-
 	//통신사 선택 유효성 검사
 	$('#mobile-corp-no-choice').hide();
 	$('#mobile-corp').change(function(){
@@ -502,21 +369,29 @@ $(document).ready(function(){
 		
 	});
 	
-	//현금영수증 선택 유효성 검사
-	$('#biznumErr').hide();
-	$('#telnumErr').hide();
-	$('#cashnumErr').hide();
 		
 	//결제하기 버튼 클릭시
 	$('.payb').click(function(){
 		console.log("결재하기 버튼 실행");
 		
 		//주소값 받아오기 
-		var payAddress = $("#payAddress").val();
-		if(payAddress==""){
-			payAddress = $("#payAddress").attr("placeholder");
+		var userPostcode = $("#sample4_postcode").val();
+		if(userPostcode==""){
+			userPostcode = $("#sample4_postcode").attr("placeholder");
 		}
-		console.log("payAddress : "+ payAddress);
+		console.log("userPostcode : "+ userPostcode);
+		
+		var userRoadAddress = $("#sample4_roadAddress").val();
+		if(userRoadAddress==""){
+			userRoadAddress = $("#sample4_roadAddress").attr("placeholder");
+		}
+		console.log("userRoadAddress : "+ userRoadAddress);
+		
+		var userDetailAddress = $("#sample4_detailAddress").val();
+		if(userDetailAddress==""){
+			userDetailAddress = $("#sample4_detailAddress").attr("placeholder");
+		}
+		console.log("userDetailAddress : "+ userDetailAddress);
 		
 		
 		//주문한 상품들의 productId 들 list로 저장
@@ -554,114 +429,21 @@ $(document).ready(function(){
         	validation = false;
         }
 		
-		//현금 영수증 수정 유효성 검사
-		$('#biznumErr').hide();
-		$('#telnumErr').hide();
-		$('#cashnumErr').hide();
-		if($("input[name='cash-receipt-type']:checked").val() == 'income-deduction'){
-			var select = $("#income-deduction-option option:selected").val();
-			if(select === "pnum") {
-				var tel = $("#numErr1").val();
-				console.log(tel);
-				if(tel ==="") {
-					console.log(tel);
-					$('#biznumErr').hide();
-					$('#cashnumErr').hide();
-					$('#telnumErr').show();
-					console.log(select);
-				} else{
-					var pattern = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-					var result = pattern.test(tel);
-					if(!result) {
-		   			$('#biznumErr').hide();
-		   			$('#cashnumErr').hide();
-		   			$('#telnumErr').show();
-					}
-			}
+		if(validation ==false){
+			alert("잘못된 정보가 입력되었습니다. 확인 바랍니다.");
+		}else{
+			location.href = "payment/payComplete?"
+				+ "userPostcode=" + encodeURIComponent(userPostcode)
+				+ "&userRoadAddress=" + encodeURIComponent(userRoadAddress)
+				+ "&userDetailAddress=" + encodeURIComponent(userDetailAddress)
+			    + "&productList=" + encodeURIComponent(productList.join(','))
+			    + "&quantityList=" + encodeURIComponent(quantityList.join(','))
+			    + "&accountTransfer=" + encodeURIComponent(accountTransfer)
+			    + "&creditCard=" + encodeURIComponent(creditCard)
+			    + "&phone=" + encodeURIComponent(phone)
+			    + "&withoutBankbook=" + encodeURIComponent(withoutBankbook);
 			
-			} else if(select === "cash-card"){
-				var cashnum = $("#numErr2").val();
-				if(cashnum ==="") {
-					$('#biznumErr').hide();
-					$('#telnumErr').hide();
-					$('#cashnumErr').show();
-					} else {
-						var pattern = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-						var result = pattern.test(cashnum);
-						if(!result) {
-		   				$('#biznumErr').hide();
-		   				$('#telnumErr').hide();
-		   				$('#cashnumErr').show();
-						}
-					}
-			}
-		} else {
-			
-			$('#biznumErr').hide();
-			$('#telnumErr').hide();
-			$('#cashnumErr').hide();
-			
-			var select = $("#proof-of-expenditure-option option:selected").val();
-				
-				if(select === "cash-card") {
-					//현금영수증카드번호 수정 유효성 검사	
-					var cashnum = $("#numErr2").val();
-					if(cashnum ==="") {
-						$('#biznumErr').hide();
-						$('#telnumErr').hide();
-						$('#cashnumErr').show();
-					} else {
-						var pattern = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-						var result = pattern.test(cashnum);
-						if(!result) {
-		   				
-		   				$('#biznumErr').hide();
-		   				$('#telnumErr').hide();
-		   				$('#cashnumErr').show();
-						}
-					}
-					
-				} else if(select === "biznum"){
-					//사업자번호 수정 유효성 검사
-					var biznum = $("#numErr3").val();	
-						if(biznum ==="") {
-							$('#telnumErr').hide();
-							$('#cashnumErr').hide();
-							$('#biznumErr').show();
-						} else {
-							var pattern = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-							var result = pattern.test(biznum);
-							if(!result) {
-			   				
-			   				$('#telnumErr').hide();
-			   				$('#cashnumErr').hide();
-			   				$('#biznumErr').show();
-							}
-						}
-				
-				
-				}
-	
-			}
-			if(validation ==false){
-				alert("잘못된 정보가 입력되었습니다. 확인 바랍니다.");
-			}else{
-				location.href = "payment/payComplete?"
-				    + "payAddress=" + encodeURIComponent(payAddress)
-				    + "&productList=" + encodeURIComponent(productList.join(','))
-				    + "&quantityList=" + encodeURIComponent(quantityList.join(','))
-				    + "&accountTransfer=" + encodeURIComponent(accountTransfer)
-				    + "&creditCard=" + encodeURIComponent(creditCard)
-				    + "&phone=" + encodeURIComponent(phone)
-				    + "&withoutBankbook=" + encodeURIComponent(withoutBankbook);
-				
-			}/*var productList = [];
-
-	        // 각 productId 값을 productList에 추가
-	        $(".productId").each(function() {
-	            var productId = $(this).val();
-	            productList.push(productId);
-	        });*/
+		}
 				
 		})
 		
