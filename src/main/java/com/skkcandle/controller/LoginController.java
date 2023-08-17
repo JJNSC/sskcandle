@@ -23,10 +23,18 @@ public class LoginController {
 	private UserService userService;
 	
 	@RequestMapping("/loginForm")
-	public String loginForm(@RequestParam(name="loginErrMsg", defaultValue="") String loginErrMsg, Model model) {
+	public String loginForm(@RequestParam(name="loginErrMsg", defaultValue="") String loginErrMsg,
+							@RequestParam(name="productId", defaultValue="") String productId,
+							Model model, HttpSession session) {
 		//만약 로그인 실패하면 이 정보를 가지고 팝업띄우자
 		model.addAttribute("loginErrMsg", loginErrMsg);
 		log.info("loginErrMsg : "+ loginErrMsg);
+		//만약 제품상세페이지에서 왔을경우 해당 상품을 세션에저장하자.
+		log.info("productId : "+ productId);
+		if(!productId.equals(null)) {
+			session.setAttribute("productId", productId);
+		}
+		
 		return "loginForm";
 	}
 	
@@ -48,7 +56,7 @@ public class LoginController {
 			if(pid != null) {
 				int productId = Integer.parseInt(pid);
 				//세션에서 보고있는 상품을 삭제
-				session.removeAttribute(pid);
+				session.removeAttribute("productId");
 				model.addAttribute("productId", productId);
 				return "redirect:/productDetail";
 			}

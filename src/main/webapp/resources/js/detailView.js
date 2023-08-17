@@ -113,10 +113,17 @@ function addCartAndPay(){
 	console.log("productId : "+ productId);
 	var quantity = $('input[id=productCount]').val();
 	console.log("quantity : "+ quantity);
+	var userId = $('input[name=userId]').val();
+	console.log("userId : "+ userId);
 	
-	if (confirm("구매하시겠습니까?")) { 
-		location.href = "oneProductCart?productId="+productId+"&quantity="+quantity;
-	}else{
-		
+	if(!userId) {
+		  alert("로그인이 필요한 서비스 입니다.")
+		  location.href="loginForm?productId="+productId;
+	} else {
+		if (confirm("구매하시겠습니까")) { 
+			location.href = "oneProductCart?productId="+productId+"&quantity="+quantity;
+		}
 	}
+	
+	
 }
