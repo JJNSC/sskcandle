@@ -46,7 +46,7 @@
 		           								<c:if test="${a.index == c.index}">	
 									           		<tr class="cart-deal-item">		
 										            	<td class="product-select-event">
-										            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}" onclick="">
+										            		<input type="checkbox" class="dealSelectChk" name="cbox" value="${ProductList.productId}" onclick="sum()">
 										            	</td>
 										            	<td class="cart-deal-item_image">
 									            			<c:if test="${ImageList.productImage != null }"> 
@@ -75,7 +75,7 @@
 																			<span class="product-price">${ProductList.productPrice}</span>원
 																		</span>
 																	</span>
-																<input type="number" class="edt-qty" value="${QuantityList}" min="0" data-product-id="${ProductList.productId}원">
+																	<input type="number" class="edt-qty" value="${QuantityList}" min="0" data-product-id="${ProductList.productId}" onchange="updateQty(this)">
 																</span>	
 															</div> 		
 															<div class="badge-item option-benefit">
@@ -86,7 +86,7 @@
 										   					</div>
 														</td>
 														<td class="unit-total-price">
-										            		<div class="union-total-sale-price"><fmt:formatNumber value="${ProductList.productPrice * QuantityList}" pattern="#,###"/>원</div>
+										            		<div class="union-total-sale-price"><fmt:formatNumber value="${ProductList.productPrice * QuantityList}" pattern="#,###"/>원</div>									            		
 										            		<!-- <img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송"> -->
 									            		</td>
 													</tr>	
@@ -118,7 +118,7 @@
 		                	</div>
 			                <span class="rocket-total-price-area">
 								상품가격 
-								<span class="total-product-price number">148,770 원</span>
+								<span class="total-product-price number">0</span>원
 								<span class="coupon-area">
 					                	<span class="symbol-plus">
 					                		<span class="sr-only">더하기</span>
@@ -131,7 +131,7 @@
 											<span class="sr-only">결과는</span>
 										</span>
 											주문금액
-					               		<span class="total-order-price number">148,770</span>원  
+					               		<span class="total-order-price number">0</span>원  
 								</span>
 			            	</span>
             			</td>
@@ -141,7 +141,7 @@
    		<div class="order-table-foot">
          	<span class="all-select-product">
 				<label>
-					<input type="checkbox" class="cboxAll" onclick="sum()"> <span>전체선택</span><span class="cart-count-bottom">( <em class="selected-num"></em>/<em class="all-num"></em>)</span>
+					<input type="checkbox" class="cboxAll" onchange="sum()"> <span>전체선택</span><span class="cart-count-bottom">( <em class="selected-num"></em>/<em class="all-num"></em>)</span>
 				</label>
 				<button class="selected-delete" onclick="deleteItemList()">삭제</button>
 			<!-- <a href="javascript:void(0);" class="selected-soldout-delete logging" data-login="true" data-view-type="shoppingCart" data-event-name="deleteAllEosAndOosClick" data-log-label="cart-p-outDeleteAll" data-coulog-type="clickEvent">품절/판매종료상품 전체삭제</a> -->
@@ -168,7 +168,7 @@
                     <span class="symbol-equal1"><span class="sr-only">결과는</span></span>
                    		 총 주문금액
                     <em class="final-order-price">
-                      148,770원
+                      0원
                     </em>
                 </div>
 

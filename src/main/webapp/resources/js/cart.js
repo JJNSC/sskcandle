@@ -254,20 +254,78 @@ let year = now.getFullYear();
 
 //총 가격 더해서 띄우기
 
-function sum(){
-	   
+function sum() {
 	var total = 0;
-	
-	  $("input:checkbox[name=cbox]:checked").each(function(index, item) {		
-		  var checkeditem = parseInt($(".unit-total-price").html().replace(/[^0-9]/g, ""));
-  			total += checkeditem;
-	  });
-	  
-	  $(".final-product-price").text(total.toLocaleString("ko-KR")); //each문 밖에 선언 해줌으로서 each문이 안 돌면 0값을 그대로 가져오게 한다.
-	  $(".final-order-price").text(total.toLocaleString("ko-KR") + "원");   
+
+	$("input:checkbox[name=cbox]").each(function(index, item) {
+		if ($(this).is(":checked")) {
+			var checkedItem = parseInt($(this).closest(".cart-deal-item").find(".union-total-sale-price").text().replace(/[^0-9]/g, ""));
+            total += checkedItem;
+        }
+    });
+
+    $(".final-order-price").text(total.toLocaleString("ko-KR") + "원");
 }
 
+	$("input:checkbox[name=cbox]").on("change", function() {
+	    sum(); // 체크 박스 상태가 변경될 때마다 합산 갱신
+	});
 
+	$(".cboxAll").on("change", function() {
+	    var isChecked = $(this).is(":checked");
+	    $("input:checkbox[name=cbox]").prop("checked", isChecked);
+	    sum(); // 전체 선택 체크 박스 상태 변경시 합산 갱신
+	});
+
+	$(document).ready(function() {
+	    // 체크 박스 이벤트 처리
+	    $("input:checkbox[name=cbox]").on("change", function() {
+	        updateOrderPrice();
+	    });
+
+	    // 전체 선택 체크 박스 이벤트 처리
+	    $(".cboxAll").on("change", function() {
+	        var isChecked = $(this).is(":checked");
+	        $("input:checkbox[name=cbox]").prop("checked", isChecked);
+	        updateOrderPrice();
+	    });
+	    
+	    // 수량 변경 이벤트 처리
+	    $(".edt-qty").on("change", function() {
+	        updateOrderPrice();
+	    });
+	    
+	    // 최초 페이지 로딩시 가격 계산 및 표시
+	    updateOrderPrice();
+	});
+
+	function updateOrderPrice() {
+	    var total = 0;
+
+	    $("input:checkbox[name=cbox]").each(function(index, item) {
+	        if ($(this).is(":checked")) {
+	            var checkedItem = parseInt($(this).closest(".cart-deal-item").find(".unit-total-price").text().replace(/[^0-9]/g, ""));
+	            total += checkedItem;
+	        }
+	    });
+
+	    // 전체 합산이 완료되면 총 가격 업데이트
+	    $(".final-order-price").text(total.toLocaleString("ko-KR") + "원");
+	}
+
+	// 수량 변경 이벤트 처리
+	$(document).on("change", ".edt-qty", function() {
+	    const row = $(this).closest(".cart-deal-item");
+	    const unitPrice = parseInt(row.find(".unit-price").text().replace(/[^0-9]/g, ""));
+	    const newQuantity = parseInt($(this).val());
+	    const total = unitPrice * newQuantity;
+
+	    row.find(".unit-total-price").text(total.toLocaleString("ko-KR") + "원");
+	    
+	    // 수량 변경 시 가격 합산도 업데이트
+	    updateOrderPrice();
+	});
+	
 //담긴 상품이 없을때의 페이지(삭제) 예전코드
 /*
 function emptyCart() {
@@ -301,7 +359,7 @@ function couMoney() {
 */
 
 //장바구니 페이지 수량 버튼 클릭시 값 변경
-$(document).ready(function() {
+function updateQty() {
     $(".edt-qty").on("change", function() {
         const productId = $(this).data("productId");
         const newQuantity = $(this).val();
@@ -311,7 +369,7 @@ $(document).ready(function() {
         
         // Ajax 요청으로 서버에 데이터 전송
         $.ajax({
-            method: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 선택
+            type: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 선택
             url: "updateQuantity", // 실제 요청을 처리할 URL
             data: {
                 productId: productId,
@@ -325,7 +383,9 @@ $(document).ready(function() {
             }
         });
     });
-});
+}
+
+//개별 상품 수량 변경
 
 $(document).ready(function() {
     $(".edt-qty").change(function() {
