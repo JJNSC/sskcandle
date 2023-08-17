@@ -86,20 +86,24 @@ function checkAll() {
  
 
  //체크 된 상품들 삭제(8월 11일)
- function deleteItemList() {
-	    var checkedProductId = [];
+function deleteItemList() {
+    var checkedProductId = [];
 
-	    // 각 체크된 체크박스의 값을 checkedProductId 배열에 추가
-	    $("input:checkbox[name=cbox]:checked").each(function() {
-	        var productId = $(this).val();
-	        checkedProductId.push(productId);
-	    });
-	    
-	    console.log(checkedProductId);
-	   
-	if(confirm("장바구니에서 해당 상품을 삭제하시겠습니까?")){
-		location.href="deleteList?"+"deleteList="+encodeURIComponent(checkedProductId.join(','));
-	}
+    // 각 체크된 체크박스의 값을 checkedProductId 배열에 추가
+    $("input:checkbox[name=cbox]:checked").each(function() {
+        var productId = $(this).val();
+        checkedProductId.push(productId);
+    });
+    
+    console.log(checkedProductId);
+
+    if (checkedProductId.length === 0) {
+        alert("선택된 상품이 없습니다.");
+    } else {
+        if (confirm("장바구니에서 해당 상품을 삭제하시겠습니까?")) {
+            location.href = "deleteList?" + "deleteList=" + encodeURIComponent(checkedProductId.join(','));
+        }
+    }
 }
  
 //구매하기 버튼 클릭시 구매 페이지로 넘어가게
@@ -201,6 +205,10 @@ function initItemCount() {
 	var itemCount = $(".cart-deal-item").length;
 	$(".all-num").text(itemCount);
 	
+	if($(".cart-deal-item").length == 0){
+	    emptyCart();
+	}
+
    return itemCount;
 }
 
@@ -327,7 +335,7 @@ function sum() {
 	});
 	
 //담긴 상품이 없을때의 페이지(삭제) 예전코드
-/*
+
 function emptyCart() {
 	
 		  $(".cartTable tbody").addClass("d-none");
@@ -340,7 +348,7 @@ function emptyCart() {
 	      $(".order-table-foot").addClass("d-none");
 	      $(".today-porduct").removeClass("d-none");
 	      $(".cart-no-item").removeClass("d-none"); 
-	};*/
+	};
 	
 	
 //쿠페이 머니 계산 (예전코드)

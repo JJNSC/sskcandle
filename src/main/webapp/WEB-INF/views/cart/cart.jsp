@@ -75,7 +75,7 @@
 																			<span class="product-price">${ProductList.productPrice}</span>원
 																		</span>
 																	</span>
-																	<input type="number" class="edt-qty" value="${QuantityList}" min="0" data-product-id="${ProductList.productId}" onchange="updateQty(this)">
+																	<input type="number" class="edt-qty" value="${QuantityList}" min="1" data-product-id="${ProductList.productId}" onchange="updateQty(this)">
 																</span>	
 															</div> 		
 															<div class="badge-item option-benefit">
@@ -97,6 +97,7 @@
 								</c:if>
 							</c:forEach>
 						</c:forEach>
+					
 				
 					
             	
@@ -188,8 +189,11 @@
 		            <div class="item-disabled" style="display: none;"></div>
 		        </div>
 		        <div class="cart-no-item d-none">
-		     		<p class="txt">장바구니에 담은 상품이 없습니다.</p>
+		     		<div class="empty-cart"><img src="/skkcandle/resources/images/emptyCart.png" alt="장바구니가 비어있습니다"></div>
 		        </div>
+		        <div class="continue-shopping d-none">
+                <a href="productList"><span class="sr-only">쇼핑하러 가기</span></a>
+            	</div>
 			</div>
 			</section>			
 		</div>
