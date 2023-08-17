@@ -422,14 +422,19 @@ $(document).ready(function(){
         //선택한 결제방법 가져오기
         var paymethod = $('input[name="pay-method"]:checked').val();
         console.log("Selected Value:", paymethod);
+        console.log("Selected Value1 :", accountTransfer);
+        console.log("Selected Value2 :", phone);
+        console.log("Selected Value3 :", withoutBankbook);
         
         var validation = true;
         
-        if(paymethod=="계좌이체" && accountTransfer ==""){
+        if(paymethod=="계좌이체"&& accountTransfer== undefined){
+        	console.log("Selected Value1 :", paymethod);
+        	console.log("Selected Value1 :", accountTransfer);
         	validation = false;
-        }else if(paymethod =="휴대폰" && phone==""){
+        }else if(paymethod=="휴대폰" && phone== undefined	){
         	validation = false;
-        }else if(paymethod=="무통장입금" && withoutBankbook==""){
+        }else if(paymethod=="무통장입금" && withoutBankbook== undefined){
         	validation = false;
         }
 		
