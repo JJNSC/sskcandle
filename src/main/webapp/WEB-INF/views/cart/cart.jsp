@@ -75,7 +75,7 @@
 																			<span class="product-price">${ProductList.productPrice}</span>원
 																		</span>
 																	</span>
-																<input type="number" class="edt-qty" value="${QuantityList}" min="0" data-product-id="${ProductList.productId}">
+																<input type="number" class="edt-qty" value="${QuantityList}" min="0" data-product-id="${ProductList.productId}원">
 																</span>	
 															</div> 		
 															<div class="badge-item option-benefit">
@@ -86,8 +86,8 @@
 										   					</div>
 														</td>
 														<td class="unit-total-price">
-										            		<div class="union-total-sale-price">${ProductList.productPrice * QuantityList}</div>
-										            		<img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송">
+										            		<div class="union-total-sale-price"><fmt:formatNumber value="${ProductList.productPrice * QuantityList}" pattern="#,###"/>원</div>
+										            		<!-- <img src="//img1a.coupangcdn.com/image/cmg/icon/ios/logo_rocket_large@3x.png" width="56" height="14" class="vendor-badge rocket" alt="로켓배송"> -->
 									            		</td>
 													</tr>	
 												</c:if>
