@@ -87,6 +87,7 @@
 						<div class="col-lg-4 d-flex justify-content-center">
 							<div class="product-entry">
 								 <a href="productDetail?productId=${product.productId}" class="prod-img">
+			                       	<h3><span class="badge badge-danger">New</span></h3>
 			                        <img src="data:image/jpeg;base64,${product.base64Image}" />
 			                    </a>
 			                    <div class="product_info text-center">
@@ -99,44 +100,29 @@
 				</c:forEach>
 			</div>
 			
-			<%-- <div class="row productList">
-			    <c:forEach var="product" items="${product}" varStatus="loop">
-			        <c:if test="${loop.index < 3}">
-			            <div class="col-lg-3 mb-4 text-center">	
-			                <div class="border product-entry">
-			                    <a href="productDetail?productId=${product.productId}" class="prod-img">
-			                        <img src="data:image/jpeg;base64,${product.base64Image}" />
-			                    </a>
-			                    <div class="desc">
-			                        <a href="#">${product.productMaker}</a>
-			                        <h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
-			                        <span class="price">&#8361;${product.productPrice}</span>
-			                    </div>
-			                </div>
-			            </div>
-			        </c:if>
-			    </c:forEach>
-			</div> --%>
+			<div class="row">
+				<div class="col-sm-12 text-center mb-4 mt-5">
+					<div class="title_main">BEST Review</div>
+					<div class="title_split"></div>
+					<div class="title_content">이 달의 베스트 리뷰를 확인하세요.</div>
+				</div>
+			</div>
 			
-			<%-- 리스트 3개만 출력 --%>
-			<%-- <div class="row productList">
-			    <c:forEach var="product" items="${product}" varStatus="loop">
-			        <c:if test="${loop.index < 3}">
-			            <div class="col-lg-3 mb-4 text-center">	
-			                <div class="border product-entry">
-			                    <a href="productDetail?productId=${product.productId}" class="prod-img">
-			                        <img src="data:image/jpeg;base64,${product.base64Image}" />
+			<div class="row productList">
+				<c:forEach var="reviewSortProduct" items="${reviewSortProduct}" varStatus="loop">
+					<div class="col-lg-4 d-flex justify-content-center">
+							<div class="product-entry">
+								 <a href="productDetail?productId=${reviewSortProduct.productId}" class="prod-img">
+			                        <img src="data:image/jpeg;base64,${reviewSortProduct.base64Image}" />
 			                    </a>
-			                    <div class="desc">
-			                        <a href="#">${product.productMaker}</a>
-			                        <h2><a href="productDetail?productId=${product.productId}">${product.productName}</a></h2>
-			                        <span class="price">&#8361;${product.productPrice}</span>
+			                    <div class="product_info text-center">
+			                        <h2><a href="productDetail?productId=${reviewSortProduct.productId}">${reviewSortProduct.productName}</a></h2>
+			                        <span class="price"><fmt:formatNumber value="${reviewSortProduct.productPrice}" pattern="#,###원"/></span>
 			                    </div>
-			                </div>
-			            </div>
-			        </c:if>
-			    </c:forEach>
-			</div> --%>
+							</div>
+						</div>
+				</c:forEach>
+			</div>
 			
 		</div>
 	</body>

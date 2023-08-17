@@ -92,6 +92,14 @@ a {
   	color: white;
 }
 
+.product-entry > a > h3 > span {
+	position: absolute;
+	top: 4%;
+	left: 3%;
+	box-shadow: 2px 2px #808080;
+}
+
+
 .product-entry:hover .prod-img {
   transform: scale(1.1);
   filter: brightness(50%);

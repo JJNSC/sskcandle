@@ -20,4 +20,10 @@ public class ProductListServiceImpl implements ProductListService {
 		return productList;
 	}
 	
+	@Override
+	public List<ProductList> getProductListByReviewCount() {
+		List<ProductList> productList = productListDao.getProductListByReviewCount();
+		return productList;
+	}
+	
 }

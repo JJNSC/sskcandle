@@ -135,6 +135,11 @@ li {
     height: auto; */
     width: 250px;
     height: 250px;
+    transition: transform 0.3s;
+}
+
+.thumbnail > a > img:hover {
+  transform: scale(1.1);
 }
 
 .product_info {

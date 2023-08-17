@@ -6,4 +6,5 @@ import com.skkcandle.dto.ProductList;
 
 public interface ProductListService {
 	public List<ProductList> getProductList();
+	public List<ProductList> getProductListByReviewCount();	
 }
