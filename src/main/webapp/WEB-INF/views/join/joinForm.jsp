@@ -99,7 +99,7 @@
 									<i class="fa-solid fa-phone-flip" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
-									<input type="text" class="join_input_content" id="userPhone" name="userPhone" value="${user.userPhone }"
+									<input type="text" class="join_input_content" id="userPhone" name="userPhone" value="${user.userPhone}" oninput="autoHyphen(this)" maxlength="13"
 										placeholder="휴대폰 번호" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = '휴대폰 번호'"/>
 								</span>
 							</label>
