@@ -17,7 +17,7 @@
 			select user_seq.nextval from dual <!-- 시퀀스의 다음 번호를 가지고온다. 그리고 다음단계=>세팅하기 -->
 		</selectKey>
 		insert into userinfo (userId, userName, userPassword, userEmail, userPhone, userPostcode, userRoadAddress, userDetailAddress, userJoinDate, userBirthDay, userGrade ,userPoint)
-		values (#{userId}, #{userName}, #{userPassword}, #{userEmail}, #{userPhone}, #{userPostcode},#{userRoadAddress},#{userDetailAddress}, sysdate, sysdate, '평민' ,0) 
+		values (#{userId}, #{userName}, #{userPassword}, #{userEmail}, #{userPhone}, #{userPostcode},#{userRoadAddress},#{userDetailAddress}, sysdate, sysdate, '평민' ,1000) 
 	</insert>
 	
 	<!-- 회원 이미지 업로드 하기  -->

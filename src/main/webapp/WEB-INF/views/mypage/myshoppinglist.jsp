@@ -20,7 +20,9 @@
 	</head>
 		<div class="wrap" style="border:0px solid black; margin-left:50px;">
 			<h3>내 구매 목록</h3> 
-			<span style="float:right;">${shoppingPager.pageNo}/${shoppingPager.totalPageNo} </span>
+			<c:if test="${noPaging!=1}"> 
+				<span style="float:right;">${shoppingPager.pageNo}/${shoppingPager.totalPageNo} </span>
+			</c:if>
 			<br>
 			<c:forEach var="BuyList" items="${orderList }" >
 			<table class="table table-sm" style="margin-bottom:0;">

@@ -121,10 +121,10 @@
 									<input type="text" id="sample4_postcode" name="userPostcode" placeholder="우편번호" style="border:1px solid #ccc; width:100px;">
 									<input type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기" class="mb-3 mr-1 mt-3 ml-3" 
 										style=" border:1px solid gray; color:#fff; background-color: darkgray; box-shadow: 3px 3px lightgray; width:100px; font-size:16px;"><br>
-									<input type="text" id="sample4_roadAddress" name="userRoadAddress" placeholder="도로명주소" class="ml-2 mb-3" style="width:295px;border:1px solid #ccc;">
+									<input type="text" id="sample4_roadAddress" name="userRoadAddress" placeholder="도로명주소" class="ml-2 mb-3" style="width:320px;border:1px solid #ccc;">
 									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" style="width:280px;">
-									<span id="guide" style="color:#999;display:none"></span><br>
-									<input type="text" id="sample4_detailAddress" name="userDetailAddress" placeholder="상세주소" class="ml-2 mb-3" style="width:295px;border:1px solid #ccc;">
+									<span id="guide" class="d-none" style="color:#999;display:none"></span><br>
+									<input type="text" id="sample4_detailAddress" name="userDetailAddress" placeholder="상세주소" class="ml-2 mb-3" style="width:320px;border:1px solid #ccc;">
 									<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
 								</span>
 							</label>
