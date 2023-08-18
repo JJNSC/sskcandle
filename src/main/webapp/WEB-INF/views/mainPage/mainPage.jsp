@@ -21,6 +21,8 @@
 		<script src="${pageContext.request.contextPath}/resources/js/mainPage.js"></script>
 	</head>
 	<body>
+		
+		
 		<div class="container">
 			<%-- 부트스트랩 슬라이드 --%>
 			<div id="carousel_slide" class="carousel slide" data-ride="carousel">
@@ -28,28 +30,28 @@
 			        <div class="carousel-item active" data-interval="5000">
 			            <div class="d-flex align-items-center justify-content-center" style="height: 400px;">
 			            	<a href="">
-				                <img src="${pageContext.request.contextPath}/resources/images/mainPage/wood_wick.png" style="height: 400px;" class="d-block w-100" alt="...">
+				                <img src="${pageContext.request.contextPath}/resources/images/mainPage/wood_wick_ad.jpg" style="height: 400px;" class="d-block w-100" alt="...">
 			            	</a>
 			            </div>
 			        </div>
 			        <div class="carousel-item" data-interval="5000">
 			            <div class="d-flex align-items-center justify-content-center" style="height: 400px;">
 			                <a href="">
-			                	<img src="${pageContext.request.contextPath}/resources/images/mainPage/yankee_candle.png" class="d-block w-100" alt="...">
+			                	<img src="${pageContext.request.contextPath}/resources/images/mainPage/yankee_candle_ad.png" style="height: 400px;" class="d-block w-100" alt="...">
 			            	</a>
 			            </div>
 			        </div>
 			        <div class="carousel-item" data-interval="5000">
 			            <div class="d-flex align-items-center justify-content-center" style="height: 400px;">
 			                <a href="">
-			                	<img src="${pageContext.request.contextPath}/resources/images/mainPage/spaas_candle.jpg" class="d-block w-100" alt="...">
+			                	<img src="${pageContext.request.contextPath}/resources/images/mainPage/spaas_candle_ad.jpg" style="height: 400px;" class="d-block w-100" alt="...">
 			           		</a>
 			            </div>
 			        </div>
 			        <div class="carousel-item" data-interval="5000">
 			            <div class="d-flex align-items-center justify-content-center" style="height: 400px;">
 			                <a href="">
-			                	<img src="${pageContext.request.contextPath}/resources/images/mainPage/light_up.jpg" class="d-block w-100" alt="...">
+			                	<img src="${pageContext.request.contextPath}/resources/images/mainPage/light_up_ad.jpg" style="height: 400px;" class="d-block w-100" alt="...">
 			            	</a>
 			            </div>
 			        </div>
