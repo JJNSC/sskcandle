@@ -8,8 +8,7 @@ import com.skkcandle.dto.ProductList;
 
 @Mapper
 public interface ProductListDao {
-	public List<ProductList> selectByProductId();
+	public List<ProductList> selectByProductId(String searchWord);
 	public List<ProductList> getProductListByReviewCount();	
-	public List<ProductList> getProductListBySearchWord(String searchWord);	
 
 }

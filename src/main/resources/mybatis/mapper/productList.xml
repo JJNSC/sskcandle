@@ -2,23 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skkcandle.dao.ProductListDao">		
 	
-	<select id="selectByProductId" resultType="ProductList">
+	<select id="selectByProductId" parameterType="String" resultType="ProductList">
 		SELECT p.productid, p.productname, p.productstock, p.productmaker, p.productprice, pi.productimage
 		FROM product p INNER JOIN productImages pi
 		ON p.productId = pi.productId
-		WHERE pi.usage='thumbnail' 
-		ORDER BY p.productId desc
-	</select>
-	<!-- 검색어를 통한 리스트 추출 -->
-	<select id="getProductListBySearchWord" parameterType="String" resultType="ProductList">
-		SELECT p.productid, p.productname, p.productstock, p.productmaker, p.productprice, pi.productimage
-		FROM product p INNER JOIN productImages pi
-		ON p.productId = pi.productId
-		WHERE
+		WHERE 
 		<if test="searchWord != null and searchWord != ''">
-			(productName like '%' || #{searchWord) || '%' or productMaker like '%' || #{searchWord} || '%')
+			(productName like '%' || #{searchWord) || '%' or productMaker like '%' || #{searchWord} || '%') and
 		</if>
-			and pi.usage='thumbnail' 
+		pi.usage='thumbnail' 
 		ORDER BY p.productId desc
 	</select>
 	

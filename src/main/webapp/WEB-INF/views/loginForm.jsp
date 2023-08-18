@@ -19,6 +19,16 @@
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/loginForm.css">
 		<script src="${pageContext.request.contextPath}/resources/js/loginForm.js"></script>
+		
+		<script>
+	        function openChildPage() {
+	            var childWindow = window.open('child.html', '_blank', 'width=400,height=300');
+	        }
+	
+	        function setEmail(email) {
+	            document.getElementById('emailInput').value = email;
+	        }
+	    </script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -73,14 +83,16 @@
 						
 						<div></div>
 						<%-- 자동로그인, 아이디 찾기 --%>
-						<!-- <div class="login__content login__content--util">
-                            <label for="login-keep-state" class="autologin_checkbox member__checkbox login__util__keep-login" aria-checked="false">
+						<div class="login__content login__content--util mt-1">
+                           <!--  <label for="login-keep-state" class="autologin_checkbox member__checkbox login__util__keep-login" aria-checked="false">
                                 <input class="member__checkbox__input member__sprite-after member__sprite-after--checkbox _loginRememberInput" type="checkbox" id="login-keep-state">
                                 <span class="member__checkbox__label">자동로그인</span>
-                            </label>
+                            </label> -->
                             <a href="https://login.coupang.com/login/accountInfoFind.pang" class="login__link login__link--find-id-password _loginFindIdPwLink"
-                            	style="text-decoration: none;">아이디∙비밀번호 찾기 <strong>></strong></a>
-                        </div> -->
+                            	style="text-decoration: none; color:#17a2b8;">비밀번호 찾기 <strong>></strong></a>
+                            <a onclick="openChildPage()" type="button" class="login__link login__link--find-id-password _loginFindIdPwLink"
+                            	style="text-decoration: none; color:#17a2b8;">아이디 &nbsp&nbsp&nbsp∙ <strong></strong></a>
+                        </div>
                         <div class="login__content login__content--trigger">
                         	<button class="btn btn-primary btn-block font-weight-bold" onclick="checkValidation()" type="submit" style="border-color:#17a2b8 ;padding: 10px 0; background-color:#88c8bc;">로그인</button>
                             <hr class="login_separator">

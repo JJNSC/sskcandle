@@ -15,8 +15,8 @@ public class ProductListServiceImpl implements ProductListService {
     private ProductListDao productListDao;
 	
 	@Override
-	public List<ProductList> getProductList() {
-		List<ProductList> productList = productListDao.selectByProductId();
+	public List<ProductList> getProductList(String searchWord) {
+		List<ProductList> productList = productListDao.selectByProductId(searchWord);
 		return productList;
 	}
 
@@ -26,10 +26,4 @@ public class ProductListServiceImpl implements ProductListService {
 		return productList;
 	}
 
-	@Override
-	public List<ProductList> getProductListBySearchWord(String searchWord) {
-		List<ProductList> productList = productListDao.getProductListBySearchWord(searchWord);
-		return productList;
-	}
-	
 }

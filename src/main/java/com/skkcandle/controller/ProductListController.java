@@ -1,6 +1,5 @@
 package com.skkcandle.controller;
 
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -31,12 +30,7 @@ public class ProductListController {
 	public String productListPage(Model model,
 								@RequestParam(name="searchWord", required=false) String searchWord) {
 		log.info("searchWord : " + searchWord);
-		List<ProductList> productList = new ArrayList<>();
-		if(searchWord.equals(null)) {
-			productList = productListService.getProductList();
-		}else {
-			productList = productListService.getProductListBySearchWord(searchWord);
-		}
+		List<ProductList> productList = productListService.getProductList(searchWord);
 		
 		for (ProductList product : productList) {
             byte[] imageBytes = product.getProductImage();

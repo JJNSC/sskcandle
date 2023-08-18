@@ -25,7 +25,8 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		List<ProductList> productList = productListService.getProductList();
+		String searchWord=null;
+		List<ProductList> productList = productListService.getProductList(searchWord);
 		List<MainPage> reviewSortProductList = mainPageService.getProductListByReviewCount();
 		
 		for (ProductList product : productList) {
