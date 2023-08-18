@@ -81,7 +81,7 @@
 			</div>
 		</nav>
 		<div class="navbar_search row">
-			<form method="get" action="product" class="navbar_search_form col">
+			<form method="get" action="productList" class="navbar_search_form col">
 				<div class="navbar_search_input">
 					<input type="search" class="form-control" placeholder="Search..." name="searchWord">
 				</div>

@@ -10,4 +10,5 @@ import com.skkcandle.dto.ProductList;
 public interface ProductListDao {
 	public List<ProductList> selectByProductId();
 	public List<ProductList> getProductListByReviewCount();	
+	public List<ProductList> getProductListBySearchWord(String searchWord);	
 }

@@ -25,5 +25,11 @@ public class ProductListServiceImpl implements ProductListService {
 		List<ProductList> productList = productListDao.getProductListByReviewCount();
 		return productList;
 	}
+
+	@Override
+	public List<ProductList> getProductListBySearchWord(String searchWord) {
+		List<ProductList> productList = productListDao.getProductListBySearchWord(searchWord);
+		return productList;
+	}
 	
 }

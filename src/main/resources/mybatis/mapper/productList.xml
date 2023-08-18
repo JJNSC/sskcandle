@@ -9,6 +9,18 @@
 		WHERE pi.usage='thumbnail' 
 		ORDER BY p.productId desc
 	</select>
+	<!-- 검색어를 통한 리스트 추출 -->
+	<select id="getProductListBySearchWord" parameterType="String" resultType="ProductList">
+		SELECT p.productid, p.productname, p.productstock, p.productmaker, p.productprice, pi.productimage
+		FROM product p INNER JOIN productImages pi
+		ON p.productId = pi.productId
+		WHERE
+		<if test="searchWord != null and searchWord != ''">
+			(productName like '%' || #{searchWord) || '%' or productMaker like '%' || #{searchWord} || '%')
+		</if>
+			and pi.usage='thumbnail' 
+		ORDER BY p.productId desc
+	</select>
 	
 	<select id="getProductListByReviewCount" resultType="ProductList">
 		<![CDATA[
