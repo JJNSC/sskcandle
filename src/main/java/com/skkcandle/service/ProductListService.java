@@ -8,4 +8,5 @@ public interface ProductListService {
 	public List<ProductList> getProductList();
 	public List<ProductList> getProductListBySearchWord(String searchWord);
 	public List<ProductList> getProductListByReviewCount();	
+
 }

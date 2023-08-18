@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skkcandle.dao.MainPageDao">		
+	
+	<select id="getProductListByReviewCount" resultType="MainPage">
+		<![CDATA[
+			select ui.username, proimgrev.productId, proimgrev.productname, proimgrev.productprice, proimgrev.productimage, proimgrev.pattachtype,
+		        proimgrev.pattachoname, proimgrev.reviewTitle, proimgrev.reviewContent, proimgrev.userid, proimgrev.reviewid from userinfo ui
+		    inner join
+		    (select proimg.productId, proimg.productname, proimg.productprice, proimg.productimage, proimg.pattachtype,
+		        proimg.pattachoname, revi.reviewTitle, revi.reviewContent, revi.userid, proimg.reviewid from review revi 
+		        inner join 
+		        (select abc.productId, abc.productname, abc.productprice, img.productimage, img.pattachtype, img.usage, img.pattachoname, abc.reviewid from productImages img 
+		            inner join 
+		            (select pr.* , a.reviewid from product pr 
+		                inner join 
+		                    (Select
+		                        Distinct P.Productid,
+		                        (Select Count(*) From Review R Where R.Productid = P.Productid) As Reviewcount,
+		                        (Select Reviewid From Review Rev Where Rev.Productid = P.Productid Order By Rev.Ratingscore Desc Fetch First 1 Rows Only) As Reviewid
+		                    From Product P
+		                    Inner Join Productimages Th On Th.Productid = P.Productid And Th.Usage = 'thumbnail'
+		                    Left Join Review R On R.Productid = P.Productid
+		                    Order By Reviewcount Desc
+		                    Fetch First 3 Rows Only) a 
+		                on pr.productid = a.productid) abc
+		            on img.productId = abc.productId And img.Usage = 'thumbnail') proimg 
+		        on revi.productid = proimg.productid and revi.reviewid = proimg.reviewid) proimgrev
+		    on ui.userid = proimgrev.userid
+		]]>
+	</select>
+	
+</mapper>

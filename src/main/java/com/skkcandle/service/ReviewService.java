@@ -18,4 +18,5 @@ public interface ReviewService {
 	public void updateReview(Review review);
 	public List<Review> reviewPaging(Pager pager);
 	public int reviewNum(int userId);
+	public List<Review> getReviewList(Pager pager);
 }

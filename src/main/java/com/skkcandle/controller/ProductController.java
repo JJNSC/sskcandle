@@ -1,5 +1,6 @@
 package com.skkcandle.controller;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -8,10 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Product;
@@ -22,6 +20,7 @@ import com.skkcandle.dto.Wish;
 import com.skkcandle.service.ProductImagesService;
 import com.skkcandle.service.ProductService;
 import com.skkcandle.service.ReviewService;
+import com.skkcandle.service.UserService;
 import com.skkcandle.service.WishService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +47,8 @@ public class ProductController {
     private ProductImagesService ProductImagesService;
     @Autowired
     private WishService WishService;
+    @Autowired
+    private UserService userService;
 	   
 	@RequestMapping("/productDetail")
 	public String detailProduct(String pageNo, HttpSession session, Model model, int productId) {
@@ -94,12 +95,13 @@ public class ProductController {
 	      //int totalRows = boardDao.count();//전체 게시물 수
 	      int totalReviewNum = ReviewService.getReviewNum(productId);
 	      Pager pager = new Pager(5,5,totalReviewNum,intPageNo);
+	      pager.setProductId(productId);
 	       
-	      List<Review> list = ReviewService.getList(pager); 
-	      
+	//      List<Review> list = ReviewService.getList(pager); 
+	       
 	      model.addAttribute("pager", pager);
-	      model.addAttribute("reviews", list);
-	      
+/*	      model.addAttribute("reviews", list);
+*/	      
 	      // 찜 상태 확인 및 넘겨주기
 	      User user = (User) session.getAttribute("login");
 	      int userId;
@@ -117,6 +119,30 @@ public class ProductController {
 	      boolean isWished = wishNo == 1;
 
 	      model.addAttribute("isWished", isWished);
+	      
+	      //리뷰 불러오기
+	      List<Review> reviewList = ReviewService.getReviewList(pager); //해당 상품에 대한 리뷰리스트
+	      
+/*	      log.info("페이저" + pager);
+*/	           
+	      List<User> userList = new ArrayList<>();
+	      
+	      for(Review oneReview : reviewList) {
+	    	  int writerId = oneReview.getUserId();
+	    	  User userInfo = userService.getUserInfoById(writerId);
+	    	  
+	    	  if (userInfo != null && userInfo.getUserImageData() != null) {
+	    	  String base64Img = Base64.getEncoder().encodeToString(userInfo.getUserImageData());	    	  
+	    	  userInfo.setBase64Image(base64Img);
+	    	  } 
+	    	  userList.add(userInfo);
+	      }
+	      
+	      model.addAttribute("userList", userList);
+	      model.addAttribute("reviewList", reviewList);
+	      
+	      /*log.info("리뷰리스트" + reviewList);
+	      log.info("유저정보" + userList);*/
 	      
 		return "/productDetail/detailView";
 	}	

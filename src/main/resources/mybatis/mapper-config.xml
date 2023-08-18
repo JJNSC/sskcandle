@@ -15,5 +15,6 @@
 		<typeAlias alias="Wish" type="com.skkcandle.dto.Wish"/>
 		<typeAlias alias="OrderDetail" type="com.skkcandle.dto.OrderDetail"/>
 		<typeAlias alias="Order" type="com.skkcandle.dto.Order"/>
+		<typeAlias alias="MainPage" type="com.skkcandle.dto.MainPage"/>
 	</typeAliases>
 </configuration>

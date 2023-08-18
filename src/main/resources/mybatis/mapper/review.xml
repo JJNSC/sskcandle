@@ -83,6 +83,18 @@
 			WHERE rnum >=#{startRowNo} 
 		]]>
 	</select>
+	
+	<!-- 제품 상세 페이지에서 리뷰 회원의 정보들을 가져오자 -->
+	<select id="getListReview" parameterType="Pager" resultType="Review"> <!-- cart.xml 결과가 여러개 나와도 parameterType 은 int 이다.(cart를 select 해오는데 필요한 xml) -->
+		<![CDATA[
+			SELECT rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent 
+			FROM ( SELECT rownum rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent 
+			    FROM ( SELECT reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent 
+			        FROM review WHERE productId = #{productId} ORDER BY reviewId DESC ) 
+			    WHERE ROWNUM <=#{endRowNo} ) 
+			WHERE rnum >=#{startRowNo} 
+		]]>
+	</select>
     
 	
 </mapper> <!-- 리뷰 작업으로 인한 주석처리 -->
