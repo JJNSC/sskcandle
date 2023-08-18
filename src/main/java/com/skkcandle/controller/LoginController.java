@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class LoginController {
 			session.setAttribute("productId", productId);
 		}
 		
-		return "loginForm";
+		return "login/loginForm";
 	}
 	
 	@PostMapping("/login")
@@ -84,5 +85,30 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	//이메일 찾기
+	@GetMapping("/findEmail")
+	public String findEmailForm() {
+		return "login/findEmail";
+	}
+	
+	@PostMapping("/findEmail")
+	public String findEmail(@RequestParam String userName, @RequestParam String userPhone, Model model) {
+		User user = new User();
+		user.setUserName(userName);
+		user.setUserPhone(userPhone);
+		
+		String userEmail=null;
+		int exist = userService.checkUserExistByNameAndPhone(user);
+		String result=null;
+		if(exist ==1) {
+			userEmail = userService.getEmailByNameAndPhone(user);
+			result = "emailYes";
+		}else {
+		}
+		model.addAttribute("result", result);
+		model.addAttribute("resultMsg", userEmail);
+		return "login/findEmailResult";
 	}
 }

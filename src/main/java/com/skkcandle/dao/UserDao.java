@@ -17,4 +17,6 @@ public interface UserDao {
 	public void updateUserInfoNoPW(User user);
 	public void delete(int userId);
 	public void changeUserPoint(User user);
+	public int checkUserExistByNameAndPhone(User user);
+	public String getEmailByNameAndPhone(User user);
 }

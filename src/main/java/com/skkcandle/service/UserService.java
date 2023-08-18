@@ -29,4 +29,6 @@ public interface UserService {
 	public void updateUserInfoNoPW(User user);
 	public void withdrawUser(int userId);
 	public void changeUserPoint(User user);
+	public int checkUserExistByNameAndPhone(User user);
+	public String getEmailByNameAndPhone(User user);
 }

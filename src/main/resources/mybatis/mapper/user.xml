@@ -56,4 +56,15 @@
 			where userId = #{userId}
 	</update>
 	
+	<!-- 회원 이름과 휴대번호와 일치하는 유저가 있는지 확인하기 -->
+	<select id="checkUserExistByNameAndPhone" parameterType="User" resultType="int">
+		select count(*) from userinfo where userName = #{userName} and userPhone = #{userPhone}
+	</select>
+	
+	<!-- 회원 이름과 휴대번호로 이메일 찾아오기 -->
+	<select id="getEmailByNameAndPhone" parameterType="User" resultType="String">
+		select userEmail from userinfo 
+		where userName = #{userName} and userPhone = #{userPhone}
+	</select>
+	
 </mapper>

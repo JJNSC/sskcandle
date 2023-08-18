@@ -92,6 +92,16 @@ public class UserServiceImpl implements UserService {
 	public void changeUserPoint(User user) {
 		userDao.changeUserPoint(user);
 	}
+	@Override
+	public int checkUserExistByNameAndPhone(User user) {
+		int exist = userDao.checkUserExistByNameAndPhone(user);
+		return exist;
+	}
+	@Override
+	public String getEmailByNameAndPhone(User user) {
+		String userEmail = userDao.getEmailByNameAndPhone(user);
+		return userEmail;
+	}
 
 
 }
