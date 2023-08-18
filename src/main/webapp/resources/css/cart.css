@@ -403,6 +403,11 @@ header{
     text-align: center;
 }
 
+.empty-cart > img {
+	width: 300px;
+	opacity: 0.4;
+}
+
 .today-porduct {
  	position: relative;
     width: 896px;
