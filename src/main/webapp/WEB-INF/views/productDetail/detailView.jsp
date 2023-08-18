@@ -76,7 +76,7 @@
 			<div class="product-cash">
                   	<div class="max-cash">
                   		<img src="//image6.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png" width="14px">
-                  		<span class="reward-cash-txt">최대 <fmt:parseNumber value="${detailproduct.productPrice *0.1}" type="number" /> 원 적립 </span> <!-- 소숫점 아래는 안나오게 fmt 활용 -->
+                  		<span class="reward-cash-txt">최대 <fmt:parseNumber value="${detailproduct.productPrice *0.04}" type="number" /> 원 적립 </span> <!-- 소숫점 아래는 안나오게 fmt 활용 -->
                   	</div>
             </div>				
 			<hr>
@@ -185,48 +185,57 @@
 	    			<input class="sdp-review_search" placeholder="상품평을 검색해 보세요." maxlength="30">
 	    		</div>
 	    	</section>
-	    <c:forEach var="review" items="${productreviews}">	<!-- 여기에 고객의 사진이 들어간다. -->
-		    <article class="sdp-review__article__list js_reviewArticleReviewList">
-		        <div class="sdp-review__article__list__info">          
-		            <div class="sdp-review__article__list__info__profile">     
-		            	<img class="js_reviewArticleCrop js_reviewUserProfileImage" src="//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png" data-member-id="3644655" style="width: 100%; height: auto; margin-top: 0px; opacity: 1;">
-		            </div> 
-		            <div class="sdp-review__article__list__info__user">
-		                <span class="sdp-review__article__list__info__user__name js_reviewUserProfileImage"><h2>${review.reviewId}</h2>&nbsp;</span> <!-- 고객의 이름 -->
-		            </div>            
-		            <div class="sdp-review__article__list__info__product-info">
-		                    <div class="rate">
-				                    <c:if test="${review.ratingScore==1}"><span style="width: 20%"></span></c:if> 
-						 			<c:if test="${review.ratingScore==2}"><span style="width: 40%"></span></c:if> 
-						 			<c:if test="${review.ratingScore==3}"><span style="width: 60%"></span></c:if> 
-						 			<c:if test="${review.ratingScore==4}"><span style="width: 80%"></span></c:if> 
-						 			<c:if test="${review.ratingScore==5}"><span style="width: 100%"></span></c:if>
-		                	</div>
-		                <div class="sdp-review__article__list__info__product-info__reg-date">
-		                	<fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate>
-		                </div>
-		            </div>        
-		                <div class="sdp-review__article__list__info__product-info__seller_name">
-		                    	제조사: ${detailproduct.productMaker}
-		                </div>
-		            <div class="sdp-review__article__list__info__product-info__name">양키캔들 홈 인스퍼레이션 자캔들 L, 아일랜드 망고 코코넛, 1개</div>
-		        </div>   
-		            <div class="sdp-review__article__list__attachment js_reviewArticleListGalleryContainer">             
-		                        <div class="sdp-review__article__list__attachment__list">
-		                        </div>                 
-		               </div>    
-		            <div class="sdp-review__article__list__headline">                                
-		            </div>       
-		            <div class="sdp-review__article__list__review js_reviewArticleContentContainer">
-		                <div class="sdp-review__article__list__review__content js_reviewArticleContent">
-		                ${review.reviewContent}                    
-		                </div>
-		            </div>
-		        <div class="sdp-review__article__list__help js_reviewArticleHelpfulContainer" data-review-id="487908706" data-count="0">                
-		                <button class="sdp-review__article__list__help__report-btn js_reviewArticleReviewReportBtn" data-review-id="487908706">신고하기</button>      
-		            <div class="sdp-review__clear"></div>  
-		        </div>
-	    </article>  
+	    <c:forEach var="review" items="${reviewList}" varStatus="a">	<!-- 여기에 고객의 사진이 들어간다. -->
+	    	<c:forEach var="user" items="${userList}" varStatus="b">
+	    		<c:if test="${a.index == b.index}">
+				    <article class="sdp-review__article__list js_reviewArticleReviewList">
+				        <div class="sdp-review__article__list__info">          
+				            <div class="sdp-review__article__list__info__profile">
+				            	<c:if test="${user.base64Image != null }"> 
+							       <img src="data:${user.userAttachType};base64, ${user.base64Image}"/>
+								</c:if>
+								<c:if test="${user.base64Image == null }">     
+				            		<img class="js_reviewArticleCrop js_reviewUserProfileImage" src="//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png" data-member-id="3644655" style="width: 100%; height: auto; margin-top: 0px; opacity: 1;">
+				            	</c:if>
+				            </div> 
+				            <div class="sdp-review__article__list__info__user">
+				                <span class="sdp-review__article__list__info__user__name js_reviewUserProfileImage"><h2>${user.userName}</h2>&nbsp;</span> <!-- 고객의 이름 -->
+				            </div>            
+				            <div class="sdp-review__article__list__info__product-info">
+				                    <div class="rate">
+						                    <c:if test="${review.ratingScore==1}"><span style="width: 20%"></span></c:if> 
+								 			<c:if test="${review.ratingScore==2}"><span style="width: 40%"></span></c:if> 
+								 			<c:if test="${review.ratingScore==3}"><span style="width: 60%"></span></c:if> 
+								 			<c:if test="${review.ratingScore==4}"><span style="width: 80%"></span></c:if> 
+								 			<c:if test="${review.ratingScore==5}"><span style="width: 100%"></span></c:if>
+				                	</div>
+				                <div class="sdp-review__article__list__info__product-info__reg-date">
+				                	<fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd"></fmt:formatDate>
+				                </div>
+				            </div>        
+				                <div class="sdp-review__article__list__info__product-info__seller_name">
+				                    	제조사: ${detailproduct.productMaker}
+				                </div>
+				            <div class="sdp-review__article__list__info__product-info__name">양키캔들 홈 인스퍼레이션 자캔들 L, 아일랜드 망고 코코넛, 1개</div>
+				        </div>   
+				            <div class="sdp-review__article__list__attachment js_reviewArticleListGalleryContainer">             
+				                        <div class="sdp-review__article__list__attachment__list">
+				                        </div>                 
+				               </div>    
+				            <div class="sdp-review__article__list__headline">                                
+				            </div>       
+				            <div class="sdp-review__article__list__review js_reviewArticleContentContainer">
+				                <div class="sdp-review__article__list__review__content js_reviewArticleContent">
+				                ${review.reviewContent}                    
+				                </div>
+				            </div>
+				        <div class="sdp-review__article__list__help js_reviewArticleHelpfulContainer" data-review-id="487908706" data-count="0">                
+				                <button class="sdp-review__article__list__help__report-btn js_reviewArticleReviewReportBtn" data-review-id="487908706">신고하기</button>      
+				            <div class="sdp-review__clear"></div>  
+				        </div>
+			    </article>
+		    </c:if>  
+	 	</c:forEach>
     </c:forEach>
     <table>
 		 <tr>

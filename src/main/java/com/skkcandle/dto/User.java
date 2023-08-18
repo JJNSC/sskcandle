@@ -32,4 +32,6 @@ public class User {
 	//방법2 : DB에 Blob 으로 저장
 	//Mybatis에서 byte[] <- MyBatis -> Blob 이렇게 변환해준다.
 	private byte[] userImageData;
+	
+	private String base64Image;
 }

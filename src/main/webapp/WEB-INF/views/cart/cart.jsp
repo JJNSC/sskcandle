@@ -189,7 +189,7 @@
 		            <div class="item-disabled" style="display: none;"></div>
 		        </div>
 		        <div class="cart-no-item d-none">
-		     		<div class="empty-cart"><img src="/skkcandle/resources/images/emptyCart.png" alt="장바구니가 비어있습니다"></div>
+		     		<div class="empty-cart"><img src="/skkcandle/resources/images/녹초2.png" alt="장바구니가 비어있습니다"></div>
 		        </div>
 		        <div class="continue-shopping d-none">
                 <a href="productList"><span class="sr-only">쇼핑하러 가기</span></a>
