@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.skkcandle.dto.MainPage;
 import com.skkcandle.dto.ProductList;
+import com.skkcandle.service.MainPageService;
 import com.skkcandle.service.ProductListService;
 
 @Controller
@@ -18,10 +20,13 @@ public class HomeController {
 	@Resource
 	private ProductListService productListService;
 
+	@Resource
+	private MainPageService mainPageService;
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<ProductList> productList = productListService.getProductList();
-		List<ProductList> reviewSortProductList = productListService.getProductListByReviewCount();
+		List<MainPage> reviewSortProductList = mainPageService.getProductListByReviewCount();
 		
 		for (ProductList product : productList) {
             byte[] imageBytes = product.getProductImage();
@@ -29,7 +34,7 @@ public class HomeController {
             product.setBase64Image(base64Image);
         }
 		
-		for (ProductList reviewSortProduct : reviewSortProductList) {
+		for (MainPage reviewSortProduct : reviewSortProductList) {
             byte[] imageBytes = reviewSortProduct.getProductImage();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
             reviewSortProduct.setBase64Image(base64Image);

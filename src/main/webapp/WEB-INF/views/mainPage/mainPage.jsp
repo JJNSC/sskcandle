@@ -111,7 +111,7 @@
 			<div class="row productList">
 				<c:forEach var="reviewSortProduct" items="${reviewSortProduct}" varStatus="loop">
 					<div class="col-lg-4 d-flex justify-content-center">
-							<div class="product-entry">
+							<div class="border product-entry">
 								 <a href="productDetail?productId=${reviewSortProduct.productId}" class="prod-img">
 			                        <img src="data:image/jpeg;base64,${reviewSortProduct.base64Image}" />
 			                    </a>
@@ -119,10 +119,20 @@
 			                        <h2><a href="productDetail?productId=${reviewSortProduct.productId}">${reviewSortProduct.productName}</a></h2>
 			                        <span class="price"><fmt:formatNumber value="${reviewSortProduct.productPrice}" pattern="#,###원"/></span>
 			                    </div>
+			                    <div class="review_info">
+			                    	<span class="review_title">${reviewSortProduct.reviewTitle}</span>
+			                    	<br>
+			                    	<span class="review_content">${reviewSortProduct.reviewContent}</span>
+			                    	<br>
+			                    	<span class="review_userName">${reviewSortProduct.userName}</span>			                    	
+			                    </div>
 							</div>
 						</div>
 				</c:forEach>
 			</div>
+			
+		
+			
 			
 		</div>
 	</body>

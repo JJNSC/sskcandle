@@ -10,21 +10,4 @@
 		ORDER BY p.productId desc
 	</select>
 	
-	<select id="getProductListByReviewCount" resultType="ProductList">
-		<![CDATA[
-			SELECT
-			    p.productid,
-			    p.productname,
-			    p.productprice,
-			    p.productstock,
-			    p.productmaker,
-			    (SELECT COUNT(*) FROM review r WHERE r.productid = p.productid) AS reviewCount,
-			    th.productimage
-			FROM product p
-			inner JOIN productimages th ON th.productId = p.productid AND th.usage = 'thumbnail'
-			ORDER BY reviewCount DESC
-			FETCH FIRST 3 ROWS ONLY
-		]]>
-	</select>
-	
 </mapper>

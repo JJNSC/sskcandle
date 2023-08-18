@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.skkcandle.dto.MainPage;
 import com.skkcandle.dto.ProductList;
 
 @Mapper
-public interface ProductListDao {
-	public List<ProductList> selectByProductId();
+public interface MainPageDao {
+	public List<MainPage> getProductListByReviewCount();	
 }
