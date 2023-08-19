@@ -6,7 +6,11 @@ body {
 }
 
 ul {
-	margin: 0;
+	margin: 0 !important;
+}
+
+li {
+	list-style: none;
 }
 
 .navbar {
@@ -80,7 +84,8 @@ ul {
 .navbar_menu {
 	display: flex;
 	list-style: none;
-	justify-content: center;
+	padding-left: 50px;
+	/* justify-content: center; */
 }
 
 .navbar_menu a {
@@ -88,6 +93,32 @@ ul {
 	padding: 5px 10px;
 	text-decoration: none;
 	font-size: 20px;
+}
+
+.navbar_menu > li:first-child > a {
+	background: none;
+}
+
+.navbar_menu > li {
+	line-height: 12px;
+}
+
+.navbar_menu > li > a {
+	font-size: 20px;
+    line-height: 20px;
+    padding-left: 12px;
+    margin-left: 8px;
+    background: url('https://www.gelcandleshop.co.kr/design/gelcandle/0783nordichaus/sort_bg.png') no-repeat 0 50%;
+    text-decoration: none;
+}
+
+.navbar_menu > li > a:hover {
+	color: #000;
+}
+
+.navbar_menu > li > a.active {
+	color: #000;
+	font-weight: bold;
 }
 
 .navbar_menu a:hover {

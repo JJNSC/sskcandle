@@ -23,19 +23,16 @@
 	</head>
 	<body>
 		<nav class="navbar row">
-
 			<div class="navbar_logo_box col-auto">
 				<a class="navbar_logo" href="/skkcandle">
 					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png" alt="이미지를 로드할 수 없습니다">
 				</a>				
 			</div>
-
 			<div class="col-5 navbar_white_space"></div>
 		</nav>
+		
 		<nav class="navbar2">
-
-			<ul class="navbar_menu col-8">
-
+			<ul class="navbar_menu col-6">
 				<c:if test="${login != null}">
 					<li><a href="mypage">마이페이지</a></li>
 					<li><a href="payment">결제페이지</a></li>
@@ -51,12 +48,12 @@
 				<li><a href="#">메뉴4</a></li>
 				<li><a href="#">메뉴5</a></li>
 			</ul>
+			
 			<div class="col-4 d-flex icon_menu">
 				<button class="mobile_menu">
 					<i class="bi bi-list"></i>
 				</button>
 				<div class="d-flex">
-					
 					<c:if test="${login != null}">
 						<a class="navbar_short_icon" href="getCartList">
 							<i class="bi bi-cart"> Cart</i>
@@ -76,10 +73,10 @@
 							<i class="bi bi-person"> Login</i>	
 						</a>
 					</c:if>
-
 				</div>
 			</div>
 		</nav>
+		
 		<div class="navbar_search row">
 			<form method="get" action="productList" class="navbar_search_form col">
 				<div class="navbar_search_input">

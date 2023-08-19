@@ -21,12 +21,24 @@
 		<script src="${pageContext.request.contextPath}/resources/js/loginForm.js"></script>
 		
 		<script>
-	        function openChildPage() {
-	            var childWindow = window.open('child.html', '_blank', 'width=400,height=300');
+	        function openFindEmailPage() {
+	        	var width = 500;
+	            var height = 415;
+				var left = (window.innerWidth - width) / 2;
+				var top = (window.innerHeight - height) / 2;
+	            var childWindow = window.open('findEmail', '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
 	        }
 	
 	        function setEmail(email) {
-	            document.getElementById('emailInput').value = email;
+	            $("#userEmail").val(email);
+	        }
+	        
+	        function openFindPasswordPage() {
+	        	var width = 500;
+	            var height = 415;
+				var left = (window.innerWidth - width) / 2;
+				var top = (window.innerHeight - height) / 2;
+	            var childWindow = window.open('findEmail', '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
 	        }
 	    </script>
 	</head>
@@ -82,16 +94,12 @@
 			    		<span id="pwdErr2" class="errorMsg text-danger d-none small">8자 이상 입력해야합니다.</span>
 						
 						<div></div>
-						<%-- 자동로그인, 아이디 찾기 --%>
+						<%-- 아이디, 비밀번호 찾기 --%>
 						<div class="login__content login__content--util mt-1">
-                           <!--  <label for="login-keep-state" class="autologin_checkbox member__checkbox login__util__keep-login" aria-checked="false">
-                                <input class="member__checkbox__input member__sprite-after member__sprite-after--checkbox _loginRememberInput" type="checkbox" id="login-keep-state">
-                                <span class="member__checkbox__label">자동로그인</span>
-                            </label> -->
-                            <a href="https://login.coupang.com/login/accountInfoFind.pang" class="login__link login__link--find-id-password _loginFindIdPwLink"
+                            <a onclick="openFindPasswordPage()" type="button" class="login__link login__link--find-id-password _loginFindIdPwLink"
                             	style="text-decoration: none; color:#17a2b8;">비밀번호 찾기 <strong>></strong></a>
-                            <a onclick="openChildPage()" type="button" class="login__link login__link--find-id-password _loginFindIdPwLink"
-                            	style="text-decoration: none; color:#17a2b8;">아이디 &nbsp&nbsp&nbsp∙ <strong></strong></a>
+                            <a onclick="openFindEmailPage()" type="button" class="login__link login__link--find-id-password _loginFindIdPwLink"
+                            	style="text-decoration: none; color:#17a2b8;">이메일 &nbsp&nbsp&nbsp∙ <strong></strong></a>
                         </div>
                         <div class="login__content login__content--trigger">
                         	<button class="btn btn-primary btn-block font-weight-bold" onclick="checkValidation()" type="submit" style="border-color:#17a2b8 ;padding: 10px 0; background-color:#88c8bc;">로그인</button>

@@ -41,7 +41,7 @@
 									<i class="fa-solid fa-envelope" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
-									<input type="email" class="join_input_content" id="userEmail" name="userEmail" value=""
+									<input type="email" class="join_input_content" id="userEmail" name="userEmail" value="" style="width:300px;"
 										placeholder="${register_msg}" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = '${register_msg}'"/>
 								</span>
 							</label>

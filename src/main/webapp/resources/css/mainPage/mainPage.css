@@ -11,6 +11,7 @@ a {
 .carousel-inner {
     height: 400px;
     overflow: hidden;
+    b
 }
 
 .carousel-inner img {
@@ -52,20 +53,21 @@ a {
 }
 
 .product-entry {
-  width: 100%;
-  position: relative;
+  	width: 100%;
+  	position: relative;
 }
 
 .prod-img {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  transition: transform 0.3s, filter 0.3s;
+  	position: relative;
+  	overflow: hidden;
+  	display: block;
+  	transition: transform 0.3s, filter 0.3s;
 }
 
 .prod-img img {
-  width: 100%;
-  display: block;
+  	width: 100%;
+  	display: block;
+  	height: 386px;
 }
 
 .product_info {
@@ -84,7 +86,6 @@ a {
 	font-size: 25px;
 	font-weight: 500;
 	color: #DB2B2B;
-	/* color: #fff; */
 }
 
 .product_info a {
@@ -99,14 +100,110 @@ a {
 	box-shadow: 2px 2px #808080;
 }
 
+.prod-img > img {
+	width: 350px;
+}
+
+.prod-img:hover {
+	cursor: pointer;
+}
+
 .product-entry:hover .prod-img {
-  transform: scale(1.1);
-  filter: brightness(50%);
+  	transform: scale(1.1);
+  	filter: brightness(50%);
 }
 
 .product-entry:hover .product_info {
-  opacity: 1;
-  transform: translateY(-60%);
+  	opacity: 1;
+  	transform: translateY(-60%);
+}
+
+.product_thumbnail:hover .prod-img {
+	filter: brightness(50%);
+}
+
+.product_thumbnail:hover .sortProduct_info {
+	opacity: 1;
+	transform: translateY(-60%);
+}
+
+.sortProduct_info {
+	position: absolute;
+  	top: 40%;
+  	left: 0;
+  	width: 100%;
+  	transform: translateY(-50%);
+  	color: white;
+  	padding: 10px;
+  	opacity: 0;
+  	transition: opacity 0.3s, transform 0.3s;
+}
+
+.sortProduct_info a {
+  	text-decoration: none;
+  	color: white;
+}
+
+.review_info {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 26px 26px;
+}
+
+.review_title {
+	font-size: 18px;
+    color: #231815;
+    font-weight: 400;
+    padding-right: 10px;
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.review_content {
+	font-size: 14px;
+    color: #8a8a8a;
+    font-weight: 300;
+    padding-right: 10px;
+    padding-top: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.5;
+    height: 3em;
+    word-wrap: break-word;
+    /* display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; */
+}
+
+.review_split_line {
+	width: 100%;
+    height: 1px;
+    background-color: #e9e9e9;
+    margin: 20px 0px 16px;
+}
+
+.review_userName span {
+	display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+    color: #5a5a5a;
+    font-weight: 300;
+    padding-left: 10px;
+}
+
+.review_userName > span:first-child {
+	background: url('https://www.gelcandleshop.co.kr/design/gelcandle/0783nordichaus/re_bg_line.png') right;
+    background-repeat: no-repeat;
+    padding-left: 0px;
+    padding-right: 10px;
+}
+
+.review_userName .star_avg {
+	float: right;
 }
 
 

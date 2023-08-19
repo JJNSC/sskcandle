@@ -5,7 +5,8 @@ import com.skkcandle.dto.User;
 public interface UserService {
 	public enum JoinResult{
 		SUCCESS,
-		FAIL_DUPLICATED_Email
+		FAIL_DUPLICATED_Email,
+		FAIL_DUPLICATED_PHONE
 	}
 	
 	public enum LoginResult{
@@ -29,4 +30,6 @@ public interface UserService {
 	public void updateUserInfoNoPW(User user);
 	public void withdrawUser(int userId);
 	public void changeUserPoint(User user);
+	public int checkUserExistByNameAndPhone(User user);
+	public String getEmailByNameAndPhone(User user);
 }

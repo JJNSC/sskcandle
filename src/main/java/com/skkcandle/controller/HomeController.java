@@ -23,6 +23,12 @@ public class HomeController {
 	@Resource
 	private MainPageService mainPageService;
 	
+	@RequestMapping("/test")
+	public String test() {
+		
+		return "myCoupang";
+	}
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		String searchWord=null;

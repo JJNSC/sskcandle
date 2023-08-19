@@ -34,7 +34,15 @@ public class UserServiceImpl implements UserService {
 		//db에 해당 이메일을 가진 유저가 있는지 검색nb
 		//해당 이메일이 이미 있을경우
 		if(dbUser != null) {
+			log.info("이메일이 중복?");
 			return JoinResult.FAIL_DUPLICATED_Email;
+		}
+		//db에 해당 번호를 가진 유저가 있는지 검색
+		int checkPhone = userDao.checkUserPhone(user.getUserPhone());
+		//해당 번호를 가진 사람이 있을경우
+		if(checkPhone !=0) {
+			log.info("전화번호가 중복?");
+			return JoinResult.FAIL_DUPLICATED_PHONE;
 		}
 		//정상적으로 회원가입이 될 경우
 		//비밀번호는 암호화를 해서 db에 세팅한다.
@@ -91,6 +99,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void changeUserPoint(User user) {
 		userDao.changeUserPoint(user);
+	}
+	@Override
+	public int checkUserExistByNameAndPhone(User user) {
+		int exist = userDao.checkUserExistByNameAndPhone(user);
+		return exist;
+	}
+	@Override
+	public String getEmailByNameAndPhone(User user) {
+		String userEmail = userDao.getEmailByNameAndPhone(user);
+		return userEmail;
 	}
 
 

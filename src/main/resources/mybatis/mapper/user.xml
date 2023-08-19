@@ -6,6 +6,11 @@
 		select *from userinfo where userEmail = #{userEmail}
 	</select>
 	
+	<!-- 해당 휴대폰 번호가 db에 있는지 확인 -->
+	<select id="checkUserPhone" parameterType="String" resultType="int">
+		select count(*) from userinfo where userPhone = #{userPhone}
+	</select>
+	
 	<!-- userId로 유저 정보 가져오기 -->
 	<select id="selectById" parameterType="int" resultType="User">
 		select *from userinfo where userId = #{userId}
@@ -55,5 +60,16 @@
 			userPoint = #{userPoint}
 			where userId = #{userId}
 	</update>
+	
+	<!-- 회원 이름과 휴대번호와 일치하는 유저가 있는지 확인하기 -->
+	<select id="checkUserExistByNameAndPhone" parameterType="User" resultType="int">
+		select count(*) from userinfo where userName = #{userName} and userPhone = #{userPhone}
+	</select>
+	
+	<!-- 회원 이름과 휴대번호로 이메일 찾아오기 -->
+	<select id="getEmailByNameAndPhone" parameterType="User" resultType="String">
+		select userEmail from userinfo 
+		where userName = #{userName} and userPhone = #{userPhone}
+	</select>
 	
 </mapper>

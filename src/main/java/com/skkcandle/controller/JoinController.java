@@ -41,10 +41,12 @@ public class JoinController {
 			model.addAttribute("register_msg", "이메일이 중복되었습니다.");
 			log.info("이게 실행되나?? ㅇㅅㅇ");
 			return "redirect:/join";
+		}else if(joinresult == JoinResult.FAIL_DUPLICATED_PHONE) {
+			model.addAttribute("register_msg", "전화번호가 중복되었습니다.");
+			return "redirect:/join";
 		}
 		model.addAttribute("loginErrMsg", " 회원가입을 축하드립니다! \n 가입 기념으로 1000포인트를 적립해드려요! \n 즐거운 쇼핑 되세요!");
-		log.info("이게 실행되나???? =ㅅ=;;");
-		return "loginForm";
+		return "login/loginForm";
 	}
 	
 	@PostMapping("/withdraw")
