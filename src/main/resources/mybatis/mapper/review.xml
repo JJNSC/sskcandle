@@ -32,6 +32,7 @@
 	         from (
 	            select reviewId, reviewTitle, userId, reviewDate, ratingScore, reviewContent
 	            from review
+	            
 	            order by reviewId desc
 	         )
 	         where rownum <= #{endRowNo}
@@ -94,6 +95,40 @@
 			    WHERE ROWNUM <=#{endRowNo} ) 
 			WHERE rnum >=#{startRowNo} 
 		]]>
+	</select>
+	
+	<!-- 리뷰 평점순으로 정렬(조성진)-->
+	<select id="getListReviewByRating" parameterType="Pager" resultType="Review">
+		<![CDATA[
+		    SELECT rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+		    FROM (
+		        SELECT rownum rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+		        FROM (
+		            SELECT reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+		            FROM review WHERE productId = #{productId}
+		            ORDER BY ratingScore DESC  -- 평점 높은 순으로 정렬
+		        )
+		        WHERE ROWNUM <= #{endRowNo}
+		    )
+		    WHERE rnum >= #{startRowNo}
+		 ]]>	
+	</select>
+	
+	<!-- 리뷰 최신순으로 정렬(조성진) -->
+	<select id="getListReviewNew" parameterType="Pager" resultType="Review">
+		<![CDATA[
+			    SELECT rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+			    FROM (
+			        SELECT rownum rnum, reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+			        FROM (
+			            SELECT reviewId, productId, userId, reviewTitle, reviewDate, ratingScore, reviewContent
+			            FROM review WHERE productId = #{productId}
+			            ORDER BY reviewDate DESC
+			        )
+			        WHERE ROWNUM <= #{endRowNo}
+			    )
+			    WHERE rnum >= #{startRowNo}
+			 ]]>	
 	</select>
     
 	

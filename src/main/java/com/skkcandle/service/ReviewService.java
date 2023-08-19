@@ -19,4 +19,6 @@ public interface ReviewService {
 	public List<Review> reviewPaging(Pager pager);
 	public int reviewNum(int userId);
 	public List<Review> getReviewList(Pager pager);
+	public List<Review> getListReviewByRating(Pager pager);
+	public List<Review> getListReviewNew(Pager pager);
 }

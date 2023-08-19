@@ -22,6 +22,8 @@ public interface ReviewDao {
 	public List<Review> reviewPaging(Pager pager);
 	public int reviewNum(int userId);
 	public List<Review> getListReview(Pager pager);
+	public List<Review> getListReviewByRating(Pager pager);
+	public List<Review> getListReviewNew(Pager pager);
 }
 
 

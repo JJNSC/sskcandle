@@ -105,6 +105,22 @@ public class ReviewServiceImpl implements ReviewService{
 	    return reviewList;
 	}
 
+	@Override
+	public List<Review> getListReviewByRating(Pager pager) {
+
+		List<Review> ratingReviewList = reviewDao.getListReviewByRating(pager);
+		
+		return ratingReviewList;
+	}
+
+	@Override
+	public List<Review> getListReviewNew(Pager pager) {
+
+		List<Review> newReviewList = reviewDao.getListReviewNew(pager);
+		
+		return newReviewList;
+	}
+
 	/*@Override
 	public List<ReviewList> getReviewList(int productId) { //무슨 product의 review 인지 파악 , 
 		

@@ -124,6 +124,77 @@ function addCartAndPay(){
 			location.href = "oneProductCart?productId="+productId+"&quantity="+quantity;
 		}
 	}
-	
-	
 }
+
+//리뷰 리스트 보여주기
+function showReview(productId, page) {
+	   $.ajax({
+	      url: "getReviewList",
+	      method: "get",
+	      data: {
+	         "productId": productId,
+	         "page": page
+	      },
+	      dataType: "json",
+	      contentType: "application/json",
+	      success: function(data) {
+	         console.log(data);
+	         let html = "";
+
+	         data.forEach(function(item, index) {
+	            // 사용자 이미지
+	        	 html += "<div class='sdp-review__article__list__info__profile'>";
+	        	 if (item.base64Image != null) {
+	        	    html += "<img src='data:" + item.userAttachType + ";base64, " + item.base64Image + "'/>";
+	        	 } else {
+	        	    html += "<img class='js_reviewArticleCrop js_reviewUserProfileImage' src='//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png' data-member-id='3644655' style='width: 100%; height: auto; margin-top: 0px; opacity: 1;'>";
+	        	 }
+	        	 html += "</div>";
+	            // 사용자 이름
+	            html += "<div class='sdp-review__article__list__info__user'>";
+	            html += "<h2>" + item.userName + "</h2>";
+	            html += "</div>";
+	            // 별점
+	            html += "<div class='rate'>";
+	            if (item.ratingScore == 1) {
+		               html += "<span style='width: 20%'></span>"; }
+		        else if (item.ratingScore == 2) {
+		               html += "<span style='width: 40%'></span>"; }
+		        else if (item.ratingScore == 3) {
+		               html += "<span style='width: 60%'></span>"; }
+		        else if (item.ratingScore == 4) {
+		               html += "<span style='width: 80%'></span>"; }
+		        else {
+		               html += "<span style='width: 100%'></span>"; }
+
+	            html += "</div>";
+	            
+	            html += "<div class='sdp-review__article__list__info__product-info__reg-date'>";
+	            const reviewDate = new Date(item.reviewDate);
+	            const formattedDate = reviewDate.toISOString().substr(0, 10);
+	            html += formattedDate;
+	            html += "</div>";
+	            html += "<div class='sdp-review__article__list__info__product-info__seller_name'>";
+	            html += "제조사: " + item.productMaker;
+	            html += "</div>";
+	            html += "<div class='sdp-review__article__list__headline'>";
+	            html += "</div>";
+	            html += "<div class='sdp-review__article__list__review js_reviewArticleContentContainer'>";
+	            html += "<div class='sdp-review__article__list__review__content js_reviewArticleContent'>";
+	            html += item.reviewContent;
+	            html += "</div>";
+	            html += "</div>";
+	            
+	         });
+	         
+	         
+	         // 수정된 위치에서 $("#review").html(html)을 호출합니다.
+	         $("#review").html(html);
+	      },
+	      error: function(error) {
+	         console.log("아왜");
+	      }
+	   });
+	}
+
+

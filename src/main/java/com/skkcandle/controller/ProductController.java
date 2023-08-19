@@ -97,11 +97,9 @@ public class ProductController {
 	      Pager pager = new Pager(5,5,totalReviewNum,intPageNo);
 	      pager.setProductId(productId);
 	       
-	//      List<Review> list = ReviewService.getList(pager); 
 	       
 	      model.addAttribute("pager", pager);
-/*	      model.addAttribute("reviews", list);
-*/	      
+	      
 	      // 찜 상태 확인 및 넘겨주기
 	      User user = (User) session.getAttribute("login");
 	      int userId;
@@ -121,10 +119,8 @@ public class ProductController {
 	      model.addAttribute("isWished", isWished);
 	      
 	      //리뷰 불러오기
-	      List<Review> reviewList = ReviewService.getReviewList(pager); //해당 상품에 대한 리뷰리스트
-	      
-/*	      log.info("페이저" + pager);
-*/	           
+	      List<Review> reviewList = ReviewService.getListReviewNew(pager); //해당 상품에 대한 리뷰리스트
+          
 	      List<User> userList = new ArrayList<>();
 	      
 	      for(Review oneReview : reviewList) {
@@ -141,34 +137,23 @@ public class ProductController {
 	      model.addAttribute("userList", userList);
 	      model.addAttribute("reviewList", reviewList);
 	      
-	      /*log.info("리뷰리스트" + reviewList);
-	      log.info("유저정보" + userList);*/
+	      //리뷰 베스트순, 최신순
 	      
+	      // "best"와 "new" 값을 가져오는 부분
+	  /*    String orderBy = (String) session.getAttribute("orderBy");
+	      if (orderBy == null) {
+	          orderBy = "best"; // 기본은 베스트순으로 설정
+	      }
+	      
+	      if ("best".equals(orderBy)) {
+	          reviewList = ReviewService.getListReviewByRating(pager);
+	      } else {
+	          reviewList = ReviewService.getListReviewNew(pager); // 최신순으로 변경
+	      }
+	      
+	      model.addAttribute("reviewList", reviewList);
+	      */
 		return "/productDetail/detailView";
 	}	
-	
-	
-	
-	
-	/*
-	@GetMapping("/getWishStatus")
-	@ResponseBody
-	public boolean getWishStatus(HttpSession session, int productId) {
-	    User user = (User) session.getAttribute("login");
-	    if (user == null) {
-	        return false; // 로그인 안된 상태
-	    }
-
-	    int userId = user.getUserId();
-
-	    Wish wish = new Wish();
-	    wish.setProductId(productId);
-	    wish.setUserId(userId);
-
-	    int wishNo = WishService.selectWish(wish);
-	    
-	    return wishNo == 1;
-	}*/
-
 }
 
