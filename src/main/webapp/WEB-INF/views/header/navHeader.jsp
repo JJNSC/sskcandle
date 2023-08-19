@@ -38,7 +38,7 @@
 			<ul class="navbar_menu col-4 pl-0">
 				<c:if test="${login != null}">
 					<li><a href="mypage">About Us</a></li>
-					<li><a href="qna">Q&A</a></li>
+					<li><a href="getBoardList">Q&A</a></li>
 					<li><a href="productList">Product List</a></li>
 				</c:if>
 				<c:if test="${login == null}">

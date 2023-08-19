@@ -31,7 +31,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5" class="text-center">
+				<td colspan="4" class="text-center">
 					<div>
 						<a class="btn btn-sm" href="getBoardList?pageNo=1">처음</a>
 						<c:if test="${pager.groupNo>1}">
@@ -51,9 +51,15 @@
 						<a class="btn btn-sm" href="getBoardList?pageNo=${pager.totalPageNo}">맨끝</a>
 					</div>
 				</td>
+				<td class="text-right">
+					<a href="writeBoard" class="btn btn-sm btn-secondary">새글쓰기</a>
+				</td>
 			</tr>
 		</tfoot>
 	</table>
+	<div class="">
+		
+	</div>
 </div>
 
 
