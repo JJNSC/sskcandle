@@ -5,7 +5,8 @@ import com.skkcandle.dto.User;
 public interface UserService {
 	public enum JoinResult{
 		SUCCESS,
-		FAIL_DUPLICATED_Email
+		FAIL_DUPLICATED_Email,
+		FAIL_DUPLICATED_PHONE
 	}
 	
 	public enum LoginResult{
