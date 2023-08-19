@@ -102,6 +102,13 @@
 	                inputScore.attr("value",selectedRating);
 	            });
 	        });
+			
+			document.querySelector('#reviewSubmit').onclick = function() {
+				history.pushState(null, null, location.href); 
+				window.onpopstate = function(event) { 
+					history.go(1); 
+				};
+			}
 		
 		</script>
 	  
