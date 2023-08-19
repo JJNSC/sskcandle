@@ -26,6 +26,8 @@ public class User {
 	private Date userBirthDay;
 	private String userGrade;
 	private int userPoint;
+	private String userCheckPasswordQuestion;
+	private String userCheckPasswordAnswer;
 	
 	private MultipartFile battach;
 	private String userAttachType;

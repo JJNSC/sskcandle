@@ -35,10 +35,10 @@
 	        
 	        function openFindPasswordPage() {
 	        	var width = 500;
-	            var height = 415;
+	            var height = 600;
 				var left = (window.innerWidth - width) / 2;
 				var top = (window.innerHeight - height) / 2;
-	            var childWindow = window.open('findEmail', '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+	            var childWindow = window.open('findPassword', '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
 	        }
 	    </script>
 	</head>

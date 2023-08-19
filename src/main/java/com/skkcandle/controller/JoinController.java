@@ -34,6 +34,9 @@ public class JoinController {
 	@PostMapping("/register")
 	public String register(User user, Model model) {
 		log.info("user정보 :" + user);
+		log.info("checkPasswordQuestion정보 :" + user.getUserCheckPasswordQuestion());
+		log.info("userCheckPasswordAnswer정보 :" + user.getUserCheckPasswordAnswer());
+		
 		JoinResult joinresult =  userService.join(user);
 		
 		//이메일이 중복될경우 

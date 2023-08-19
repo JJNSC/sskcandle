@@ -110,6 +110,19 @@ public class UserServiceImpl implements UserService {
 		String userEmail = userDao.getEmailByNameAndPhone(user);
 		return userEmail;
 	}
+	@Override
+	public int getUserIdByCheckUserExistByEmailPhoneQnA(User user) {
+		int exist = userDao.checkUserExistByEmailPhoneQnA(user);
+		int userId =0;
+		if(exist ==1) {
+			userId = userDao.getUserIdByCheckUserExistByEmailPhoneQnA(user);
+		}
+		return userId;
+	}
+	@Override
+	public void updateUserPassword(User user) {
+		userDao.updateUserPassword(user);
+	}
 
 
 }

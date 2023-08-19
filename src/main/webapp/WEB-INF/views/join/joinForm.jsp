@@ -77,6 +77,42 @@
 							</label>
 						</div>
 						<span id="pwdErr3" class="errorMsg text-danger d-none small">비밀번호가 일치하지 않습니다.</span>
+						<!-- 비밀번호 확인 질문  -->
+						<div class="join_input_userInfo">
+							<label for="userTel">
+								<span class="join_input_icon_box">
+									<i class="fa-solid fa-question" style="color: #c3c6d1;"></i>
+								</span>
+								<span class="join_input_box">
+									<select id="userCheckPasswordQuestion" name ="userCheckPasswordQuestion" style="border:0px; height:48px; width:355px;">
+										<option selected disabled hidden>비밀번호 확인 질문</option>
+										<option value="1">기억에 남는 추억의 장소는?</option>
+										<option value="2">자신의 인생 좌우명은?</option>
+										<option value="3">자신의 보물 제1호는?</option>
+										<option value="4">가장 기억에 남는 선생님 성함은?</option>
+										<option value="5">타인이 모르는 자신만의 신체비밀이 있다면?</option>
+										<option value="6">유년시절 가장 생각나는 친구 이름은?</option>
+										<option value="7">인상 깊게 읽은 책 이름은?</option>
+										<option value="8">읽은 책 중에서 좋아하는 구절이 있다면?</option>
+										<option value="9">자신이 두번째로 존경하는 인물은?</option>
+										<option value="10">다시 태어나면 되고 싶은 것은?</option>
+										<option value="11">내가 좋아하는 캐릭터는?</option>
+									</select>
+								</span>
+							</label>
+						</div>
+						<!-- 비밀번호 확인 답변 -->
+						<div class="join_input_userInfo">
+							<label for="userName">
+								<span class="join_input_icon_box">
+									<i class="fa-solid fa-exclamation" style="color: #c3c6d1;"></i>
+								</span>
+								<span class="join_input_box">
+									<input type="text" class="join_input_content" id=" name="userCheckPasswordAnswer"
+										placeholder="비밀번호 확인 답변" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인 답변'"/>
+								</span>
+							</label>
+						</div>
 						<%-- 이름 --%>
 						<div class="join_input_userInfo">
 							<label for="userName">

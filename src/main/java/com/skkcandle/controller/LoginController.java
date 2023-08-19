@@ -3,12 +3,15 @@ package com.skkcandle.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skkcandle.dto.User;
 import com.skkcandle.service.UserService;
@@ -110,5 +113,53 @@ public class LoginController {
 		model.addAttribute("result", result);
 		model.addAttribute("resultMsg", userEmail);
 		return "login/findEmailResult";
+	}
+	
+	@GetMapping("/findPassword")
+	public String findPasswordForm() {
+		return "login/findPassword";
+	}
+	
+	@PostMapping("/findPassword")
+	public String findPassword(@RequestParam String userEmail,
+							   @RequestParam String userPhone,
+							   @RequestParam(name="userCheckPasswordQuestion", defaultValue="0") String userCheckPasswordQuestion,
+							   @RequestParam String userCheckPasswordAnswer,
+							   Model model) {
+		log.info("userCheckPasswordQuestion : "+ userCheckPasswordQuestion);
+		//질문확인문제 미선택시
+		if(userCheckPasswordQuestion.equals("0")) {
+			return "login/failFindInfo";
+		}
+		User user = new User();
+		user.setUserEmail(userEmail);
+		user.setUserPhone(userPhone);
+		user.setUserCheckPasswordQuestion(userCheckPasswordQuestion);
+		user.setUserCheckPasswordAnswer(userCheckPasswordAnswer);
+		
+		int userId = userService.getUserIdByCheckUserExistByEmailPhoneQnA(user);
+		log.info(""+userId);
+		//일치하는 회원이있다면 비밀번호를 수정하는 폼으로 이동
+		if(userId != 0) {
+			model.addAttribute("userId", userId);
+			return "login/findPasswordResult";
+		}
+		return "login/failFindInfo";
+	}
+	//비밀번호 수정
+	@PostMapping("/changePassword")
+	@ResponseBody
+	public String changePassword(@RequestParam int userId, @RequestParam String userPassword) {
+		log.info("userId : "+userId);
+		log.info("userPassword : "+userPassword);
+		User user = new User();
+		//유저 객체에 아이디와 암호화된 비밀번호를 세팅한다.
+		user.setUserId(userId);
+		PasswordEncoder pwEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		user.setUserPassword(pwEncoder.encode(userPassword));
+		userService.updateUserPassword(user);
+		user = userService.getUserInfoById(userId);
+		String result =user.getUserName();
+		return result;
 	}
 }

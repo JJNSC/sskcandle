@@ -23,12 +23,12 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 		if(login != null) {
 			// @Login이 붙어있다면
 			HttpSession session = request.getSession();
-			User user = (User) session.getAttribute("ch13Login");
+			User user = (User) session.getAttribute("login");
 			// 로그인이 되었다면
 			if(user != null) {
 				return true;
 			} else {
-				response.sendRedirect(request.getContextPath() + "/ch13/login");
+				response.sendRedirect(request.getContextPath() + "/login/loginForm");
 				return false;
 			}
 		} else {

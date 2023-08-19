@@ -16,6 +16,18 @@
 		}
 	</style>
 	<script>
+		$(document).ready(function() {
+			$(".reviewTitle").click(function() {
+			    var reviewId = $(this).attr("data-review-id");
+				console.log("내가 누른 리뷰의 리뷰아이디 : " +reviewId);
+			    // 해당 reviewTitle과 reviewId를 가진 아코디언 펼치기
+			    $("#collapseExample" + reviewId).collapse('toggle');
+			
+			    // 다른 모든 아코디언 닫기
+			    $("[id$=collapseExample]").not("#collapseExample" + reviewId).collapse('hide');
+			});
+		});
+	
 		//리뷰 삭제하기 버튼 클릭시
 		function deleteReview(element, event) {
 		    if (confirm("해당 리뷰를 삭제하시겠습니까?")) {
@@ -71,7 +83,6 @@
 					<c:forEach var="review" items="${myreview }" varStatus="a">
 						<c:forEach var="product" items="${productList }" varStatus="b">
 							<c:if test="${a.index==b.index}">
-							
 								<tr id="${review.reviewId }top">
 									<td colspan="5">
 			                  			<div class="collapse" id="collapseExample${review.reviewId }">
@@ -82,18 +93,16 @@
 								      	</div>
 					 				</td>
 								</tr>
-								
 							   <tr style="height:50px; line-height: 50px;" id="${review.reviewId }middle">
 							      <td>${review.reviewId }</td>
 							      <td style="width:20%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 							          ${product.productName }
 							      </td>
 							      <td>
-							         <a class="reviewTitle" data-toggle="collapse" id="reviewTitle${review.reviewId }" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
+							         <a class="reviewTitle" data-toggle="collapse" data-review-id="${review.reviewId }" id="reviewTitle${review.reviewId }" href="#collapseExample${review.reviewId }" role="button" aria-expanded="false" aria-controls="collapseExample">
 							           ${review.reviewTitle }
 							         </a>
 							      </td>
-							      <%-- <td><fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td> --%>
 							      <td>
 							     	 <c:if test="${review.ratingScore ==5}">
 							     	 	<span style="color:#88c8bc;">★★★★★</span>
@@ -121,8 +130,6 @@
 							         		<div style="display:flex; flex-direction: row-reverse;">
 						            			<a type="button" onclick="deleteReview(this, event)" data-delete="${review.reviewId }" style="width:70px; text-align: right;">삭제</a>
 									            <a type="button" onclick="updateReview(this, event)" data-delete="${review.reviewId }" style="width:70px;text-align: right;">수정</a>
-									         	<%-- 작성날짜 : 
-									         	<fmt:formatDate value="${review.reviewDate }" pattern="yyyy-MM-dd"></fmt:formatDate> --%>
 								         	</div>
 								      	</div>
 						   			</td>
