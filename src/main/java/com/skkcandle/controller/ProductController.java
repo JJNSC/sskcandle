@@ -120,7 +120,8 @@ public class ProductController {
 	      
 	      //리뷰 불러오기
 	      List<Review> reviewList = ReviewService.getListReviewNew(pager); //해당 상품에 대한 리뷰리스트
-          
+	      session.setAttribute("reviewOrderBy", "new");
+	      
 	      List<User> userList = new ArrayList<>();
 	      
 	      for(Review oneReview : reviewList) {

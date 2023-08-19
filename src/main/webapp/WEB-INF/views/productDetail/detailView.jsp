@@ -177,14 +177,14 @@
 	    	
 	    	<!-- 상품평 검색 메뉴바 -->
 	    <div class="sdp-review">
-	    	<section class= "sdp-review_article-menubar">
-	    		<div class= "sdp-review__article__order">
-	    			<button class="sdp-review_best">베스트순</button>
-	    			<div class="sdp-review-sortbar">|</div>
-	    			<button class= "sdp-review_new">최신순</button>
-	    			<input class="sdp-review_search" placeholder="상품평을 검색해 보세요." maxlength="30">
-	    		</div>
-	    	</section>
+	    	<section class="sdp-review_article-menubar">
+			    <div class="sdp-review__article__order">
+			    	<a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, 1, 'best')">베스트순</a>
+ 				        <div class="sdp-review-sortbar">|</div>
+			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, 1, 'new')">최신순</a>
+			       <!--  <input class="sdp-review_search" placeholder="상품평을 검색해 보세요." maxlength="30"> -->
+			    </div>
+			</section>
 	    <div id="review">
 	    <c:forEach var="review" items="${reviewList}" varStatus="a">	
 	    	<article id="ttt" class="sdp-review__article__list js_reviewArticleReviewList">
@@ -240,24 +240,24 @@
 		 <tr>
 		   <td colspan="4" class="text-center">
 			    <div>
-			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, 1)">처음</a>
+			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, 1, 'default')">처음</a>
 			        <c:if test="${pager.groupNo > 1}">
-			            <a class="btn btn-outline-info btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.startPageNo-1})">이전</a>
+			            <a class="btn btn-outline-info btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.startPageNo-1}, 'default')">이전</a>
 			        </c:if>
 			
 			        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 			            <c:if test="${pager.pageNo != i}">
-			                <a class="btn btn-outline-success btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i})"">${i}</a>
+			                <a class="btn btn-outline-success btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i}, 'default')"">${i}</a>
 			            </c:if>
 			            <c:if test="${pager.pageNo == i}">
-			                <a class="btn btn-danger btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i})">${i}</a>
+			                <a class="btn btn-danger btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i}, 'default')">${i}</a>
 			            </c:if>
 			        </c:forEach>
 			
 			        <c:if test="${pager.groupNo < pager.totalGroupNo}">
-			            <a class="btn btn-outline-info btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.endPageNo+1})">다음</a>
+			            <a class="btn btn-outline-info btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.endPageNo+1}, 'default')">다음</a>
 			        </c:if>
-			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.totalPageNo})">맨끝</a>
+			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.totalPageNo}, 'default')">맨끝</a>
 			    </div>
 			</td>
 		</tr>

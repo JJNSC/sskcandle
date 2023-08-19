@@ -126,20 +126,32 @@ function addCartAndPay(){
 	}
 }
 
-//리뷰 리스트 보여주기
-function showReview(productId, page) {
+/*$(document).ready(function() {
+    // 버튼 클릭 이벤트 등록
+    $("#bestButton").on("click", function() {
+       showReview(productId, page, "best");
+    });
+
+    $("#newestButton").on("click", function() {
+       showReview(productId, page, "newest");
+    });
+});*/
+
+function showReview(productId, page, orderBy) {
 	   $.ajax({
 	      url: "getReviewList",
 	      method: "get",
 	      data: {
 	         "productId": productId,
-	         "page": page
+	         "page": page,
+	         "orderBy": orderBy
 	      },
 	      dataType: "json",
 	      contentType: "application/json",
 	      success: function(data) {
 	         console.log(data);
 	         let html = "";
+		      console.log(data);
 
 	         data.forEach(function(item, index) {
 	            // 사용자 이미지
