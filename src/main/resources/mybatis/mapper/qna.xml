@@ -8,13 +8,15 @@
 	
 	<select id="selectByPage" parameterType="Pager" resultType="Qna">
 		<![CDATA[
-			select rnum, qnaid, username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer
+			select rnum, qnaid, username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer, productname
 	        from (
-	           select rownum as rnum, qnaid, username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer
+	           select rownum as rnum, qnaid, username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer, productname
 	           from (
-	              select qnaid, u.username as username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer
-	              from qna q inner join userinfo u on q.userid = u.userid
-	              order by qnaid desc
+	              select qnaid, u.username as username, qnatitle, qnacontent, qnaimage, qnadate, qnaanswer, productname
+                  from qna q
+                  inner join userinfo u on q.userid = u.userid
+                  left join product p on p.productid = q.productid
+                  order by qnaid desc
 	           )
 	           where rownum <=#{endRowNo}
 	           
@@ -38,9 +40,10 @@
 	</insert>
 	
 	<select id="selectByQnaId" parameterType="int" resultType="Qna">
-		select qnaid, u.username, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType, qnaAttachFileName
-		from qna q inner join userinfo u on q.userid = u.userid
-		where qnaid=#{qnaId} 
+		select qnaid, u.username, qnatitle, qnacontent, qnadate, qnaimage, qnaAttachType, qnaAttachFileName, productName
+		from qna q 
+		inner join userinfo u on q.userid = u.userid
+		left join product p on p.productid = q.productid
 	</select>
 	
 	<delete id="deleteByQnaId" parameterType="int">

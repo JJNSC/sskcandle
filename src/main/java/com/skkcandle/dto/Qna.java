@@ -17,6 +17,7 @@ public class Qna {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date qnaDate;
 	private String qnaAnswer;
+	private String productName;
 	
 	private MultipartFile attach;
 	private String qnaAttachType;

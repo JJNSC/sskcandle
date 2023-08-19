@@ -4,7 +4,60 @@
 
 <%@ include file="/WEB-INF/views/header/navHeader.jsp" %>
 
-<div class="card m-2">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/qna/boardList.css">
+<script src="${pageContext.request.contextPath}/resources/js/qna/boardList.js"></script>
+
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">번호</th>
+				<th scope="col">제목</th>
+				<th scope="col">상품명</th>
+				<th scope="col">작성자</th>
+				<th scope="col">작성일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="board" items="${boards}">
+				<tr>
+					<td>${board.qnaId}</td>
+					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.qnaTitle}</a></td>
+					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.productName}</a></td>
+					<td>${board.userName}</td>
+					<td><fmt:formatDate value="${board.qnaDate}" pattern="yyyy-MM-dd"/></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5" class="text-center">
+					<div>
+						<a class="btn btn-sm" href="getBoardList?pageNo=1">처음</a>
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-sm" href="getBoardList?pageNo=${pager.startPageNo-1}">이전</a>
+						</c:if>
+						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+							<c:if test="${pager.pageNo != i}">
+								<a class="btn btn-sm" href="getBoardList?pageNo=${i}">${i}</a>
+							</c:if>
+							<c:if test="${pager.pageNo == i}">
+								<a class="btn btn-sm" href="getBoardList?pageNo=${i}">${i}</a>
+							</c:if>
+						</c:forEach>
+						<c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a class="btn btn-sm" href="getBoardList?pageNo=${pager.endPageNo+1}">다음</a>
+						</c:if>
+						<a class="btn btn-sm" href="getBoardList?pageNo=${pager.totalPageNo}">맨끝</a>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+
+<%-- <div class="card m-2">
 	<div class="card-header">
 		게시물 목록
 	</div>
@@ -54,6 +107,6 @@
 			<a href="writeBoard" class="btn btn-sm btn-info">새글쓰기</a>
 		</div>
 	</div>
-</div>
+</div> --%>
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp" %>

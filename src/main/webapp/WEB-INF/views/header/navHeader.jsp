@@ -24,29 +24,28 @@
 	<body>
 		<nav class="navbar row">
 			<div class="navbar_logo_box col-auto">
-				<a class="navbar_logo" href="/skkcandle">
+				<%-- <a class="navbar_logo" href="/skkcandle">
 					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png" alt="이미지를 로드할 수 없습니다">
-				</a>				
+				</a> --%>				
 			</div>
 			<div class="col-5 navbar_white_space"></div>
 		</nav>
 		
 		<nav class="navbar2">
-			<ul class="navbar_menu col-6">
+			<a class="navbar_logo col-4" href="/skkcandle">
+				<img src="${pageContext.request.contextPath}/resources/images/skkcandle.png" alt="이미지를 로드할 수 없습니다">			
+			</a>
+			<ul class="navbar_menu col-4 pl-0">
 				<c:if test="${login != null}">
-					<li><a href="mypage">마이페이지</a></li>
-					<li><a href="payment">결제페이지</a></li>
+					<li><a href="mypage">About Us</a></li>
 					<li><a href="qna">Q&A</a></li>
-					<li><a href="productList">상품리스트</a></li>
+					<li><a href="productList">Product List</a></li>
 				</c:if>
 				<c:if test="${login == null}">
-					<li><a href="loginForm">마이페이지</a></li>
-					<li><a href="loginForm">결제페이지</a></li>
+					<li><a href="loginForm">About Us</a></li>
 					<li><a href="loginForm">Q&A</a></li>
-					<li><a href="productList">상품리스트</a></li>
+					<li><a href="productList">Product List</a></li>
 				</c:if>
-				<li><a href="#">메뉴4</a></li>
-				<li><a href="#">메뉴5</a></li>
 			</ul>
 			
 			<div class="col-4 d-flex icon_menu">
