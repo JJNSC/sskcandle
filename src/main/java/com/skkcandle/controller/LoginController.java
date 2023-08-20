@@ -65,7 +65,7 @@ public class LoginController {
 			log.info("pid : "+ pid );
 			log.info("실행3-3-2");
 			//상세제품을 보고있을때 는 다시 해당 페이지로 돌려보내자
-			if(pid.equals(null)) {
+			if(!pid.equals(null)) {
 				int productId = Integer.parseInt(pid);
 				log.info("실행3-3-3");
 				//세션에서 보고있는 상품을 삭제

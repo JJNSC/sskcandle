@@ -12,6 +12,36 @@
 		</if>
 		pi.usage='thumbnail' 
 		ORDER BY p.productId desc
+		
+	</select>
+	
+	<select id="selectByProductIdPager" parameterType="Pager" resultType="ProductList">
+		<![CDATA[
+		select rnum , productid, productname, productstock, productmaker, productprice, productimage
+			from (
+				select rownum as rnum, productid,productname, productstock, productmaker, productprice, productimage
+		    	from (
+			   		SELECT p.productid, p.productname, p.productstock, p.productmaker, p.productprice, pi.productimage
+		            FROM product p INNER JOIN productImages pi
+		            ON p.productId = pi.productId
+		            WHERE
+		            ]]>
+		            <if test="searchWord != null and searchWord != ''">
+						(productName like '%' || #{searchWord) || '%' or productMaker like '%' || #{searchWord} || '%') and
+					</if>
+					<![CDATA[
+		            pi.usage='thumbnail' 
+		            ORDER BY p.productId desc
+	            )
+			    where rownum <= #{endRowNo}
+		    )
+			where rnum >= #{startRowNo}
+	    ]]>
+	</select>
+	
+	<!-- 총 상품들의 개수(페이징을 위해) -->
+	<select id="getTotalProductNumber" resultType="int">
+		select count(*) from product
 	</select>
 	
 </mapper>

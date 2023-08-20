@@ -84,7 +84,35 @@
 					</div>
 				</c:forEach>
 			</div>
-			
+			<!-- 페이징 -->
+			<c:if test="${noPaging!=1}"> 
+				<div style="margin:auto; display:flex; align-content: center; ">
+					<table style="margin:auto; ">
+						<tr>
+							<td colspan="4" class="text-center">
+								<div>
+									<a class="btn btn-sm" href="productList?searchWord=${pager.searchWord }&pageNo=1">처음</a>
+									<c:if test="${reviewPager.groupNo>1}">
+										<a class="btn btn-outline-info btn-sm" href="productList?searchWord=${pager.searchWord }&pageNo=${pager.startPageNo-1}">이전</a>
+									</c:if>
+									<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+										<c:if test="${pager.pageNo != i}">
+											<a class="btn btn-sm" href="productList?searchWord=${pager.searchWord }&pageNo=${i}">${i}</a>
+										</c:if>
+										<c:if test="${pager.pageNo == i}">
+											<a class="btn btn-sm" style="color:#20c997;" href="productList?searchWord=${pager.searchWord }&pageNo=${i}">${i}</a>
+										</c:if>
+									</c:forEach>
+									<c:if test="${reviewPager.groupNo<reviewPager.totalGroupNo}">
+										<a class="btn btn-outline-info btn-sm" href="productList?searchWord=${pager.searchWord }&pageNo=${pager.endPageNo+1}">다음</a>
+									</c:if>
+									<a class="btn btn-sm" href="productList?searchWord=${pager.searchWord }&pageNo=${pager.totalPageNo}">맨끝</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</c:if>
 		</div>
 
 		<%@ include file="/WEB-INF/views/footer/footer.jsp" %>

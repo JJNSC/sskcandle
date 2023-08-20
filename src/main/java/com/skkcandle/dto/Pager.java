@@ -19,6 +19,7 @@ public class Pager {
 	private int endRowIndex;	//페이지의 마지막 행 인덱스
 	
 	private int userId; 		//마이페이지에서 페이징할때 필요한 회원정보
+	private String searchWord;	//제품리스트에서 필요한 검색어
 	private int productId;      //제품  상세 페이지에서 페이징할때 필요한 정보(조성진)
 
 	public Pager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {

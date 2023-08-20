@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skkcandle.dao.ProductListDao;
+import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.ProductList;
 
 @Service
@@ -23,6 +24,18 @@ public class ProductListServiceImpl implements ProductListService {
 	@Override
 	public List<ProductList> getProductListByReviewCount() {
 		List<ProductList> productList = productListDao.getProductListByReviewCount();
+		return productList;
+	}
+
+	@Override
+	public int getTotalProductNumber() {
+		int totalNumber = productListDao.getTotalProductNumber();
+		return totalNumber;
+	}
+
+	@Override
+	public List<ProductList> selectByProductIdPager(Pager pager) {
+		List<ProductList> productList = productListDao.selectByProductIdPager(pager);
 		return productList;
 	}
 
