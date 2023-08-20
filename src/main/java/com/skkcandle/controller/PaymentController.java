@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -108,6 +109,7 @@ public class PaymentController {
 	}
 	//TRANSACTION NEEDED
 	//여기 나중에  트랜젝션 해야한다. (주문이 성공해야 결재리스트에 올리고 , 장바구니에서 삭제가 되야함.)
+	@Transactional
 	@RequestMapping("/payComplete")
 	public String payComplete(HttpSession session, Model model, 
 			@RequestParam int userPostcode,
