@@ -46,7 +46,7 @@
 		<div class="wrapper">
 			<header class="text-center pt-5">
 				<a href="/skkcandle">
-					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
+					<img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"
 						style="width: 250px; " />
 				</a>
 			</header>

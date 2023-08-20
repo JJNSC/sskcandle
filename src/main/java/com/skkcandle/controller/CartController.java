@@ -180,7 +180,13 @@ import lombok.extern.slf4j.Slf4j;
 			 cart.setCount(quantity);
 			 cart.setProductId(productId);
 			 cart.setUserId(userId);
-			 cartService.insertCart(cart);
+			 int exist = cartService.countCart(cart);
+			 //장바구니에 이미 해당 상품이 존재할경우
+			 if(exist == 1) {
+				 cartService.updateCart(cart);
+			 }else if(exist ==0) {
+				 cartService.insertCart(cart);
+			 }
 			 model.addAttribute("productId", productId);
 			 return "redirect:/payment";
 		 }

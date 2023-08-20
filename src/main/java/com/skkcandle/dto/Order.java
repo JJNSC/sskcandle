@@ -23,4 +23,6 @@ public class Order {
 	private String phone;
 	private String withoutBankbook;
 	private String checked;
+	//구매리스트에서 검색을 할때 필요한 상품 이름
+	private String productName;
 }

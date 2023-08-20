@@ -86,22 +86,22 @@
 						<tr>
 							<td colspan="4" class="text-center">
 								<div>
-									<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=1">처음</a>
+									<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&searchWord=${shoppingPager.searchWord }&shoppingPageNo=1">처음</a>
 									<c:if test="${shoppingPager.groupNo>1}">
-										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${shoppingPager.startPageNo-1}">이전</a>
+										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&searchWord=${shoppingPager.searchWord }&shoppingPageNo=${shoppingPager.startPageNo-1}">이전</a>
 									</c:if>
 									<c:forEach var="i" begin="${shoppingPager.startPageNo}" end="${shoppingPager.endPageNo}">
 										<c:if test="${shoppingPager.pageNo != i}">
-											<a class="btn  btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+											<a class="btn  btn-sm" href="mypage?subpage=myshoppinglist&searchWord=${shoppingPager.searchWord }&shoppingPageNo=${i}">${i}</a>
 										</c:if>
 										<c:if test="${shoppingPager.pageNo == i}">
-											<a class="btn btn-sm" style="color:#20c997;" href="mypage?subpage=myshoppinglist&shoppingPageNo=${i}">${i}</a>
+											<a class="btn btn-sm" style="color:#20c997;" href="mypage?subpage=myshoppinglist&searchWord=${shoppingPager.searchWord }&shoppingPageNo=${i}">${i}</a>
 										</c:if>
 									</c:forEach>
 									<c:if test="${shoppingPager.groupNo<shoppingPager.totalGroupNo}">
-										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${shoppingPager.endPageNo+1}">다음</a>
+										<a class="btn btn-outline-info btn-sm" href="mypage?subpage=myshoppinglist&searchWord=${shoppingPager.searchWord }&shoppingPageNo=${shoppingPager.endPageNo+1}">다음</a>
 									</c:if>
-									<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&shoppingPageNo=${shoppingPager.totalPageNo}">맨끝</a>
+									<a class="btn btn-sm" href="mypage?subpage=myshoppinglist&searchWord=${shoppingPager.searchWord }&shoppingPageNo=${shoppingPager.totalPageNo}">맨끝</a>
 								</div>
 							</td>
 						</tr>

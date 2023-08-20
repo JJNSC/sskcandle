@@ -442,6 +442,7 @@ $(document).ready(function(){
 			alert("잘못된 정보가 입력되었습니다. 확인 바랍니다.");
 		}else{
 			alert("구매가 완료되었습니다. 향기로운 하루가 되시길~");
+			
 			location.href = "payment/payComplete?"
 				+ "userPostcode=" + encodeURIComponent(userPostcode)
 				+ "&userRoadAddress=" + encodeURIComponent(userRoadAddress)

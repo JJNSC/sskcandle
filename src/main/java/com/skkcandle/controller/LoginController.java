@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,7 @@ public class LoginController {
 		return "login/loginForm";
 	}
 	
+	@Transactional
 	@PostMapping("/login")
 	public String login(User user, HttpSession session, Model model) {
 		log.info("실행");
@@ -65,9 +67,10 @@ public class LoginController {
 			log.info("pid : "+ pid );
 			log.info("실행3-3-2");
 			//상세제품을 보고있을때 는 다시 해당 페이지로 돌려보내자
-			if(!pid.equals(null)) {
+			if(!pid.equals("")) {
+				log.info("실행3-3-3-1");
 				int productId = Integer.parseInt(pid);
-				log.info("실행3-3-3");
+				log.info("실행3-3-3-2");
 				//세션에서 보고있는 상품을 삭제
 				session.removeAttribute("productId");
 				log.info("실행3-3-4");

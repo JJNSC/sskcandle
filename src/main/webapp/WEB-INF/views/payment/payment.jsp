@@ -29,7 +29,7 @@
 			<section class="d-flex-column mx-auto maincontainer" >
 				<header class="border-h">
 							<div class="head">
-								<a href="/skkcandle"><img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
+								<a href="/skkcandle"><img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"
 									width="200"  alt="쿠팡"></a>
 							</div>
 					</header>
@@ -89,19 +89,28 @@
 						<h2>배송 상품</h2>
 						<div id="orderplus">
 						<table class="consumerInfo">
-							<c:forEach var="productinfo" items="${productinfo}" varStatus="a">
-								<c:forEach var="productQuantity" items="${productQuantity}" varStatus="b" >
-									<c:if test="${a.index==b.index}">
-									<tr>
-										<th><input type="hidden" class="productId" value="${productinfo.productId }">${productinfo.productName}</th>
-										<td>${productinfo.productPrice }원 / 
-											<input type="hidden" class="productQuantity" value="${productQuantity }">${productQuantity} 개
-										</td>
-										<td>합계 : <span class="pricesPerProduct">${productinfo.productPrice*productQuantity}</span> 원</td>
-									</tr>
-									</c:if>
+							<thead>
+								<tr>
+									<th style="width:50%; text-align: left;">상품명</th>
+									<td style="width:20%; background-color:#F4F4F4;">상품 가격 및 개수</td>
+									<td style="width:20%; background-color:#F4F4F4;">총 금액</td>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="productinfo" items="${productinfo}" varStatus="a">
+									<c:forEach var="productQuantity" items="${productQuantity}" varStatus="b" >
+										<c:if test="${a.index==b.index}">
+										<tr>
+											<th style="background-color:#fff; text-align: left;"><input type="hidden" class="productId" value="${productinfo.productId }">${productinfo.productName}</th>
+											<td>${productinfo.productPrice }원 / 
+												<input type="hidden" class="productQuantity" value="${productQuantity }">${productQuantity} 개
+											</td>
+											<td>합계 : <span class="pricesPerProduct">${productinfo.productPrice*productQuantity}</span> 원</td>
+										</tr>
+										</c:if>
+									</c:forEach>
 								</c:forEach>
-							</c:forEach>
+							</tbody>
 						</table>
 						</div>
 					</div>
@@ -118,7 +127,7 @@
 						<h2>결제 정보</h2>
 						<table class="payInfomation">
 							<tr>
-								<th>총상품가격</th>
+								<th style="width:160px;">총상품가격</th>
 								<td><span id="totalPrice"></span>원</td>
 							</tr>
 							<tr>
@@ -143,7 +152,10 @@
 									</div> 
 								</td>
 							</tr>	
-							
+							<tr>
+								<th>배송비</th>
+								<td>0원 <span style="color:red;"> 오픈 기념 이벤트로 인해 배송비 무료</span></td>
+							</tr>
 							<tr>
 								<th>총결제금액</th>
 								<td><span id="price"></span>원<span id="expectPoint" style="margin-left: 100px; display=none;">캐시적립 예정 : <span id="point">399</span>원</span></td>

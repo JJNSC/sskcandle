@@ -45,19 +45,60 @@
 	<select id="getOrderInfo" parameterType="Pager" resultType="Order">
 		<![CDATA[
 			SELECT rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
-			FROM ( SELECT rownum rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
-			    FROM ( SELECT orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
-			        FROM ORDERINFO WHERE USERID = #{userId} ORDER BY ORDERID DESC ) 
-			    WHERE ROWNUM <=#{endRowNo} ) 
+			FROM ( 
+				SELECT rownum rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
+			    FROM ( 
+			    	SELECT orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
+			        FROM ORDERINFO 
+			        
+			        WHERE USERID = #{userId} ORDER BY ORDERID DESC ) 
+			    WHERE ROWNUM <=#{endRowNo}
+			) 
 			WHERE rnum >=#{startRowNo} 
 		]]>
 	</select>
+	<!-- 결제리스트 검색어가 있을경우 -->
+	<select id="getOrderInfoBySearchword" parameterType="Pager" resultType="Order">
+		<![CDATA[
+		select rnum, productName , orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress, shippingDetailAddress, arriveDate
+		from
+		    (select rownum rnum, p.productName , ab.orderId, ab.userId, ab.orderDate, ab.orderStatus, ab.shippingPostcode, ab.shippingRoadAddress, ab.shippingDetailAddress, ab.arriveDate from product p
+		        inner join
+		        (select od.productId ,a.rnum, a.orderId, a.userId, a.orderDate, a.orderStatus, a.shippingPostcode, a.shippingRoadAddress, a.shippingDetailAddress, a.arriveDate from orderdetail od
+		            inner join
+		            (SELECT rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
+		                        FROM (                   
+		                            SELECT rownum rnum, orderId, userId, orderDate, orderStatus, shippingPostcode, shippingRoadAddress,shippingDetailAddress, arriveDate 
+		                            FROM ORDERINFO 
+		                            WHERE USERID = #{userId} ORDER BY ORDERID DESC ) 
+		                       ) a
+		            on od.orderid = a.orderid ORDER BY a.ORDERID DESC) ab 
+		        on p.productId = ab.productId where
+		                ]]>
+		                <if test="searchWord != null and searchWord != ''">
+		                    ( p.productName like '%' || #{searchWord} || '%') and
+		                </if>
+		                <![CDATA[
+		        ROWNUM <=#{endRowNo} ORDER BY ab.ORDERID DESC)
+		    where rnum >=#{startRowNo} 
+		    ]]>
+	</select>
+	
 	<select id="getOrderDetailByOrderId" parameterType="int" resultType="OrderDetail">
 		select productId, quantity, review, orderId from orderDetail where orderId = #{orderId} order by orderId desc
 	</select>
 	<!-- 결제리스트 페이징을 위해 총 결제 횟수 가져오기 -->
 	<select id="getOrderCount" parameterType="int" resultType="int">
 		select count(*) from orderinfo where userId = #{userId}
+	</select>
+	<!-- 검색단어가 있을시 결제리스트 페이징을 위해 총 결제 횟수 가져오기 -->
+	<select id="getOrderCountBySearchword" parameterType="Order" resultType="int">
+		select count(*) from product p 
+		    inner join (
+		    select oi.orderId, oi.userId, od.productId from orderinfo oi
+		        inner join orderDetail od on oi.orderId = od.orderId ) o
+		    on p.productid = o.productId
+		where userId = #{userId} and productName like '%' || #{productName} || '%'
 	</select>
 	
 	<!-- 리뷰작성하면 orderDetail의 review의 값이 1->2 로변환하는것 -->
