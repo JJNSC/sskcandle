@@ -27,7 +27,7 @@
 		            WHERE
 		            ]]>
 		            <if test="searchWord != null and searchWord != ''">
-						(productName like '%' || #{searchWord) || '%' or productMaker like '%' || #{searchWord} || '%') and
+						(productName like '%' || #{searchWord} || '%' or productMaker like '%' || #{searchWord} || '%') and
 					</if>
 					<![CDATA[
 		            pi.usage='thumbnail' 

@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.skkcandle.dao.ReviewDao;
 import com.skkcandle.dto.BuyList;
 import com.skkcandle.dto.Cart;
+import com.skkcandle.dto.Order;
 import com.skkcandle.dto.OrderDetail;
 import com.skkcandle.dto.Pager;
 import com.skkcandle.dto.Product;
@@ -73,10 +73,12 @@ public class MypageController {
 	private ProductImagesService productImageService;
 
 	@RequestMapping("/mypage")
-	public String mypage(String shoppingPageNo, String reviewPageNo, @RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage, Model model ,String errMsg,
+	public String mypage(@RequestParam(name="shoppingPageNo", required=false)String shoppingPageNo, String reviewPageNo, Model model ,String errMsg,
+						@RequestParam(name="subpage", defaultValue="myshoppinglist") String subpage,
+						@RequestParam(name="searchWord", required=false) String searchWord, 
 						HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
-		
+		log.info("searchWord :"+searchWord);
 		log.info("subpage : " + subpage);
 		model.addAttribute("subpage", subpage);
 		
@@ -104,24 +106,54 @@ public class MypageController {
 					shoppingPageNo = "1";
 				}
 			}
+			log.info("여기까진 굳 1");
 			// 문자열로 정수를 변환
 			int intpageNo = Integer.parseInt(shoppingPageNo);
 			// 세션에 pageNo를 저장
 			session.setAttribute("shoppingPageNo", String.valueOf(intpageNo));
+			log.info("여기까진 굳 2");
 			
 			int userId = user.getUserId();
 
 			//페이징
-			int totalBoardNum = orderService.getOrderCount(userId);
+			//총 페이지수 
+			//구매리스트에 검색단어 추가시 
+			int totalBoardNum =0;
+			if(searchWord !=null) {
+				log.info("여기까진 굳 3-1-1");
+				Order order = new Order();
+				order.setUserId(userId);
+				order.setProductName(searchWord);
+				totalBoardNum = orderService.getOrderCountBySearchword(order);
+				log.info("여기까진 굳 3-1-2");
+			}else {
+				log.info("여기까진 굳 3-2-1");
+				totalBoardNum = orderService.getOrderCount(userId);
+				log.info("여기까진 굳 3-2-2");
+			}
 			Pager pager = new Pager(3, 5, totalBoardNum, intpageNo);
 			
 			//구매 리스트 가져오기전에 pager에 userId 세팅하기 
 			pager.setUserId(userId);
+			List<BuyList> orderList = new ArrayList<>();
+			log.info("여기까진 굳 4");
+			if(searchWord !=null) {
+				log.info("여기까진 굳 5-1-1");
+				//구매 리스트에서 검색단어 추가시 
+				pager.setSearchWord(searchWord);
+				orderList = orderService.getBuyListBySearchword(pager);
+				log.info("여기까진 굳 5-1-2");
+			}else {
+				log.info("여기까진 굳 5-2-1");
+				orderList = orderService.getBuyList(pager);
+				log.info("여기까진 굳 5-2-2");
+			}
 			
-			List<BuyList> orderList = orderService.getBuyList(pager);
+			log.info("여기까진 굳 6");
 			//만약 총 게시물이 한페이지안에서 해결가능한 갯수라면 페이징을 실행시키지 않는다.
 			if(totalBoardNum <= 5) {
 				model.addAttribute("noPaging", 1);
+				log.info("여기까진 굳 6-1");
 			}
 			
 			model.addAttribute("shoppingPager", pager);

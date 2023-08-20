@@ -115,12 +115,60 @@ public class OrderServiceImpl implements OrderService{
 		int count = orderDao.getOrderCount(userId);
 		return count;
 	}
+	//검색 단어를 통한 구매 내역 페이징을 위한 총 구매내역 수 가지고오기
+	@Override
+	public int getOrderCountBySearchword(Order order) {
+		int count = orderDao.getOrderCountBySearchword(order);
+		return count;
+	}
 
 	@Override
 	public void reviewedOrder(OrderDetail orderDetail) {
 		orderDao.reviewedOrder(orderDetail);
 		
 	}
+
+	@Override
+	public List<BuyList> getBuyListBySearchword(Pager pager) {
+		List<BuyList> Orders =  new ArrayList<>();
+		//모든 오더들의 정보
+		List<Order> orderinfo = orderDao.getOrderInfoBySearchword(pager);
+		
+		for(Order order : orderinfo) {
+			BuyList oneOrder = new BuyList();
+			//각각의 Order 객체의 orderId를 받아온다.
+			int orderId = order.getOrderId();
+			log.info("orderId : "+orderId);
+			//각각의 orderId를 통해서 orderDetail들의 정보를 가져온다.
+			List<ProductImages> ProductImages =  new ArrayList<>();
+			List<Product> products = new ArrayList<>();
+			List<OrderDetail> orderDetail = orderDao.getOrderDetailByOrderId(orderId);
+			log.info("orderDetail : "+orderDetail);
+			//각 orderDetail로부터 productId를 받아서 이것으로 상품명,가격, 이미지파일을 가져온다.
+			for(OrderDetail oDetail : orderDetail) {
+				int productId = oDetail.getProductId();
+				log.info("productId : "+productId);
+				Product product = productDao.selectDetailProduct(productId);
+				log.info("product : "+product);
+				products.add(product);
+				
+				ProductImages productImage =productImagesDao.selectThumbnailPicture(productId);
+				if (productImage != null && productImage.getProductImage() != null) {
+		            String base64Img = Base64.getEncoder().encodeToString(productImage.getProductImage());
+		            productImage.setBase64Image(base64Img);
+		            ProductImages.add(productImage);
+		        }
+			}
+			oneOrder.setOrder(order);
+			oneOrder.setOrderDetail(orderDetail);
+			oneOrder.setProduct(products);
+			oneOrder.setProductImages(ProductImages);
+			Orders.add(oneOrder);
+		}
+		
+		return Orders;
+	}
+
 
 	
 	

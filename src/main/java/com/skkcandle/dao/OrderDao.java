@@ -26,7 +26,9 @@ public interface OrderDao {
 	public void changeCheck(int orderId);
 	public void insertOrderDetail(OrderDetail orderDetail);
 	public List<Order> getOrderInfo(Pager pager);
+	public List<Order> getOrderInfoBySearchword(Pager pager);
 	public List<OrderDetail> getOrderDetailByOrderId(int orderId);
 	public int getOrderCount(int userId);
+	public int getOrderCountBySearchword(Order order);
 	public void reviewedOrder(OrderDetail orderDetail);
 }

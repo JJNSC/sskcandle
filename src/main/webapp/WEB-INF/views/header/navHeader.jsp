@@ -39,12 +39,12 @@
 				<c:if test="${login != null}">
 					<li><a href="mypage">About Us</a></li>
 					<li><a href="getBoardList">Q&A</a></li>
-					<li><a href="productList">Product List</a></li>
+					<li><a href="productList?pageNo=1">Product List</a></li>
 				</c:if>
 				<c:if test="${login == null}">
 					<li><a href="loginForm">About Us</a></li>
 					<li><a href="loginForm">Q&A</a></li>
-					<li><a href="productList">Product List</a></li>
+					<li><a href="productList?pageNo=1">Product List</a></li>
 				</c:if>
 			</ul>
 			
@@ -60,7 +60,7 @@
 						<a class="navbar_short_icon" href="logout">
 							<i class="bi bi-box-arrow-right"> Logout</i>
 						</a>
-						<a class="navbar_short_icon" href="mypage">
+						<a class="navbar_short_icon" href="mypage?&shoppingPageNo=1">
 							<i class="bi bi-person"> myPage</i>	
 						</a>
 					</c:if>
@@ -77,7 +77,12 @@
 		</nav>
 		
 		<div class="navbar_search row">
-			<form method="get" action="productList" class="navbar_search_form col">
+			<c:if test="${subpage.equals('myshoppinglist') }">
+				<form method="get" action="mypage?subpage=myshoppinglist&shoppingPageNo=1" class="navbar_search_form col">
+			</c:if>
+			<c:if test="${!subpage.equals('myshoppinglist') }">
+				<form method="get" action="productList" class="navbar_search_form col">
+			</c:if>
 				<div class="navbar_search_input">
 					<input type="search" class="form-control" placeholder="Search..." name="searchWord">
 				</div>

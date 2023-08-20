@@ -42,13 +42,13 @@
 								</div>
 							</div>
 							<div>
-								<a href="mypage?subpage=myshoppinglist"  class="myMenuTitle">내 구매 리스트</a>
+								<a href="mypage?subpage=myshoppinglist&shoppingPageNo=1"  class="myMenuTitle">내 구매 리스트</a>
 							</div>
 							<div>
 								<a href="mypage?subpage=mywishlist"  class="myMenuTitle">내 찜 리스트</a>
 							</div>
 							<div >
-								<a href="mypage?subpage=myreviewlist"  class="myMenuTitle">내 리뷰 리스트</a> 
+								<a href="mypage?subpage=myreviewlist&reviewPageNo=1"  class="myMenuTitle">내 리뷰 리스트</a> 
 							</div>
 							<div>
 								<a href="mypage?subpage=myinfocheck" class="myMenuTitle">내 정보 확인/수정</a>

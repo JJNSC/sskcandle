@@ -17,6 +17,8 @@ public interface OrderService {
 	public int insertBuyList(Order order);
 	public void insertOrderDetail(OrderDetail orderDetail);
 	public List<BuyList> getBuyList(Pager pager);
+	public List<BuyList> getBuyListBySearchword(Pager pager);
 	public int getOrderCount(int userId);
+	public int getOrderCountBySearchword(Order order);
 	public void reviewedOrder(OrderDetail orderDetail);
 }
