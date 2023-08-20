@@ -28,17 +28,25 @@
                     <td><a href="javascript:void(0);" class="accordion-toggle" data-toggle="collapse" data-target="#collapse${board.qnaId}">${board.productName}</a></td>
 					<td>${board.userName}</td>
 					<td><fmt:formatDate value="${board.qnaDate}" pattern="yyyy-MM-dd"/></td>
-				</tr>
-				<tr>
-                    <td colspan="5" class="hiddenRow">
+					<td colspan="5" class="hiddenRow hidden_info">
                         <div class="collapse" id="collapse${board.qnaId}">
-                            <div class="card card-body">
-                                	<img src="data:${board.qnaAttachType};base64,${board.base64Image}" />
-                                	<pre>${board.qnaContent}</pre>
+                            <div class="card card-body qna_info">
+                               	<div class="row align-items-center">
+							        <div class="col-auto">
+							            <img src="data:${board.qnaAttachType};base64,${board.base64Image}" width="100px" height="100px" class="img-fluid">
+							        </div>
+							        <div class="col">
+							            <pre>${board.qnaContent}</pre>
+							        </div>
+							    </div>
                             </div>
                         </div>
                     </td>
-                </tr>
+				</tr>
+				
+				<!-- <tr>
+                    
+                </tr> -->
 			</c:forEach>
 		</tbody>
 		<tfoot>

@@ -81,15 +81,15 @@ public class QnaController {
 		
 		for (Qna product : list) {
             byte[] imageBytes = product.getQnaImage();
-            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-            product.setBase64Image(base64Image);
-            System.out.println("이미지 세팅 완료");
+            if(imageBytes != null) {
+            	String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            	product.setBase64Image(base64Image);
+            }
         }
-		System.out.println("이미지 세팅 탈출");
+
 		model.addAttribute("pager", pager);
-		System.out.println("pager완료");
 		model.addAttribute("boards", list);
-		System.out.println("adda 완료");
+		
 		return "qna/boardList";
 	}
 	
