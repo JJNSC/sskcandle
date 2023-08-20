@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -306,6 +307,7 @@ public class MypageController {
 	
 	//리뷰 작성버튼 클릭시 db에 저장하고 orderDetail의 해당 상품과 해당 유저의 열의 review를 2로 바꿔야한다.
 	//그리고 리뷰 리스트로 보내자
+	@Transactional
 	@PostMapping("submitReview")
 	public String submitReview(@RequestParam int productId, 
 					@RequestParam(name="orderId", defaultValue="0") int orderId,	
