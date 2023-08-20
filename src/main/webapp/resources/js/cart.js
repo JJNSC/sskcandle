@@ -16,8 +16,8 @@ function init() {
    //전체선택 버튼 클릭시 항목별 체크박스
    $(".cboxAll").click(initItemSelectCount);
    //삭제버튼 클릭시
-   $(".selected-delete").click(deleteItem);
-
+/*   $(".selected-delete").click(deleteItemList);
+*/
 }
 
 function eventInit() {
@@ -226,7 +226,6 @@ function countQty(){
 	   var unitPrice = thisnum.prev().children().html();
 	   var Price = parseInt(unitPrice.replace(/[^0-9]/g, ""));
 	   var totalPrice = Price * thisnum.val(); //가격 * 상품의 수
-	   var finalPrice = 0;
 	   
 	    thisnum.parent().parent().parent().next().children().html(totalPrice.toLocaleString("ko-KR")+"원");
 }
@@ -273,6 +272,7 @@ function sum() {
     });
 
     $(".final-order-price").text(total.toLocaleString("ko-KR") + "원");
+    $(".final-product-price").text(total.toLocaleString("ko-KR") + "원");
 }
 
 	$("input:checkbox[name=cbox]").on("change", function() {
@@ -319,6 +319,7 @@ function sum() {
 
 	    // 전체 합산이 완료되면 총 가격 업데이트
 	    $(".final-order-price").text(total.toLocaleString("ko-KR") + "원");
+	    $(".final-product-price").text(total.toLocaleString("ko-KR") + "원");
 	}
 
 	// 수량 변경 이벤트 처리
@@ -408,7 +409,26 @@ $(document).ready(function() {
 
 
         row.find(".unit-total-price").text(total.toLocaleString("ko-KR") + "원"); // 해당 행의 총 가격 업데이트
+        row.find(".final-product-price").text(total.toLocaleString("ko-KR") + "원"); // final-product-price 업데이트
+        var percentage = total * 0.04; // total 값의 4% 계산
+        row.find(".promo-cash-benefit__text").text("최대"+ percentage.toLocaleString("ko-KR") + "원 적립");
     });
+});
+
+//요일 날짜 
+$(document).ready(function() {
+    // 내일의 날짜를 계산합니다
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    // 요일과 날짜를 가져옵니다
+    var days = ['일', '월', '화', '수', '목', '금', '토'];
+    var dayOfWeek = days[tomorrow.getDay()];
+    var date = tomorrow.getMonth() + 1 + '/' + tomorrow.getDate();
+    
+    // 요일과 날짜를 업데이트합니다
+    $(".arrive-date-day").text('(' + dayOfWeek + ')');
+    $(".arrive-date-date").text(date);
 });
 
 

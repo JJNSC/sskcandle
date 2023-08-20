@@ -58,15 +58,15 @@
 																${ProductList.productName}		           		
 															</div>
 										            		<div class="option-item-info">
-										                    	<span class="arrive-date" style="display: inline-block;">
-											                    	<span class="arrive-date-txt">내일</span>
-											                    	<span class="arrive-date-day">(목) </span>
-											                    	<span class="arrive-date-date">7/6</span>
-											                    	<span class="arrive-date-time"></span>
-											                    	<span class="promise-txt"> 도착 보장 </span>
-										                    	</span>
-										                    	<span class="delivery-condition">(밤 12시 전 주문 시)</span>
-															</div>	
+															    <span class="arrive-date" style="display: inline-block;">
+															        <span class="arrive-date-txt">내일</span>
+															        <span class="arrive-date-day"></span>
+															        <span class="arrive-date-date"></span>
+															        <span class="arrive-date-time"></span>
+															        <span class="promise-txt"> 도착 보장 </span>
+															    </span>
+															    <span class="delivery-condition">(밤 12시 전 주문 시)</span>
+															</div>
 															<div class="option-price-part">
 																<span class="unit-cost">
 																	<span class="unit-price-area">
@@ -81,7 +81,7 @@
 															<div class="badge-item option-benefit">
 											             		<span class="promo-cash-benefit ">
 											                		<i class="promo-cash-benefit__icon"></i>
-											                		<em class="promo-cash-benefit__text">최대 661원 적립</em>
+											                		<em class="promo-cash-benefit__text">최대 <fmt:formatNumber value="${ProductList.productPrice * QuantityList *0.04}" pattern="#,###"/>원 적립</em>
 										           		  		</span>
 										   					</div>
 														</td>
@@ -108,13 +108,13 @@
             			<td colspan="5">
 		                	<div class="rocket-tooltip" id="rocket-tooltip" style="display: block; right: 443px;">
 		                    	<div class="rocket-info" id="rocket-info">
-		                    		다른
+		                    		오픈기념
 		                    	 <a class="link addRocketItem logging" href="//www.coupang.com/np/campaigns/82">
-		                    	 	로켓배송 상품
+		                    	 	캔들 구매시
 		                    	 </a>
-		                    	 	을 추가해도 함께 
+		                    	 	 전 제품
 		                    	 <em>무료배송</em> 
-		                    	 	가능!
+		                    	 	이벤트!
 		                    	 </div>
 		                	</div>
 			                <span class="rocket-total-price-area">
@@ -150,9 +150,9 @@
         </div>
         <div class="payment-reward-cash-area">
                 <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
-                <h3 class="payment-reward-cash-area__title">캐시적립 혜택</h3>
+                <h3 class="payment-reward-cash-area__title">적립금 혜택</h3>
               
-                <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 1% 적립</span> 
+                <span class="payment-reward-cash-area__desc">적립금 최대 4% 적립</span> 
         </div>
         <div class="cart-total-price">
             <div class="cart-total-price__inner">

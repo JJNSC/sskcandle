@@ -97,7 +97,6 @@ public class ProductController {
 	      Pager pager = new Pager(5,5,totalReviewNum,intPageNo);
 	      pager.setProductId(productId);
 	       
-	       
 	      model.addAttribute("pager", pager);
 	      
 	      // 찜 상태 확인 및 넘겨주기
@@ -137,23 +136,7 @@ public class ProductController {
 	      
 	      model.addAttribute("userList", userList);
 	      model.addAttribute("reviewList", reviewList);
-	      
-	      //리뷰 베스트순, 최신순
-	      
-	      // "best"와 "new" 값을 가져오는 부분
-	  /*    String orderBy = (String) session.getAttribute("orderBy");
-	      if (orderBy == null) {
-	          orderBy = "best"; // 기본은 베스트순으로 설정
-	      }
-	      
-	      if ("best".equals(orderBy)) {
-	          reviewList = ReviewService.getListReviewByRating(pager);
-	      } else {
-	          reviewList = ReviewService.getListReviewNew(pager); // 최신순으로 변경
-	      }
-	      
-	      model.addAttribute("reviewList", reviewList);
-	      */
+	  
 		return "/productDetail/detailView";
 	}	
 }

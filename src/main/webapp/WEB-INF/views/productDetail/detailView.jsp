@@ -15,6 +15,8 @@
 	<title>제품 상세페이지</title>
 	<!-- External JS -->
 	<script src="resources/js/detailView.js"></script>
+	<%-- 부트스트랩 아이콘 --%>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 	
 	</head>
 		<!-- External CSS -->
@@ -117,20 +119,13 @@
 				        <div class="input-group-prepend">
 							<input class="btn btn-outline-primary js-btn-plus" type="button" onclick='count("minus")' value='-'/>
 						</div>
-					 		<input name="result" type="text" id="productCount" class="form-control tSext-center" value="1" min="0">
+					 		<input name="result" type="text" id="productCount" class="form-control text-center" value="1" min="0">
 				        <div class="input-group-prepend">
 							<input class="btn btn-outline-primary js-btn-minus" type="button" onclick='count("plus")' value='+'/>
 					 	</div> 
 					</div>
 				</form>  
 			</div>  
-       		<div class="product-description">
-            	<ul>
-                	<li>색상계열: 화이트계열</li>
-                  	<li>구성: 워머+캔들 세트</li>
-                  	<li>쿠팡상품번호: 7058245313 - 17492361940</li>
-                </ul>
-            </div>
 		</div>
     </div>    
         
@@ -219,9 +214,9 @@
 		                		<fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd"></fmt:formatDate>
 		                	</div>
 		            </div>        
-		                <div class="sdp-review__article__list__info__product-info__seller_name">
+		               <%--  <div class="sdp-review__article__list__info__product-info__seller_name">
 		                    	제조사: ${detailproduct.productMaker}
-		                </div>   
+		                </div>    --%>
 		            <div class="sdp-review__article__list__headline">                                
 		            </div>       
 		            <div class="sdp-review__article__list__review js_reviewArticleContentContainer">
@@ -236,32 +231,32 @@
 	    </article>
     	</c:forEach>
     </div>
-    <table>
-		 <tr>
-		   <td colspan="4" class="text-center">
-			    <div>
-			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, 1, 'default')">처음</a>
-			        <c:if test="${pager.groupNo > 1}">
-			            <a class="btn btn-outline-info btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.startPageNo-1}, 'default')">이전</a>
-			        </c:if>
-			
-			        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-			            <c:if test="${pager.pageNo != i}">
-			                <a class="btn btn-outline-success btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i}, 'default')"">${i}</a>
-			            </c:if>
-			            <c:if test="${pager.pageNo == i}">
-			                <a class="btn btn-danger btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i}, 'default')">${i}</a>
-			            </c:if>
-			        </c:forEach>
-			
-			        <c:if test="${pager.groupNo < pager.totalGroupNo}">
-			            <a class="btn btn-outline-info btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.endPageNo+1}, 'default')">다음</a>
-			        </c:if>
-			        <a class="btn btn-outline-primary btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.totalPageNo}, 'default')">맨끝</a>
-			    </div>
-			</td>
-		</tr>
-	</table>
+	    <table>
+			 <tr>
+			   <td colspan="4" class="text-center">
+				    <div>
+				        <a class="btn btn-sm" href="javascript:showReview(${detailproduct.productId}, 1, 'default')">처음</a>
+				        <c:if test="${pager.groupNo > 1}">
+				            <a class="btn btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.startPageNo-1}, 'default')">이전</a>
+				        </c:if>
+				
+				        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">				    
+					        <c:if test="${pager.pageNo == i}">
+					           <a id="btn-sm" class="btn btn-sm" style="color:#20c997;" href="javascript:showReview(${detailproduct.productId}, ${i}, 'default')">${i}</a>
+					        </c:if>
+					        <c:if test="${pager.pageNo != i}">
+					            <a id="btn-sm" class="btn btn-sm" href="javascript:showReview(${detailproduct.productId}, ${i}, 'default')">${i}</a>
+					        </c:if>				    
+						</c:forEach>
+				
+				        <c:if test="${pager.groupNo < pager.totalGroupNo}">
+				            <a class="btn btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.endPageNo+1}, 'default')">다음</a>
+				        </c:if>
+				        <a class="btn btn-sm" href="javascript:showReview(${detailproduct.productId}, ${pager.totalPageNo}, 'default')">맨끝</a>
+				    </div>
+				</td>
+			</tr>
+		</table>
 	 	</div>	   		    
 	    	<!-- 상품문의 주의란 -->
 	    	

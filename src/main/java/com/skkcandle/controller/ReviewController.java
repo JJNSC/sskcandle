@@ -36,7 +36,15 @@ public class ReviewController {
 	     int totalReviewNum = reviewService.getReviewNum(productId);
 	     Pager pager = new Pager(5, 5, totalReviewNum, page);
 	     pager.setProductId(productId);
-
+	     
+	     log.info("페이지번호" + page);
+	     
+	      //세션에 pageNo를 저장
+	      session.setAttribute("pageNo", String.valueOf(page));
+	      
+	      
+	      
+	     	     
 	     List<Review> reviewList = new ArrayList<>();
 	     
 	     if ("default".equals(orderBy)) {

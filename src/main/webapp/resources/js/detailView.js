@@ -33,6 +33,28 @@ function count(type)  {
   $('input[name=result]').attr('value', number);
 };
 
+//도착날짜 
+//현재 날짜 객체 생성
+const currentDate = new Date();
+
+// 내일의 날짜 객체 생성
+const tomorrowDate = new Date(currentDate);
+tomorrowDate.setDate(currentDate.getDate() + 1);
+
+// 요일을 표시할 문자열 배열
+const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+
+// 내일의 요일과 날짜 추출
+const tomorrowDay = daysOfWeek[tomorrowDate.getDay()];
+const tomorrowMonth = tomorrowDate.getMonth() + 1;
+const tomorrowDayOfMonth = tomorrowDate.getDate();
+
+// 내일의 요일과 날짜를 표시할 문자열 생성
+const tomorrowString = `${tomorrowDay} ${tomorrowMonth}/${tomorrowDayOfMonth}`;
+
+// 생성한 문자열을 div에 넣기
+document.getElementById("arrivalDate").innerText = `내일(${tomorrowString}) 도착 보장`;
+
 function addCartBtn(){
 	
 	var userId = $('input[name=userId]').val();
@@ -56,6 +78,7 @@ function addCartBtn(){
 	}
 };
 
+//찜하기 버튼 누를시
 function clickWishBtn() { 
     var userId = $('input[name=userId]').val();
     var productId = $('input[name=productId]').val();
@@ -196,7 +219,6 @@ function showReview(productId, page, orderBy) {
 	            html += item.reviewContent;
 	            html += "</div>";
 	            html += "</div>";
-	            
 	         });
 	         
 	         
@@ -208,5 +230,3 @@ function showReview(productId, page, orderBy) {
 	      }
 	   });
 	}
-
-
