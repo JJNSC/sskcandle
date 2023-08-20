@@ -56,9 +56,22 @@ tfoot .btn:hover {
 	color: white;
 }
 
-.qna_info {
+.hidden_info {
+	height: 200px;
+}
+
+.adjust_col {
 	display: flex;
-	flex-direction: row;
-	
+	gap: 50px;
+}
+
+.content_font {
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	font-size: 20px !important;
+	white-space: normal;
+    word-wrap: break-word;
 }
 
