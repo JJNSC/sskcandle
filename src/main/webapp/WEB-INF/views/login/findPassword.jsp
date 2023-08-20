@@ -25,7 +25,7 @@
 	<body>
 		<div class="wrapper" style="max-width: 400px;">
 			<header class="text-center pt-5">
-					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
+					<img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"
 						style="width: 250px; " />
 			</header>
 			<input type="hidden" class="d-none" id="loginErrMsg" value="${loginErrMsg }" >
@@ -87,7 +87,7 @@
 							</label>
 						</div>
 						<!-- 비밀번호 확인 답변 -->
-						<div class="join_input_userInfo">
+						<div class="join_input_userInfo" style="height:50px;">
 							<label for="userName">
 								<span class="join_input_icon_box">
 									<i class="fa-solid fa-exclamation" style="color: #c3c6d1;"></i>
@@ -103,7 +103,7 @@
 				
 			</section>
 			<div class="login__content login__content--trigger">
-           		<button class="btn btn-primary btn-block font-weight-bold" form="findPasswordForm" id="q" type="submit" style="border-color:#17a2b8 ;padding: 10px 0; background-color:#88c8bc;">이메일 찾기</button>
+           		<button class="btn btn-primary btn-block font-weight-bold" form="findPasswordForm" id="q" type="submit" style="border-color:#17a2b8 ;padding: 10px 0; background-color:#88c8bc;">비밀번호 찾기</button>
 			</div>
 
 		</div>

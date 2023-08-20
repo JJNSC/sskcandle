@@ -25,7 +25,7 @@
 	<body>
 		<div class="wrapper" style="max-width: 400px;">
 			<header class="text-center pt-5">
-					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"
+					<img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"
 						style="width: 250px; " />
 			</header>
 			<input type="hidden" class="d-none" id="loginErrMsg" value="${loginErrMsg }" >

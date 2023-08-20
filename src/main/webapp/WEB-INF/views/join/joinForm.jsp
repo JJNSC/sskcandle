@@ -23,7 +23,7 @@
 		<div class="wrapper">
 			<header class="join_header">
 				<a href="/skkcandle">
-					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"/>			
+					<img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"/>			
 				</a>
 			</header>
 
@@ -64,7 +64,7 @@
 						<span id="pwdErr1" class="errorMsg text-danger d-none small">패스워드는 필수 입력 사항입니다.</span>
 			    		<span id="pwdErr2" class="errorMsg text-danger d-none small">8자 이상 입력해야합니다.</span>
 						<%-- 비밀번호 확인 --%>
-						<div class="join_input_userInfo">
+						<div class="join_input_userInfo" style="height:50px;">
 							<label for="userCheckPassword">
 								<span class="join_input_icon_box">
 									<!-- <i class="join_input_icon icon_checkPassword"></i> -->
@@ -102,7 +102,7 @@
 							</label>
 						</div>
 						<!-- 비밀번호 확인 답변 -->
-						<div class="join_input_userInfo">
+						<div class="join_input_userInfo" style="height:50px;">
 							<label for="userName">
 								<span class="join_input_icon_box">
 									<i class="fa-solid fa-exclamation" style="color: #c3c6d1;"></i>
@@ -128,7 +128,7 @@
 						</div>
 						<span id="nameErr1" class="errorMsg text-danger d-none small">이름 필수 입력 사항입니다.</span>
 						<%-- 전화번호 --%>
-						<div class="join_input_userInfo">
+						<div class="join_input_userInfo" style="height:50px;">
 							<label for="userTel">
 								<span class="join_input_icon_box">
 									<!-- <i class="join_input_icon icon_tel"></i> -->
