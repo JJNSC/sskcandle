@@ -22,11 +22,23 @@
 			<c:forEach var="board" items="${boards}">
 				<tr>
 					<td>${board.qnaId}</td>
-					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.qnaTitle}</a></td>
-					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.productName}</a></td>
+					<%-- <td><a href="detailBoard?qnaId=${board.qnaId}">${board.qnaTitle}</a></td>
+					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.productName}</a></td> --%>
+					<td><a href="javascript:void(0);" class="accordion-toggle" data-toggle="collapse" data-target="#collapse${board.qnaId}">${board.qnaTitle}</a></td>
+                    <td><a href="javascript:void(0);" class="accordion-toggle" data-toggle="collapse" data-target="#collapse${board.qnaId}">${board.productName}</a></td>
 					<td>${board.userName}</td>
 					<td><fmt:formatDate value="${board.qnaDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
+				<tr>
+                    <td colspan="5" class="hiddenRow">
+                        <div class="collapse" id="collapse${board.qnaId}">
+                            <div class="card card-body">
+                                	<img src="data:${board.qnaAttachType};base64,${board.base64Image}" />
+                                	<pre>${board.qnaContent}</pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 			</c:forEach>
 		</tbody>
 		<tfoot>
@@ -57,62 +69,6 @@
 			</tr>
 		</tfoot>
 	</table>
-	<div class="">
-		
-	</div>
 </div>
-
-
-<%-- <div class="card m-2">
-	<div class="card-header">
-		게시물 목록
-	</div>
-	<div class="card-body">
-		<table class="table table-sm table-bordered">
-			<tr>
-				<th style="width:30px">번호</th>
-				<th style="width:300px">제목</th>
-				<th style="width:70px">글쓴이</th>
-				<th style="width:70px">날짜</th>
-			</tr>
-
-			<c:forEach var="board" items="${boards}">
-				<tr>
-					<td>${board.qnaId}</td>
-					<td><a href="detailBoard?qnaId=${board.qnaId}">${board.qnaTitle}</a></td>
-					<td>${board.userName}</td>
-					<td><fmt:formatDate value="${board.qnaDate}" pattern="yyyy-MM-dd"/></td>
-				</tr>
-			</c:forEach>
-			
-			<tr>
-				<td colspan="4" class="text-center">
-					<div>
-						<a class="btn btn-outline-primary btn-sm" href="getBoardList?pageNo=1">처음</a>
-						<c:if test="${pager.groupNo>1}">
-							<a class="btn btn-outline-info btn-sm" href="getBoardList?pageNo=${pager.startPageNo-1}">이전</a>
-						</c:if>
-						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-							<c:if test="${pager.pageNo != i}">
-								<a class="btn btn-outline-success btn-sm" href="getBoardList?pageNo=${i}">${i}</a>
-							</c:if>
-							<c:if test="${pager.pageNo == i}">
-								<a class="btn btn-danger btn-sm" href="getBoardList?pageNo=${i}">${i}</a>
-							</c:if>
-						</c:forEach>
-						<c:if test="${pager.groupNo<pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm" href="getBoardList?pageNo=${pager.endPageNo+1}">다음</a>
-						</c:if>
-						<a class="btn btn-outline-primary btn-sm" href="getBoardList?pageNo=${pager.totalPageNo}">맨끝</a>
-					</div>
-				</td>
-			</tr>
-		</table>
-		
-		<div class="mt-2">
-			<a href="writeBoard" class="btn btn-sm btn-info">새글쓰기</a>
-		</div>
-	</div>
-</div> --%>
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp" %>

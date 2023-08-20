@@ -44,6 +44,7 @@
 		from qna q 
 		inner join userinfo u on q.userid = u.userid
 		left join product p on p.productid = q.productid
+		where qnaid = #{qnaId}
 	</select>
 	
 	<delete id="deleteByQnaId" parameterType="int">

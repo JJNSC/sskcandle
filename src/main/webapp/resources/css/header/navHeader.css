@@ -38,13 +38,13 @@ li {
 
 .navbar_search {
 	padding-top: 10px;
-	padding-right: 20px;
-	
+	padding-right: 15px;
 }
 
 .navbar_search_form {
 	display: flex;
 	justify-content: flex-end;
+	padding-right: 0 !important;
 }
 
 .navbar_search_input input {
@@ -59,8 +59,8 @@ li {
 	background: #88c8bc;
     border-radius: 30px;
     border: 1px solid #88c8bc;
-    position: relative;
-    left: -40px;
+    position: absolute;
+    /* left: -40px; */
 }
 
 .navbar_white_space {

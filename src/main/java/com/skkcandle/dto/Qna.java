@@ -23,4 +23,5 @@ public class Qna {
 	private String qnaAttachType;
 	private String qnaAttachFileName;	
 	private byte[] qnaImage;
+	private String base64Image;
 }

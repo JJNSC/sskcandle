@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.Pager;
+import com.skkcandle.dto.ProductList;
 import com.skkcandle.dto.Qna;
 import com.skkcandle.dto.User;
 import com.skkcandle.service.QnaService;
@@ -77,10 +78,18 @@ public class QnaController {
 		Pager pager = new Pager(10, 5, totalBoardNum, intpageNo);
 
 		List<Qna> list = qnaService.getList(pager);
-
+		
+		for (Qna product : list) {
+            byte[] imageBytes = product.getQnaImage();
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            product.setBase64Image(base64Image);
+            System.out.println("이미지 세팅 완료");
+        }
+		System.out.println("이미지 세팅 탈출");
 		model.addAttribute("pager", pager);
+		System.out.println("pager완료");
 		model.addAttribute("boards", list);
-
+		System.out.println("adda 완료");
 		return "qna/boardList";
 	}
 	
