@@ -35,12 +35,12 @@
 				            <tr>
 				                <td style="width:120px; height:120px;">
 				                    <a href="productDetail?productId=${wish.product.productId}">
-				                        <img src="data:${wish.productImages.pattachtype};base64, ${wish.productImages.base64Image}" width="120"/>
+				                        <img src="data:${wish.productImages.pattachtype};base64, ${wish.productImages.base64Image}" width="120" height="140px;"/>
 				                    </a>
 				                </td>
-				                <td style="text-align: left; width:500px; line-height: 120px;">${wish.product.productName}</td>
-				                <td style="line-height: 120px; width:100px;">${wish.product.productPrice} 원</td>
-				                <td style="line-height: 60px;">
+				                <td style="text-align: left; width:500px; line-height: 140px;">${wish.product.productName}</td>
+				                <td style="line-height: 140px; width:100px;">${wish.product.productPrice} 원</td>
+				                <td style="line-height: 70px;">
 				                	<div><a type="button" class="addToCartBtn" data-thisid="${wish.product.productId}" >장바구니에 담기</a></div>
 				                	<div><a type="button" class="deleteCartBtn" data-thisid="${wish.product.productId}" >찜목록 제거하기</a></div>
 				                </td>

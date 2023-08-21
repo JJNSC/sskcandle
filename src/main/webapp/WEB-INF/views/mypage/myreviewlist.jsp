@@ -17,15 +17,14 @@
 	</style>
 	<script>
 		$(document).ready(function() {
-			$(".reviewTitle").click(function() {
-			    var reviewId = $(this).attr("data-review-id");
-				console.log("내가 누른 리뷰의 리뷰아이디 : " +reviewId);
-			    // 해당 reviewTitle과 reviewId를 가진 아코디언 펼치기
-			    $("#collapseExample" + reviewId).collapse('toggle');
-			
-			    // 다른 모든 아코디언 닫기
-			    $("[id$=collapseExample]").not("#collapseExample" + reviewId).collapse('hide');
-			});
+			$('.reviewTitle').on('click', function() {
+		    	const close = $('.show');
+		    	if(close != null) {
+		    		close.collapse('toggle');
+		    	}
+		        const target = $(this).data('target');
+		        $(target).collapse('toggle');
+		    });
 		});
 	
 		//리뷰 삭제하기 버튼 클릭시
@@ -84,7 +83,7 @@
 						<c:forEach var="product" items="${productList }" varStatus="b">
 							<c:if test="${a.index==b.index}">
 								<tr id="${review.reviewId }top">
-									<td colspan="5">
+									<td colspan="5" style="border:0px;">
 			                  			<div class="collapse" id="collapseExample${review.reviewId }">
 							        		<div style="display:flex; flex-direction: row-reverse;">
 									         		작성날짜 : 

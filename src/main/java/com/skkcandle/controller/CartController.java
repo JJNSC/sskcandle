@@ -163,7 +163,18 @@ import lombok.extern.slf4j.Slf4j;
       
 		 return "redirect:/getCartList";
 	 }
-	 
+	 /**
+	  * 상품 상세페이지에서 바로 결제요청이 들어왔을때 처리
+	  * 장바구니에 해당 상품이 있는지 비교 후 
+	  * 없으면 장바구니에 추가후 결제페이지로 이동
+	  * 있으면 장바구니에 있는 상품과 개수를 더한후 결제페이지로 이동
+	  * 
+	  * @param productId 	해당 상품의 번호
+	  * @param quantity 	상품 상세페이지에서 주문한 개수
+	  * @param session   	세션 객체
+	  * @param model		모델 객체
+	  * @return				상품의 정보를 가지고 결제페이지로 이동
+	  */
 	 @RequestMapping("oneProductCart")
 	 public String oneProductCart(int productId, int quantity, HttpSession session, Model model) {
 		 User user = (User) session.getAttribute("login");
