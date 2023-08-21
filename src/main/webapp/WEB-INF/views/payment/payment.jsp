@@ -28,7 +28,7 @@
 			<!-- 헤더 -->
 			<section class="d-flex-column mx-auto maincontainer" >
 				<header class="border-h">
-							<div class="head">
+							<div class="head" style="postion:relative; left:-20px;">
 								<a href="/skkcandle"><img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"
 									width="200"  alt="쿠팡"></a>
 							</div>
@@ -102,10 +102,10 @@
 										<c:if test="${a.index==b.index}">
 										<tr>
 											<th style="background-color:#fff; text-align: left;"><input type="hidden" class="productId" value="${productinfo.productId }">${productinfo.productName}</th>
-											<td>${productinfo.productPrice }원 / 
+											<td><fmt:formatNumber value="${productinfo.productPrice }" pattern="#,###원"/> / 
 												<input type="hidden" class="productQuantity" value="${productQuantity }">${productQuantity} 개
 											</td>
-											<td>합계 : <span class="pricesPerProduct">${productinfo.productPrice*productQuantity}</span> 원</td>
+											<td>합계 : <span class="pricesPerProduct"><fmt:formatNumber value="${productinfo.productPrice*productQuantity}" pattern="#,###원"/></span></td>
 										</tr>
 										</c:if>
 									</c:forEach>
@@ -114,12 +114,6 @@
 						</table>
 						</div>
 					</div>
-					<script>
-						var totalPrice = $("#totalPrice").val();
-						
-						totalPrice 
-						
-					</script>
 	
 	
 					<!-- 결제 정보 -->
@@ -135,7 +129,7 @@
 								<td style="margin:0px; padding:0px;">
 									<div style=" padding-top:10px; padding-left:16px; padding-bottom:10px;">
 										<span style="display:inline-block; width:155px;"><span id ="balance">0</span><span>원</span></span>
-										<span style="padding-top:20px;">보유 : <span id="cuBal"><fmt:formatNumber value="${userinfo.userPoint }" type="number"></fmt:formatNumber></span>원</span>
+										<span style="padding-top:20px;">보유 : <span id="cuBal">${userinfo.userPoint }</span></span>
 										<button id="cuCashInput">적립금</button>
 									</div>
 								

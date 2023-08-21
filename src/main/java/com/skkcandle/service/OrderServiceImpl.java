@@ -38,12 +38,6 @@ public class OrderServiceImpl implements OrderService{
 	private ProductImagesDao productImagesDao;
 	
 	@Override
-	public List<Map<String, Object>> selectOrderDetail(int userId) {
-		List<Map<String, Object>> list =  orderDao.selectOrdersByUserId(userId);
-		return list;
-	}
-
-	@Override
 	public int insertBuyList(Order order) {
 		log.info("여기까진 괜춘0-0");
 		//orderinfo 에 데이터를 넣는다.

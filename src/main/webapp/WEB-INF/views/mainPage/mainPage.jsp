@@ -117,9 +117,21 @@
 			                    	<span class="review_content">${reviewSortProduct.reviewContent}</span>
 			                    	<div class="review_split_line"></div>
 			                    	<div class="review_userName">
-				                    	<span id="format_userName">${reviewSortProduct.userName}</span>			                    				                    		
+				                    	<span id="format_userName col">${reviewSortProduct.userName}</span>			                    				                    		
 										<span></span>
-										<span class="star_avg">★★★★★</span>
+										<c:if test="${reviewSortProduct.averageScore >=1 && reviewSortProduct.averageScore <2}">
+											<span class="star_avg col">★★☆☆☆</span>
+										</c:if>
+										<c:if test="${reviewSortProduct.averageScore >=2 && reviewSortProduct.averageScore <3}">
+											<span class="star_avg col">★★★☆☆</span>
+										</c:if>
+										<c:if test="${reviewSortProduct.averageScore >=3 && reviewSortProduct.averageScore <4}">
+											<span class="star_avg col">★★★★☆</span>
+										</c:if>
+										<c:if test="${reviewSortProduct.averageScore >=4 && reviewSortProduct.averageScore <=5}">
+											<span class="star_avg col">★★★★★</span>
+										</c:if>
+										<span style="float:right; padding-left: 5px;">(${reviewSortProduct.averageScore})</span>
 			                    	</div>
 			                    </div>
 							</div>

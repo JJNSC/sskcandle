@@ -13,7 +13,6 @@ import com.skkcandle.dto.Pager;
  *
  */
 public interface OrderService {
-	public List<Map<String, Object>> selectOrderDetail(int userId);
 	public int insertBuyList(Order order);
 	public void insertOrderDetail(OrderDetail orderDetail);
 	public List<BuyList> getBuyList(Pager pager);

@@ -55,13 +55,13 @@
 					                </td>
 					                <td>
 					                	<br>
-					                	${orderProduct.productPrice}원
+					                	<fmt:formatNumber value="${orderProduct.productPrice}" pattern="#,###원"/>
 					                	<br><br>
 					                	${orderDetail.quantity} 개
 					                </td>
 					                <td>
 					                	<br><br>
-					                	${orderProduct.productPrice*orderDetail.quantity} 원
+					                	<fmt:formatNumber value="${orderProduct.productPrice*orderDetail.quantity}" pattern="#,###원"/>
 					                </td>
 					                <td>
 					                	<br><br>

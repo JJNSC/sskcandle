@@ -16,4 +16,5 @@ public class MainPage {
 	private String reviewContent;
 	private int userId;
 	private int reviewId;
+	private double averageScore;
 }

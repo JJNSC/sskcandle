@@ -18,16 +18,4 @@
 		
 		<%@include file ="footer/footer.jsp" %>      
 
-	<script>
-	// 뒤로가기 버튼을 눌렀을 때 실행되는 함수
-    function customBack() {
-        history.go(-2); // 2 페이지 전으로 이동
-    }
-
-    // 브라우저의 뒤로가기 동작을 재정의
-    window.addEventListener("popstate", function(event) {
-        // 여기서 조건을 검사하여 특정 페이지일 때만 customBack 함수를 호출
-        // 조건을 충족하지 않으면 기본 브라우저 동작을 그대로 실행
-            customBack();
-    });
-		</script>
+	

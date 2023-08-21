@@ -39,7 +39,7 @@
 				                    </a>
 				                </td>
 				                <td style="text-align: left; width:500px; line-height: 140px;">${wish.product.productName}</td>
-				                <td style="line-height: 140px; width:100px;">${wish.product.productPrice} 원</td>
+				                <td style="line-height: 140px; width:100px;"><fmt:formatNumber value="${wish.product.productPrice}" pattern="#,###원"/></td>
 				                <td style="line-height: 70px;">
 				                	<div><a type="button" class="addToCartBtn" data-thisid="${wish.product.productId}" >장바구니에 담기</a></div>
 				                	<div><a type="button" class="deleteCartBtn" data-thisid="${wish.product.productId}" >찜목록 제거하기</a></div>

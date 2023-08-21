@@ -186,6 +186,11 @@ a {
     margin: 20px 0px 16px;
 }
 
+.review_userName{
+	display:flex;
+	justify-content: center;
+}
+
 .review_userName span {
 	display: inline-block;
     font-size: 14px;
@@ -193,6 +198,7 @@ a {
     color: #5a5a5a;
     font-weight: 300;
     padding-left: 10px;
+   /*  padding-top:5px; */
 }
 
 .review_userName > span:first-child {
@@ -204,6 +210,9 @@ a {
 
 .review_userName .star_avg {
 	float: right;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 0;
 }
 
 

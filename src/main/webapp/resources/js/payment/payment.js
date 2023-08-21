@@ -21,7 +21,7 @@ function init(){
 }
 
 function eventInit(){
-	myBalance = parseInt($("#cuBal").text().replace(/,/gi, ""));
+	myBalance = parseInt($("#cuBal").text());
 	priceCalculate();
 	totalCalculate();
 	
@@ -54,7 +54,7 @@ function totalCalculate() {
     var totalSum = 0;
     console.log("실행");
     $('.pricesPerProduct').each(function() {
-        var price = parseInt($(this).text());
+        var price = parseInt($(this).text().replace(/,/gi, ""));
         totalSum += price;
     });
     console.log("totalSum : "+ totalSum);
@@ -71,7 +71,7 @@ function totalCalculate() {
 //결제 금액 계산
 function priceCalculate() {
 	
-	var totalPrice = parseInt($('#totalPrice').text().replace(/,/gi, ""));
+	var totalPrice = parseInt($('#totalPrice').text().replace(/[^0-9]/g, ""));
 	console.log("totalPrice : "+ totalPrice);
 	var balance = parseInt($('#balance').text().replace(/[^0-9]/g, ""));
 	console.log("balance : "+ balance);
