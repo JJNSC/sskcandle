@@ -29,7 +29,7 @@
 		<div class="wrapper">
 			<header class="join_header">
 				<a>
-					<img src="${pageContext.request.contextPath}/resources/images/skkcandle_nuki2.png"/>			
+					<img src="${pageContext.request.contextPath}/resources/images/skkcandle.png"/>			
 				</a>
 			</header>
 

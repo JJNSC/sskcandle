@@ -56,11 +56,11 @@
 				<div class="form-control pt-3 pb-3 pl-4 mt-3">
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="mb-3" 
 						style="margin-right:100px; border:1px solid #88c8bc; color:#88c8bc; background-color: #fff;">
-					<input type="text" id="sample4_postcode" name="userPostcode" placeholder="${userinfo.userPostcode }"><br>
-					<input type="text" id="sample4_roadAddress" name="userRoadAddress" placeholder="${userinfo.userRoadAddress }" class="mb-3" style="width:300px;">
+					<input type="text" id="sample4_postcode" name="userPostcode" placeholder="${userinfo.userPostcode }" value="${userinfo.userPostcode }"><br>
+					<input type="text" id="sample4_roadAddress" name="userRoadAddress" placeholder="${userinfo.userRoadAddress }" value="${userinfo.userRoadAddress }" class="mb-3" style="width:300px;">
 					<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" style="width:300px;">
 					<span id="guide" style="color:#999;display:none"></span><br>
-					<input type="text" id="sample4_detailAddress" name="userDetailAddress" placeholder="${userinfo.userDetailAddress }" style="width:500px;">
+					<input type="text" id="sample4_detailAddress" name="userDetailAddress" placeholder="${userinfo.userDetailAddress }" value="${userinfo.userDetailAddress }" style="width:500px;">
 					<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
 				</div>
 			</form>

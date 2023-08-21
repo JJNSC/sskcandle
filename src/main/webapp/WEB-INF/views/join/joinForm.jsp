@@ -108,7 +108,7 @@
 									<i class="fa-solid fa-exclamation" style="color: #c3c6d1;"></i>
 								</span>
 								<span class="join_input_box">
-									<input type="text" class="join_input_content" id=" name="userCheckPasswordAnswer"
+									<input type="text" class="join_input_content" id="userCheckPasswordAnswer" name="userCheckPasswordAnswer"
 										placeholder="비밀번호 확인 답변" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인 답변'"/>
 								</span>
 							</label>

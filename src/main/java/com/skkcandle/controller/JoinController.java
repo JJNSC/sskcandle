@@ -59,7 +59,6 @@ public class JoinController {
 	@PostMapping("/register")
 	public String register(User user, Model model) {
 		JoinResult joinresult =  userService.join(user);
-		
 		//이메일이 중복될경우 
 		if(joinresult == JoinResult.FAIL_DUPLICATED_Email) {
 			model.addAttribute("register_msg", "이메일이 중복되었습니다.");
