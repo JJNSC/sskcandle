@@ -68,10 +68,19 @@ tfoot .btn:hover {
 .content_font {
 	width: 100%;
 	height: 100%;
-	overflow-x: hidden;
-	overflow-y: scroll;
 	font-size: 20px !important;
 	white-space: normal;
     word-wrap: break-word;
 }
+
+.content_font textarea {
+	width: 500px;
+	height: 158.67px;
+}
+
+.up_del_button {
+	margin-right: 10px;
+}
+
+
 

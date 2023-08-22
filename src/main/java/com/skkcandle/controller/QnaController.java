@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.skkcandle.dto.Pager;
@@ -203,25 +204,12 @@ public class QnaController {
 	 * @return "qna"에 기존 내용을 가지고 updateBoardForm.jsp로 이동
 	 */
 	@GetMapping("/updateBoard")
-	public String updateBoardForm(int qnaId, Model model) {
-		// 기존 내용 가져오기
-		Qna qna = qnaService.getQna(qnaId);
-		
-		model.addAttribute("qna", qna);
-		return "qna/updateBoardForm";
-	}
-	
-	/**
-	 * 문의글 내용 수정 메소드
-	 * 
-	 * @param qna 문의글 정보를 담은 객체
-	 * @param model 모델 객체
-	 * @return 문의글 목록으로 리다이렉트
-	 */
-	@PostMapping("/updateBoard")
-	public String updateBoard(Qna qna, Model model) {
+	@ResponseBody
+	public void updateBoardForm(int qnaId, String qnaContent) {
+		Qna qna = new Qna();
+		qna.setQnaId(qnaId);
+		qna.setQnaContent(qnaContent);
 		qnaService.modify(qna);
-		return "redirect:/getBoardList";
 	}
 
 }

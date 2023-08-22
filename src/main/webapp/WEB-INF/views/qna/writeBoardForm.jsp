@@ -3,6 +3,30 @@
 <%@ include file="/WEB-INF/views/header/navHeader.jsp" %>
 
 <div class="container">
+	<div class="row">
+		<div class="col product_thumbnail_box">
+			<div class="product_thumbnail">
+				<%-- <img src="data:${};base64, ${.base64Image}" width="200" height="200" /> --%>
+			</div>
+		</div>
+		<form class="col form-group" action="writeBoard" method="post" enctype="multipart/form-data">
+			<div class="">
+				<label for="">제목</label>
+				<input class="col" type="" id="" name="" />				
+			</div>
+			<div class="">
+				<label for="">내용</label>
+				<textarea class="col" name=""></textarea>
+			</div>
+			<div class="text-right">
+				<button class="btn btn-sm btn-info">저장</button>
+				<a href="getBoardList" class="btn btn-sm btn-info">목록</a>			
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="container">
 	<div class="card m-2">
 		<div class="card-header">
 			문의글 작성

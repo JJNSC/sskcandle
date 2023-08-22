@@ -42,7 +42,13 @@
 											<i class="bi bi-card-image d-flex justify-content-center align-items-center" style="font-size: 100px;"></i>
 										</c:if>
 							        </div>
-							        <div class="col-6 content_font">${board.qnaContent}</div>
+							        <div class="col-6 content_font">
+							        	<textarea>${board.qnaContent}</textarea>
+							        </div>
+							        <div class="col-3 row">
+										<a href="javascript:updateBoard(${board.qnaId})" class="btn btn-sm btn-secondary up_del_button">수정하기</a>						        	
+										<a href="deleteBoard?qnaId=${board.qnaId}" class="btn btn-sm btn-secondary">삭제하기</a>						        	
+							        </div>
 							    </div>
                             </div>
                         </div>
