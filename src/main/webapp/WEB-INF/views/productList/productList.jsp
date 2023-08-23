@@ -77,7 +77,7 @@
 									<a href="productDetail?productId=${product.productId}" style="line-height: 1.2; height: 50px">${product.productName}</a>
 								</li>
 								<li class="col align-self-center">
-									<span class="product_price">&#8361;${product.productPrice}</span>
+									<span class="product_price">&#8361;${product.productPrice}</span> 
 								</li>
 							</ul>
 						</div>

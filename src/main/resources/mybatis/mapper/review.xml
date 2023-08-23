@@ -130,9 +130,7 @@
 			    WHERE rnum >= #{startRowNo}
 			 ]]>	
 	</select>
-    
-	
-</mapper> <!-- 리뷰 작업으로 인한 주석처리 -->
+</mapper>
 
 
 
