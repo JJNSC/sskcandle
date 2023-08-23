@@ -41,10 +41,7 @@ public class ReviewController {
 	     
 	      //세션에 pageNo를 저장
 	      session.setAttribute("pageNo", String.valueOf(page));
-	      
-	      
-	      
-	     	     
+	  	     	     
 	     List<Review> reviewList = new ArrayList<>();
 	     
 	     if ("default".equals(orderBy)) {
