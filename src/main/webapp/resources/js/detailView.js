@@ -177,31 +177,38 @@ function showReview(productId, page, orderBy) {
 		      console.log(data);
 
 	         data.forEach(function(item, index) {
+	        	 html += '<article id="ttt" class="sdp-review__article__list js_reviewArticleReviewList">';
+	        	 html += '<div class="sdp-review__article__list__info">';
 	            // 사용자 이미지
 	        	 html += "<div class='sdp-review__article__list__info__profile'>";
 	        	 if (item.base64Image != null) {
-	        	    html += "<img src='data:" + item.userAttachType + ";base64, " + item.base64Image + "'/>";
+	        		html += "<div class='user-image-container'>";
+	        		html += "<img src='data:" + item.userAttachType + ";base64, " + item.base64Image + "'style='width: 100%; height: auto; margin-top: 0px; opacity: 1;' />";
+	        	    html += "</div>"
 	        	 } else {
 	        	    html += "<img class='js_reviewArticleCrop js_reviewUserProfileImage' src='//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png' data-member-id='3644655' style='width: 100%; height: auto; margin-top: 0px; opacity: 1;'>";
 	        	 }
 	        	 html += "</div>";
 	            // 사용자 이름
-	            html += "<div class='sdp-review__article__list__info__user'>";
-	            html += "<h2>" + item.userName + "</h2>";
-	            html += "</div>";
+	        	 html += "<div class='sdp-review__article__list__info__user'>";
+	        	 html += "<span class='user-name'><h5>" + item.userName + "</h5>&nbsp;</span>";
+	        	 html += "</div>";
+	        	 html += "</div>";
 	            // 별점
-	            html += "<div class='rate'>";
+	        	 html += "<div class='sdp-review__article__list__info__product-info'>"
+	            html += "<div class='review_userName'>";
 	            if (item.ratingScore == 1) {
-		               html += "<span style='width: 20%'></span>"; }
+		               html += "<span class='star_avg'>★☆☆☆☆</span>"; }
 		        else if (item.ratingScore == 2) {
-		               html += "<span style='width: 40%'></span>"; }
+		               html += "<span class='star_avg'>★★☆☆☆</span>"; }
 		        else if (item.ratingScore == 3) {
-		               html += "<span style='width: 60%'></span>"; }
+		               html += "<span class='star_avg'>★★★☆☆</span>"; }
 		        else if (item.ratingScore == 4) {
-		               html += "<span style='width: 80%'></span>"; }
+		               html += "<span class='star_avg'>★★★★☆</span>"; 
+		        }
 		        else {
-		               html += "<span style='width: 100%'></span>"; }
-
+		               html += "<span class='star_avg'>★★★★★</span>"; 
+		        }
 	            html += "</div>";
 	            
 	            html += "<div class='sdp-review__article__list__info__product-info__reg-date'>";
@@ -209,16 +216,17 @@ function showReview(productId, page, orderBy) {
 	            const formattedDate = reviewDate.toISOString().substr(0, 10);
 	            html += formattedDate;
 	            html += "</div>";
-	            html += "<div class='sdp-review__article__list__info__product-info__seller_name'>";
-	            html += "제조사: " + item.productMaker;
 	            html += "</div>";
-	            html += "<div class='sdp-review__article__list__headline'>";
+	            html += "<div class='sdp-review__article__list__info__product-info__seller_name'>";
+	            html += item.reviewTitle;
 	            html += "</div>";
 	            html += "<div class='sdp-review__article__list__review js_reviewArticleContentContainer'>";
 	            html += "<div class='sdp-review__article__list__review__content js_reviewArticleContent'>";
 	            html += item.reviewContent;
 	            html += "</div>";
+	            html += "<hr>";
 	            html += "</div>";
+	            html += "</article>";
 	         });
 	         
 	         
