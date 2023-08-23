@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
@@ -77,7 +77,7 @@
 									<a href="productDetail?productId=${product.productId}" style="line-height: 1.2; height: 50px">${product.productName}</a>
 								</li>
 								<li class="col align-self-center">
-									<span class="product_price">&#8361;${product.productPrice}</span> 
+									<span class="product_price"><fmt:formatNumber value="${product.productPrice}" pattern="#,###원"/></span>
 								</li>
 							</ul>
 						</div>

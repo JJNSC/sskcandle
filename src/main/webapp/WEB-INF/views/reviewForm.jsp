@@ -18,80 +18,93 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
 		<style>
-    body {
-        font-family: Arial, sans-serif;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-    }
-   #reviewSubmit{
-    	color: #88c8bc;
-    }
-    .review-form {
-    	margin:auto;
-    	margin-top:50px;
-        max-width: 800px;
-        width: 100%;
-        padding: auto;
-        background-color: #fff;
-        text-align: center;
-    }
-    .form-group {
-        margin-bottom: 20px;
-        text-align: left;
-    }
-    .form-group label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    .form-group input[type="text"],
-    .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-    .form-group textarea {
-        resize: vertical;
-    }
-    .form-group .rating {
-        font-size: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start; /* 왼쪽 정렬 */
-        margin-top: 10px;
-    }
-    .form-group .rating input[type="radio"] {
-        display: none;
-    }
-    .form-group .rating label {
-        color: #ff9800;
-        cursor: pointer;
-        margin: 0 5px;
-    }
-    .form-group .rating label:before {
-        content: "\2605"; /* 별 아이콘 Unicode */
-        font-size: 24px;
-        display: inline-block;
-    }
-    .form-group .rating input[type="radio"]:checked ~ label {
-        color: #ccc;
-    }
-    .form-group .rating input[type="radio"]:checked {
-        color: #ff9800c;
-    }
-    .form-group button {
-        padding: 10px 20px;
-        background-color: #fff;
-        color: #fff;
-        border: 1px #88c8bc solid;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
+		    body {
+		        font-family: Arial, sans-serif;
+		        align-items: center;
+		        justify-content: center;
+		        height: 100vh;
+		        margin: 0;
+		    }
+		    
+		    #reviewSubmit{
+		    	color: #88c8bc;
+		    }
+		    
+		    .review-form {
+		    	margin:auto;
+		    	margin-top:50px;
+		        max-width: 800px;
+		        width: 100%;
+		        padding: auto;
+		        background-color: #fff;
+		        text-align: center;
+		    }
+		    
+		    .form-group {
+		        margin-bottom: 20px;
+		        text-align: left;
+		    }
+		    
+		    .form-group label {
+		        display: block;
+		        font-weight: bold;
+		        margin-bottom: 5px;
+		    }
+		    
+		    .form-group input[type="text"],
+		    .form-group textarea {
+		        width: 100%;
+		        padding: 10px;
+		        border: 1px solid #ccc;
+		        border-radius: 5px;
+		        font-size: 16px;
+		    }
+		    
+		    .form-group textarea {
+		        resize: vertical;
+		    }
+		    
+		    .form-group .rating {
+		        font-size: 24px;
+		        display: flex;
+		        align-items: center;
+		        justify-content: flex-start; /* 왼쪽 정렬 */
+		        margin-top: 10px;
+		    }
+		    
+		    .form-group .rating input[type="radio"] {
+		        display: none;
+		    }
+		    
+		    .form-group .rating label {
+		        color: #ff9800;
+		        cursor: pointer;
+		        margin: 0 5px;
+		    }
+		    
+		    .form-group .rating label:before {
+		        content: "\2605"; /* 별 아이콘 Unicode */
+		        font-size: 24px;
+		        display: inline-block;
+		    }
+		    
+		    .form-group .rating input[type="radio"]:checked ~ label {
+		        color: #ccc;
+		    }
+		    
+		    .form-group .rating input[type="radio"]:checked {
+		        color: #ff9800c;
+		    }
+		    
+		    .form-group button {
+		        padding: 10px 20px;
+		        background-color: #fff;
+		        color: #fff;
+		        border: 1px #88c8bc solid;
+		        border-radius: 5px;
+		        font-size: 16px;
+		        cursor: pointer;
+		    }
 		</style>
 		<script>
 			$(document).ready(function() {
@@ -102,13 +115,10 @@
 	                inputScore.attr("value",selectedRating);
 	            });
 	        });
-			
 		</script>
-	  
-	
 	</head>
 	<div>
-	<%@ include file="./header/navHeader.jsp" %>
+		<%@ include file="./header/navHeader.jsp" %>
 	</div>
 		<div class="review-form">
 		<div style="float:left; display:inline-block; margin-right:30px;">

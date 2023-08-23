@@ -52,7 +52,7 @@
 	</delete>
 	
 	<update id="updateByQnaId" parameterType="Qna">
-		update qna set qnatitle=#{qnaTitle}, qnacontent=#{qnaContent}
+		update qna set qnacontent=#{qnaContent}
 		where qnaid=#{qnaId}
 	</update>
 </mapper>

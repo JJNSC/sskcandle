@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     $('.accordion-toggle').on('click', function() {
     	const close = $('.show');
     	if(close != null) {
@@ -8,3 +8,19 @@ $(document).ready(function() {
         $(target).collapse('toggle');
     });
 });
+
+function updateBoard(qnaId) {
+	const qnaContent = $('textarea').val();
+	$.ajax({
+		url: 'updateBoard',
+		type: 'get',
+		data: {
+			"qnaId": qnaId,
+			"qnaContent": qnaContent
+		},
+		success: function() {
+			alert('dkkkkariomm');
+		}
+	});
+};
+
