@@ -43,7 +43,7 @@
 				</c:if>
 				<c:if test="${login == null}">
 					<li><a href="aboutUs">About Us</a></li>
-					<li><a href="loginForm">Q&A</a></li>
+					<li><a href="getBoardList">Q&A</a></li>
 					<li><a href="productList?pageNo=1">Product List</a></li>
 				</c:if>
 			</ul>
