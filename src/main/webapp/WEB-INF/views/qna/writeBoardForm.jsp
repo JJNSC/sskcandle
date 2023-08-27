@@ -3,9 +3,10 @@
 <%@ include file="/WEB-INF/views/header/navHeader.jsp" %>
 
 <div class="container">
-	<div class="row">
+	<div class="row" style="margin: 50px 0;">
 		<div class="col product_thumbnail_box">
-			<div class="product_thumbnail">
+			<div class="product_thumbnail text-center">
+				<i class="bi bi-image" style="font-size: 100px;"></i>
 				<%-- <img src="data:${};base64, ${.base64Image}" width="200" height="200" /> --%>
 			</div>
 		</div>
@@ -18,15 +19,18 @@
 				<label for="">내용</label>
 				<textarea class="col" name=""></textarea>
 			</div>
-			<div class="text-right">
-				<button class="btn btn-sm btn-info">저장</button>
-				<a href="getBoardList" class="btn btn-sm btn-info">목록</a>			
+			<div class="" style="display: flex; align-content: center; justify-content: space-between;">
+				<input id="attach" type="file" name="attach" class="text-left">
+				<div>
+					<button class="btn btn-sm btn-info">저장</button>
+					<a href="getBoardList" class="btn btn-sm btn-info">목록</a>							
+				</div>
 			</div>
 		</form>
 	</div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
 	<div class="card m-2">
 		<div class="card-header">
 			문의글 작성
@@ -55,7 +59,7 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 <%@ include file="/WEB-INF/views/footer/footer.jsp" %>
