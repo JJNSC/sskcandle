@@ -77,7 +77,7 @@
 	    color: #000;
 	    margin-top: 0;
 	    margin-bottom: 25px;
-
+		text-align: center;
 	}
 </style>
 

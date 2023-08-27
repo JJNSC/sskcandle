@@ -19,7 +19,7 @@ function updateBoard(qnaId) {
 			"qnaContent": qnaContent
 		},
 		success: function() {
-			alert('dkkkkariomm');
+			alert('변경내용이 저장되었습니다.');
 		}
 	});
 };
