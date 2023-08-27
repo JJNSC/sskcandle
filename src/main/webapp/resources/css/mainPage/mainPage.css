@@ -118,6 +118,10 @@ a {
   	transform: translateY(-60%);
 }
 
+.product_thumbnail {
+	width: 350px;	
+}
+
 .product_thumbnail:hover .prod-img {
 	filter: brightness(50%);
 }
