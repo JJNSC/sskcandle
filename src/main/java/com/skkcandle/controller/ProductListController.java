@@ -78,9 +78,6 @@ public class ProductListController {
 		model.addAttribute("product", productList);
 		return "productList/productList";
 	}
-	
-	
-	
-	
+
 }
 	

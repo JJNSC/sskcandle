@@ -4,6 +4,8 @@ import java.util.Base64;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +29,10 @@ public class MainPageController {
 	private MainPageService mainPageService;
 	
 	/**
-	 * '/mainPage' 경로로 들어오는 요청을 처리
-	 * @return mainPage.jsp 페이지로 이동
+	 * '/' 경로로 들어오는 요청을 처리
+	 * 
+	 * @return index.jsp 페이지로 이동
 	 */
-	
 	@RequestMapping("/")
 	public String index(Model model) {
 		String searchWord=null;
@@ -53,7 +55,5 @@ public class MainPageController {
 		model.addAttribute("reviewSortProduct", reviewSortProductList);
 		return "index";
 	}
-	
-	
 	
 }

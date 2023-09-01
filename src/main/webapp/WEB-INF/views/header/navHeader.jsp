@@ -37,13 +37,13 @@
 			</a>
 			<ul class="navbar_menu col-4 pl-0">
 				<c:if test="${login != null}">
-					<li><a href="mypage">About Us</a></li>
+					<li><a href="aboutUs">About Us</a></li>
 					<li><a href="getBoardList">Q&A</a></li>
 					<li><a href="productList?pageNo=1">Product List</a></li>
 				</c:if>
 				<c:if test="${login == null}">
-					<li><a href="loginForm">About Us</a></li>
-					<li><a href="loginForm">Q&A</a></li>
+					<li><a href="aboutUs">About Us</a></li>
+					<li><a href="getBoardList">Q&A</a></li>
 					<li><a href="productList?pageNo=1">Product List</a></li>
 				</c:if>
 			</ul>
