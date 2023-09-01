@@ -79,9 +79,9 @@
 					<div class="shipping price">
 						무료배송
 					</div>
-					<div class="arrived date">
+					<!-- <div class="arrived date">
 						내일(목)6/22 도착 보장
-					</div>
+					</div> -->
 					<div class="product-reward-cash-container">
 			        	<div class="reward-cash-summary">
 			            	<div class="reward-cash-summary_title">
@@ -142,14 +142,11 @@
   
 	        <!-- 상품평 -->  
 	    	<div class="sdp-review">
-			   <div class="sdp-review_title" id="sdp-review_title"> 
-			    	<h4 class="sdp-review_prd-name">상품평</h4> 
-			    	<div class="sdp-review_guide-btn">상품평 운영원칙</div>
-			  
-			    </div>	
+			   <!-- <div class="sdp-review_title" id="sdp-review_title"> 
+			    	<h4 class="sdp-review_prd-name">상품평</h4> 			  
+			    </div>	 -->
 			    <div class="sdp-review_rating">
 			     	<div class="sdp-review_count"><h3>총 ${totalReviewNum} 개의 리뷰가 있습니다.</h3></div>	    	
-			    	<div class="sdp-review_info-detail">자세히 보기 </div>
 			    </div>			    
 		   </div>
 	    	

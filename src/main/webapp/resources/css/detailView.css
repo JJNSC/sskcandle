@@ -741,10 +741,13 @@ text-align: center;
     width: 1320px;
 }
 
+.sdp-review_count{
+	float: left;
+}
 
 .sdp-review__article__order{
 	display: flex;
-       padding-top: 5px;
+    padding-top: 5px;
 	margin-left: 10px;
 	vertical-align: top;
 	line-height: 44px;

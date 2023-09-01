@@ -119,34 +119,8 @@ public class ReviewServiceImpl implements ReviewService{
 		List<Review> newReviewList = reviewDao.getListReviewNew(pager);
 		
 		return newReviewList;
-	}
-
-	/*@Override
-	public List<ReviewList> getReviewList(int productId) { //무슨 product의 review 인지 파악 , 
-		
-	    List<ReviewList> reviewList = new ArrayList<>();
-	    ReviewList reviewListInfo = new ReviewList(); //여기에 review 에 띄울 정보들을 담아준다 (리뷰내용, 회원 이미지, 회원이름, 리뷰평점, 리뷰데이트...)
-
-	    ArrayList<Integer> reviewIdList = new ArrayList<>(); //질문1) 해당 productId의 리뷰 수 만큼 for문을 돌려 줘야 하나?? 그러면 List 가 아니라 int로 받아야 하나? 
-	    reviewIdList = reviewDao.getListReview(productId); //질문2) 근데 이건 productId로 리뷰의 리스트들을 주욱 받아오는것 (list 객체)
-
-	    List<User> User = new ArrayList<>(); //회원들의 정보
-	    List<Review> ReviewInfo = new ArrayList<>(); //리뷰 정보들
-	    
-	    for (Integer reviewId : reviewIdList) {
-	    	
-	    	List<Review> review = reviewDao.selectReview(productId);
-	    	ReviewInfo.addAll(review); //review selectReview 가 List 타입으로 받아오므로 (addAll 사용)
-	    
-	    	User user = 
-	    }
-	        
-	    	reviewListInfo.setReview(review);
-	    	reviewListInfo.setUser(user);
-	    }
-
-	    return reviewList;*/
-	}
+	}	
+}
 
 
 

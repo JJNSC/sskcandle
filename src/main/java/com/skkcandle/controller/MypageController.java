@@ -369,6 +369,17 @@ public class MypageController {
 	//그리고 리뷰 리스트로 보내자
 	@Transactional
 	@PostMapping("submitReview")
+	/**
+	 * 
+	 * @param productId
+	 * @param orderId
+	 * @param userId
+	 * @param reviewTitle
+	 * @param ratingScore
+	 * @param reviewContent
+	 * @param reviewId
+	 * @return
+	 */
 	public String submitReview(@RequestParam int productId, 
 					@RequestParam(name="orderId", defaultValue="0") int orderId,	
 					@RequestParam int userId,

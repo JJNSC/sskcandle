@@ -29,7 +29,14 @@ public class ReviewController {
 	 private ReviewService reviewService;
 	 @Autowired
 	 private UserService userService;
-	 
+	 /**
+	  * 
+	  * @param session
+	  * @param productId
+	  * @param page
+	  * @param orderBy
+	  * @return
+	  */
 	 @ResponseBody
 	 @GetMapping("/getReviewList")
 	 public List<ProductReview> getReview(HttpSession session, int productId, int page, String orderBy) {

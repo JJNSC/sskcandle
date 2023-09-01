@@ -143,6 +143,13 @@ import lombok.extern.slf4j.Slf4j;
 		 /*log.info("user의 카트리스트" + cartList);*/		 
 		 return "/cart/cart";
 	 }
+	 /**
+	  * 
+	  * @param session 로그인 정보
+	  * @param model 
+	  * @param deleteList
+	  * @return
+	  */
 	 
 	 @GetMapping("/deleteList")
 	 public String deleteCheckedCart(HttpSession session, Model model, @RequestParam List<Integer> deleteList) {
@@ -202,7 +209,13 @@ import lombok.extern.slf4j.Slf4j;
 			 return "redirect:/payment";
 		 }
 	 }
-	 
+	 /**
+	  * 
+	  * @param session
+	  * @param productId
+	  * @param newQuantity
+	  * @return
+	  */
 	 @PostMapping("/updateQuantity")
 	 public String updateQuantity(HttpSession session, int productId, int newQuantity) {
 	   /*  int productId = Integer.parseInt(requestData.get("productId").toString());
