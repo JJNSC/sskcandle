@@ -13,7 +13,7 @@
 		<form class="col form-group" action="writeBoard" method="post" enctype="multipart/form-data">
 			<div class="">
 				<label for="">제목</label>
-				<input class="col" type="" id="" name="" />				
+				<input class="col" type="text" id="" name="" />				
 			</div>
 			<div class="">
 				<label for="">내용</label>
